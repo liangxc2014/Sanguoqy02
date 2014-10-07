@@ -9,11 +9,9 @@ public class ExcelExporter
 	static void Execute()
     {
         bool flag = false;
-        
         foreach (Object o in Selection.GetFiltered(typeof(Object), SelectionMode.DeepAssets))
         {
             string path = AssetDatabase.GetAssetPath(o);
-            
             if (!(path.EndsWith(".xlsx"))) 
                 continue;
 

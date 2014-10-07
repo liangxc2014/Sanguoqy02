@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <RECORD ID="1" Name="DesignScreenResolution" Value="640,480" Description="设计时的分辨率" />
+  <RECORD ID="2" Name="MapSize" Value="1280,960" Description="大地图大小" />
+</root>

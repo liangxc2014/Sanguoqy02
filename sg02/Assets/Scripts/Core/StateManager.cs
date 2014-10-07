@@ -57,13 +57,13 @@ public abstract class StateManager
     {
         string name = state.Name;
 
-        if (ContainsState(name))
+        if (!ContainsState(name))
         {
-            m_listState[name] = state;
+            m_listState.Add(name, state);
         }
         else
         {
-            m_listState.Add(name, state);
+            Debug.Log("Function:AddState, 重复的State." + name);
         }
     }
 
@@ -101,7 +101,7 @@ public abstract class StateManager
     {
         if (!ContainsState(stateName))
         {
-            Debug.LogError("Function:ChangeState, no this state!");
+            Debug.LogError("Function:ChangeState, no this state! " + stateName);
             return;
         }
 

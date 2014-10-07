@@ -13,7 +13,7 @@ public class StartMenuState : IState
     }
     public void OnEnter()
     {
-        UIManager.Instance.ShowView(Define.UINameConfig.StartMenuPanel);
+        //UIManager.Instance.ShowView(Define.UINameConfig.StartMenuPanel);
     }
 
     public void OnExit()

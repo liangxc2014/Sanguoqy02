@@ -1,13 +1,41 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public static class GlobalConfig 
 {
+    public static void LoadConfig()
+    {
+        XMLLoader<XMLDataGlobalConfig> config = new XMLLoader<XMLDataGlobalConfig>(XMLConfigPath.GlobalConfig);
+
+        IEnumerator<XMLDataGlobalConfig> enumerator = config.Data.Values.GetEnumerator();
+        while (enumerator.MoveNext())
+        {
+            XMLDataGlobalConfig item = enumerator.Current;
+            switch (item.Name)
+            {
+                case "DesignScreenResolution":
+                    {
+                        string[] value = item.Value.Split(',');
+                        DesignScreenWidth = System.Convert.ToInt32(value[0]);
+                        DesignScreenHeight = System.Convert.ToInt32(value[1]);
+                    }
+                    break;
+                case "MapSize":
+                    {
+                        string[] value = item.Value.Split(',');
+                        MapSize = new Vector2(System.Convert.ToInt32(value[0]), System.Convert.ToInt32(value[1]));
+                    }
+                    break;
+            }
+        }
+    }
+
     /// <summary>
     /// 设计像素分辨率规格
     /// </summary>
-    public static float DesignScreenWidth { get { return 960; } }
-    public static float DesignScreenHeight { get { return 640; } }
+    public static float DesignScreenWidth { get; private set; }
+    public static float DesignScreenHeight { get; private set; }
 
     /// <summary>
     /// 是否打开 Debug log
@@ -18,4 +46,14 @@ public static class GlobalConfig
     /// 是否是编辑器模式
     /// </summary>
     public static bool IsMapEditorMode { get { return true; } }
+
+    /// <summary>
+    /// 大地图大小
+    /// </summary>
+    public static Vector2 MapSize { get; private set; }
+
+    /// <summary>
+    /// 摄像机单位大小
+    /// </summary>
+    public static float CameraSize { get { return 100; } }
 }

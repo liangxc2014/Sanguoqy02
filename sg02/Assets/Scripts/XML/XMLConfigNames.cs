@@ -1,14 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class XMLConfigNames
+public class XMLConfigPath
 {
-    public static string MapDecorations = "Config/Map/MapDecorations";
-    public static string ShoppingUIConfig = "Config/UI/ShoppingUIConfig";
-    public static string ClipRegion = "Config/Map/ClipRegion";
-    public static string RoleAnimations = "Config/Role/RoleAnimations";
-    public static string StoreObjects = "Config/UI/StoreObjects";
-    public static string StoreUIConfig = "Config/UI/StoreUIConfig";
+    public static readonly string GlobalConfig = "Config/XML/GlobalConfig";
 
-//    public static string StoreUIConfig { get; set; }
+    public static readonly string Arms          = "Config/XML/Arms";
+    public static readonly string Buff          = "Config/XML/Buff";
+    public static readonly string City          = "Config/XML/City";
+    public static readonly string Formations    = "Config/XML/Formations";
+    public static readonly string Generals      = "Config/XML/Generals";
+    public static readonly string Magic         = "Config/XML/Magic";
+    public static readonly string Objects       = "Config/XML/Objects";
 }
