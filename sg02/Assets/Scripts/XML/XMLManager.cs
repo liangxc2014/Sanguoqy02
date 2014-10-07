@@ -10,6 +10,7 @@ public static class XMLManager
     public static XMLLoader<XMLDataGenerals> Generals;
     public static XMLLoader<XMLDataMagic> Magic;
     public static XMLLoader<XMLDataObjects> Objects;
+    public static XMLLoader<XMLDataPathInfo> PathInfo;
 
     public static void LoadConfigs()
 	{

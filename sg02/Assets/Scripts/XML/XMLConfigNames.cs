@@ -12,4 +12,6 @@ public class XMLConfigPath
     public static readonly string Generals      = "Config/XML/Generals";
     public static readonly string Magic         = "Config/XML/Magic";
     public static readonly string Objects       = "Config/XML/Objects";
+    public static readonly string PathInfo      = "Config/XML/PathInfo";
+
 }
