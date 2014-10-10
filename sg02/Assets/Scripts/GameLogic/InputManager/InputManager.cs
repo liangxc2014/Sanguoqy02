@@ -6,13 +6,12 @@ public class InputManager : Singleton<InputManager>
 {
     private bool enable = true;
 
-    private Camera m_cameraScene;  //场景摄像机;
+    private Camera m_cameraScene;  //场景摄像机
+    private Camera m_cameraUI;      //UI摄像机
 
-	//鼠标中间键;
-	private float m_midMouseWheelSensitivity = 2f;
+    private float m_midMouseWheelSensitivity = 2f; //鼠标中间键
 	
-	private float m_multiTouchDistance; //两点触摸时两点间的X距离;
-	private Vector3 m_multiTouchDownPosition; //三点触摸按下时的位置;
+	private float m_multiTouchDistance; //两点触摸时两点间的X距离
 
 	//鼠标按下的位置;
 	private Vector3 m_mouseDownPosition;
@@ -20,14 +19,17 @@ public class InputManager : Singleton<InputManager>
 	private bool m_isMouseMove;
 	private bool m_isMouseDown;
 	private bool m_isCancelInput;
+    private bool m_isUIObject;
 
     private Vector3 m_rayDirection; //Ray方向
     private GameObject m_objDragging;
+    private GameObject m_objPress;
 
     /// <summary>
     /// 点击和拖动回调
     /// </summary>
     public delegate void OnClickDelegate(GameObject go);
+    public delegate void OnPressDelegate(GameObject go, bool state);
     public delegate void OnDragBeginDelegate(GameObject go);
     public delegate void OnDraggingDelegate(GameObject go, Vector3 delta);
     public delegate void OnDragEndDelegate(GameObject go);
@@ -36,6 +38,7 @@ public class InputManager : Singleton<InputManager>
     public delegate void OnMouseZoomDelegate(float delta);
 
     private Dictionary<GameObject, OnClickDelegate> m_dicOnClickDelegate;
+    private Dictionary<GameObject, OnPressDelegate> m_dicOnPressDelegate;
     private Dictionary<GameObject, OnDragBeginDelegate> m_dicOnDragBeginDelegate;
     private Dictionary<GameObject, OnDraggingDelegate> m_dicOnDraggingDelegate;
     private Dictionary<GameObject, OnDragEndDelegate> m_dicOnDragEndDelegate;
@@ -49,8 +52,10 @@ public class InputManager : Singleton<InputManager>
     public override void Initialize()
     {
         m_objDragging = null;
+        m_objPress = null;
 
         m_dicOnClickDelegate = new Dictionary<GameObject, OnClickDelegate>();
+        m_dicOnPressDelegate = new Dictionary<GameObject, OnPressDelegate>();
         m_dicOnDragBeginDelegate = new Dictionary<GameObject, OnDragBeginDelegate>();
         m_dicOnDragEndDelegate = new Dictionary<GameObject, OnDragEndDelegate>();
         m_dicOnDraggingDelegate = new Dictionary<GameObject, OnDraggingDelegate>();
@@ -65,8 +70,10 @@ public class InputManager : Singleton<InputManager>
     public override void UnInitialize() 
     {
         m_objDragging = null;
+        m_objPress = null;
 
         m_dicOnClickDelegate.Clear();
+        m_dicOnPressDelegate.Clear();
         m_dicOnDragBeginDelegate.Clear();
         m_dicOnDragEndDelegate.Clear();
         m_dicOnDraggingDelegate.Clear();
@@ -79,11 +86,22 @@ public class InputManager : Singleton<InputManager>
         this.enable = enable;
     }
 
-    public void SetCamera(Camera camera)
+    /// <summary>
+    /// 设置场景摄像机
+    /// </summary>
+    public void SetSceneCamera(Camera camera)
     {
         m_cameraScene = camera;
 
         m_rayDirection = m_cameraScene.ScreenPointToRay(Vector3.zero).direction;
+    }
+
+    /// <summary>
+    /// 设置UI摄像机
+    /// </summary>
+    public void SetCameraUI(Camera camera)
+    {
+        m_cameraUI = camera;
     }
 
     /// <summary>
@@ -118,6 +136,35 @@ public class InputManager : Singleton<InputManager>
         if (m_dicOnClickDelegate.ContainsKey(go))
         {
             m_dicOnClickDelegate.Remove(go);
+        }
+    }
+
+    /// <summary>
+    /// 添加按下事件
+    /// </summary>
+    public void AddOnPressEvent(GameObject go, OnPressDelegate onPressFunc)
+    {
+        if (go == null)
+            return;
+
+        if (m_dicOnPressDelegate.ContainsKey(go))
+        {
+            m_dicOnPressDelegate[go] = onPressFunc;
+        }
+        else
+        {
+            m_dicOnPressDelegate.Add(go, onPressFunc);
+        }
+    }
+
+    public void RemoveOnPressEvent(GameObject go)
+    {
+        if (go == null)
+            return;
+
+        if (m_dicOnPressDelegate.ContainsKey(go))
+        {
+            m_dicOnPressDelegate.Remove(go);
         }
     }
 
@@ -307,6 +354,11 @@ public class InputManager : Singleton<InputManager>
         }
         m_isMouseMove = false;
         m_objDragging = null;
+
+        if (m_objPress != null)
+        {
+            m_dicOnPressDelegate[m_objPress](m_objPress, false);
+        }
 	}
 
     // 缩放
@@ -354,6 +406,11 @@ public class InputManager : Singleton<InputManager>
                 m_isMouseMove = false;
                 m_objDragging = null;
 
+                if (m_objPress != null)
+                {
+                    m_dicOnPressDelegate[m_objPress](m_objPress, false);
+                }
+
                 Vector3 v0 = GamePublic.Instance.UICamera.ScreenToViewportPoint(Input.touches[0].position);
                 Vector3 v1 = GamePublic.Instance.UICamera.ScreenToViewportPoint(Input.touches[1].position);
 				m_multiTouchDistance = Vector3.Distance(v0, v1);
@@ -389,17 +446,17 @@ public class InputManager : Singleton<InputManager>
 			m_mouseDownPosition = Input.mousePosition;
             
             // 判断是否点到了需要拖动的物体
-            if (m_objDragging == null)
+            GameObject go = GetMouseHit();
+            if (go != null)
             {
-                Ray ray = m_cameraScene.ScreenPointToRay(Input.mousePosition);
-                RaycastHit hit;
-                Physics.Raycast(ray, out hit, 1000);
-                if (hit.transform != null)
+                if (m_objDragging == null && m_dicOnDraggingDelegate.ContainsKey(go))
                 {
-                    if (m_dicOnDraggingDelegate.ContainsKey(hit.transform.gameObject))
-                    {
-                        m_objDragging = hit.transform.gameObject;
-                    }
+                    m_objDragging = go;
+                }
+                if (m_objPress == null && m_dicOnPressDelegate.ContainsKey(go))
+                {
+                    m_objPress = go;
+                    m_dicOnPressDelegate[go](go, true);
                 }
             }
 		}
@@ -445,24 +502,17 @@ public class InputManager : Singleton<InputManager>
             if (m_isMouseMove == false)
             {
                 // 判断是否点到了需要点击事件的物体
-                // 3D
-                if (m_objDragging == null)
+                GameObject go = GetMouseHit();
+                if (go != null)
                 {
-                    Ray ray = m_cameraScene.ScreenPointToRay(Input.mousePosition);
-                    RaycastHit hit;
-                    Physics.Raycast(ray, out hit, 1000);
-                    
-                    if (hit.transform != null)
+                    if (m_dicOnClickDelegate.ContainsKey(go))
                     {
-                        if (m_dicOnClickDelegate.ContainsKey(hit.transform.gameObject))
-                        {
-                            m_dicOnClickDelegate[hit.transform.gameObject](hit.transform.gameObject);
-                        }
+                        m_dicOnClickDelegate[go](go);
+                    }
 
-                        for (int i = 0; i < m_listOnMouseHitObject.Count; i++)
-                        {
-                            m_listOnMouseHitObject[i](hit.transform.gameObject);
-                        }
+                    for (int i = 0; i < m_listOnMouseHitObject.Count; i++)
+                    {
+                        m_listOnMouseHitObject[i](go);
                     }
                 }
             }
@@ -474,6 +524,12 @@ public class InputManager : Singleton<InputManager>
                 }
             }
 
+            if (m_objPress != null)
+            {
+                m_dicOnPressDelegate[m_objPress](m_objPress, false);
+            }
+
+            m_objPress = null;
             m_objDragging = null;
             m_isMouseMove = false;
 		}
@@ -483,7 +539,34 @@ public class InputManager : Singleton<InputManager>
         {
             Reset();
         }
+        else
+        {
+            m_isCancelInput = false;
+        }
 	}
+
+    private GameObject GetMouseHit()
+    {
+        if (m_cameraUI != null)
+        {
+            RaycastHit2D hit = Physics2D.Raycast(m_cameraUI.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
+            if (hit.transform != null)
+            {
+                return hit.transform.gameObject;
+            }
+        }
+
+        if (m_cameraScene != null)
+        {
+            RaycastHit2D hit = Physics2D.Raycast(m_cameraScene.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
+            if (hit.transform != null)
+            {
+                return hit.transform.gameObject;
+            }
+        }
+
+        return null;
+    }
 
     /// <summary>
     /// 计算从屏幕坐标到本地坐标的转换

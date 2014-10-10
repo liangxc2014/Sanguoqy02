@@ -51,9 +51,4 @@ public static class GlobalConfig
     /// 大地图大小
     /// </summary>
     public static Vector2 MapSize { get; private set; }
-
-    /// <summary>
-    /// 摄像机单位大小
-    /// </summary>
-    public static float CameraSize { get { return 100; } }
 }

@@ -15,6 +15,8 @@ public class MapEditor : MonoBehaviour
 	void Update () 
     {
         InputManager.Instance.Update();
+
+        OnRightButtonDown();
 	}
 
     void OnDestroy()
@@ -23,5 +25,11 @@ public class MapEditor : MonoBehaviour
         MapCameraControl.Instance.UnInitialize();
     }
 
-
+    void OnRightButtonDown()
+    {
+        if (Input.GetMouseButtonDown(1))
+        {
+            MapEditorMenuControl.Instance.Initialize();
+        }
+    }
 }
