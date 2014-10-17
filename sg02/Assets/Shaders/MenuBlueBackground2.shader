@@ -1,8 +1,9 @@
-﻿Shader "Custom/MenuBlueBackground" {
+﻿Shader "Custom/MenuBlueBackground2" {
 	Properties {
 		_Color ("Tint", Color) = (1, 1, 1, 1)
 		_MainTex ("Base (RGB)", 2D) = "white" {}
-		_Region ("Tint", Color) = (0.05, 0.95, 0.05, 0.95)
+		_Region1 ("Tint", Color) = (0.1, 0.9, 0.1, 0.5)
+		_Region2 ("Tint", Color) = (0.1, 0.9, 0.7, 0.9)
 	}
 	SubShader 
 	{
@@ -45,7 +46,8 @@
 
 			fixed4 _Color;
 			sampler2D _MainTex;	
-			fixed4 _Region;
+			fixed4 _Region1;
+			fixed4 _Region2;
 
 			v2f vert (appdata_t v)
 			{
@@ -60,7 +62,13 @@
             {
 				float4 c = tex2D (_MainTex, i.texcoord.xy) * i.color * _Color;
 
-				if (i.texcoord.x >= _Region.x && i.texcoord.x <= _Region.y && i.texcoord.y >= _Region.z && i.texcoord.y <= _Region.w)	 
+				if (i.texcoord.x >= _Region1.x && i.texcoord.x <= _Region1.y && i.texcoord.y >= _Region1.z && i.texcoord.y <= _Region1.w)	 
+				{
+					if (c.a <= 0.7)
+						return float4 (0,0.06,0.35,0.8);
+				}
+
+				if (i.texcoord.x >= _Region2.x && i.texcoord.x <= _Region2.y && i.texcoord.y >= _Region2.z && i.texcoord.y <= _Region2.w)	 
 				{
 					if (c.a <= 0.7)
 						return float4 (0,0.06,0.35,0.8);
