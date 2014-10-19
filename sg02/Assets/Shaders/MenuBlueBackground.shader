@@ -63,7 +63,7 @@
 				if (i.texcoord.x >= _Region.x && i.texcoord.x <= _Region.y && i.texcoord.y >= _Region.z && i.texcoord.y <= _Region.w)	 
 				{
 					if (c.a <= 0.7)
-						return float4 (0,0.06,0.35,0.8);
+						return float4 (0,0.06,0.35,0.6);
 				}
 
 				return c;
