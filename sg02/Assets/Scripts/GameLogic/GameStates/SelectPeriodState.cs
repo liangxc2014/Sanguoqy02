@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class StartMenuState : IState
+public class SelectPeriodState : IState
 {
 
     public string Name
@@ -13,7 +13,7 @@ public class StartMenuState : IState
     }
     public void OnEnter()
     {
-        UIManager.Instance.ShowView(UINamesConfig.StartMenu);
+        UIManager.Instance.ShowView(UINamesConfig.SelectPeriod);
     }
 
     public void OnExit()

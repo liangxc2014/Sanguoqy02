@@ -15,7 +15,6 @@ public class Main : MonoBehaviour
 
         ScreenControl.Instance.Initialize(GlobalConfig.DesignScreenWidth, GlobalConfig.DesignScreenHeight);
         InputManager.Instance.SetSceneCamera(GamePublic.Instance.SceneCamera);
-        InputManager.Instance.SetCameraUI(GamePublic.Instance.UICamera);
 
         EnterState();
 	}
@@ -34,6 +33,9 @@ public class Main : MonoBehaviour
 
     private void EnterState()
     {
-        GamePublic.Instance.GameStatesManager.ChangeState(typeof(StartMenuState).Name);
+        if (GlobalConfig.IsMapEditorMode == false)
+        {
+            GamePublic.Instance.GameStatesManager.ChangeState(typeof(StartMenuState).Name);
+        }
     }
 }

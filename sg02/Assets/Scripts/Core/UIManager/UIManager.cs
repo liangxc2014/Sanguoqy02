@@ -14,7 +14,7 @@ public class UIManager : Singleton<UIManager>
     public Dictionary<string, GameObject> m_dicUIView = new Dictionary<string, GameObject>();
 
     // UI摄像机物体
-    private string m_uiRootName = "UIRoot";
+    private string m_uiRootName = "UI Root";
     private GameObject m_uiRoot;
     public GameObject UIRoot
     {
@@ -26,23 +26,6 @@ public class UIManager : Singleton<UIManager>
             }
 
             return m_uiRoot;
-        }
-    }
-
-    // UI摄像机
-    private string m_uiCameraName = "UICamera";
-    private Camera m_uiCamera;
-
-    public Camera UICamera
-    {
-        get
-        {
-            if (m_uiCamera == null)
-            {
-                m_uiCamera = GameObject.Find(m_uiCameraName).GetComponent<Camera>();
-            }
-
-            return m_uiCamera;
         }
     }
 
@@ -65,12 +48,6 @@ public class UIManager : Singleton<UIManager>
         }
 
         go.SetActive(true);
-
-        Canvas canvas = go.GetComponent<Canvas>();
-        if (canvas != null)
-        {
-            canvas.worldCamera = UICamera;
-        }
 
         m_dicUIView.Add(name, go);
 

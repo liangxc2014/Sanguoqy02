@@ -45,7 +45,7 @@ public static class GlobalConfig
     /// <summary>
     /// 是否是编辑器模式
     /// </summary>
-    public static bool IsMapEditorMode { get { return true; } }
+    public static bool IsMapEditorMode { get { return false; } }
 
     /// <summary>
     /// 大地图大小

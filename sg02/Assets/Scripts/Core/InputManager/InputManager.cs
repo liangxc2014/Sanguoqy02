@@ -140,6 +140,17 @@ public class InputManager : Singleton<InputManager>
     }
 
     /// <summary>
+    /// 触发点击事件
+    /// </summary>
+    public void OnClick(GameObject go)
+    {
+        if (m_dicOnClickDelegate.ContainsKey(go))
+        {
+            m_dicOnClickDelegate[go](go);
+        }
+    }
+
+    /// <summary>
     /// 添加按下事件
     /// </summary>
     public void AddOnPressEvent(GameObject go, OnPressDelegate onPressFunc)
@@ -157,6 +168,9 @@ public class InputManager : Singleton<InputManager>
         }
     }
 
+    /// <summary>
+    /// 移除点击事件
+    /// </summary>
     public void RemoveOnPressEvent(GameObject go)
     {
         if (go == null)
@@ -165,6 +179,38 @@ public class InputManager : Singleton<InputManager>
         if (m_dicOnPressDelegate.ContainsKey(go))
         {
             m_dicOnPressDelegate.Remove(go);
+        }
+    }
+
+    /// <summary>
+    /// 触发按下事件
+    /// </summary>
+    public void OnPress(GameObject go, bool state)
+    {
+        if (state == true)
+        {
+            m_isMouseDown = true;
+            m_mouseDownPosition = Input.mousePosition;
+
+            if (m_objDragging == null && m_dicOnDraggingDelegate.ContainsKey(go))
+            {
+                m_objDragging = go;
+            }
+            if (m_objPress == null && m_dicOnPressDelegate.ContainsKey(go))
+            {
+                m_objPress = go;
+                m_dicOnPressDelegate[go](go, true);
+            }
+        }
+        else
+        {
+            if (m_objPress != null && m_dicOnPressDelegate.ContainsKey(m_objPress))
+            {
+                m_dicOnPressDelegate[m_objPress](m_objPress, false);
+            }
+
+            m_isMouseDown = false;
+            m_objPress = null;
         }
     }
 
@@ -392,12 +438,15 @@ public class InputManager : Singleton<InputManager>
             OnZoom(zoom);
 		}
 #else
+        if (Input.touchCount >= 2) return;
+
+        /*
 		//双指缩放;
 		if (Input.touchCount == 2)
 		{
 			if ((Input.touches[0].phase == TouchPhase.Began || Input.touches[1].phase == TouchPhase.Began))
 			{
-                m_isMouseDown = false;
+                OnPress(null, false);
                 
                 if (m_isMouseMove && m_objDragging != null)
                 {
@@ -405,11 +454,6 @@ public class InputManager : Singleton<InputManager>
                 }
                 m_isMouseMove = false;
                 m_objDragging = null;
-
-                if (m_objPress != null)
-                {
-                    m_dicOnPressDelegate[m_objPress](m_objPress, false);
-                }
 
                 Vector3 v0 = GamePublic.Instance.UICamera.ScreenToViewportPoint(Input.touches[0].position);
                 Vector3 v1 = GamePublic.Instance.UICamera.ScreenToViewportPoint(Input.touches[1].position);
@@ -432,6 +476,7 @@ public class InputManager : Singleton<InputManager>
         {
             return;
         }
+        */
 #endif
 
         if (Input.GetMouseButtonDown(0))
@@ -441,23 +486,12 @@ public class InputManager : Singleton<InputManager>
 				m_isCancelInput = false;
 				return;
 			}
-
-			m_isMouseDown = true;
-			m_mouseDownPosition = Input.mousePosition;
             
             // 判断是否点到了需要拖动的物体
             GameObject go = GetMouseHit();
             if (go != null)
             {
-                if (m_objDragging == null && m_dicOnDraggingDelegate.ContainsKey(go))
-                {
-                    m_objDragging = go;
-                }
-                if (m_objPress == null && m_dicOnPressDelegate.ContainsKey(go))
-                {
-                    m_objPress = go;
-                    m_dicOnPressDelegate[go](go, true);
-                }
+                OnPress(go, true);
             }
 		}
 		else if (m_isMouseDown && Input.GetMouseButton(0))
@@ -497,7 +531,7 @@ public class InputManager : Singleton<InputManager>
 		}
         else if (m_isMouseDown && Input.GetMouseButtonUp(0))
 		{
-			m_isMouseDown = false;
+            OnPress(null, false);
 
             if (m_isMouseMove == false)
             {
@@ -505,10 +539,7 @@ public class InputManager : Singleton<InputManager>
                 GameObject go = GetMouseHit();
                 if (go != null)
                 {
-                    if (m_dicOnClickDelegate.ContainsKey(go))
-                    {
-                        m_dicOnClickDelegate[go](go);
-                    }
+                    OnClick(go);
 
                     for (int i = 0; i < m_listOnMouseHitObject.Count; i++)
                     {
@@ -524,12 +555,6 @@ public class InputManager : Singleton<InputManager>
                 }
             }
 
-            if (m_objPress != null)
-            {
-                m_dicOnPressDelegate[m_objPress](m_objPress, false);
-            }
-
-            m_objPress = null;
             m_objDragging = null;
             m_isMouseMove = false;
 		}
