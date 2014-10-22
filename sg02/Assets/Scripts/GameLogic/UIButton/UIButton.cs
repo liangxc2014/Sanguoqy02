@@ -17,8 +17,6 @@ public class UIButton : MonoBehaviour
 
     public void OnClick()
     {
-
+        InputManager.Instance.OnClick(gameObject);
     }
-
-
 }

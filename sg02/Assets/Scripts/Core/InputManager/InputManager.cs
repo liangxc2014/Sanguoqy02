@@ -486,7 +486,9 @@ public class InputManager : Singleton<InputManager>
 				m_isCancelInput = false;
 				return;
 			}
-            
+
+            if (m_isMouseDown) return;
+
             // 判断是否点到了需要拖动的物体
             GameObject go = GetMouseHit();
             if (go != null)

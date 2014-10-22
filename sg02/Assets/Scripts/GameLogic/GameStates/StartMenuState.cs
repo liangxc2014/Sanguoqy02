@@ -18,7 +18,7 @@ public class StartMenuState : IState
 
     public void OnExit()
     {
-        
+        UIManager.Instance.DestroyView(UINamesConfig.StartMenu);
     }
 
     public void Update()

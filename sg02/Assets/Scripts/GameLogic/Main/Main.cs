@@ -14,6 +14,8 @@ public class Main : MonoBehaviour
         TimerManager.Instance.Initialize();
 
         ScreenControl.Instance.Initialize(GlobalConfig.DesignScreenWidth, GlobalConfig.DesignScreenHeight);
+
+        InputManager.Instance.Initialize();
         InputManager.Instance.SetSceneCamera(GamePublic.Instance.SceneCamera);
 
         EnterState();
