@@ -9,10 +9,10 @@ public class StartMenuControl : Singleton<StartMenuControl>
     {
         m_view = (StartMenuView)owner;
 
-        ButtonsEventInit();
+        InitButtonsEvent();
     }
 
-    private void ButtonsEventInit()
+    private void InitButtonsEvent()
     {
         InputManager.Instance.AddOnClickEvent(m_view.m_btnStartGame, OnStartGameButton);
         InputManager.Instance.AddOnClickEvent(m_view.m_btnLoadGame, OnLoadGameButton);

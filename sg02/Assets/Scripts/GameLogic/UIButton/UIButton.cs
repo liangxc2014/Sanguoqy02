@@ -4,10 +4,10 @@ using System.Collections;
 public class UIButton : MonoBehaviour 
 {
 
-
 	// Use this for initialization
-	void Start () {
-	
+	void Start () 
+    {
+	    
 	}
 	
 	// Update is called once per frame
@@ -18,5 +18,10 @@ public class UIButton : MonoBehaviour
     public void OnClick()
     {
         InputManager.Instance.OnClick(gameObject);
+    }
+
+    public void OnPressDown()
+    {
+        InputManager.Instance.OnPress(gameObject, true);
     }
 }

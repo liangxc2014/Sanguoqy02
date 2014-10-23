@@ -18,7 +18,7 @@ public class SelectPeriodState : IState
 
     public void OnExit()
     {
-        
+        UIManager.Instance.DestroyView(UINamesConfig.SelectPeriod);
     }
 
     public void Update()

@@ -25,6 +25,8 @@ public class Main : MonoBehaviour
 	void Update () 
     {
         GamePublic.Instance.GameStatesManager.Update();
+
+        InputManager.Instance.Update();
 	}
 
     void OnDestroy ()

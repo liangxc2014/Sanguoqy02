@@ -1,15 +1,19 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class SelectPeriodView : MonoBehaviour {
+public class SelectPeriodView : MonoBehaviour 
+{
+
+    public GameObject[] m_buttons;
 
 	// Use this for initialization
-	void Start () {
-	
+	void Start () 
+    {
+        SelectPeriodControl.Instance.Initialize(this);
 	}
 	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+	void OnDestroy()
+    {
+        SelectPeriodControl.Instance.UnInitialize();
+    }
 }
