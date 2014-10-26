@@ -6,10 +6,10 @@ using System.Xml;
 
 public class GeneratePathInfo 
 {
-    private static readonly int m_step = 8;
+    public static readonly int m_step = 8;
     private static readonly string m_configPath = "Assets/Resources/Config/XML/PathInfo.xml";
 
-    [MenuItem("Tools/Path Info")]
+    [MenuItem("Tools/生成路径信息")]
     static void Execute()
     {
         if (Selection.objects.Length == 0) return;
@@ -30,6 +30,8 @@ public class GeneratePathInfo
                 if (color.r > 0.5f && color.g > 0.5f && color.b > 0.5f)
                 {
                     Vector2 point = new Vector2(i, j);
+                    point.x -= source.width / 2;
+                    point.y -= source.height / 2;
                     listPoints.Add(point);
                     dicPositonToID.Add(point, listPoints.Count);
                 }
@@ -68,7 +70,6 @@ public class GeneratePathInfo
         for (int i = 0; i < listPoints.Count; i++)
         {
             XmlElement node = xmlDoc.CreateElement("RECORD");
-            node.SetAttribute("ID", (i + 1).ToString());
             node.SetAttribute("Position", ((int)listPoints[i].x).ToString() + "," + ((int)listPoints[i].y).ToString());
 
             string link = "";
@@ -86,5 +87,9 @@ public class GeneratePathInfo
         }
 
         xmlDoc.Save(m_configPath);
+
+        AssetDatabase.Refresh();
+
+        EditorUtility.DisplayDialog("成功", "地图路径信息生成完成!", "确定");
     }
 }

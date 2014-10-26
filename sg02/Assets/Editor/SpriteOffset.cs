@@ -5,11 +5,14 @@ using UnityEngine;
 
 public class SpriteOffset
 {
-    [MenuItem("Tools/Sprite Offset")]
+    [MenuItem("Tools/图片偏移量信息处理")]
     static void Execute()
     {
-        foreach (Object o in Selection.GetFiltered(typeof(Object), SelectionMode.DeepAssets))
+        Object[] selectObject = Selection.GetFiltered(typeof(Object), SelectionMode.DeepAssets);
+
+        for (int index = 0; index < selectObject.Length; index++)
         {
+            Object o = selectObject[index];
             if (!(o is Texture2D)) continue;
             string path = AssetDatabase.GetAssetPath(o);
             string infoFile = path + ".info.txt";
@@ -53,6 +56,10 @@ public class SpriteOffset
             settings.spritePixelsToUnits = 1;
             textureImporter.SetTextureSettings(settings);
             AssetDatabase.ImportAsset(path, ImportAssetOptions.ForceUpdate);
+
+            EditorUtility.DisplayProgressBar("Processing", path, 1.0f * index / selectObject.Length);
         }
+
+        EditorUtility.ClearProgressBar();
     }
 }

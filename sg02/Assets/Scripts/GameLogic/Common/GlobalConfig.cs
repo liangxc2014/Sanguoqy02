@@ -8,10 +8,10 @@ public static class GlobalConfig
     {
         XMLLoader<XMLDataGlobalConfig> config = new XMLLoader<XMLDataGlobalConfig>(XMLConfigPath.GlobalConfig);
 
-        IEnumerator<XMLDataGlobalConfig> enumerator = config.Data.Values.GetEnumerator();
+        IEnumerator enumerator = config.Data.Values.GetEnumerator();
         while (enumerator.MoveNext())
         {
-            XMLDataGlobalConfig item = enumerator.Current;
+            XMLDataGlobalConfig item = (XMLDataGlobalConfig)enumerator.Current;
             switch (item.Name)
             {
                 case "DesignScreenResolution":

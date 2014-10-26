@@ -21,5 +21,7 @@ public static class XMLManager
         Generals = new XMLLoader<XMLDataGenerals>(XMLConfigPath.Generals);
         Magic = new XMLLoader<XMLDataMagic>(XMLConfigPath.Magic);
         Objects = new XMLLoader<XMLDataObjects>(XMLConfigPath.Objects);
+
+        PathInfo = new XMLLoader<XMLDataPathInfo>(XMLConfigPath.PathInfo, "Position");
 	}
 }

@@ -6,11 +6,14 @@ using UnityEngine;
 public class SpriteNameModify
 {
 
-    [MenuItem("Tools/Sprite Name Modify")]
+    [MenuItem("Tools/图片名字修改(去掉 '_1-1')")]
     static void Execute()
     {
-        foreach (Object o in Selection.GetFiltered(typeof(Object), SelectionMode.DeepAssets))
+        Object[] selectObject = Selection.GetFiltered(typeof(Object), SelectionMode.DeepAssets);
+
+        for (int index = 0; index < selectObject.Length; index++)
         {
+            Object o = selectObject[index];
             if (!(o is Texture2D)) continue;
             
             if (!(o.name.EndsWith("_1-1"))) continue;
@@ -23,8 +26,13 @@ public class SpriteNameModify
             {
                 Debug.Log(message);
             }
+
+            string path = AssetDatabase.GetAssetPath(o);
+            EditorUtility.DisplayProgressBar("Processing", path, 1.0f * index / selectObject.Length);
         }
 
         AssetDatabase.Refresh();
+
+        EditorUtility.ClearProgressBar();
     }
 }
