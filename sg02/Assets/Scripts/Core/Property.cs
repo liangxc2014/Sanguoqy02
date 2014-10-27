@@ -62,7 +62,7 @@ public class Property<T>
         {
             if (m_propertyType == PropertyType.SingleValueType)
             {
-                Debug.LogError("Function:GetArrayValue, PropertyType Error! Current type is" + m_propertyType.ToString());
+                Debugging.LogError("Function:GetArrayValue, PropertyType Error! Current type is" + m_propertyType.ToString());
                 return 0;
             }
 
@@ -97,6 +97,21 @@ public class Property<T>
         }
     }
 
+    public Property(object value)
+    {
+        if (value is IList)
+        {
+            m_propertyType = PropertyType.ListValueType;
+
+            m_listValue = (List<T>)(value);
+        }
+        else
+        {
+            m_propertyType = PropertyType.SingleValueType;
+            m_value = (T)(value);
+        }
+    }
+
     /// <summary>
     /// 增加一个事件回调函数
     /// </summary>
@@ -116,13 +131,27 @@ public class Property<T>
     #endregion
 
     #region 单一值属性
+
+    /// <summary>
+    /// 重载赋值运算符
+    /// </summary>
+    public static implicit operator Property<T>(T str)  
+    {
+        return new Property<T>(str);  
+    }
+    public static implicit operator T(Property<T> mystr)  
+    {
+        return mystr.Value;  
+    } 
+
+
     public T Value
     {
         get
         {
             if (m_propertyType != PropertyType.SingleValueType)
             {
-                Debug.LogError("Function:GetValue, PropertyType Error! Current type is" + m_propertyType.ToString());
+                Debugging.LogError("Function:GetValue, PropertyType Error! Current type is" + m_propertyType.ToString());
                 return default(T);
             }
 
@@ -133,7 +162,7 @@ public class Property<T>
         {
             if (m_propertyType != PropertyType.SingleValueType)
             {
-                Debug.LogError("Function:SetValue, PropertyType Error! Current type is" + m_propertyType.ToString());
+                Debugging.LogError("Function:SetValue, PropertyType Error! Current type is" + m_propertyType.ToString());
             }
 
             PropertyChangeEventArgs msg = new PropertyChangeEventArgs(PropertyChangeType.UPDATE, m_value, value, -1);
@@ -154,13 +183,13 @@ public class Property<T>
         {
             if (m_propertyType != PropertyType.ListValueType)
             {
-                Debug.LogError("Function:GetArrayValue, PropertyType Error! Current type is" + m_propertyType.ToString());
+                Debugging.LogError("Function:GetArrayValue, PropertyType Error! Current type is" + m_propertyType.ToString());
                 return default(T);
             }
 
             if (m_listValue == null || (index < 0) || (index >= m_listValue.Count))
             {
-                Debug.LogError("Function:GetArrayValue, ArgumentOutOfRangeException!");
+                Debugging.LogError("Function:GetArrayValue, ArgumentOutOfRangeException!");
                 return default(T);
             }
 
@@ -170,18 +199,18 @@ public class Property<T>
         {
             if (m_propertyType != PropertyType.ListValueType)
             {
-                Debug.LogError("Function:SetArrayValue, PropertyType Error! Current type is" + m_propertyType.ToString());
+                Debugging.LogError("Function:SetArrayValue, PropertyType Error! Current type is" + m_propertyType.ToString());
             }
 
             if (m_listValue == null)
             {
-                Debug.LogError("Function:SetArrayValue, array is empty!");
+                Debugging.LogError("Function:SetArrayValue, array is empty!");
                 return;
             }
 
             if (index < 0 || index >= m_listValue.Count)
             {
-                Debug.LogError("Function:SetArrayValue, ArgumentOutOfRangeException!");
+                Debugging.LogError("Function:SetArrayValue, ArgumentOutOfRangeException!");
                 return;
             }
 
@@ -197,7 +226,7 @@ public class Property<T>
     {
         if (m_propertyType != PropertyType.ListValueType)
         {
-            Debug.LogError("Function:Add, PropertyType Error! Current type is" + m_propertyType.ToString());
+            Debugging.LogError("Function:Add, PropertyType Error! Current type is" + m_propertyType.ToString());
             return;
         }
 
@@ -212,13 +241,13 @@ public class Property<T>
     {
         if (m_propertyType != PropertyType.ListValueType)
         {
-            Debug.LogError("Function:Add, PropertyType Error! Current type is" + m_propertyType.ToString());
+            Debugging.LogError("Function:Add, PropertyType Error! Current type is" + m_propertyType.ToString());
             return;
         }
 
         if (index < 0 || (index > this.Count))
         {
-            Debug.LogError("Function:Remove, index input ERROR!");
+            Debugging.LogError("Function:Remove, index input ERROR!");
             return;
         }
 
@@ -233,13 +262,13 @@ public class Property<T>
     {
         if (m_propertyType != PropertyType.ListValueType)
         {
-            Debug.LogError("Function:Remove, PropertyType Error! Current type is" + m_propertyType.ToString());
+            Debugging.LogError("Function:Remove, PropertyType Error! Current type is" + m_propertyType.ToString());
             return;
         }
 
         if (m_listValue == null)
         {
-            Debug.LogError("Function:Remove, Array is empty!");
+            Debugging.LogError("Function:Remove, Array is empty!");
             return;
         }
 
@@ -247,7 +276,7 @@ public class Property<T>
 
         if (index < 0 || index >= m_listValue.Count)
         {
-            Debug.LogError("Function:Remove, index input ERROR!");
+            Debugging.LogError("Function:Remove, index input ERROR!");
             return;
         }
 
@@ -262,13 +291,13 @@ public class Property<T>
     {
         if (m_propertyType != PropertyType.ListValueType)
         {
-            Debug.LogError("Function:RemoveAt, PropertyType Error! Current type is" + m_propertyType.ToString());
+            Debugging.LogError("Function:RemoveAt, PropertyType Error! Current type is" + m_propertyType.ToString());
             return;
         }
 
         if ((m_listValue == null) || (index < 0 || index >= m_listValue.Count))
         {
-            Debug.LogError("Function:RemoveAt, index input ERROR!");
+            Debugging.LogError("Function:RemoveAt, index input ERROR!");
             return;
         }
 
@@ -283,7 +312,7 @@ public class Property<T>
     {
         if (m_propertyType != PropertyType.ListValueType)
         {
-            Debug.LogError("Function:Contains, PropertyType Error! Current type is" + m_propertyType.ToString());
+            Debugging.LogError("Function:Contains, PropertyType Error! Current type is" + m_propertyType.ToString());
             return false;
         }
 
@@ -294,7 +323,7 @@ public class Property<T>
     {
         if (m_propertyType != PropertyType.ListValueType)
         {
-            Debug.LogError("Function:IndexOf, PropertyType Error! Current type is" + m_propertyType.ToString());
+            Debugging.LogError("Function:IndexOf, PropertyType Error! Current type is" + m_propertyType.ToString());
             return -1;
         }
         
@@ -305,7 +334,7 @@ public class Property<T>
     {
         if (m_propertyType == PropertyType.SingleValueType)
         {
-            Debug.LogError("Function:Clear, PropertyType Error! Current type is" + m_propertyType.ToString());
+            Debugging.LogError("Function:Clear, PropertyType Error! Current type is" + m_propertyType.ToString());
             return;
         }
 
@@ -393,13 +422,13 @@ public class Property<T, U>
         {
             if (m_propertyType != PropertyType.DictionaryType)
             {
-                Debug.LogError("Function:GetDictionaryValue, PropertyType Error! Current type is" + m_propertyType.ToString());
+                Debugging.LogError("Function:GetDictionaryValue, PropertyType Error! Current type is" + m_propertyType.ToString());
                 return default(U);
             }
 
             if (m_dictValue == null || !m_dictValue.ContainsKey(key))
             {
-                Debug.LogError("Function:GetDictionaryValue, is not contain key!");
+                Debugging.LogError("Function:GetDictionaryValue, is not contain key!");
                 return default(U);
             }
 
@@ -409,18 +438,18 @@ public class Property<T, U>
         {
             if (m_propertyType != PropertyType.DictionaryType)
             {
-                Debug.LogError("Function:SetDictionaryValue, PropertyType Error! Current type is" + m_propertyType.ToString());
+                Debugging.LogError("Function:SetDictionaryValue, PropertyType Error! Current type is" + m_propertyType.ToString());
             }
 
             if (m_dictValue == null)
             {
-                Debug.LogError("Function:SetDictionaryValue, Dictionary is empty!");
+                Debugging.LogError("Function:SetDictionaryValue, Dictionary is empty!");
                 return;
             }
 
             if (!m_dictValue.ContainsKey(key))
             {
-                Debug.LogError("Function:SetDictionaryValue, is not contain key!");
+                Debugging.LogError("Function:SetDictionaryValue, is not contain key!");
                 return;
             }
 
@@ -436,7 +465,7 @@ public class Property<T, U>
     {
         if (m_propertyType != PropertyType.DictionaryType)
         {
-            Debug.LogError("Function:Add, PropertyType Error! Current type is" + m_propertyType.ToString());
+            Debugging.LogError("Function:Add, PropertyType Error! Current type is" + m_propertyType.ToString());
             return;
         }
 
@@ -451,19 +480,19 @@ public class Property<T, U>
     {
         if (m_propertyType != PropertyType.DictionaryType)
         {
-            Debug.LogError("Function:Remove, PropertyType Error! Current type is" + m_propertyType.ToString());
+            Debugging.LogError("Function:Remove, PropertyType Error! Current type is" + m_propertyType.ToString());
             return;
         }
 
         if (m_dictValue == null)
         {
-            Debug.LogError("Function:Remove, Dictionary is empty!");
+            Debugging.LogError("Function:Remove, Dictionary is empty!");
             return;
         }
 
         if (!m_dictValue.ContainsKey(key))
         {
-            Debug.LogError("Function:Remove, is not contains key!");
+            Debugging.LogError("Function:Remove, is not contains key!");
             return;
         }
 
@@ -478,7 +507,7 @@ public class Property<T, U>
     {
         if (m_propertyType != PropertyType.DictionaryType)
         {
-            Debug.LogError("Function:Contains, PropertyType Error! Current type is" + m_propertyType.ToString());
+            Debugging.LogError("Function:Contains, PropertyType Error! Current type is" + m_propertyType.ToString());
             return false;
         }
 

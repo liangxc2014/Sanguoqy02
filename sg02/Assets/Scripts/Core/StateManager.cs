@@ -63,7 +63,7 @@ public abstract class StateManager
         }
         else
         {
-            Debug.Log("Function:AddState, 重复的State." + name);
+            Debugging.Log("Function:AddState, 重复的State." + name);
         }
     }
 
@@ -101,7 +101,7 @@ public abstract class StateManager
     {
         if (!ContainsState(stateName))
         {
-            Debug.LogError("Function:ChangeState, no this state! " + stateName);
+            Debugging.LogError("Function:ChangeState, no this state! " + stateName);
             return;
         }
 

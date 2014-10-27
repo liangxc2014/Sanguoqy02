@@ -18,7 +18,7 @@ public class CityPoints
         Transform[] points = Selection.activeTransform.GetComponentsInChildren<Transform>();
         if (points.Length == 0) return;
 
-        XMLLoader<XMLDataPathInfo> pathInfo = new XMLLoader<XMLDataPathInfo>(XMLConfigPath.PathInfo, "Position");
+        XMLLoader<XMLDataPathInfo> pathInfo = new XMLLoader<XMLDataPathInfo>(XMLConfigPath.PathInfo);
 
         XmlDocument xmlDoc = new XmlDocument();
 
@@ -42,6 +42,7 @@ public class CityPoints
             position.y = ((int)position.y / GeneratePathInfo.m_step) * GeneratePathInfo.m_step;
 
             string p = "";
+            int index = 0;
 
             bool isFind = false;
             int[] xStep = new int[]{0, 8, 8, 8, 0, -8, -8, -8};
@@ -49,11 +50,19 @@ public class CityPoints
             for (int n = 0; n < 8; n++)
             {
                 p = ((int)(position.x + xStep[n])).ToString() + "," + ((int)(position.y + yStep[n])).ToString();
-                if (pathInfo.Data.ContainsKey(p))
+
+                IEnumerator enumerator = pathInfo.Data.Keys.GetEnumerator();
+                while (enumerator.MoveNext())
                 {
-                    isFind = true;
-                    break;
+                    XMLDataPathInfo current = pathInfo.GetInfoById(enumerator.Current);
+                    if (current.Position == p)
+                    {
+                        isFind = true;
+                        index = (int)enumerator.Current;
+                        break;
+                    }
                 }
+                if (isFind) break;
             }
             
             if (!isFind)
@@ -63,7 +72,7 @@ public class CityPoints
                 return;
             }
 
-            node.SetAttribute("Position", p);
+            node.SetAttribute("PositionIndex", index.ToString());
 
             rootElement.AppendChild(node);
         }

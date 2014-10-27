@@ -54,7 +54,7 @@ public class ResourcesManager : Singleton<ResourcesManager>
 		GameObject obj = Resources.Load<GameObject>(strSplit[0]);
 		if (obj == null)
 		{
-			Debug.LogError(string.Format("ResourcesManager AddChild ERROR! {1} is not exit!", strSplit[0]));
+            Debugging.LogError(string.Format("ResourcesManager AddChild ERROR! {1} is not exit!", strSplit[0]));
 			return null;
 		}
 		

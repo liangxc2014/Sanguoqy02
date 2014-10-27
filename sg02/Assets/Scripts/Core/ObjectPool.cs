@@ -86,7 +86,7 @@ public class ObjectPool
     {
         if (m_createObjectFunc == null)
         {
-            Debug.LogError("The m_createObjectFunc is null");
+            Debugging.LogError("The m_createObjectFunc is null");
             return 0;
         }
 
@@ -107,7 +107,7 @@ public class ObjectPool
     {
         if (go == null)
         {
-            Debug.LogError("The object is null");
+            Debugging.LogError("The object is null");
             return;
         }
 
@@ -115,7 +115,7 @@ public class ObjectPool
 
         if (index < 0)
         {
-            Debug.LogError("The object is not in the list");
+            Debugging.LogError("The object is not in the list");
             return;
         }
 
@@ -153,7 +153,7 @@ public class ObjectPool
     {
         if (PoolObjectCount == 0)
         {
-            Debug.LogError("The pool is null;");
+            Debugging.LogError("The pool is null;");
             return null;
         }
         
@@ -212,7 +212,7 @@ public class ObjectPool
             int index = m_listObject.IndexOf(go);
             if (index < 0)
             {
-                Debug.LogError("The object is not in the list");
+                Debugging.LogError("The object is not in the list");
                 return;
             }
 

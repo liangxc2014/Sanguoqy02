@@ -38,7 +38,7 @@ public class XMLLoader<T> where T : class
         TextAsset textAsset = (TextAsset)ResourcesManager.Instance.Load(XmlName);
         if (textAsset == null)
         {
-            Debug.LogError("xml file is not exist! File:" + XmlName);
+            Debugging.LogError("xml file is not exist! File:" + XmlName);
             return;
         }
         try
@@ -47,7 +47,7 @@ public class XMLLoader<T> where T : class
         }
         catch (XmlException e)
         {
-            Debug.LogError("Function:XMLLoader,File:" + XmlName + ",message:" + e.Message);
+            Debugging.LogError("Function:XMLLoader,File:" + XmlName + ",message:" + e.Message);
             return;
         }
 
@@ -72,7 +72,7 @@ public class XMLLoader<T> where T : class
                     var info = ParseXmlParamsValue(typeof(T), element, out id);
                     if (m_data.ContainsKey(id))
                     {
-                        Debug.LogError("XMLLoader: " + XmlName + ",重复ID:" + id);
+                        Debugging.LogError("XMLLoader: " + XmlName + ",重复ID:" + id);
                         continue;
                     }
 
@@ -91,7 +91,7 @@ public class XMLLoader<T> where T : class
 		else
 		{
             string error = string.Format("The key is not found,name={0}, key={1}", m_xmlName, id);
-            Debug.LogError(error);
+            Debugging.LogError(error);
 			return null;
 		}
 	}
@@ -166,7 +166,7 @@ public class XMLLoader<T> where T : class
 			}
 			catch (Exception ex)
 			{
-                Debug.LogError(string.Format("ParseXmlParamsValue is failed! xml={0}, prepertyName={1}, value={2}, targetType={3}, errorDetail:{4}", m_xmlName, field.Name, element.GetAttribute(field.Name), field.FieldType, ex.StackTrace));
+                Debugging.LogError(string.Format("ParseXmlParamsValue is failed! xml={0}, prepertyName={1}, value={2}, targetType={3}, errorDetail:{4}", m_xmlName, field.Name, element.GetAttribute(field.Name), field.FieldType, ex.StackTrace));
 			}
         }
 		

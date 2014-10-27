@@ -67,9 +67,16 @@ public class GeneratePathInfo
         XmlElement rootElement = xmlDoc.CreateElement("root");
         xmlDoc.AppendChild(rootElement);
 
+        int ID = 1;
         for (int i = 0; i < listPoints.Count; i++)
         {
+            if (listRelation[i].Count == 0) continue;
+            
             XmlElement node = xmlDoc.CreateElement("RECORD");
+
+            node.SetAttribute("ID", ID.ToString());
+            ID++;
+
             node.SetAttribute("Position", ((int)listPoints[i].x).ToString() + "," + ((int)listPoints[i].y).ToString());
 
             string link = "";

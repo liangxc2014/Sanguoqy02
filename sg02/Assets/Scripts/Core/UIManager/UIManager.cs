@@ -43,7 +43,7 @@ public class UIManager : Singleton<UIManager>
         GameObject go = ResourcesManager.Instance.LoadUIView(name, UIRoot);
         if (go == null)
         {
-            Debug.LogError("The view is not exist! name = " + name);
+            Debugging.LogError("The view is not exist! name = " + name);
             return null;
         }
 
@@ -100,7 +100,7 @@ public class UIManager : Singleton<UIManager>
 
         if (flag == false)
         {
-            Debug.LogError("The view is not exist! name = " + view.name);
+            Debugging.LogError("The view is not exist! name = " + view.name);
             return;
         }
 
