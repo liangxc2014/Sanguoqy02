@@ -4,6 +4,7 @@ using UnityEditor;
 using UnityEngine;
 using System.Xml;
 using System.Collections;
+using System.Linq;
 
 public class CityPoints 
 {
@@ -13,12 +14,18 @@ public class CityPoints
     static void Execute()
     {
         if (Selection.activeTransform == null) return;
+        if (Selection.activeTransform.childCount == 0) return;
         if (Selection.activeTransform.name != "CityPoints") return;
 
-        Transform[] points = Selection.activeTransform.GetComponentsInChildren<Transform>();
-        if (points.Length == 0) return;
+        Transform root = Selection.activeTransform;
+        Transform[] points = new Transform[root.childCount];
+        for (int i = 0; i < root.childCount; i++)
+        {
+            points[i] = root.GetChild(i);
+        }
 
         XMLLoader<XMLDataPathInfo> pathInfo = new XMLLoader<XMLDataPathInfo>(XMLConfigPath.PathInfo);
+        XMLLoader<XMLDataCity> cityInfo = new XMLLoader<XMLDataCity>(XMLConfigPath.City);
 
         XmlDocument xmlDoc = new XmlDocument();
 
@@ -30,12 +37,18 @@ public class CityPoints
         XmlElement rootElement = xmlDoc.CreateElement("root");
         xmlDoc.AppendChild(rootElement);
 
+        int cityNum = points.Length;
+        int[] cityPoints = new int[cityNum];
+        int[] cityID = new int[cityNum];
+
+        int step = GeneratePathInfo.m_step;
+        int[] xStep = new int[] { 0, 0, step, step, step, 0, -step, -step, -step };
+        int[] yStep = new int[] { 0, step, step, 0, -step, -step, -step, 0, step };
+
         for (int i = 0; i < points.Length; i++)
         {
-            if (points[i].name == "CityPoints") continue;
-
-            XmlElement node = xmlDoc.CreateElement("RECORD");
-            node.SetAttribute("ID", points[i].name);
+            if (points[i].name == "") continue;
+            if (!cityInfo.Data.ContainsKey(System.Convert.ToInt32(points[i].name))) continue;
 
             Vector3 position = points[i].transform.position;
             position.x = ((int)position.x / GeneratePathInfo.m_step) * GeneratePathInfo.m_step;
@@ -45,9 +58,8 @@ public class CityPoints
             int index = 0;
 
             bool isFind = false;
-            int[] xStep = new int[]{0, 8, 8, 8, 0, -8, -8, -8};
-            int[] yStep = new int[]{8, 8, 0, -8, -8, -8, 0, 8};
-            for (int n = 0; n < 8; n++)
+            
+            for (int n = 0; n < 9; n++)
             {
                 p = ((int)(position.x + xStep[n])).ToString() + "," + ((int)(position.y + yStep[n])).ToString();
 
@@ -59,6 +71,9 @@ public class CityPoints
                     {
                         isFind = true;
                         index = (int)enumerator.Current;
+                        int id = System.Convert.ToInt32(points[i].name);
+                        cityID[i] = id;
+                        cityPoints[i] = index;
                         break;
                     }
                 }
@@ -67,20 +82,86 @@ public class CityPoints
             
             if (!isFind)
             {
-                Debug.Log("城市点 " + points[i].name + " 不在寻路点上!" + p);
-                EditorUtility.DisplayDialog("失败", "城市点 " + points[i].name + " 不在寻路点上!" + p, "确定");
+                string errorMessage = "城市点 " + points[i].name + " 不在寻路点上!" + p;
+                Debug.LogError(errorMessage);
+                EditorUtility.DisplayDialog("失败", errorMessage, "确定");
                 return;
             }
+        }
 
-            node.SetAttribute("PositionIndex", index.ToString());
+        //输出城市间的路线
+        int ID = 1;
+        for (int i = 0; i < cityNum-1; i++)
+        {
+            for (int j = i + 1; j < cityNum; j++)
+            {
+                List<int> path = PathFinding.GetPath(cityPoints[i], cityPoints[j], pathInfo.Data);
 
-            rootElement.AppendChild(node);
+                XMLDataCity currentInfo = cityInfo.GetInfoById(cityID[i]);
+                XMLDataCity nextInfo = cityInfo.GetInfoById(cityID[j]);
+                if (path == null)
+                {
+                    string errorMessage = "城市 " + currentInfo.Name + " 到城市 " + nextInfo.Name + " 的路不通!";
+                    Debug.LogError(errorMessage);
+                    EditorUtility.DisplayDialog("失败", errorMessage, "确定");
+                    return;
+                }
+
+                // 去掉不是相邻的城市的点
+                bool flag = false;
+                for (int k = 0; k < cityNum; k++)
+                {
+                    if (k == i || k == j) continue;
+
+                    Vector3 position = Utility.GetPoint(pathInfo.GetInfoById(cityPoints[k]).Position);
+                    for (int n = 0; n < 9; n++)
+                    {
+                        string p = ((int)(position.x + xStep[n])).ToString() + "," + ((int)(position.y + yStep[n])).ToString();
+                        int index = -1;
+
+                        IEnumerator enumerator = pathInfo.Data.Keys.GetEnumerator();
+                        while (enumerator.MoveNext())
+                        {
+                            XMLDataPathInfo current = pathInfo.GetInfoById(enumerator.Current);
+                            if (current.Position == p)
+                            {
+                                index = (int)enumerator.Current;
+                                break;
+                            }
+                        }
+                        if (path.Contains(index))
+                        {
+                            flag = true;
+                            break;
+                        }
+                    }
+                    if (flag) break;
+                }
+                if (flag) continue;
+
+                int[] intArr = path.ToArray();
+                string[] strArr = intArr.Select(v => v.ToString()).ToArray();
+                string pathstr = string.Join(",", strArr);
+
+                XmlElement node = xmlDoc.CreateElement("RECORD");
+                node.SetAttribute("ID", ID.ToString());
+                node.SetAttribute("FromCity", cityID[i].ToString());
+                node.SetAttribute("ToCity", cityID[j].ToString());
+                node.SetAttribute("FromPoint", cityPoints[i].ToString());
+                node.SetAttribute("ToPoint", cityPoints[j].ToString());
+                node.SetAttribute("Path", pathstr);
+
+                rootElement.AppendChild(node);
+
+                ID++;
+                EditorUtility.DisplayProgressBar("Processing", currentInfo.Name, 1.0f * i / cityNum);
+            }
         }
 
         xmlDoc.Save(m_configPath);
-
         AssetDatabase.Refresh();
 
+        EditorUtility.ClearProgressBar();
         EditorUtility.DisplayDialog("成功", "城市位置信息生成完成!", "确定");
     }
 }

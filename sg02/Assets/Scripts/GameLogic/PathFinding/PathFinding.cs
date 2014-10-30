@@ -22,6 +22,7 @@ public static class PathFinding
         List<int> queueIndex = new List<int>(); // 当前点的索引
         List<int> visitList = new List<int>();  // 保存所有搜索过的节点
         List<int> visitIndex = new List<int>(); // visit的父节点
+        bool[] flags = new bool[pathInfo.Count];// 标志该点是否被搜索过
 
         int searchIndex = -1;
 
@@ -30,6 +31,7 @@ public static class PathFinding
         visitList.Add(start);
         visitIndex.Add(0);
         queueIndex.Add(visitList.Count - 1);
+        flags[start - 1] = true;
 
         bool isFind = false;
 
@@ -48,6 +50,17 @@ public static class PathFinding
             for (int i = 0; i < nextPoints.Length; i++)
             {
                 int pointIdx = System.Convert.ToInt32(nextPoints[i]);
+
+                if (flags[pointIdx - 1] == false)
+                {
+                    //标志该点
+                    flags[pointIdx - 1] = true;
+                }
+                else
+                {
+                    //如果该点已经搜索过了就继续下一个
+                    continue;
+                }
 
                 queue.Add(pointIdx);
                 visitList.Add(pointIdx);

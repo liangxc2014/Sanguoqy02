@@ -6,7 +6,7 @@ using System.Xml;
 
 public class GeneratePathInfo 
 {
-    public static readonly int m_step = 8;
+    public static readonly int m_step = 4;
     private static readonly string m_configPath = "Assets/Resources/Config/XML/PathInfo.xml";
 
     [MenuItem("Tools/生成路径信息")]
@@ -38,10 +38,10 @@ public class GeneratePathInfo
             }
         }
         
-        // 分析路径点之间的关系
+        // 分析路径点之间的关系,找出相邻的点
         List<List<int>> listRelation = new List<List<int>>();
-        int[] xOff = new int[] { 0, 1, 1, 1, 0, -1, -1, -1 };
-        int[] yOff = new int[] { 1, 1, 0, -1, -1, -1, 0, 1 };
+        int[] xOff = new int[] { 0, m_step, m_step, m_step, 0, -m_step, -m_step, -m_step };
+        int[] yOff = new int[] { m_step, m_step, 0, -m_step, -m_step, -m_step, 0, m_step };
 
         for (int i = 0; i < listPoints.Count; i++)
         {
@@ -49,13 +49,45 @@ public class GeneratePathInfo
             listRelation.Add(new List<int>());
             for (int j = 0; j < 8; j++)
             {
-                Vector2 point = new Vector2(currentPoint.x + xOff[j] * m_step, currentPoint.y + yOff[j] * m_step);
+                Vector2 point = new Vector2(currentPoint.x + xOff[j], currentPoint.y + yOff[j]);
                 if (dicPositonToID.ContainsKey(point))
                 {
                     listRelation[i].Add(dicPositonToID[point]);
                 }
             }
         }
+
+        // 去掉噪点
+//         for (int i = 0; i < listPoints.Count; i++)
+//         {
+//             for (int j = listRelation[i].Count - 1; j >= 0; j--)
+//             {
+//                 int relaIndex = listRelation[i][j] - 1;
+//                 Vector2 direction = listPoints[i] - listPoints[relaIndex];
+//                 float angle1 = Vector2.Angle(direction, Vector2.right);
+//                 if (direction.y < 0)
+//                     angle1 = 360 - angle1;
+//                 bool flag = false;
+//                 for (int k = 0; k < listRelation[relaIndex].Count; k++)
+//                 {
+//                     int nextIndex = listRelation[relaIndex][k] - 1;
+//                     direction = listPoints[relaIndex] - listPoints[nextIndex];
+//                     float angle2 = Vector2.Angle(direction, Vector2.right);
+//                     if (direction.y < 0)
+//                         angle2 = 360 - angle2;
+//                     if (Mathf.Abs(angle1 - angle2) < 90)
+//                     {
+//                         flag = true;
+//                         break;
+//                     }
+//                 }
+//                 if (flag == false)
+//                 {
+//                     listRelation[i].RemoveAt(j);
+//                     listRelation[relaIndex].Remove(i + 1);
+//                 }
+//             }
+//         }
 
         XmlDocument xmlDoc = new XmlDocument();
 
@@ -70,8 +102,6 @@ public class GeneratePathInfo
         int ID = 1;
         for (int i = 0; i < listPoints.Count; i++)
         {
-            if (listRelation[i].Count == 0) continue;
-            
             XmlElement node = xmlDoc.CreateElement("RECORD");
 
             node.SetAttribute("ID", ID.ToString());
