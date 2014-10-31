@@ -47,6 +47,8 @@ public static class PathFinding
 
             XMLDataPathInfo point = (XMLDataPathInfo)pathInfo[queue[0]];
             string[] nextPoints = point.LinkPoints.Split(',');
+
+            List<int> listNext = new List<int>();
             for (int i = 0; i < nextPoints.Length; i++)
             {
                 int pointIdx = System.Convert.ToInt32(nextPoints[i]);
@@ -62,16 +64,39 @@ public static class PathFinding
                     continue;
                 }
 
-                queue.Add(pointIdx);
-                visitList.Add(pointIdx);
-                visitIndex.Add(searchIndex);
-                queueIndex.Add(visitList.Count - 1);
+                listNext.Add(pointIdx);
 
                 if (pointIdx == end)
                 {
                     isFind = true;
                     break;
                 }
+            }
+
+            //对相邻的点进行排序
+            for (int i = 0; i < listNext.Count - 1; i++)
+            {
+                for (int j = i + 1; j < listNext.Count; j++)
+                {
+                    Vector3 p1 = Utility.GetPoint((pathInfo[listNext[i]] as XMLDataPathInfo).Position);
+                    Vector3 p2 = Utility.GetPoint((pathInfo[listNext[j]] as XMLDataPathInfo).Position);
+                    Vector3 endPoint = Utility.GetPoint((pathInfo[end] as XMLDataPathInfo).Position);
+
+                    if (Vector3.Distance(p1, endPoint) > Vector3.Distance(p2, endPoint))
+                    {
+                        int temp = listNext[i];
+                        listNext[i] = listNext[j];
+                        listNext[j] = temp;
+                    }
+                }
+            }
+
+            for (int i = 0; i < listNext.Count; i++)
+            {
+                queue.Add(listNext[i]);
+                visitList.Add(listNext[i]);
+                visitIndex.Add(searchIndex);
+                queueIndex.Add(visitList.Count - 1);
             }
 
             queue.RemoveAt(0);

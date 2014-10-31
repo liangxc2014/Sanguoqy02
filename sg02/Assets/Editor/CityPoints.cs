@@ -51,8 +51,8 @@ public class CityPoints
             if (!cityInfo.Data.ContainsKey(System.Convert.ToInt32(points[i].name))) continue;
 
             Vector3 position = points[i].transform.position;
-            position.x = ((int)position.x / GeneratePathInfo.m_step) * GeneratePathInfo.m_step;
-            position.y = ((int)position.y / GeneratePathInfo.m_step) * GeneratePathInfo.m_step;
+            position.x = ((int)position.x / step) * step;
+            position.y = ((int)position.y / step) * step;
 
             string p = "";
             int index = 0;
@@ -109,34 +109,20 @@ public class CityPoints
 
                 // 去掉不是相邻的城市的点
                 bool flag = false;
-                for (int k = 0; k < cityNum; k++)
+                for (int n = 0; n < path.Count; n++)
                 {
-                    if (k == i || k == j) continue;
-
-                    Vector3 position = Utility.GetPoint(pathInfo.GetInfoById(cityPoints[k]).Position);
-                    for (int n = 0; n < 9; n++)
+                    for (int k = 0; k < cityNum; k++)
                     {
-                        string p = ((int)(position.x + xStep[n])).ToString() + "," + ((int)(position.y + yStep[n])).ToString();
-                        int index = -1;
-
-                        IEnumerator enumerator = pathInfo.Data.Keys.GetEnumerator();
-                        while (enumerator.MoveNext())
-                        {
-                            XMLDataPathInfo current = pathInfo.GetInfoById(enumerator.Current);
-                            if (current.Position == p)
-                            {
-                                index = (int)enumerator.Current;
-                                break;
-                            }
-                        }
-                        if (path.Contains(index))
+                        if (k == i || k == j) continue;
+                        Vector3 p1 = Utility.GetPoint(pathInfo.GetInfoById(cityPoints[k]).Position);
+                        Vector3 p2 = Utility.GetPoint(pathInfo.GetInfoById(path[n]).Position);
+                        if (Vector3.Distance(p1, p2) < 4 * step)
                         {
                             flag = true;
-                            break;
                         }
                     }
-                    if (flag) break;
                 }
+                
                 if (flag) continue;
 
                 int[] intArr = path.ToArray();

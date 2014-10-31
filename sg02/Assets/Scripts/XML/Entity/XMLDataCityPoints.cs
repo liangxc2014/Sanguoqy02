@@ -5,5 +5,13 @@ public class XMLDataCityPoints
 {
     public int ID;
 
-    public int PositionIndex;
+    public int FromCity;
+
+    public int ToCity;
+
+    public int FromPoint;
+
+    public int ToPoint;
+
+    public string Path;
 }

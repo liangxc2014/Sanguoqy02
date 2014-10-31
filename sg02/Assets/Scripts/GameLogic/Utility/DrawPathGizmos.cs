@@ -5,13 +5,24 @@ using System.Collections.Generic;
 public class DrawPathGizmos : MonoBehaviour 
 {
     private XMLLoader<XMLDataPathInfo> pathInfo;
+    private XMLLoader<XMLDataCityPoints> cityPoints;
+
+    private bool m_isInit = false;
 
 	// Use this for initialization
-	void Start () 
+	void Awake () 
     {
-        
+        m_isInit = true;
+
+        pathInfo = new XMLLoader<XMLDataPathInfo>(XMLConfigPath.PathInfo);
+        cityPoints = new XMLLoader<XMLDataCityPoints>(XMLConfigPath.CityPoints);
 	}
 	
+    void OnDisable()
+    {
+        m_isInit = false;
+    }
+
 	// Update is called once per frame
 	void Update () {
 	
@@ -19,28 +30,27 @@ public class DrawPathGizmos : MonoBehaviour
 
     void OnDrawGizmos()
     {
-        if (pathInfo == null)
-            pathInfo = new XMLLoader<XMLDataPathInfo>(XMLConfigPath.PathInfo);
+        if (!m_isInit || cityPoints == null || pathInfo == null) 
+            return;    
 
         Gizmos.color = new Color(1, 0, 0, 1F);
 
-        IEnumerator enumerator = pathInfo.Data.Values.GetEnumerator();
+        IEnumerator enumerator = cityPoints.Data.Values.GetEnumerator();
         while (enumerator.MoveNext())
         {
-            XMLDataPathInfo info = (XMLDataPathInfo)enumerator.Current;
-            string[] linkPoints = info.LinkPoints.Split(',');
-            for (int i = 0; i < linkPoints.Length; i++)
+            XMLDataCityPoints info = (XMLDataCityPoints)enumerator.Current;
+            string[] linkPoints = info.Path.Split(',');
+            for (int i = 0; i < linkPoints.Length - 1; i++)
             {
                 if (linkPoints[i] == "") continue;
-                XMLDataPathInfo point = pathInfo.GetInfoById(System.Convert.ToInt32(linkPoints[i]));
+                XMLDataPathInfo p1 = pathInfo.GetInfoById(System.Convert.ToInt32(linkPoints[i]));
+                XMLDataPathInfo p2 = pathInfo.GetInfoById(System.Convert.ToInt32(linkPoints[i + 1]));
 
-                string[] point1 = info.Position.Split(',');
-                string[] point2 = point.Position.Split(',');
+                Vector3 point1 = Utility.GetPoint(p1.Position);
+                Vector3 point2 = Utility.GetPoint(p2.Position);
 
-                Gizmos.DrawLine(
-                    new Vector3(System.Convert.ToInt32(point1[0]), System.Convert.ToInt32(point1[1])),
-                    new Vector3(System.Convert.ToInt32(point2[0]), System.Convert.ToInt32(point2[1])));
-            }
+                Gizmos.DrawLine(point1, point2);
+             }
         }
     }
 }
