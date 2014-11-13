@@ -5,24 +5,34 @@ using UnityEngine;
 
 public class ExcelExporter
 {
+    private static readonly string PathExcel = @"Assets\Resources\Config\Excel";
+
     [MenuItem("Tools/Excel 信息导出")]
 	static void Execute()
     {
         bool flag = false;
 
-        Object[] selectObject = Selection.GetFiltered(typeof(Object), SelectionMode.DeepAssets);
+        //Object[] selectObject = Selection.GetFiltered(typeof(Object), SelectionMode.DeepAssets);
+        
+        DirectoryInfo di = new DirectoryInfo(PathExcel);
+        
+        if (di.Exists == false)
+            return;
 
-        for (int index=0; index<selectObject.Length; index++)
+        FileInfo[] fileInfos = di.GetFiles();
+        
+        for (int index = 0; index < fileInfos.Length; index++)
         {
-            Object o = selectObject[index];
-            string path = AssetDatabase.GetAssetPath(o);
+            string path = fileInfos[index].FullName;
+            
             if (!(path.EndsWith(".xlsx"))) 
                 continue;
 
             flag = true;
-            new Export(path);
+            new Export(path, @"Assets\Resources\Config\XML", @"Assets\Scripts\XML\Entity");
 
-            EditorUtility.DisplayProgressBar("Processing", path, 1.0f * index / selectObject.Length);
+            Debug.Log(path);
+            EditorUtility.DisplayProgressBar("Processing", path, 1.0f * index / fileInfos.Length);
         }
         
         if (flag)

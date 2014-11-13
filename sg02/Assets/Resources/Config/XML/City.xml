@@ -1,63 +1,63 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <root>
-  <RECORD ID="1" Name="襄平" Level="3" Flag="4" GeneralMax="8" ReservistMax="100" Population="10000" Money="5000" Defense="200" />
-  <RECORD ID="2" Name="北平" Level="3" Flag="4" GeneralMax="8" ReservistMax="100" Population="10000" Money="5000" Defense="200" />
-  <RECORD ID="3" Name="代县" Level="3" Flag="4" GeneralMax="8" ReservistMax="100" Population="10000" Money="5000" Defense="200" />
-  <RECORD ID="4" Name="晋阳" Level="3" Flag="4" GeneralMax="8" ReservistMax="100" Population="10000" Money="5000" Defense="200" />
-  <RECORD ID="5" Name="南皮" Level="3" Flag="4" GeneralMax="8" ReservistMax="100" Population="10000" Money="5000" Defense="200" />
-  <RECORD ID="6" Name="平原" Level="3" Flag="4" GeneralMax="8" ReservistMax="100" Population="10000" Money="5000" Defense="200" />
-  <RECORD ID="7" Name="邺" Level="3" Flag="4" GeneralMax="8" ReservistMax="100" Population="10000" Money="5000" Defense="200" />
-  <RECORD ID="8" Name="北海" Level="3" Flag="4" GeneralMax="8" ReservistMax="100" Population="10000" Money="5000" Defense="200" />
-  <RECORD ID="9" Name="濮阳" Level="3" Flag="4" GeneralMax="8" ReservistMax="100" Population="10000" Money="5000" Defense="200" />
-  <RECORD ID="10" Name="陈留" Level="3" Flag="4" GeneralMax="8" ReservistMax="100" Population="10000" Money="5000" Defense="200" />
-  <RECORD ID="11" Name="洛阳" Level="3" Flag="4" GeneralMax="8" ReservistMax="100" Population="10000" Money="5000" Defense="200" />
-  <RECORD ID="12" Name="弘农" Level="3" Flag="4" GeneralMax="8" ReservistMax="100" Population="10000" Money="5000" Defense="200" />
-  <RECORD ID="13" Name="长安" Level="3" Flag="4" GeneralMax="8" ReservistMax="100" Population="10000" Money="5000" Defense="200" />
-  <RECORD ID="14" Name="安定" Level="3" Flag="4" GeneralMax="8" ReservistMax="100" Population="10000" Money="5000" Defense="200" />
-  <RECORD ID="15" Name="天水" Level="3" Flag="4" GeneralMax="8" ReservistMax="100" Population="10000" Money="5000" Defense="200" />
-  <RECORD ID="16" Name="西凉" Level="3" Flag="4" GeneralMax="8" ReservistMax="100" Population="10000" Money="5000" Defense="200" />
-  <RECORD ID="17" Name="下邳" Level="3" Flag="4" GeneralMax="8" ReservistMax="100" Population="10000" Money="5000" Defense="200" />
-  <RECORD ID="18" Name="徐州" Level="3" Flag="4" GeneralMax="8" ReservistMax="100" Population="10000" Money="5000" Defense="200" />
-  <RECORD ID="19" Name="许昌" Level="3" Flag="4" GeneralMax="8" ReservistMax="100" Population="10000" Money="5000" Defense="200" />
-  <RECORD ID="20" Name="谯" Level="3" Flag="4" GeneralMax="8" ReservistMax="100" Population="10000" Money="5000" Defense="200" />
-  <RECORD ID="21" Name="汝南" Level="3" Flag="4" GeneralMax="8" ReservistMax="100" Population="10000" Money="5000" Defense="200" />
-  <RECORD ID="22" Name="宛" Level="3" Flag="4" GeneralMax="8" ReservistMax="100" Population="10000" Money="5000" Defense="200" />
-  <RECORD ID="23" Name="新野" Level="3" Flag="4" GeneralMax="8" ReservistMax="100" Population="10000" Money="5000" Defense="200" />
-  <RECORD ID="24" Name="襄阳" Level="3" Flag="4" GeneralMax="8" ReservistMax="100" Population="10000" Money="5000" Defense="200" />
-  <RECORD ID="25" Name="上庸" Level="3" Flag="4" GeneralMax="8" ReservistMax="100" Population="10000" Money="5000" Defense="200" />
-  <RECORD ID="26" Name="江夏" Level="3" Flag="4" GeneralMax="8" ReservistMax="100" Population="10000" Money="5000" Defense="200" />
-  <RECORD ID="27" Name="江陵" Level="3" Flag="4" GeneralMax="8" ReservistMax="100" Population="10000" Money="5000" Defense="200" />
-  <RECORD ID="28" Name="武陵" Level="3" Flag="4" GeneralMax="8" ReservistMax="100" Population="10000" Money="5000" Defense="200" />
-  <RECORD ID="29" Name="长沙" Level="3" Flag="4" GeneralMax="8" ReservistMax="100" Population="10000" Money="5000" Defense="200" />
-  <RECORD ID="30" Name="桂阳" Level="3" Flag="4" GeneralMax="8" ReservistMax="100" Population="10000" Money="5000" Defense="200" />
-  <RECORD ID="31" Name="零陵" Level="3" Flag="4" GeneralMax="8" ReservistMax="100" Population="10000" Money="5000" Defense="200" />
-  <RECORD ID="32" Name="寿春" Level="3" Flag="4" GeneralMax="8" ReservistMax="100" Population="10000" Money="5000" Defense="200" />
-  <RECORD ID="33" Name="建业" Level="3" Flag="4" GeneralMax="8" ReservistMax="100" Population="10000" Money="5000" Defense="200" />
-  <RECORD ID="34" Name="吴" Level="3" Flag="4" GeneralMax="8" ReservistMax="100" Population="10000" Money="5000" Defense="200" />
-  <RECORD ID="35" Name="会稽" Level="3" Flag="4" GeneralMax="8" ReservistMax="100" Population="10000" Money="5000" Defense="200" />
-  <RECORD ID="36" Name="庐江" Level="3" Flag="4" GeneralMax="8" ReservistMax="100" Population="10000" Money="5000" Defense="200" />
-  <RECORD ID="37" Name="予章" Level="3" Flag="4" GeneralMax="8" ReservistMax="100" Population="10000" Money="5000" Defense="200" />
-  <RECORD ID="38" Name="汉中" Level="3" Flag="4" GeneralMax="8" ReservistMax="100" Population="10000" Money="5000" Defense="200" />
-  <RECORD ID="39" Name="下弁" Level="3" Flag="4" GeneralMax="8" ReservistMax="100" Population="10000" Money="5000" Defense="200" />
-  <RECORD ID="40" Name="梓潼" Level="3" Flag="4" GeneralMax="8" ReservistMax="100" Population="10000" Money="5000" Defense="200" />
-  <RECORD ID="41" Name="成都" Level="3" Flag="4" GeneralMax="8" ReservistMax="100" Population="10000" Money="5000" Defense="200" />
-  <RECORD ID="42" Name="永安" Level="3" Flag="4" GeneralMax="8" ReservistMax="100" Population="10000" Money="5000" Defense="200" />
-  <RECORD ID="43" Name="江州" Level="3" Flag="4" GeneralMax="8" ReservistMax="100" Population="10000" Money="5000" Defense="200" />
-  <RECORD ID="44" Name="建宁" Level="3" Flag="4" GeneralMax="8" ReservistMax="100" Population="10000" Money="5000" Defense="200" />
-  <RECORD ID="45" Name="云南" Level="3" Flag="4" GeneralMax="8" ReservistMax="100" Population="10000" Money="5000" Defense="200" />
-  <RECORD ID="46" Name="庐陵" Level="3" Flag="4" GeneralMax="8" ReservistMax="100" Population="10000" Money="5000" Defense="200" />
-  <RECORD ID="47" Name="鄱阳" Level="3" Flag="4" GeneralMax="8" ReservistMax="100" Population="10000" Money="5000" Defense="200" />
-  <RECORD ID="48" Name="夷州" Level="3" Flag="4" GeneralMax="8" ReservistMax="100" Population="10000" Money="5000" Defense="200" />
-  <RECORD ID="49" Name="易京" Level="0" Flag="2" GeneralMax="5" ReservistMax="0" Population="0" Money="0" Defense="200" />
-  <RECORD ID="50" Name="乐陵" Level="0" Flag="2" GeneralMax="5" ReservistMax="0" Population="0" Money="0" Defense="200" />
-  <RECORD ID="51" Name="界桥" Level="0" Flag="2" GeneralMax="5" ReservistMax="0" Population="0" Money="0" Defense="200" />
-  <RECORD ID="52" Name="壶关" Level="0" Flag="2" GeneralMax="5" ReservistMax="0" Population="0" Money="0" Defense="200" />
-  <RECORD ID="53" Name="定陶" Level="0" Flag="2" GeneralMax="5" ReservistMax="0" Population="0" Money="0" Defense="200" />
-  <RECORD ID="54" Name="都阳" Level="0" Flag="2" GeneralMax="5" ReservistMax="0" Population="0" Money="0" Defense="200" />
-  <RECORD ID="55" Name="官渡" Level="0" Flag="2" GeneralMax="5" ReservistMax="0" Population="0" Money="0" Defense="200" />
-  <RECORD ID="56" Name="筑阳" Level="0" Flag="2" GeneralMax="5" ReservistMax="0" Population="0" Money="0" Defense="200" />
-  <RECORD ID="57" Name="长板" Level="0" Flag="2" GeneralMax="5" ReservistMax="0" Population="0" Money="0" Defense="200" />
-  <RECORD ID="58" Name="建平" Level="0" Flag="2" GeneralMax="5" ReservistMax="0" Population="0" Money="0" Defense="200" />
-  <RECORD ID="59" Name="赤壁" Level="0" Flag="2" GeneralMax="5" ReservistMax="0" Population="0" Money="0" Defense="200" />
-  <RECORD ID="60" Name="合肥" Level="0" Flag="2" GeneralMax="5" ReservistMax="0" Population="0" Money="0" Defense="200" />
+  <RECORD ID="1" Name="襄平" Level="3" Flag="4" GeneralMax="6" ReservistMax="143" Population="83500" Defense="380" Money="2800" Period01="" Period02="" Period03="袁绍" Period04="曹操" Period05="" />
+  <RECORD ID="2" Name="北平" Level="3" Flag="4" GeneralMax="7" ReservistMax="154" Population="111361" Defense="292" Money="3018" Period01="公孙瓒" Period02="公孙瓒" Period03="袁绍" Period04="曹操" Period05="曹操" />
+  <RECORD ID="3" Name="代县" Level="3" Flag="4" GeneralMax="8" ReservistMax="184" Population="186000" Defense="316" Money="3645" Period01="刘焉" Period02="袁绍" Period03="袁绍" Period04="曹操" Period05="曹操" />
+  <RECORD ID="4" Name="晋阳" Level="3" Flag="4" GeneralMax="6" ReservistMax="148" Population="95500" Defense="319" Money="2966" Period01="" Period02="" Period03="" Period04="曹操" Period05="曹操" />
+  <RECORD ID="5" Name="南皮" Level="3" Flag="4" GeneralMax="11" ReservistMax="266" Population="391200" Defense="401" Money="5040" Period01="张角" Period02="袁绍" Period03="袁绍" Period04="曹操" Period05="曹操" />
+  <RECORD ID="6" Name="平原" Level="3" Flag="4" GeneralMax="10" ReservistMax="250" Population="350500" Defense="295" Money="4800" Period01="张角" Period02="刘备" Period03="袁绍" Period04="曹操" Period05="曹操" />
+  <RECORD ID="7" Name="邺" Level="3" Flag="4" GeneralMax="8" ReservistMax="201" Population="228900" Defense="386" Money="3832" Period01="韩馥" Period02="韩馥" Period03="袁绍" Period04="曹操" Period05="曹操" />
+  <RECORD ID="8" Name="北海" Level="3" Flag="4" GeneralMax="7" ReservistMax="164" Population="136900" Defense="365" Money="3150" Period01="龚景" Period02="孔融" Period03="袁绍" Period04="曹操" Period05="曹操" />
+  <RECORD ID="9" Name="濮阳" Level="3" Flag="4" GeneralMax="8" ReservistMax="180" Population="177000" Defense="227" Money="3577" Period01="乔玄" Period02="乔瑁" Period03="曹操" Period04="曹操" Period05="曹操" />
+  <RECORD ID="10" Name="陈留" Level="3" Flag="4" GeneralMax="8" ReservistMax="199" Population="224000" Defense="202" Money="3930" Period01="张角" Period02="曹操" Period03="曹操" Period04="曹操" Period05="曹操" />
+  <RECORD ID="11" Name="洛阳" Level="3" Flag="4" GeneralMax="10" ReservistMax="235" Population="313500" Defense="406" Money="4601" Period01="何进" Period02="董卓" Period03="曹操" Period04="曹操" Period05="曹操" />
+  <RECORD ID="12" Name="弘农" Level="3" Flag="4" GeneralMax="7" ReservistMax="166" Population="142000" Defense="200" Money="3315" Period01="何进" Period02="董卓" Period03="曹操" Period04="曹操" Period05="曹操" />
+  <RECORD ID="13" Name="长安" Level="3" Flag="4" GeneralMax="10" ReservistMax="255" Population="364000" Defense="503" Money="4930" Period01="何进" Period02="董卓" Period03="曹操" Period04="曹操" Period05="曹操" />
+  <RECORD ID="14" Name="安定" Level="3" Flag="4" GeneralMax="7" ReservistMax="150" Population="100000" Defense="258" Money="3000" Period01="" Period02="" Period03="" Period04="" Period05="曹操" />
+  <RECORD ID="15" Name="天水" Level="3" Flag="4" GeneralMax="7" ReservistMax="169" Population="148400" Defense="468" Money="3221" Period01="" Period02="" Period03="马腾" Period04="马腾" Period05="曹操" />
+  <RECORD ID="16" Name="西凉" Level="3" Flag="4" GeneralMax="8" ReservistMax="185" Population="189530" Defense="617" Money="3491" Period01="董卓" Period02="马腾" Period03="马腾" Period04="马腾" Period05="彻里吉" />
+  <RECORD ID="17" Name="下邳" Level="3" Flag="4" GeneralMax="7" ReservistMax="177" Population="168500" Defense="146" Money="3513" Period01="孙坚" Period02="陶谦" Period03="曹操" Period04="" Period05="" />
+  <RECORD ID="18" Name="徐州" Level="3" Flag="4" GeneralMax="8" ReservistMax="188" Population="196500" Defense="101" Money="3723" Period01="陶谦" Period02="陶谦" Period03="曹操" Period04="" Period05="曹操" />
+  <RECORD ID="19" Name="许昌" Level="3" Flag="4" GeneralMax="10" ReservistMax="241" Population="329000" Defense="444" Money="4717" Period01="张角" Period02="" Period03="曹操" Period04="曹操" Period05="曹操" />
+  <RECORD ID="20" Name="谯" Level="3" Flag="4" GeneralMax="9" ReservistMax="213" Population="259500" Defense="312" Money="4196" Period01="孔岫" Period02="孔岫" Period03="曹操" Period04="" Period05="曹操" />
+  <RECORD ID="21" Name="汝南" Level="3" Flag="4" GeneralMax="9" ReservistMax="220" Population="276000" Defense="148" Money="4320" Period01="张角" Period02="" Period03="曹操" Period04="" Period05="曹操" />
+  <RECORD ID="22" Name="宛" Level="3" Flag="4" GeneralMax="10" ReservistMax="244" Population="337000" Defense="268" Money="4777" Period01="张角" Period02="袁术" Period03="" Period04="曹操" Period05="曹操" />
+  <RECORD ID="23" Name="新野" Level="3" Flag="4" GeneralMax="9" ReservistMax="230" Population="301261" Defense="520" Money="3892" Period01="丁原" Period02="" Period03="刘备" Period04="曹操" Period05="曹操" />
+  <RECORD ID="24" Name="襄阳" Level="3" Flag="4" GeneralMax="11" ReservistMax="262" Population="381355" Defense="373" Money="5051" Period01="" Period02="刘表" Period03="刘表" Period04="曹操" Period05="曹操" />
+  <RECORD ID="25" Name="上庸" Level="3" Flag="4" GeneralMax="9" ReservistMax="216" Population="266500" Defense="207" Money="4248" Period01="" Period02="" Period03="" Period04="" Period05="刘备" />
+  <RECORD ID="26" Name="江夏" Level="3" Flag="4" GeneralMax="7" ReservistMax="167" Population="143959" Defense="259" Money="3292" Period01="" Period02="刘表" Period03="刘表" Period04="刘备" Period05="孙权" />
+  <RECORD ID="27" Name="江陵" Level="3" Flag="4" GeneralMax="9" ReservistMax="216" Population="266967" Defense="380" Money="4083" Period01="" Period02="刘表" Period03="" Period04="曹操" Period05="刘备" />
+  <RECORD ID="28" Name="武陵" Level="3" Flag="4" GeneralMax="7" ReservistMax="156" Population="117000" Defense="170" Money="3127" Period01="" Period02="" Period03="刘表" Period04="金旋" Period05="刘备" />
+  <RECORD ID="29" Name="长沙" Level="3" Flag="4" GeneralMax="9" ReservistMax="212" Population="256757" Defense="345" Money="4046" Period01="" Period02="孙坚" Period03="刘表" Period04="刘备" Period05="孙权" />
+  <RECORD ID="30" Name="桂阳" Level="3" Flag="4" GeneralMax="8" ReservistMax="181" Population="179000" Defense="124" Money="3592" Period01="" Period02="" Period03="刘表" Period04="" Period05="孙权" />
+  <RECORD ID="31" Name="零陵" Level="3" Flag="4" GeneralMax="8" ReservistMax="203" Population="234500" Defense="131" Money="4008" Period01="" Period02="" Period03="" Period04="" Period05="" />
+  <RECORD ID="32" Name="寿春" Level="3" Flag="4" GeneralMax="7" ReservistMax="175" Population="164500" Defense="175" Money="3483" Period01="刘繇" Period02="刘繇" Period03="" Period04="" Period05="曹操" />
+  <RECORD ID="33" Name="建业" Level="3" Flag="4" GeneralMax="10" ReservistMax="248" Population="346439" Defense="589" Money="4612" Period01="" Period02="刘繇" Period03="孙权" Period04="孙权" Period05="孙权" />
+  <RECORD ID="34" Name="吴" Level="3" Flag="4" GeneralMax="9" ReservistMax="210" Population="251078" Defense="357" Money="4057" Period01="严白虎" Period02="严白虎" Period03="" Period04="孙权" Period05="孙权" />
+  <RECORD ID="35" Name="会稽" Level="3" Flag="4" GeneralMax="7" ReservistMax="171" Population="153829" Defense="195" Money="3341" Period01="" Period02="王朗" Period03="孙权" Period04="孙权" Period05="" />
+  <RECORD ID="36" Name="庐江" Level="3" Flag="4" GeneralMax="8" ReservistMax="190" Population="201539" Defense="308" Money="3573" Period01="" Period02="" Period03="孙权" Period04="孙权" Period05="孙权" />
+  <RECORD ID="37" Name="予章" Level="3" Flag="4" GeneralMax="9" ReservistMax="208" Population="245753" Defense="353" Money="3881" Period01="" Period02="" Period03="孙权" Period04="孙权" Period05="孙权" />
+  <RECORD ID="38" Name="汉中" Level="3" Flag="4" GeneralMax="8" ReservistMax="184" Population="185500" Defense="520" Money="3641" Period01="" Period02="" Period03="张鲁" Period04="" Period05="刘备" />
+  <RECORD ID="39" Name="下弁" Level="3" Flag="4" GeneralMax="7" ReservistMax="157" Population="118500" Defense="216" Money="3138" Period01="" Period02="" Period03="" Period04="" Period05="" />
+  <RECORD ID="40" Name="梓潼" Level="3" Flag="4" GeneralMax="9" ReservistMax="217" Population="269920" Defense="412" Money="4080" Period01="" Period02="刘焉" Period03="刘璋" Period04="刘璋" Period05="刘备" />
+  <RECORD ID="41" Name="成都" Level="3" Flag="4" GeneralMax="10" ReservistMax="251" Population="354460" Defense="398" Money="4608" Period01="" Period02="刘焉" Period03="刘璋" Period04="刘璋" Period05="刘备" />
+  <RECORD ID="42" Name="永安" Level="3" Flag="4" GeneralMax="9" ReservistMax="215" Population="263350" Defense="365" Money="4076" Period01="" Period02="" Period03="刘璋" Period04="刘璋" Period05="刘备" />
+  <RECORD ID="43" Name="江州" Level="3" Flag="4" GeneralMax="9" ReservistMax="209" Population="248356" Defense="251" Money="3990" Period01="" Period02="刘焉" Period03="刘璋" Period04="刘璋" Period05="刘备" />
+  <RECORD ID="44" Name="建宁" Level="3" Flag="4" GeneralMax="8" ReservistMax="183" Population="184000" Defense="197" Money="3630" Period01="" Period02="" Period03="" Period04="" Period05="" />
+  <RECORD ID="45" Name="云南" Level="3" Flag="4" GeneralMax="10" ReservistMax="235" Population="314500" Defense="372" Money="4608" Period01="" Period02="" Period03="" Period04="孟获" Period05="孟获" />
+  <RECORD ID="46" Name="庐陵" Level="3" Flag="4" GeneralMax="7" ReservistMax="173" Population="157500" Defense="106" Money="3431" Period01="" Period02="" Period03="" Period04="" Period05="孙权" />
+  <RECORD ID="47" Name="鄱阳" Level="3" Flag="4" GeneralMax="8" ReservistMax="191" Population="204618" Defense="351" Money="3521" Period01="" Period02="" Period03="孙权" Period04="孙权" Period05="孙权" />
+  <RECORD ID="48" Name="夷州" Level="3" Flag="4" GeneralMax="6" ReservistMax="139" Population="74000" Defense="103" Money="2805" Period01="" Period02="" Period03="" Period04="" Period05="" />
+  <RECORD ID="49" Name="易京" Level="0" Flag="2" GeneralMax="5" ReservistMax="0" Population="0" Defense="100" Money="0" Period01="" Period02="" Period03="" Period04="" Period05="" />
+  <RECORD ID="50" Name="乐陵" Level="0" Flag="2" GeneralMax="5" ReservistMax="0" Population="0" Defense="100" Money="0" Period01="" Period02="" Period03="" Period04="" Period05="" />
+  <RECORD ID="51" Name="界桥" Level="0" Flag="2" GeneralMax="5" ReservistMax="0" Population="0" Defense="100" Money="0" Period01="" Period02="" Period03="" Period04="" Period05="" />
+  <RECORD ID="52" Name="壶关" Level="0" Flag="2" GeneralMax="5" ReservistMax="0" Population="0" Defense="100" Money="0" Period01="" Period02="" Period03="" Period04="" Period05="" />
+  <RECORD ID="53" Name="定陶" Level="0" Flag="2" GeneralMax="5" ReservistMax="0" Population="0" Defense="100" Money="0" Period01="" Period02="" Period03="" Period04="" Period05="" />
+  <RECORD ID="54" Name="都阳" Level="0" Flag="2" GeneralMax="5" ReservistMax="0" Population="0" Defense="100" Money="0" Period01="" Period02="" Period03="" Period04="" Period05="" />
+  <RECORD ID="55" Name="官渡" Level="0" Flag="2" GeneralMax="5" ReservistMax="0" Population="0" Defense="100" Money="0" Period01="" Period02="" Period03="" Period04="" Period05="" />
+  <RECORD ID="56" Name="筑阳" Level="0" Flag="2" GeneralMax="5" ReservistMax="0" Population="0" Defense="100" Money="0" Period01="" Period02="" Period03="" Period04="" Period05="" />
+  <RECORD ID="57" Name="长板" Level="0" Flag="2" GeneralMax="5" ReservistMax="0" Population="0" Defense="100" Money="0" Period01="" Period02="" Period03="" Period04="" Period05="" />
+  <RECORD ID="58" Name="建平" Level="0" Flag="2" GeneralMax="5" ReservistMax="0" Population="0" Defense="100" Money="0" Period01="" Period02="" Period03="" Period04="" Period05="" />
+  <RECORD ID="59" Name="赤壁" Level="0" Flag="2" GeneralMax="5" ReservistMax="0" Population="0" Defense="100" Money="0" Period01="" Period02="" Period03="" Period04="" Period05="" />
+  <RECORD ID="60" Name="合肥" Level="0" Flag="2" GeneralMax="5" ReservistMax="0" Population="0" Defense="100" Money="0" Period01="" Period02="" Period03="" Period04="" Period05="" />
 </root>

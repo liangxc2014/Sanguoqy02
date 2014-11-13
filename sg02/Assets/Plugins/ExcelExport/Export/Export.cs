@@ -9,15 +9,20 @@ using Skyiv.OfficeHelper;
 public sealed partial class Export
 {
     string m_fileName;
+    string m_xmlFileDir;
+    string m_csharpDir;
+
     XlsxFile.Sheet m_sheet;
 
     List<string> m_listProperty;
     List<string> m_listDescript;
     List<string> m_listType;
 
-    public Export (string fileName)
+    public Export (string fileName, string xmlName, string csharpName)
     {
         m_fileName = fileName;
+        m_xmlFileDir = xmlName;
+        m_csharpDir = csharpName;
 
         Init();
     }
@@ -42,6 +47,16 @@ public sealed partial class Export
                 m_listProperty.AddRange(m_sheet.ReadRow());
                 m_listDescript.AddRange(m_sheet.ReadRow());
                 m_listType.AddRange(m_sheet.ReadRow());
+
+                for (int i = m_listProperty.Count - 1; i >= 0; i--)
+                {
+                    if (m_listProperty[i] == "" || m_listProperty[i] == "0")
+                    {
+                        m_listProperty.RemoveAt(i);
+                        m_listDescript.RemoveAt(i);
+                        m_listType.RemoveAt(i);
+                    }
+                }
 
                 for (int i = 0; i < m_listType.Count; i++)
                 {
@@ -78,10 +93,20 @@ public sealed partial class Export
         string[] fields = m_sheet.ReadRow();
         while (fields != null) 
         {
+            if (fields.Length != m_listType.Count)
+                break;
+
             XmlElement node = xmlDoc.CreateElement("RECORD");
             for (int i = 0; i < m_listProperty.Count; i++)
             {
-                if (m_listType[i] == "string" && fields[i] == "0")
+                if (m_listProperty[i].EndsWith("[]"))
+                {
+                    string propertyString = m_listProperty[i].Substring(0, m_listProperty[i].Length - 2);
+                    XmlElement childNode = xmlDoc.CreateElement(propertyString);
+                    childNode.InnerText = fields[i];
+                    node.AppendChild(childNode);
+                }
+                else if (m_listType[i] == "string" && fields[i] == "0")
                 {
                     node.SetAttribute(m_listProperty[i], "");
                 }
@@ -98,15 +123,9 @@ public sealed partial class Export
             fields = m_sheet.ReadRow();
         }
 
-        string dirName = Path.GetDirectoryName(m_fileName);
         string fileName = Path.GetFileNameWithoutExtension(m_fileName);
-        //string xmlPath = m_fileName.Substring(0, m_fileName.Length - (".xlsx").Length) + ".xml";
-        string xmlDir = dirName + "/../" + "XML/";
-        DirectoryInfo di = new DirectoryInfo(xmlDir);
-        if (!di.Exists)
-            Directory.CreateDirectory(xmlDir);
 
-        string xmlPath = xmlDir + fileName + ".xml";
+        string xmlPath = m_xmlFileDir + "/" + fileName + ".xml";
 
         xmlDoc.Save(xmlPath);
     }
@@ -114,22 +133,49 @@ public sealed partial class Export
     void ExportToCSharp()
     {
         string className = "XMLData" + Path.GetFileNameWithoutExtension(m_fileName);
-        string dirName = "Assets/Scripts/XML/Entity/";
-        string filePath = dirName + className + ".cs";
+        string filePath = m_csharpDir + "/" + className + ".cs";
 
         FileStream fs = new FileStream(filePath, FileMode.Create); 
         StreamWriter sw = new StreamWriter(fs, Encoding.Default);
 
-        sw.WriteLine("\n");
-        sw.WriteLine("public class " + className + "\n" + "{");
+        sw.WriteLine("");
+        sw.WriteLine("");
+        sw.WriteLine("public class " + className);
+        sw.WriteLine("{");
 
+        Dictionary<string, int> dicProp = new Dictionary<string, int>();
         for (int i = 0; i < m_listProperty.Count; i++)
         {
-            sw.WriteLine("\t/// <summary>\n\t/// " + m_listDescript[i] + "\n\t/// </summary>");
-            sw.WriteLine("\tpublic " + m_listType[i] + " " + m_listProperty[i] + ";\n");
+            if ( !dicProp.ContainsKey(m_listProperty[i]) )
+            {
+                dicProp.Add(m_listProperty[i], i);
+            }
         }
 
-        sw.WriteLine("}\n");
+        IEnumerator<string> enumerator = dicProp.Keys.GetEnumerator();
+        while (enumerator.MoveNext())
+        {
+            string propertyString = enumerator.Current;
+            int i = dicProp[propertyString];
+
+            if (propertyString.EndsWith("[]"))
+            {
+                sw.WriteLine("\t/// <summary>");
+                sw.WriteLine("\t/// " + m_listDescript[i]);
+                sw.WriteLine("\t/// </summary>");
+                sw.WriteLine("\tpublic " + m_listType[i] + "[] " + propertyString.Substring(0, propertyString.Length - 2) + ";");
+            }
+            else
+            {
+                sw.WriteLine("\t/// <summary>");
+                sw.WriteLine("\t/// " + m_listDescript[i]);
+                sw.WriteLine("\t/// </summary>");
+                sw.WriteLine("\tpublic " + m_listType[i] + " " + m_listProperty[i] + ";");
+            }
+        }
+
+        sw.WriteLine("}");
+        sw.WriteLine("");
         
         sw.Close(); 
         fs.Close();

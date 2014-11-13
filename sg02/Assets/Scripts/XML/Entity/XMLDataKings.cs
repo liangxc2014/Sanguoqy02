@@ -1,22 +1,18 @@
 
 
-public class XMLDataGlobalConfig
+public class XMLDataKings
 {
 	/// <summary>
 	/// 序号
 	/// </summary>
 	public int ID;
 	/// <summary>
-	/// 名称
+	/// 名字
 	/// </summary>
 	public string Name;
 	/// <summary>
-	/// 值
+	/// 黄巾之乱
 	/// </summary>
-	public string Value;
-	/// <summary>
-	/// 说明
-	/// </summary>
-	public string Description;
+	public int[] Period;
 }
 

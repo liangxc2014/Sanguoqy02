@@ -12,7 +12,23 @@ namespace Skyiv.OfficeHelper
   {
     string fileName; // Excel 文件的文件名
     Sheet[] sheets;  // Excel 文件的各工作表
-    FileStream fileStream { get { return new FileStream(fileName, FileMode.Open, FileAccess.Read); } }
+    FileStream fileStream { 
+        get 
+        {
+            FileStream fs = null;
+            try
+            {
+                fs = new FileStream(fileName, FileMode.Open, FileAccess.Read);
+            }
+            catch (Exception e)
+            {
+                if (e != null)
+                    Console.WriteLine(e.Message);
+                Console.ReadLine();
+            }
+            return fs; 
+        } 
+    }
 
     /// <summary>
     /// Excel 文件的构造函数
