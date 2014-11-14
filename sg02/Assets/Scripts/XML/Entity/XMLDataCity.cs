@@ -41,22 +41,6 @@ public class XMLDataCity
 	/// <summary>
 	/// 黄巾之乱
 	/// </summary>
-	public string Period01;
-	/// <summary>
-	/// 讨伐董卓
-	/// </summary>
-	public string Period02;
-	/// <summary>
-	/// 群雄割据
-	/// </summary>
-	public string Period03;
-	/// <summary>
-	/// 赤壁之战
-	/// </summary>
-	public string Period04;
-	/// <summary>
-	/// 三国鼎立
-	/// </summary>
-	public string Period05;
+	public string[] Period;
 }
 

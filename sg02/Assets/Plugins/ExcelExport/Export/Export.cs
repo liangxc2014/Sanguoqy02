@@ -103,7 +103,15 @@ public sealed partial class Export
                 {
                     string propertyString = m_listProperty[i].Substring(0, m_listProperty[i].Length - 2);
                     XmlElement childNode = xmlDoc.CreateElement(propertyString);
-                    childNode.InnerText = fields[i];
+                    if (m_listType[i] == "string" && fields[i] == "0")
+                    {
+                        childNode.InnerText = "";
+                    }
+                    else
+                    {
+                        childNode.InnerText = fields[i];
+                    }
+                    
                     node.AppendChild(childNode);
                 }
                 else if (m_listType[i] == "string" && fields[i] == "0")
