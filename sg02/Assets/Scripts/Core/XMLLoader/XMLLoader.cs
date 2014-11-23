@@ -98,20 +98,9 @@ public class XMLLoader<T> where T : class
 
 	private object ParseXmlParamsValue(Type type, XmlElement element, out object id)
 	{
+        id = -1;
+
 		object obj = Activator.CreateInstance(type);
-        id = 0;
-
-        // 公共属性个数为0, 一般为基础类型
-        if (type.IsPrimitive || type == typeof(string))
-        {
-            string text = element.InnerText;
-            if (text != "")
-            {
-                obj = Convert.ChangeType(text, type);
-            }
-
-            return obj;
-        }
 
         IDictionary<string, FieldInfo> fields = ReflectionFields(obj.GetType());
         IEnumerator<FieldInfo> valueEnumerator = fields.Values.GetEnumerator();
@@ -126,13 +115,28 @@ public class XMLLoader<T> where T : class
 
 				if(field.FieldType.IsArray)
 				{
+                    Type childType = field.FieldType.GetElementType();
                     XmlNodeList childList = element.GetElementsByTagName(field.Name);
 
-                    value = Array.CreateInstance(field.FieldType.GetElementType(), childList.Count);
+                    value = Array.CreateInstance(childType, childList.Count);
                     object temp;
                     for (int i = 0; i < childList.Count; i++)
                     {
-                        object childObj = ParseXmlParamsValue(field.FieldType.GetElementType(), (XmlElement)childList[i], out temp);
+                        object childObj = null;
+
+                        if (childType.IsPrimitive || childType == typeof(string))
+                        {
+                            string text = childList[i].InnerText;
+                            if (text != "")
+                            {
+                                childObj = Convert.ChangeType(text, childType);
+                            }
+                        }
+                        else
+                        {
+                            childObj = ParseXmlParamsValue(childType, (XmlElement)childList[i], out temp);
+                        }
+                        
                         ((Array)value).SetValue(childObj, i);
                     }
 				}

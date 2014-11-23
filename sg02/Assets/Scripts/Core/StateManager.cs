@@ -83,14 +83,14 @@ public abstract class StateManager
     }
 
     //返回一个状态
-    public U GetState<U>(string stateName)
+    public IState GetState(string stateName)
     {
         if (ContainsState(stateName))
         {
-            return (U)m_listState[stateName];
+            return m_listState[stateName];
         }
         
-        return default(U);
+        return null;
     }
 
 
