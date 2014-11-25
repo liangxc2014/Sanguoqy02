@@ -9,7 +9,7 @@ public class StartMenuControl : Singleton<StartMenuControl>
     {
         m_view = (StartMenuView)owner;
 
-        InitButtonsEvent();
+        //InitButtonsEvent();
     }
 
     private void InitButtonsEvent()

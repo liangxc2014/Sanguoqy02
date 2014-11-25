@@ -21,6 +21,7 @@ public class GamePublicWrap
 		new LuaField("Instance", get_Instance, null),
 		new LuaField("GameStatesManager", get_GameStatesManager, null),
 		new LuaField("SceneCamera", get_SceneCamera, null),
+		new LuaField("LuaManager", get_LuaManager, null),
 	};
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
@@ -88,6 +89,21 @@ public class GamePublicWrap
 
 		GamePublic obj = (GamePublic)o;
 		LuaScriptMgr.Push(L, obj.SceneCamera);
+		return 1;
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int get_LuaManager(IntPtr L)
+	{
+		object o = LuaScriptMgr.GetLuaObject(L, 1);
+
+		if (o == null)
+		{
+			LuaDLL.luaL_error(L, "unknown member name LuaManager");
+		}
+
+		GamePublic obj = (GamePublic)o;
+		LuaScriptMgr.PushObject(L, obj.LuaManager);
 		return 1;
 	}
 

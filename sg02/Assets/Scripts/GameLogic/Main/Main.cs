@@ -3,10 +3,13 @@ using System.Collections;
 
 public class Main : MonoBehaviour 
 {
+    Timer timer;
 
 	// Use this for initialization
 	void Awake () 
     {
+        DontDestroyOnLoad(gameObject);
+
         GlobalConfig.LoadConfig();
         XMLManager.LoadConfigs();
 
@@ -18,15 +21,19 @@ public class Main : MonoBehaviour
         InputManager.Instance.Initialize();
         InputManager.Instance.SetSceneCamera(GamePublic.Instance.SceneCamera);
 
+        timer = gameObject.AddComponent<Timer>();
+
         EnterState();
 	}
 	
-	// Update is called once per frame
-	void Update () 
+	
+	void LateUpdate () 
     {
         GamePublic.Instance.GameStatesManager.Update();
 
         InputManager.Instance.Update();
+
+        timer.OnUpdate(Time.deltaTime);
 	}
 
     void OnDestroy ()

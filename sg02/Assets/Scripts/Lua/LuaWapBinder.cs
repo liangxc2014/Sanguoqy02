@@ -3,11 +3,54 @@ public static class LuaWapBinder
 {
 	public static void Bind(IntPtr L)
 	{
+		CallBackWrap.Register(L);
+		IStateWrap.Register(L);
+		ObjectPoolWrap.Register(L);
 		StateManagerWrap.Register(L);
+		DebuggingWrap.Register(L);
+		InputManagerWrap.Register(L);
+		ResourcesManagerWrap.Register(L);
+		ScreenControlWrap.Register(L);
+		ScreenControlWrap.Register(L);
+		TimerManagerWrap.Register(L);
 		UIManagerWrap.Register(L);
 		GamePublicWrap.Register(L);
+		GlobalConfigWrap.Register(L);
 		GameStatesManagerWrap.Register(L);
-		InputManagerWrap.Register(L);
+		InternalAffairsStateWrap.Register(L);
+		LoadingStateWrap.Register(L);
+		SelectKingStateWrap.Register(L);
+		SelectPeriodStateWrap.Register(L);
+		StartMenuStateWrap.Register(L);
+		MapCameraControlWrap.Register(L);
+		PathFindingWrap.Register(L);
+		UtilityWrap.Register(L);
+		XMLConfigPathWrap.Register(L);
+		XMLManagerWrap.Register(L);
+		XMLDataArmsWrap.Register(L);
+		XMLDataBuffWrap.Register(L);
+		XMLDataCityWrap.Register(L);
+		XMLDataCityPointsWrap.Register(L);
+		XMLDataFormationsWrap.Register(L);
+		XMLDataGeneralsWrap.Register(L);
+		XMLDataGlobalConfigWrap.Register(L);
+		XMLDataKingsWrap.Register(L);
+		XMLDataMagicWrap.Register(L);
+		XMLDataObjectsWrap.Register(L);
+		XMLDataPathInfoWrap.Register(L);
+		XMLDataPeriodWrap.Register(L);
+		XMLLoader_XMLDataArmsWrap.Register(L);
+		XMLLoader_XMLDataBuffWrap.Register(L);
+		XMLLoader_XMLDataCityWrap.Register(L);
+		XMLLoader_XMLDataCityPointsWrap.Register(L);
+		XMLLoader_XMLDataFormationsWrap.Register(L);
+		XMLLoader_XMLDataGeneralsWrap.Register(L);
+		XMLLoader_XMLDataGlobalConfigWrap.Register(L);
+		XMLLoader_XMLDataKingsWrap.Register(L);
+		XMLLoader_XMLDataMagicWrap.Register(L);
+		XMLLoader_XMLDataObjectsWrap.Register(L);
+		XMLLoader_XMLDataPathInfoWrap.Register(L);
+		XMLLoader_XMLDataPeriodWrap.Register(L);
 		TestLuaFunctionTypeWrap.Register(L);
 	}
 }

@@ -21,6 +21,7 @@ public class InputManagerWrap
 		new LuaMethod("RemoveOnDragEvent", RemoveOnDragEvent),
 		new LuaMethod("SetDragBegin", SetDragBegin),
 		new LuaMethod("AddOnMouseHitObjectEvent", AddOnMouseHitObjectEvent),
+		new LuaMethod("AddOnMouseHitObjectEventLua", AddOnMouseHitObjectEventLua),
 		new LuaMethod("RemoveOnMouseHitObjectEvent", RemoveOnMouseHitObjectEvent),
 		new LuaMethod("AddOnMouseMoveEvent", AddOnMouseMoveEvent),
 		new LuaMethod("RemoveOnMouseMoveEvent", RemoveOnMouseMoveEvent),
@@ -29,8 +30,13 @@ public class InputManagerWrap
 		new LuaMethod("Update", Update),
 		new LuaMethod("IsMouseMove", IsMouseMove),
 		new LuaMethod("Reset", Reset),
+		new LuaMethod("Equals", Equals),
+		new LuaMethod("GetHashCode", GetHashCode),
+		new LuaMethod("GetType", GetType),
+		new LuaMethod("ToString", ToString),
 		new LuaMethod("New", Create),
 		new LuaMethod("GetClassType", GetClassType),
+		new LuaMethod("__tostring", Lua_ToString),
 	};
 
 	static LuaField[] fields = new LuaField[]
@@ -77,11 +83,36 @@ public class InputManagerWrap
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int Lua_ToString(IntPtr L)
+	{
+		InputManager obj = LuaScriptMgr.GetNetObject<InputManager>(L, 1);
+		LuaScriptMgr.Push(L, obj.ToString());
+		return 1;
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int Initialize(IntPtr L)
 	{
-		LuaScriptMgr.CheckArgsCount(L, 1);
-		InputManager obj = LuaScriptMgr.GetNetObject<InputManager>(L, 1);
-		obj.Initialize();
+		int count = LuaDLL.lua_gettop(L);
+
+		if (count == 1)
+		{
+			InputManager obj = LuaScriptMgr.GetNetObject<InputManager>(L, 1);
+			obj.Initialize();
+			return 0;
+		}
+		else if (count == 2)
+		{
+			InputManager obj = LuaScriptMgr.GetNetObject<InputManager>(L, 1);
+			object arg0 = LuaScriptMgr.GetVarObject(L, 2);
+			obj.Initialize(arg0);
+			return 0;
+		}
+		else
+		{
+			LuaDLL.luaL_error(L, "invalid arguments to method: InputManager.Initialize");
+		}
+
 		return 0;
 	}
 
@@ -127,11 +158,32 @@ public class InputManagerWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int AddOnClickEvent(IntPtr L)
 	{
-		LuaScriptMgr.CheckArgsCount(L, 3);
-		InputManager obj = LuaScriptMgr.GetNetObject<InputManager>(L, 1);
-		GameObject arg0 = LuaScriptMgr.GetNetObject<GameObject>(L, 2);
-		InputManager.OnClickDelegate arg1 = LuaScriptMgr.GetNetObject<InputManager.OnClickDelegate>(L, 3);
-		obj.AddOnClickEvent(arg0,arg1);
+		int count = LuaDLL.lua_gettop(L);
+
+		Type[] types0 = {typeof(InputManager), typeof(GameObject), typeof(LuaInterface.LuaFunction)};
+		Type[] types1 = {typeof(InputManager), typeof(GameObject), typeof(InputManager.OnClickDelegate)};
+
+		if (count == 3 && LuaScriptMgr.CheckTypes(L, types0, 1))
+		{
+			InputManager obj = LuaScriptMgr.GetNetObject<InputManager>(L, 1);
+			GameObject arg0 = LuaScriptMgr.GetNetObject<GameObject>(L, 2);
+			LuaFunction arg1 = LuaScriptMgr.GetLuaFunction(L, 3);
+			obj.AddOnClickEvent(arg0,arg1);
+			return 0;
+		}
+		else if (count == 3 && LuaScriptMgr.CheckTypes(L, types1, 1))
+		{
+			InputManager obj = LuaScriptMgr.GetNetObject<InputManager>(L, 1);
+			GameObject arg0 = LuaScriptMgr.GetNetObject<GameObject>(L, 2);
+			InputManager.OnClickDelegate arg1 = LuaScriptMgr.GetNetObject<InputManager.OnClickDelegate>(L, 3);
+			obj.AddOnClickEvent(arg0,arg1);
+			return 0;
+		}
+		else
+		{
+			LuaDLL.luaL_error(L, "invalid arguments to method: InputManager.AddOnClickEvent");
+		}
+
 		return 0;
 	}
 
@@ -158,11 +210,32 @@ public class InputManagerWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int AddOnPressEvent(IntPtr L)
 	{
-		LuaScriptMgr.CheckArgsCount(L, 3);
-		InputManager obj = LuaScriptMgr.GetNetObject<InputManager>(L, 1);
-		GameObject arg0 = LuaScriptMgr.GetNetObject<GameObject>(L, 2);
-		InputManager.OnPressDelegate arg1 = LuaScriptMgr.GetNetObject<InputManager.OnPressDelegate>(L, 3);
-		obj.AddOnPressEvent(arg0,arg1);
+		int count = LuaDLL.lua_gettop(L);
+
+		Type[] types0 = {typeof(InputManager), typeof(GameObject), typeof(LuaInterface.LuaFunction)};
+		Type[] types1 = {typeof(InputManager), typeof(GameObject), typeof(InputManager.OnPressDelegate)};
+
+		if (count == 3 && LuaScriptMgr.CheckTypes(L, types0, 1))
+		{
+			InputManager obj = LuaScriptMgr.GetNetObject<InputManager>(L, 1);
+			GameObject arg0 = LuaScriptMgr.GetNetObject<GameObject>(L, 2);
+			LuaFunction arg1 = LuaScriptMgr.GetLuaFunction(L, 3);
+			obj.AddOnPressEvent(arg0,arg1);
+			return 0;
+		}
+		else if (count == 3 && LuaScriptMgr.CheckTypes(L, types1, 1))
+		{
+			InputManager obj = LuaScriptMgr.GetNetObject<InputManager>(L, 1);
+			GameObject arg0 = LuaScriptMgr.GetNetObject<GameObject>(L, 2);
+			InputManager.OnPressDelegate arg1 = LuaScriptMgr.GetNetObject<InputManager.OnPressDelegate>(L, 3);
+			obj.AddOnPressEvent(arg0,arg1);
+			return 0;
+		}
+		else
+		{
+			LuaDLL.luaL_error(L, "invalid arguments to method: InputManager.AddOnPressEvent");
+		}
+
 		return 0;
 	}
 
@@ -190,13 +263,36 @@ public class InputManagerWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int AddOnDragEvent(IntPtr L)
 	{
-		LuaScriptMgr.CheckArgsCount(L, 5);
-		InputManager obj = LuaScriptMgr.GetNetObject<InputManager>(L, 1);
-		GameObject arg0 = LuaScriptMgr.GetNetObject<GameObject>(L, 2);
-		InputManager.OnDragBeginDelegate arg1 = LuaScriptMgr.GetNetObject<InputManager.OnDragBeginDelegate>(L, 3);
-		InputManager.OnDraggingDelegate arg2 = LuaScriptMgr.GetNetObject<InputManager.OnDraggingDelegate>(L, 4);
-		InputManager.OnDragEndDelegate arg3 = LuaScriptMgr.GetNetObject<InputManager.OnDragEndDelegate>(L, 5);
-		obj.AddOnDragEvent(arg0,arg1,arg2,arg3);
+		int count = LuaDLL.lua_gettop(L);
+
+		Type[] types0 = {typeof(InputManager), typeof(GameObject), typeof(LuaInterface.LuaFunction), typeof(LuaInterface.LuaFunction), typeof(LuaInterface.LuaFunction)};
+		Type[] types1 = {typeof(InputManager), typeof(GameObject), typeof(InputManager.OnDragBeginDelegate), typeof(InputManager.OnDraggingDelegate), typeof(InputManager.OnDragEndDelegate)};
+
+		if (count == 5 && LuaScriptMgr.CheckTypes(L, types0, 1))
+		{
+			InputManager obj = LuaScriptMgr.GetNetObject<InputManager>(L, 1);
+			GameObject arg0 = LuaScriptMgr.GetNetObject<GameObject>(L, 2);
+			LuaFunction arg1 = LuaScriptMgr.GetLuaFunction(L, 3);
+			LuaFunction arg2 = LuaScriptMgr.GetLuaFunction(L, 4);
+			LuaFunction arg3 = LuaScriptMgr.GetLuaFunction(L, 5);
+			obj.AddOnDragEvent(arg0,arg1,arg2,arg3);
+			return 0;
+		}
+		else if (count == 5 && LuaScriptMgr.CheckTypes(L, types1, 1))
+		{
+			InputManager obj = LuaScriptMgr.GetNetObject<InputManager>(L, 1);
+			GameObject arg0 = LuaScriptMgr.GetNetObject<GameObject>(L, 2);
+			InputManager.OnDragBeginDelegate arg1 = LuaScriptMgr.GetNetObject<InputManager.OnDragBeginDelegate>(L, 3);
+			InputManager.OnDraggingDelegate arg2 = LuaScriptMgr.GetNetObject<InputManager.OnDraggingDelegate>(L, 4);
+			InputManager.OnDragEndDelegate arg3 = LuaScriptMgr.GetNetObject<InputManager.OnDragEndDelegate>(L, 5);
+			obj.AddOnDragEvent(arg0,arg1,arg2,arg3);
+			return 0;
+		}
+		else
+		{
+			LuaDLL.luaL_error(L, "invalid arguments to method: InputManager.AddOnDragEvent");
+		}
+
 		return 0;
 	}
 
@@ -231,52 +327,162 @@ public class InputManagerWrap
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int RemoveOnMouseHitObjectEvent(IntPtr L)
+	static int AddOnMouseHitObjectEventLua(IntPtr L)
 	{
 		LuaScriptMgr.CheckArgsCount(L, 2);
 		InputManager obj = LuaScriptMgr.GetNetObject<InputManager>(L, 1);
-		InputManager.OnMouseHitObjectDelegate arg0 = LuaScriptMgr.GetNetObject<InputManager.OnMouseHitObjectDelegate>(L, 2);
-		obj.RemoveOnMouseHitObjectEvent(arg0);
+		LuaFunction arg0 = LuaScriptMgr.GetLuaFunction(L, 2);
+		obj.AddOnMouseHitObjectEventLua(arg0);
+		return 0;
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int RemoveOnMouseHitObjectEvent(IntPtr L)
+	{
+		int count = LuaDLL.lua_gettop(L);
+
+		Type[] types0 = {typeof(InputManager), typeof(LuaInterface.LuaFunction)};
+		Type[] types1 = {typeof(InputManager), typeof(InputManager.OnMouseHitObjectDelegate)};
+
+		if (count == 2 && LuaScriptMgr.CheckTypes(L, types0, 1))
+		{
+			InputManager obj = LuaScriptMgr.GetNetObject<InputManager>(L, 1);
+			LuaFunction arg0 = LuaScriptMgr.GetLuaFunction(L, 2);
+			obj.RemoveOnMouseHitObjectEvent(arg0);
+			return 0;
+		}
+		else if (count == 2 && LuaScriptMgr.CheckTypes(L, types1, 1))
+		{
+			InputManager obj = LuaScriptMgr.GetNetObject<InputManager>(L, 1);
+			InputManager.OnMouseHitObjectDelegate arg0 = LuaScriptMgr.GetNetObject<InputManager.OnMouseHitObjectDelegate>(L, 2);
+			obj.RemoveOnMouseHitObjectEvent(arg0);
+			return 0;
+		}
+		else
+		{
+			LuaDLL.luaL_error(L, "invalid arguments to method: InputManager.RemoveOnMouseHitObjectEvent");
+		}
+
 		return 0;
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int AddOnMouseMoveEvent(IntPtr L)
 	{
-		LuaScriptMgr.CheckArgsCount(L, 2);
-		InputManager obj = LuaScriptMgr.GetNetObject<InputManager>(L, 1);
-		InputManager.OnMouseMoveDelegate arg0 = LuaScriptMgr.GetNetObject<InputManager.OnMouseMoveDelegate>(L, 2);
-		obj.AddOnMouseMoveEvent(arg0);
+		int count = LuaDLL.lua_gettop(L);
+
+		Type[] types0 = {typeof(InputManager), typeof(LuaInterface.LuaFunction)};
+		Type[] types1 = {typeof(InputManager), typeof(InputManager.OnMouseMoveDelegate)};
+
+		if (count == 2 && LuaScriptMgr.CheckTypes(L, types0, 1))
+		{
+			InputManager obj = LuaScriptMgr.GetNetObject<InputManager>(L, 1);
+			LuaFunction arg0 = LuaScriptMgr.GetLuaFunction(L, 2);
+			obj.AddOnMouseMoveEvent(arg0);
+			return 0;
+		}
+		else if (count == 2 && LuaScriptMgr.CheckTypes(L, types1, 1))
+		{
+			InputManager obj = LuaScriptMgr.GetNetObject<InputManager>(L, 1);
+			InputManager.OnMouseMoveDelegate arg0 = LuaScriptMgr.GetNetObject<InputManager.OnMouseMoveDelegate>(L, 2);
+			obj.AddOnMouseMoveEvent(arg0);
+			return 0;
+		}
+		else
+		{
+			LuaDLL.luaL_error(L, "invalid arguments to method: InputManager.AddOnMouseMoveEvent");
+		}
+
 		return 0;
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int RemoveOnMouseMoveEvent(IntPtr L)
 	{
-		LuaScriptMgr.CheckArgsCount(L, 2);
-		InputManager obj = LuaScriptMgr.GetNetObject<InputManager>(L, 1);
-		InputManager.OnMouseMoveDelegate arg0 = LuaScriptMgr.GetNetObject<InputManager.OnMouseMoveDelegate>(L, 2);
-		obj.RemoveOnMouseMoveEvent(arg0);
+		int count = LuaDLL.lua_gettop(L);
+
+		Type[] types0 = {typeof(InputManager), typeof(LuaInterface.LuaFunction)};
+		Type[] types1 = {typeof(InputManager), typeof(InputManager.OnMouseMoveDelegate)};
+
+		if (count == 2 && LuaScriptMgr.CheckTypes(L, types0, 1))
+		{
+			InputManager obj = LuaScriptMgr.GetNetObject<InputManager>(L, 1);
+			LuaFunction arg0 = LuaScriptMgr.GetLuaFunction(L, 2);
+			obj.RemoveOnMouseMoveEvent(arg0);
+			return 0;
+		}
+		else if (count == 2 && LuaScriptMgr.CheckTypes(L, types1, 1))
+		{
+			InputManager obj = LuaScriptMgr.GetNetObject<InputManager>(L, 1);
+			InputManager.OnMouseMoveDelegate arg0 = LuaScriptMgr.GetNetObject<InputManager.OnMouseMoveDelegate>(L, 2);
+			obj.RemoveOnMouseMoveEvent(arg0);
+			return 0;
+		}
+		else
+		{
+			LuaDLL.luaL_error(L, "invalid arguments to method: InputManager.RemoveOnMouseMoveEvent");
+		}
+
 		return 0;
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int AddOnMouseZoomEvent(IntPtr L)
 	{
-		LuaScriptMgr.CheckArgsCount(L, 2);
-		InputManager obj = LuaScriptMgr.GetNetObject<InputManager>(L, 1);
-		InputManager.OnMouseZoomDelegate arg0 = LuaScriptMgr.GetNetObject<InputManager.OnMouseZoomDelegate>(L, 2);
-		obj.AddOnMouseZoomEvent(arg0);
+		int count = LuaDLL.lua_gettop(L);
+
+		Type[] types0 = {typeof(InputManager), typeof(LuaInterface.LuaFunction)};
+		Type[] types1 = {typeof(InputManager), typeof(InputManager.OnMouseZoomDelegate)};
+
+		if (count == 2 && LuaScriptMgr.CheckTypes(L, types0, 1))
+		{
+			InputManager obj = LuaScriptMgr.GetNetObject<InputManager>(L, 1);
+			LuaFunction arg0 = LuaScriptMgr.GetLuaFunction(L, 2);
+			obj.AddOnMouseZoomEvent(arg0);
+			return 0;
+		}
+		else if (count == 2 && LuaScriptMgr.CheckTypes(L, types1, 1))
+		{
+			InputManager obj = LuaScriptMgr.GetNetObject<InputManager>(L, 1);
+			InputManager.OnMouseZoomDelegate arg0 = LuaScriptMgr.GetNetObject<InputManager.OnMouseZoomDelegate>(L, 2);
+			obj.AddOnMouseZoomEvent(arg0);
+			return 0;
+		}
+		else
+		{
+			LuaDLL.luaL_error(L, "invalid arguments to method: InputManager.AddOnMouseZoomEvent");
+		}
+
 		return 0;
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int RemoveOnMouseZoomEvent(IntPtr L)
 	{
-		LuaScriptMgr.CheckArgsCount(L, 2);
-		InputManager obj = LuaScriptMgr.GetNetObject<InputManager>(L, 1);
-		InputManager.OnMouseZoomDelegate arg0 = LuaScriptMgr.GetNetObject<InputManager.OnMouseZoomDelegate>(L, 2);
-		obj.RemoveOnMouseZoomEvent(arg0);
+		int count = LuaDLL.lua_gettop(L);
+
+		Type[] types0 = {typeof(InputManager), typeof(LuaInterface.LuaFunction)};
+		Type[] types1 = {typeof(InputManager), typeof(InputManager.OnMouseZoomDelegate)};
+
+		if (count == 2 && LuaScriptMgr.CheckTypes(L, types0, 1))
+		{
+			InputManager obj = LuaScriptMgr.GetNetObject<InputManager>(L, 1);
+			LuaFunction arg0 = LuaScriptMgr.GetLuaFunction(L, 2);
+			obj.RemoveOnMouseZoomEvent(arg0);
+			return 0;
+		}
+		else if (count == 2 && LuaScriptMgr.CheckTypes(L, types1, 1))
+		{
+			InputManager obj = LuaScriptMgr.GetNetObject<InputManager>(L, 1);
+			InputManager.OnMouseZoomDelegate arg0 = LuaScriptMgr.GetNetObject<InputManager.OnMouseZoomDelegate>(L, 2);
+			obj.RemoveOnMouseZoomEvent(arg0);
+			return 0;
+		}
+		else
+		{
+			LuaDLL.luaL_error(L, "invalid arguments to method: InputManager.RemoveOnMouseZoomEvent");
+		}
+
 		return 0;
 	}
 
@@ -306,6 +512,47 @@ public class InputManagerWrap
 		InputManager obj = LuaScriptMgr.GetNetObject<InputManager>(L, 1);
 		obj.Reset();
 		return 0;
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int Equals(IntPtr L)
+	{
+		LuaScriptMgr.CheckArgsCount(L, 2);
+		InputManager obj = LuaScriptMgr.GetNetObject<InputManager>(L, 1);
+		object arg0 = LuaScriptMgr.GetVarObject(L, 2);
+		bool o = obj.Equals(arg0);
+		LuaScriptMgr.Push(L, o);
+		return 1;
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int GetHashCode(IntPtr L)
+	{
+		LuaScriptMgr.CheckArgsCount(L, 1);
+		InputManager obj = LuaScriptMgr.GetNetObject<InputManager>(L, 1);
+		int o = obj.GetHashCode();
+		LuaScriptMgr.Push(L, o);
+		return 1;
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int GetType(IntPtr L)
+	{
+		LuaScriptMgr.CheckArgsCount(L, 1);
+		InputManager obj = LuaScriptMgr.GetNetObject<InputManager>(L, 1);
+		Type o = obj.GetType();
+		LuaScriptMgr.Push(L, o);
+		return 1;
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int ToString(IntPtr L)
+	{
+		LuaScriptMgr.CheckArgsCount(L, 1);
+		InputManager obj = LuaScriptMgr.GetNetObject<InputManager>(L, 1);
+		string o = obj.ToString();
+		LuaScriptMgr.Push(L, o);
+		return 1;
 	}
 }
 

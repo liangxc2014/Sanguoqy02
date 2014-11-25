@@ -33,14 +33,14 @@ public static class LuaBinding
             wrapName = name;
         }
 
-        //public BindType(string wrap, string s, Type t, bool beStatic, string bn)
-        //{
-        //    name = s;
-        //    type = t;
-        //    IsStatic = beStatic;
-        //    baseName = bn;
-        //    wrapName = wrap;
-        //}
+        public BindType(string wrap, string s, Type t, bool beStatic, string bn)
+        {
+            name = s;
+            type = t;
+            IsStatic = beStatic;
+            baseName = bn;
+            wrapName = wrap;
+        }
     }
 
     //注意必须保持基类在其派生类前面声明，否则自动生成的注册顺序是错误的
@@ -83,16 +83,73 @@ public static class LuaBinding
         new BindType("AnimationClip", typeof(AnimationClip), false, "Motion"),
         */
 
+        // Core
+        new BindType("CallBack", typeof(CallBack), false, null),
+        new BindType("IState", typeof(IState), false, null),
+        new BindType("ObjectPool", typeof(ObjectPool), false, null),
         new BindType("StateManager", typeof(StateManager), false, null),
-        
+
+        new BindType("Debugging", typeof(Debugging), false, null),
+        new BindType("InputManager", typeof(InputManager), false, null),
+        new BindType("ResourcesManager", typeof(ResourcesManager), false, null),
+        new BindType("ScreenControl", typeof(ScreenControl), false, null),
+        new BindType("ScreenControl", typeof(ScreenControl), false, null),
+        new BindType("TimerManager", typeof(TimerManager), false, null),
         new BindType("UIManager", typeof(UIManager), false, null),
 
+        // GameLogic/Common
         new BindType("GamePublic", typeof(GamePublic), false, null),
+        new BindType("GlobalConfig", typeof(GlobalConfig), true, null),
 
+        // GameLogic/GameStates
         new BindType("GameStatesManager", typeof(GameStatesManager), false, "StateManager"),
+        new BindType("InternalAffairsState", typeof(InternalAffairsState), false, "IState"),
+        new BindType("LoadingState", typeof(LoadingState), false, "IState"),
+        new BindType("SelectKingState", typeof(SelectKingState), false, "IState"),
+        new BindType("SelectPeriodState", typeof(SelectPeriodState), false, "IState"),
+        new BindType("StartMenuState", typeof(StartMenuState), false, "IState"),
 
-        new BindType("InputManager", typeof(InputManager), false, null),
+        // GameLogic/MapCamera
+        new BindType("MapCameraControl", typeof(MapCameraControl), false, null),
 
+        // GameLogic/PathFinding
+        new BindType("PathFinding", typeof(PathFinding), false, null),
+
+        // GameLogic/Utility
+        new BindType("Utility", typeof(Utility), true, null),
+
+        // XML
+        new BindType("XMLConfigPath", typeof(XMLConfigPath), true, null),
+        new BindType("XMLManager", typeof(XMLManager), true, null),
+
+        // XML/Entity
+        new BindType("XMLDataArms", typeof(XMLDataArms), true, null),
+        new BindType("XMLDataBuff", typeof(XMLDataBuff), true, null),
+        new BindType("XMLDataCity", typeof(XMLDataCity), true, null),
+        new BindType("XMLDataCityPoints", typeof(XMLDataCityPoints), true, null),
+        new BindType("XMLDataFormations", typeof(XMLDataFormations), true, null),
+        new BindType("XMLDataGenerals", typeof(XMLDataGenerals), true, null),
+        new BindType("XMLDataGlobalConfig", typeof(XMLDataGlobalConfig), true, null),
+        new BindType("XMLDataKings", typeof(XMLDataKings), true, null),
+        new BindType("XMLDataMagic", typeof(XMLDataMagic), true, null),
+        new BindType("XMLDataObjects", typeof(XMLDataObjects), true, null),
+        new BindType("XMLDataPathInfo", typeof(XMLDataPathInfo), true, null),
+        new BindType("XMLDataPeriod", typeof(XMLDataPeriod), true, null),
+
+        new BindType("XMLLoader_XMLDataArms", "XMLLoader<XMLDataArms>", typeof(XMLLoader<XMLDataArms>), true, null),
+        new BindType("XMLLoader_XMLDataBuff", "XMLLoader<XMLDataBuff>", typeof(XMLLoader<XMLDataBuff>), true, null),
+        new BindType("XMLLoader_XMLDataCity", "XMLLoader<XMLDataCity>", typeof(XMLLoader<XMLDataCity>), true, null),
+        new BindType("XMLLoader_XMLDataCityPoints", "XMLLoader<XMLDataCityPoints>", typeof(XMLLoader<XMLDataCityPoints>), true, null),
+        new BindType("XMLLoader_XMLDataFormations", "XMLLoader<XMLDataFormations>", typeof(XMLLoader<XMLDataFormations>), true, null),
+        new BindType("XMLLoader_XMLDataGenerals", "XMLLoader<XMLDataGenerals>", typeof(XMLLoader<XMLDataGenerals>), true, null),
+        new BindType("XMLLoader_XMLDataGlobalConfig", "XMLLoader<XMLDataGlobalConfig>", typeof(XMLLoader<XMLDataGlobalConfig>), true, null),
+        new BindType("XMLLoader_XMLDataKings", "XMLLoader<XMLDataKings>", typeof(XMLLoader<XMLDataKings>), true, null),
+        new BindType("XMLLoader_XMLDataMagic", "XMLLoader<XMLDataMagic>", typeof(XMLLoader<XMLDataMagic>), true, null),
+        new BindType("XMLLoader_XMLDataObjects", "XMLLoader<XMLDataObjects>", typeof(XMLLoader<XMLDataObjects>), true, null),
+        new BindType("XMLLoader_XMLDataPathInfo", "XMLLoader<XMLDataPathInfo>", typeof(XMLLoader<XMLDataPathInfo>), true, null),
+        new BindType("XMLLoader_XMLDataPeriod", "XMLLoader<XMLDataPeriod>", typeof(XMLLoader<XMLDataPeriod>), true, null),
+        
+        // Test
         new BindType("TestLuaFunctionType", typeof(TestLuaFunctionType), false, null),
     };
 

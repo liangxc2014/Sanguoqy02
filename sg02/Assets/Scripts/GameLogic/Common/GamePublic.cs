@@ -16,6 +16,13 @@ public class GamePublic : Singleton<GamePublic>
     private Camera m_sceneCamera;
     public Camera SceneCamera { get { return m_sceneCamera; } }
 
+    /// <summary>
+    /// LUA管理器
+    /// </summary>
+    private LuaScriptMgr m_luaMgr;
+    public LuaScriptMgr LuaManager { get { return m_luaMgr; } }
+
+
     public override void Initialize() 
     {
         m_gameStatesManager = new GameStatesManager();
@@ -28,5 +35,13 @@ public class GamePublic : Singleton<GamePublic>
     public override void UnInitialize() 
     {
         
+    }
+
+    private void InitLuaManager()
+    {
+        m_luaMgr = new LuaScriptMgr();
+        m_luaMgr.Start();
+
+        LuaWapBinder.Bind(m_luaMgr.lua.L);
     }
 }

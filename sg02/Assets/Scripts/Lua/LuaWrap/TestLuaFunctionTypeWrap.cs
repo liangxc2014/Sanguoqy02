@@ -93,9 +93,26 @@ public class TestLuaFunctionTypeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int CallDelegate(IntPtr L)
 	{
-		LuaScriptMgr.CheckArgsCount(L, 1);
-		TestLuaFunctionType obj = LuaScriptMgr.GetNetObject<TestLuaFunctionType>(L, 1);
-		obj.CallDelegate();
+		int count = LuaDLL.lua_gettop(L);
+
+		if (count == 1)
+		{
+			TestLuaFunctionType obj = LuaScriptMgr.GetNetObject<TestLuaFunctionType>(L, 1);
+			obj.CallDelegate();
+			return 0;
+		}
+		else if (count == 2)
+		{
+			TestLuaFunctionType obj = LuaScriptMgr.GetNetObject<TestLuaFunctionType>(L, 1);
+			LuaFunction arg0 = LuaScriptMgr.GetLuaFunction(L, 2);
+			obj.CallDelegate(arg0);
+			return 0;
+		}
+		else
+		{
+			LuaDLL.luaL_error(L, "invalid arguments to method: TestLuaFunctionType.CallDelegate");
+		}
+
 		return 0;
 	}
 }

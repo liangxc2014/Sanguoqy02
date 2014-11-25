@@ -347,7 +347,7 @@ public static class ToLua
         sb.AppendLine("\t{");
 
         // 添加单例使用
-        if (type.BaseType.Name.Contains("Singleton"))
+        if (type.BaseType != null && type.BaseType.Name.Contains("Singleton"))
         {
             sb.AppendFormat("\t\tnew LuaField(\"{0}\", get_{0}, null),\r\n", "Instance");
         }
@@ -1620,7 +1620,7 @@ public static class ToLua
     static void GenIndexFunc()
     {
         // 增加单例
-        if (type.BaseType.Name.Contains("Singleton"))
+        if (type.BaseType != null && type.BaseType.Name.Contains("Singleton"))
         {
             sb.AppendLine("\r\n\t[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]");
             sb.AppendFormat("\tstatic int get_{0}(IntPtr L)\r\n", "Instance");

@@ -123,7 +123,7 @@ public sealed partial class Export
                     node.SetAttribute(m_listProperty[i], fields[i]);
                 }
             }
-            if (node.GetAttribute("ID") != "" && node.GetAttribute("ID") != "0")
+            if (node.GetAttribute(m_listProperty[0]) != "" && node.GetAttribute(m_listProperty[0]) != "0")
             {
                 rootElement.AppendChild(node);
             }

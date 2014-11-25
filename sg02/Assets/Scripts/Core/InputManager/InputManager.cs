@@ -2,6 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 
+using LuaInterface;
+
 public class InputManager : Singleton<InputManager> 
 {
     private bool enable = true;
@@ -46,6 +48,15 @@ public class InputManager : Singleton<InputManager>
     private List<OnMouseMoveDelegate> m_listOnMouseMove;
     private List<OnMouseZoomDelegate> m_listOnMouseZoom;
 
+    private Dictionary<GameObject, LuaFunction> m_dicOnClickDelegateLua;
+    private Dictionary<GameObject, LuaFunction> m_dicOnPressDelegateLua;
+    private Dictionary<GameObject, LuaFunction> m_dicOnDragBeginDelegateLua;
+    private Dictionary<GameObject, LuaFunction> m_dicOnDraggingDelegateLua;
+    private Dictionary<GameObject, LuaFunction> m_dicOnDragEndDelegateLua;
+    private List<LuaFunction> m_listOnMouseHitObjectLua;
+    private List<LuaFunction> m_listOnMouseMoveLua;
+    private List<LuaFunction> m_listOnMouseZoomLua;
+
     /// <summary>
     /// 初始化函数
     /// </summary>
@@ -62,6 +73,15 @@ public class InputManager : Singleton<InputManager>
         m_listOnMouseHitObject = new List<OnMouseHitObjectDelegate>();
         m_listOnMouseMove = new List<OnMouseMoveDelegate>();
         m_listOnMouseZoom = new List<OnMouseZoomDelegate>();
+
+        m_dicOnClickDelegateLua = new Dictionary<GameObject, LuaFunction>();
+        m_dicOnPressDelegateLua = new Dictionary<GameObject, LuaFunction>();
+        m_dicOnDragBeginDelegateLua = new Dictionary<GameObject, LuaFunction>();
+        m_dicOnDragEndDelegateLua = new Dictionary<GameObject, LuaFunction>();
+        m_dicOnDraggingDelegateLua = new Dictionary<GameObject, LuaFunction>();
+        m_listOnMouseHitObjectLua = new List<LuaFunction>();
+        m_listOnMouseMoveLua = new List<LuaFunction>();
+        m_listOnMouseZoomLua = new List<LuaFunction>();
     }
 
     /// <summary>
@@ -79,6 +99,14 @@ public class InputManager : Singleton<InputManager>
         m_dicOnDraggingDelegate.Clear();
         m_listOnMouseHitObject.Clear();
         m_listOnMouseMove.Clear();
+
+        m_dicOnClickDelegateLua.Clear();
+        m_dicOnPressDelegateLua.Clear();
+        m_dicOnDragBeginDelegateLua.Clear();
+        m_dicOnDragEndDelegateLua.Clear();
+        m_dicOnDraggingDelegateLua.Clear();
+        m_listOnMouseHitObjectLua.Clear();
+        m_listOnMouseMoveLua.Clear();
     }
 
     public void SetEnable(bool enable)
@@ -124,6 +152,21 @@ public class InputManager : Singleton<InputManager>
         }
     }
 
+    public void AddOnClickEvent(GameObject go, LuaFunction onClickFunc)
+    {
+        if (go == null)
+            return;
+
+        if (m_dicOnClickDelegateLua.ContainsKey(go))
+        {
+            m_dicOnClickDelegateLua[go] = onClickFunc;
+        }
+        else
+        {
+            m_dicOnClickDelegateLua.Add(go, onClickFunc);
+        }
+    }
+
     /// <summary>
     /// 删除点击事件
     /// </summary>
@@ -137,6 +180,11 @@ public class InputManager : Singleton<InputManager>
         {
             m_dicOnClickDelegate.Remove(go);
         }
+
+        if (m_dicOnClickDelegateLua.ContainsKey(go))
+        {
+            m_dicOnClickDelegateLua.Remove(go);
+        }
     }
 
     /// <summary>
@@ -147,6 +195,11 @@ public class InputManager : Singleton<InputManager>
         if (m_dicOnClickDelegate.ContainsKey(go))
         {
             m_dicOnClickDelegate[go](go);
+        }
+
+        if (m_dicOnClickDelegateLua.ContainsKey(go))
+        {
+            m_dicOnClickDelegateLua[go].Call(go);
         }
     }
 
@@ -168,6 +221,21 @@ public class InputManager : Singleton<InputManager>
         }
     }
 
+    public void AddOnPressEvent(GameObject go, LuaFunction onPressFunc)
+    {
+        if (go == null)
+            return;
+
+        if (m_dicOnPressDelegateLua.ContainsKey(go))
+        {
+            m_dicOnPressDelegateLua[go] = onPressFunc;
+        }
+        else
+        {
+            m_dicOnPressDelegateLua.Add(go, onPressFunc);
+        }
+    }
+
     /// <summary>
     /// 移除点击事件
     /// </summary>
@@ -179,6 +247,11 @@ public class InputManager : Singleton<InputManager>
         if (m_dicOnPressDelegate.ContainsKey(go))
         {
             m_dicOnPressDelegate.Remove(go);
+        }
+
+        if (m_dicOnPressDelegateLua.ContainsKey(go))
+        {
+            m_dicOnPressDelegateLua.Remove(go);
         }
     }
 
@@ -192,21 +265,37 @@ public class InputManager : Singleton<InputManager>
             m_isMouseDown = true;
             m_mouseDownPosition = Input.mousePosition;
 
-            if (m_objDragging == null && m_dicOnDraggingDelegate.ContainsKey(go))
+            if (m_objDragging == null
+                && (m_dicOnDraggingDelegate.ContainsKey(go)
+                || m_dicOnDraggingDelegateLua.ContainsKey(go)))
             {
                 m_objDragging = go;
             }
-            if (m_objPress == null && m_dicOnPressDelegate.ContainsKey(go))
+            if (m_objPress == null)
             {
                 m_objPress = go;
-                m_dicOnPressDelegate[go](go, true);
+                if (m_dicOnPressDelegate.ContainsKey(go))
+                {
+                    m_dicOnPressDelegate[go](go, true);
+                }
+                if (m_dicOnPressDelegateLua.ContainsKey(go))
+                {
+                    m_dicOnPressDelegateLua[go].Call(go, true);
+                }
             }
         }
         else
         {
-            if (m_objPress != null && m_dicOnPressDelegate.ContainsKey(m_objPress))
+            if (m_objPress != null)
             {
-                m_dicOnPressDelegate[m_objPress](m_objPress, false);
+                if (m_dicOnPressDelegate.ContainsKey(m_objPress))
+                {
+                    m_dicOnPressDelegate[m_objPress](m_objPress, false);
+                }
+                if (m_dicOnPressDelegateLua.ContainsKey(m_objPress))
+                {
+                    m_dicOnPressDelegateLua[m_objPress].Call(m_objPress, false);
+                }
             }
 
             m_isMouseDown = false;
@@ -250,6 +339,37 @@ public class InputManager : Singleton<InputManager>
         }
     }
 
+    public void AddOnDragEvent(GameObject go, LuaFunction onDragBegin, LuaFunction onDragging, LuaFunction onDragEnd)
+    {
+        if (go == null)
+            return;
+
+        if (m_dicOnDragBeginDelegateLua.ContainsKey(go))
+        {
+            m_dicOnDragBeginDelegateLua[go] = onDragBegin;
+        }
+        else
+        {
+            m_dicOnDragBeginDelegateLua.Add(go, onDragBegin);
+        }
+        if (m_dicOnDraggingDelegateLua.ContainsKey(go))
+        {
+            m_dicOnDraggingDelegateLua[go] = onDragging;
+        }
+        else
+        {
+            m_dicOnDraggingDelegateLua.Add(go, onDragging);
+        }
+        if (m_dicOnDragEndDelegateLua.ContainsKey(go))
+        {
+            m_dicOnDragEndDelegateLua[go] = onDragEnd;
+        }
+        else
+        {
+            m_dicOnDragEndDelegateLua.Add(go, onDragEnd);
+        }
+    }
+
     /// <summary>
     /// 移除拖动事件
     /// </summary>
@@ -271,21 +391,39 @@ public class InputManager : Singleton<InputManager>
         {
             m_dicOnDragEndDelegate.Remove(go);
         }
+
+        if (m_dicOnDragBeginDelegateLua.ContainsKey(go))
+        {
+            m_dicOnDragBeginDelegateLua.Remove(go);
+        }
+        if (m_dicOnDraggingDelegateLua.ContainsKey(go))
+        {
+            m_dicOnDraggingDelegateLua.Remove(go);
+        }
+        if (m_dicOnDragEndDelegateLua.ContainsKey(go))
+        {
+            m_dicOnDragEndDelegateLua.Remove(go);
+        }
     }
 
     public void SetDragBegin(GameObject go)
     {
         if (Input.GetMouseButtonDown(0) || Input.GetMouseButton(0))
         {
-            if (m_dicOnDragBeginDelegate.ContainsKey(go))
+            if (m_dicOnDragBeginDelegate.ContainsKey(go)
+                || m_dicOnDragBeginDelegateLua.ContainsKey(go))
             {
                 m_objDragging = go;
-                m_dicOnDragBeginDelegate[go](go);
-
                 m_isMouseDown = true;
                 m_isMouseMove = true;
                 m_mouseDownPosition = Input.mousePosition;
                 m_posBackup = GetScenePosition();
+
+                if (m_dicOnDragBeginDelegate.ContainsKey(go))
+                    m_dicOnDragBeginDelegate[go](go);
+
+                if (m_dicOnDragBeginDelegateLua.ContainsKey(go))
+                    m_dicOnDragBeginDelegateLua[go].Call(go);
             }
         }
     }
@@ -301,6 +439,14 @@ public class InputManager : Singleton<InputManager>
         }
     }
 
+    public void AddOnMouseHitObjectEventLua(LuaFunction delegateFunc)
+    {
+        if (!m_listOnMouseHitObjectLua.Contains(delegateFunc))
+        {
+            m_listOnMouseHitObjectLua.Add(delegateFunc);
+        }
+    }
+
     /// <summary>
     /// 移除鼠标点击到物体事件
     /// </summary>
@@ -309,6 +455,14 @@ public class InputManager : Singleton<InputManager>
         if (m_listOnMouseHitObject.Contains(delegateFunc))
         {
             m_listOnMouseHitObject.Remove(delegateFunc);
+        }
+    }
+
+    public void RemoveOnMouseHitObjectEvent(LuaFunction delegateFunc)
+    {
+        if (m_listOnMouseHitObjectLua.Contains(delegateFunc))
+        {
+            m_listOnMouseHitObjectLua.Remove(delegateFunc);
         }
     }
 
@@ -323,6 +477,14 @@ public class InputManager : Singleton<InputManager>
         }
     }
 
+    public void AddOnMouseMoveEvent(LuaFunction delegateFunc)
+    {
+        if (!m_listOnMouseMoveLua.Contains(delegateFunc))
+        {
+            m_listOnMouseMoveLua.Add(delegateFunc);
+        }
+    }
+
     /// <summary>
     /// 移除鼠标移动事件
     /// </summary>
@@ -331,6 +493,14 @@ public class InputManager : Singleton<InputManager>
         if (m_listOnMouseMove.Contains(delegateFunc))
         {
             m_listOnMouseMove.Remove(delegateFunc);
+        }
+    }
+
+    public void RemoveOnMouseMoveEvent(LuaFunction delegateFunc)
+    {
+        if (m_listOnMouseMoveLua.Contains(delegateFunc))
+        {
+            m_listOnMouseMoveLua.Remove(delegateFunc);
         }
     }
 
@@ -345,6 +515,14 @@ public class InputManager : Singleton<InputManager>
         }
     }
 
+    public void AddOnMouseZoomEvent(LuaFunction delegateFunc)
+    {
+        if (!m_listOnMouseZoomLua.Contains(delegateFunc))
+        {
+            m_listOnMouseZoomLua.Add(delegateFunc);
+        }
+    }
+
     /// <summary>
     /// 移除鼠标缩放事件
     /// </summary>
@@ -353,6 +531,14 @@ public class InputManager : Singleton<InputManager>
         if (m_listOnMouseZoom.Contains(delegateFunc))
         {
             m_listOnMouseZoom.Remove(delegateFunc);
+        }
+    }
+
+    public void RemoveOnMouseZoomEvent(LuaFunction delegateFunc)
+    {
+        if (m_listOnMouseZoomLua.Contains(delegateFunc))
+        {
+            m_listOnMouseZoomLua.Remove(delegateFunc);
         }
     }
 
@@ -396,14 +582,22 @@ public class InputManager : Singleton<InputManager>
 
         if (m_isMouseMove && m_objDragging != null)
         {
-            m_dicOnDragEndDelegate[m_objDragging](m_objDragging);
+            if (m_dicOnDragEndDelegate.ContainsKey(m_objDragging))
+                m_dicOnDragEndDelegate[m_objDragging](m_objDragging);
+
+            if (m_dicOnDragEndDelegateLua.ContainsKey(m_objDragging))
+                m_dicOnDragEndDelegateLua[m_objDragging].Call(m_objDragging);
         }
         m_isMouseMove = false;
         m_objDragging = null;
 
         if (m_objPress != null)
         {
-            m_dicOnPressDelegate[m_objPress](m_objPress, false);
+            if (m_dicOnPressDelegate.ContainsKey(m_objPress))
+                m_dicOnPressDelegate[m_objPress](m_objPress, false);
+
+            if (m_dicOnPressDelegateLua.ContainsKey(m_objPress))
+                m_dicOnPressDelegateLua[m_objPress].Call(m_objPress, false);
         }
 	}
 
@@ -414,6 +608,11 @@ public class InputManager : Singleton<InputManager>
         {
             m_listOnMouseZoom[i](delta);
         }
+
+        for (int i = 0; i < m_listOnMouseZoomLua.Count; i++)
+        {
+            m_listOnMouseZoomLua[i].Call(delta);
+        }
     }
 
     //移动
@@ -422,6 +621,11 @@ public class InputManager : Singleton<InputManager>
         for (int i = 0; i < m_listOnMouseMove.Count; i++)
         {
             m_listOnMouseMove[i](delta);
+        }
+
+        for (int i = 0; i < m_listOnMouseMoveLua.Count; i++)
+        {
+            m_listOnMouseMoveLua[i].Call(delta);
         }
     }
 
@@ -508,7 +712,11 @@ public class InputManager : Singleton<InputManager>
 
                     if (m_objDragging != null)
                     {
-                        m_dicOnDragBeginDelegate[m_objDragging](m_objDragging);
+                        if (m_dicOnDragBeginDelegate.ContainsKey(m_objDragging))
+                            m_dicOnDragBeginDelegate[m_objDragging](m_objDragging);
+
+                        if (m_dicOnDragBeginDelegateLua.ContainsKey(m_objDragging))
+                            m_dicOnDragBeginDelegateLua[m_objDragging].Call(m_objDragging);
                     }
 				}
 				return;
@@ -523,10 +731,11 @@ public class InputManager : Singleton<InputManager>
             }
             else
             {
-                if (m_dicOnDraggingDelegate.ContainsKey(m_objDragging) && m_dicOnDraggingDelegate[m_objDragging] != null)
-                {
+                if (m_dicOnDraggingDelegate.ContainsKey(m_objDragging))
                     m_dicOnDraggingDelegate[m_objDragging](m_objDragging, -offset);
-                }
+
+                if (m_dicOnDraggingDelegateLua.ContainsKey(m_objDragging))
+                    m_dicOnDraggingDelegateLua[m_objDragging].Call(m_objDragging, -offset);
             }
 
             m_posBackup = GetScenePosition();
@@ -547,13 +756,22 @@ public class InputManager : Singleton<InputManager>
                     {
                         m_listOnMouseHitObject[i](go);
                     }
+
+                    for (int i = 0; i < m_listOnMouseHitObjectLua.Count; i++)
+                    {
+                        m_listOnMouseHitObjectLua[i].Call(go);
+                    }
                 }
             }
             else
             {
                 if (m_objDragging != null)
                 {
-                    m_dicOnDragEndDelegate[m_objDragging](m_objDragging);
+                    if (m_dicOnDragEndDelegate.ContainsKey(m_objDragging))
+                        m_dicOnDragEndDelegate[m_objDragging](m_objDragging);
+
+                    if (m_dicOnDragEndDelegateLua.ContainsKey(m_objDragging))
+                        m_dicOnDragEndDelegateLua[m_objDragging].Call(m_objDragging);
                 }
             }
 

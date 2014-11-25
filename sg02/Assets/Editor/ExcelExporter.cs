@@ -7,7 +7,7 @@ public class ExcelExporter
 {
     private static readonly string PathExcel = @"Assets\Resources\Config\Excel";
 
-    [MenuItem("Tools/Excel 信息导出")]
+    [MenuItem("Tools/Excel 配置表信息导出")]
 	static void Execute()
     {
         bool flag = false;

@@ -30,4 +30,11 @@ public class TestLuaFunctionType
             Debug.Log(rets[0]);
         }
     }
+
+    public void CallDelegate(LuaFunction func)
+    {
+        object[] rets = func.Call(testObj);
+        if (rets != null && rets.Length > 0)
+            Debug.Log(rets[0]);
+    }
 }

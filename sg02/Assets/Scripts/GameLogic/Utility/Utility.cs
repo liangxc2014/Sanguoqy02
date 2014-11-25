@@ -8,7 +8,7 @@ using System;
 using System.Reflection;
 using System.Linq;
 
-public class Utility 
+public static class Utility 
 {	
 	/// <summary>
 	/// 获取本地IP地址;
@@ -61,6 +61,9 @@ public class Utility
         return key;
     }
 
+    /// <summary>
+    /// 根据字符串找出一个Vector3
+    /// </summary>
     public static Vector3 GetPoint(string pointString)
     {
         string[] pointInfo = pointString.Split(',');
@@ -85,5 +88,15 @@ public class Utility
         }
 
         return point;
+    }
+
+    /// <summary>
+    /// 因为Unity5已经去掉了AddComponent(string)函数,所以添加一个辅助函数
+    /// </summary>
+    public static MonoBehaviour AddComponent(GameObject go, string componentName)
+    {
+        Assembly assembly = Assembly.GetCallingAssembly();
+        Type type = assembly.GetType(componentName);
+        return (MonoBehaviour)go.AddComponent(type);
     }
 }

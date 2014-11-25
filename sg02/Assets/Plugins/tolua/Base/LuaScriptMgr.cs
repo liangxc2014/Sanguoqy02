@@ -989,6 +989,18 @@ public class LuaScriptMgr
         {
             return true;
         }
+        else if (t == typeof(LuaFunction))
+        {
+            return luaType == LuaTypes.LUA_TFUNCTION;
+        }
+        else if (t == typeof(LuaTable))
+        {
+            return luaType == LuaTypes.LUA_TTABLE;
+        }
+        else if (t == typeof(LuaUserData))
+        {
+            return luaType == LuaTypes.LUA_TUSERDATA;
+        }
         else if (t.IsInterface || t.IsClass || t.IsValueType)
         {
             if (luaType != LuaTypes.LUA_TUSERDATA)
@@ -1006,18 +1018,6 @@ public class LuaScriptMgr
                 object obj = GetLuaObject(L, pos);
                 return obj.GetType() == t || t.IsAssignableFrom(obj.GetType());
             }
-        }
-        else if (t == typeof(LuaFunction))
-        {
-            return luaType == LuaTypes.LUA_TFUNCTION;        
-        }
-        else if (t == typeof(LuaTable))
-        {
-            return luaType == LuaTypes.LUA_TTABLE;
-        }
-        else if (t == typeof(LuaUserData))
-        {
-            return luaType == LuaTypes.LUA_TUSERDATA;
         }
 
         return false;

@@ -26,7 +26,11 @@ public class TestLua : MonoBehaviour
         luaMgr.DoFile("Lua/UI/StartMenu/StartMenuControl.lua");
         luaMgr.DoFile("Lua/UI/StartMenu/StartMenuView.lua");
 
-        luaMgr.CallLuaFunction("StartMenuControl.Initialize", gameObject);
+        luaMgr.CallLuaFunction("StartMenuControl.Initialize", GameObject.Find("UI Root/StartMenu(Clone)"));
+
+        Type t = typeof(XMLLoader<XMLDataArms>);
+        Debug.Log(t.IsGenericType);
+        Debug.Log(t.Name);
 	}
 	
 	// Update is called once per frame

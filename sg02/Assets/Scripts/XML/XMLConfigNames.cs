@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class XMLConfigPath
+public static class XMLConfigPath
 {
     public static readonly string GlobalConfig  = "Config/XML/GlobalConfig";
 
@@ -17,4 +17,6 @@ public class XMLConfigPath
 
     public static readonly string PathInfo      = "Config/XML/PathInfo";
     public static readonly string CityPoints    = "Config/XML/CityPoints";
+
+    public static readonly string LuaControlView = "Config/XML/LuaControlView";
 }

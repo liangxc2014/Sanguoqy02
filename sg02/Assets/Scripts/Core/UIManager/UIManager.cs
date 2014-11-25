@@ -49,6 +49,10 @@ public class UIManager : Singleton<UIManager>
 
         go.SetActive(true);
 
+        string[] split = name.Split('/');
+        if (split.Length > 0)
+            go.name = split[split.Length - 1];
+
         m_dicUIView.Add(name, go);
 
         return go;
