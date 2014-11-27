@@ -180,7 +180,7 @@ public static class ToLua
         methods = list.ToArray();
 
         Debugger.Log("Begin Generate lua Wrap for class {0}\r\n", className);
-        sb.AppendFormat("public class {0}Wrap\r\n", wrapClassName);
+        sb.AppendFormat("public class Wrap{0}\r\n", wrapClassName);
         sb.AppendLine("{");        
         
         AddRegVar();
@@ -199,7 +199,7 @@ public static class ToLua
 
     static void SaveFile()
     {
-        string file = Application.dataPath + "/Scripts/Lua/LuaWrap/" + wrapClassName + "Wrap.cs";
+        string file = Application.dataPath + "/Scripts/Lua/LuaWrap/Wrap" + wrapClassName + ".cs";
 
         using (StreamWriter textWriter = new StreamWriter(file, false, Encoding.UTF8))
         {            
@@ -1951,7 +1951,7 @@ public static class ToLua
     {
         fields = type.GetFields(BindingFlags.GetField | BindingFlags.Public | BindingFlags.Static);
         //List<FieldInfo> list = new List<FieldInfo>(fields);
-        sb.AppendFormat("public class {0}Wrap\r\n", wrapClassName);
+        sb.AppendFormat("public class Wrap{0}\r\n", wrapClassName);
         sb.AppendLine("{");    
         sb.AppendLine("\tstatic LuaEnum[] enums = new LuaEnum[]");
         sb.AppendLine("\t{");

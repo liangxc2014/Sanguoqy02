@@ -51,4 +51,9 @@ public static class GlobalConfig
     /// 大地图大小
     /// </summary>
     public static Vector2 MapSize { get; private set; }
+
+    /// <summary>
+    /// 字体按钮的间距
+    /// </summary>
+    public static int FontButtonsVSpace { get { return -30; } }
 }

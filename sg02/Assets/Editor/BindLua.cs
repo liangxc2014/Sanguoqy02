@@ -83,6 +83,10 @@ public static class LuaBinding
         new BindType("AnimationClip", typeof(AnimationClip), false, "Motion"),
         */
 
+        new BindType("List_int", "List<int>", typeof(List<int>), false, null),
+        new BindType("List_string", "List<string>", typeof(List<string>), false, null),
+        new BindType("Dictionary", "Dictionary<object, object>", typeof(Dictionary<object,object>), false, null),
+
         // Core
         new BindType("CallBack", typeof(CallBack), false, null),
         new BindType("IState", typeof(IState), false, null),
@@ -117,6 +121,9 @@ public static class LuaBinding
 
         // GameLogic/Utility
         new BindType("Utility", typeof(Utility), true, null),
+
+        // UI
+        new BindType("UIButton", typeof(UIButton), true, "MonoBehaviour"),
 
         // XML
         new BindType("XMLConfigPath", typeof(XMLConfigPath), true, null),
@@ -194,7 +201,7 @@ public static class LuaBinding
         */
         for (int i = 0; i < binds.Length; i++)
         {
-            sb.AppendFormat("\t\t{0}Wrap.Register(L);\r\n", binds[i].wrapName);
+            sb.AppendFormat("\t\tWrap{0}.Register(L);\r\n", binds[i].wrapName);
         }
 
         sb.AppendLine("\t}");

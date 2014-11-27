@@ -296,7 +296,12 @@ namespace LuaInterface
                     LuaDLL.lua_setfenv(L, -2);
                 }
 
-                if (LuaDLL.lua_pcall(L, 0, -1, -2) == 0)
+                //Test添加文件名参数作为模块名字
+                string moduleName = Path.GetFileNameWithoutExtension(fileName);
+                translator.push(L, moduleName);
+
+                //if (LuaDLL.lua_pcall(L, 0, -1, -2) == 0)
+                if (LuaDLL.lua_pcall(L, 1, -1, -2) == 0)
                 {
                     object[] results = translator.popValues(L, oldTop);
                     LuaDLL.lua_pop(L, 1);
@@ -530,6 +535,7 @@ namespace LuaInterface
         public LuaFunction GetFunction(string fullPath)
         {
             object obj=this[fullPath];
+            if (obj == null) return null;
             return (obj is LuaCSFunction ? new LuaFunction((LuaCSFunction)obj,this) : (LuaFunction)obj);
         }
         /*

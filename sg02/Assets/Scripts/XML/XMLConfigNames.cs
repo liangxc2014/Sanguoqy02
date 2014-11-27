@@ -19,4 +19,5 @@ public static class XMLConfigPath
     public static readonly string CityPoints    = "Config/XML/CityPoints";
 
     public static readonly string LuaControlView = "Config/XML/LuaControlView";
+    public static readonly string LuaScripts     = "Config/XML/LuaScripts";
 }

@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <RECORD Path="Lua/TestLua.lua" />
+  <RECORD Path="Lua/UI/LuaFunctionHelper.lua" />
+  <RECORD Path="Lua/UI/UINamesConfig.lua" />
+  <RECORD Path="Lua/UI/StartMenu/StartMenuView.lua" />
+  <RECORD Path="Lua/UI/StartMenu/StartMenuControl.lua" />
+  <RECORD Path="Lua/UI/InternalAffairs/InternalAffairsControl.lua" />
+  <RECORD Path="Lua/UI/InternalAffairs/InternalAffairsView.lua" />
+  <RECORD Path="Lua/UI/SelectKing/SelectKingControl.lua" />
+  <RECORD Path="Lua/UI/SelectKing/SelectKingView.lua" />
+  <RECORD Path="Lua/UI/SelectPeriod/SelectPeriodControl.lua" />
+  <RECORD Path="Lua/UI/SelectPeriod/SelectPeriodView.lua" />
+  <RECORD Path="Lua/UI/LoadgameMenu/LoadgameMenuControl.lua" />
+  <RECORD Path="Lua/UI/LoadgameMenu/LoadgameMenuView.lua" />
+</root>

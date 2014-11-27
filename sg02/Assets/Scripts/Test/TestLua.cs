@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System;
+using System.Collections.Generic;
 
 public class TestLua : MonoBehaviour 
 {
@@ -8,29 +9,37 @@ public class TestLua : MonoBehaviour
     LuaScriptMgr luaMgr;
     Timer timer;
 
-    void Awake ()
-    {
-        timer = gameObject.AddComponent<Timer>();
-
-        luaMgr = new LuaScriptMgr();
-        luaMgr.Start();
-
-        LuaWapBinder.Bind(luaMgr.lua.L);
-    }
+//     void Awake ()
+//     {
+// 
+//         luaMgr = new LuaScriptMgr();
+//         luaMgr.Start();
+// 
+//         LuaWapBinder.Bind(luaMgr.lua.L);
+//     }
 
 	// Use this for initialization
 	void Start () 
     {
+        timer = gameObject.AddComponent<Timer>();
+        luaMgr = GamePublic.Instance.LuaManager;
+
         //luaMgr.DoFile("Lua/Base/Test.Lua");
 
-        luaMgr.DoFile("Lua/UI/StartMenu/StartMenuControl.lua");
-        luaMgr.DoFile("Lua/UI/StartMenu/StartMenuView.lua");
+//         luaMgr.DoFile("Lua/UI/StartMenu/StartMenuControl.lua");
+//         luaMgr.DoFile("Lua/UI/StartMenu/StartMenuView.lua");
+// 
+//         luaMgr.CallLuaFunction("StartMenuControl.Initialize", GameObject.Find("UI Root/StartMenu(Clone)"));
+// 
+//         Type t = typeof(XMLLoader<XMLDataArms>);
+//         Debug.Log(t.IsGenericType);
+//         Debug.Log(t.Name);
 
-        luaMgr.CallLuaFunction("StartMenuControl.Initialize", GameObject.Find("UI Root/StartMenu(Clone)"));
+        List<int> list = new List<int>();
+        list.Add(1);
+        list.Add(2);
 
-        Type t = typeof(XMLLoader<XMLDataArms>);
-        Debug.Log(t.IsGenericType);
-        Debug.Log(t.Name);
+        luaMgr.CallLuaFunction("TestLua.TestList", list);
 	}
 	
 	// Update is called once per frame

@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 
 public class GamePublic : Singleton<GamePublic>
 {
@@ -22,7 +23,24 @@ public class GamePublic : Singleton<GamePublic>
     private LuaScriptMgr m_luaMgr;
     public LuaScriptMgr LuaManager { get { return m_luaMgr; } }
 
+    /// <summary>
+    /// LUA 文件
+    /// </summary>
+    private Dictionary<string, string> m_dicLuaFiles;
+    public Dictionary<string, string> LuaFiles { get { return m_dicLuaFiles; } }
 
+    /// <summary>
+    /// 历史时期列表
+    /// </summary>
+    private List<string> m_listPeriods;
+    public List<string> PeriodsList { get { return m_listPeriods; } }
+
+
+    // ------------------------------------------------------- 华丽的分割线 --------------------------------------------------
+
+    /// <summary>
+    /// 初始化函数
+    /// </summary>
     public override void Initialize() 
     {
         m_gameStatesManager = new GameStatesManager();
@@ -30,6 +48,10 @@ public class GamePublic : Singleton<GamePublic>
 
         m_sceneCamera = GameObject.FindGameObjectWithTag("SceneCamera").GetComponent<Camera>();
         
+        InitLuaManager();
+        LoadLuaFiles();
+
+        InitPeriodList();
     }
 
     public override void UnInitialize() 
@@ -37,11 +59,47 @@ public class GamePublic : Singleton<GamePublic>
         
     }
 
+    /// <summary>
+    /// 初始化LUA管理器
+    /// </summary>
     private void InitLuaManager()
     {
         m_luaMgr = new LuaScriptMgr();
         m_luaMgr.Start();
 
         LuaWapBinder.Bind(m_luaMgr.lua.L);
+    }
+
+    /// <summary>
+    /// 加载所有的LUA文件
+    /// </summary>
+    private void LoadLuaFiles()
+    {
+        m_dicLuaFiles = new Dictionary<string, string>();
+
+        IEnumerator enumerator = XMLManager.LuaScripts.Data.Keys.GetEnumerator();
+        while (enumerator.MoveNext())
+        {
+            string path = (string)enumerator.Current;
+            m_luaMgr.DoFile(path);
+
+            string moduleName = Path.GetFileNameWithoutExtension(path);
+            m_dicLuaFiles.Add(moduleName, path);
+        }
+    }
+
+    /// <summary>
+    /// 初始化历史时期列表
+    /// </summary>
+    private void InitPeriodList()
+    {
+        m_listPeriods = new List<string>();
+
+        IEnumerator enumerator = XMLManager.Period.Data.Values.GetEnumerator();
+        while (enumerator.MoveNext())
+        {
+            XMLDataPeriod info = (XMLDataPeriod)enumerator.Current;
+            m_listPeriods.Add(info.Name);
+        }
     }
 }

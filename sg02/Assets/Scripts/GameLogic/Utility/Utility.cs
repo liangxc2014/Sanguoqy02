@@ -99,4 +99,26 @@ public static class Utility
         Type type = assembly.GetType(componentName);
         return (MonoBehaviour)go.AddComponent(type);
     }
+
+    /// <summary>
+    /// 添加一个子物体,仿NGUI
+    /// </summary>
+    public static GameObject AddChild(GameObject parent, GameObject prefab)
+    {
+        GameObject go = GameObject.Instantiate(prefab) as GameObject;
+        go.transform.parent = parent.transform;
+
+        go.transform.localPosition = Vector3.zero;
+        go.transform.localEulerAngles = Vector3.zero;
+        go.transform.localScale = Vector3.one;
+
+        go.layer = parent.layer;
+        Transform[] child = go.GetComponentsInChildren<Transform>();
+        for (int i = 0; i < child.Length; i++)
+        {
+            child[i].gameObject.layer = parent.layer;
+        }
+
+        return go;
+    }
 }

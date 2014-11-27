@@ -17,6 +17,7 @@ public static class XMLManager
     public static XMLLoader<XMLDataCityPoints> CityPoints;
 
     public static XMLLoader<XMLDataLuaControlView> LuaControlView;
+    public static XMLLoader<XMLDataLuaScripts> LuaScripts;
 
     public static void LoadConfigs()
 	{
@@ -34,5 +35,6 @@ public static class XMLManager
         CityPoints = new XMLLoader<XMLDataCityPoints>(XMLConfigPath.CityPoints);
 
         LuaControlView = new XMLLoader<XMLDataLuaControlView>(XMLConfigPath.LuaControlView, "Name");
+        LuaScripts = new XMLLoader<XMLDataLuaScripts>(XMLConfigPath.LuaScripts, "Path");
 	}
 }

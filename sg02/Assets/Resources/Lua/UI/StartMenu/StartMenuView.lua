@@ -1,5 +1,4 @@
-module("StartMenuView", package.seeall);
-
+module(..., package.seeall);
 
 m_btnStartGame = nil
 m_btnLoadGame = nil

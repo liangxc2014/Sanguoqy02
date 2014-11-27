@@ -40,7 +40,8 @@ public sealed partial class Export
                 m_sheet = sheet;
                 if (m_sheet.RowCount < 3)
                 {
-                    Console.WriteLine("文件:" + m_fileName + " 格式错误!");
+                    //Console.WriteLine("文件:" + m_fileName + " 格式错误!");
+                    UnityEngine.Debug.LogError("文件:" + m_fileName + " 格式错误!");
                     return;
                 }
 
@@ -64,7 +65,8 @@ public sealed partial class Export
                         && string.Compare(m_listType[i], "int", true) != 0
                         && string.Compare(m_listType[i], "float", true) != 0)
                     {
-                        Console.WriteLine("文件:" + m_fileName + "第 " + i + " 列元素的类型错误! string int float");
+                        //Console.WriteLine("文件:" + m_fileName + "第 " + i + " 列元素的类型错误! string int float");
+                        UnityEngine.Debug.LogError("文件:" + m_fileName + "第 " + i + " 列元素的类型错误! string int float");
                         return;
                     }
                 }
