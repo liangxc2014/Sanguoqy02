@@ -1,13 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class test : MonoBehaviour {
+public class StateBase : MonoBehaviour {
 
 	// Use this for initialization
-	void Start () 
-    {
-        
-        
+	void Start () {
+	
 	}
 	
 	// Update is called once per frame

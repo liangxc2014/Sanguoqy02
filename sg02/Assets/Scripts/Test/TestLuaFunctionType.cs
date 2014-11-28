@@ -12,7 +12,7 @@ public class TestLuaFunctionType
 	public void LuaFunctionType(string methodName, GameObject args)
     {
         //Debug.Log("LuaFunctionType" + obj.GetType().Name);
-        GameObject.Find("TestLua").GetComponent<TestLua>().CallFunction(methodName, args);
+        //GameObject.Find("TestLua").GetComponent<TestLua>().CallFunction(methodName, args);
 
         testObj = args;
     }

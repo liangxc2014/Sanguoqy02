@@ -83,9 +83,14 @@ public static class LuaBinding
         new BindType("AnimationClip", typeof(AnimationClip), false, "Motion"),
         */
 
+        new BindType("SpriteRenderer", typeof(UnityEngine.SpriteRenderer), false, null),
+        new BindType("UIText", typeof(UnityEngine.UI.Text), false, null),
+
         new BindType("List_int", "List<int>", typeof(List<int>), false, null),
         new BindType("List_string", "List<string>", typeof(List<string>), false, null),
         new BindType("Dictionary", "Dictionary<object, object>", typeof(Dictionary<object,object>), false, null),
+        new BindType("DictEnumerator", "Dictionary<object,object>.Enumerator", typeof(Dictionary<object,object>.Enumerator), false, null),
+        
 
         // Core
         new BindType("CallBack", typeof(CallBack), false, null),
@@ -101,9 +106,21 @@ public static class LuaBinding
         new BindType("TimerManager", typeof(TimerManager), false, null),
         new BindType("UIManager", typeof(UIManager), false, null),
 
+        new BindType("Entity", typeof(Entity), false, null),
+        new BindType("FSMBase", typeof(FSMBase), false, null),
+        new BindType("StateBase", typeof(StateBase), false, null),
+        new BindType("AnimationComponent", typeof(AnimationComponent), false, null),
+        new BindType("MovmentComponent", typeof(MovmentComponent), false, null),
+
         // GameLogic/Common
         new BindType("GamePublic", typeof(GamePublic), false, null),
         new BindType("GlobalConfig", typeof(GlobalConfig), true, null),
+
+        // GameLogic/DataManager
+        new BindType("DataManager", typeof(DataManager), false, null),
+        new BindType("KingsInfo", typeof(KingsInfo), false, null),
+        new BindType("CityInfo", typeof(CityInfo), false, null),
+        new BindType("GeneralInfo", typeof(GeneralInfo), false, null),
 
         // GameLogic/GameStates
         new BindType("GameStatesManager", typeof(GameStatesManager), false, "StateManager"),

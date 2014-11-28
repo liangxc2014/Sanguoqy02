@@ -121,4 +121,27 @@ public static class Utility
 
         return go;
     }
+
+    /// <summary>
+    /// 因为配置表里武将名字有括号,所以要把括号去掉
+    /// </summary>
+    public static string GeneralName(string name)
+    {
+        string generalName = name.Trim();
+
+        int index = generalName.IndexOf("（");
+        if (index < 0)
+        {
+            index = generalName.IndexOf("(");
+        }
+
+        if (index < 0)
+        {
+            return generalName;
+        }
+        else
+        {
+            return generalName.Substring(0, index);
+        }
+    }
 }

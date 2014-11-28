@@ -35,6 +35,16 @@ public class GamePublic : Singleton<GamePublic>
     private List<string> m_listPeriods;
     public List<string> PeriodsList { get { return m_listPeriods; } }
 
+    /// <summary>
+    /// 当前选择的历史时期
+    /// </summary>
+    public int CurrentPeriod { get; set; }
+
+    /// <summary>
+    /// 数据管理
+    /// </summary>
+    private DataManager m_datamanager;
+    public DataManager DataManager { get { return m_datamanager; } }
 
     // ------------------------------------------------------- 华丽的分割线 --------------------------------------------------
 
@@ -47,11 +57,13 @@ public class GamePublic : Singleton<GamePublic>
         m_gameStatesManager.Initialize();
 
         m_sceneCamera = GameObject.FindGameObjectWithTag("SceneCamera").GetComponent<Camera>();
+
+        m_datamanager = new DataManager();
         
         InitLuaManager();
-        LoadLuaFiles();
-
         InitPeriodList();
+
+        LoadLuaFiles();
     }
 
     public override void UnInitialize() 
@@ -71,6 +83,21 @@ public class GamePublic : Singleton<GamePublic>
     }
 
     /// <summary>
+    /// 初始化历史时期列表
+    /// </summary>
+    private void InitPeriodList()
+    {
+        m_listPeriods = new List<string>();
+
+        IEnumerator enumerator = XMLManager.Period.Data.Values.GetEnumerator();
+        while (enumerator.MoveNext())
+        {
+            XMLDataPeriod info = (XMLDataPeriod)enumerator.Current;
+            m_listPeriods.Add(info.Name);
+        }
+    }
+
+    /// <summary>
     /// 加载所有的LUA文件
     /// </summary>
     private void LoadLuaFiles()
@@ -85,21 +112,6 @@ public class GamePublic : Singleton<GamePublic>
 
             string moduleName = Path.GetFileNameWithoutExtension(path);
             m_dicLuaFiles.Add(moduleName, path);
-        }
-    }
-
-    /// <summary>
-    /// 初始化历史时期列表
-    /// </summary>
-    private void InitPeriodList()
-    {
-        m_listPeriods = new List<string>();
-
-        IEnumerator enumerator = XMLManager.Period.Data.Values.GetEnumerator();
-        while (enumerator.MoveNext())
-        {
-            XMLDataPeriod info = (XMLDataPeriod)enumerator.Current;
-            m_listPeriods.Add(info.Name);
         }
     }
 }
