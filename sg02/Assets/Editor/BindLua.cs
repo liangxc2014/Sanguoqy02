@@ -82,15 +82,15 @@ public static class LuaBinding
         new BindType("Motion", typeof(Motion), false, null),
         new BindType("AnimationClip", typeof(AnimationClip), false, "Motion"),
         */
-
+        /*
         new BindType("SpriteRenderer", typeof(UnityEngine.SpriteRenderer), false, null),
-        new BindType("UIText", typeof(UnityEngine.UI.Text), false, null),
+        new BindType("Text", typeof(UnityEngine.UI.Text), false, null),
 
         new BindType("List_int", "List<int>", typeof(List<int>), false, null),
         new BindType("List_string", "List<string>", typeof(List<string>), false, null),
         new BindType("Dictionary", "Dictionary<object, object>", typeof(Dictionary<object,object>), false, null),
         new BindType("DictEnumerator", "Dictionary<object,object>.Enumerator", typeof(Dictionary<object,object>.Enumerator), false, null),
-        
+        */
 
         // Core
         new BindType("CallBack", typeof(CallBack), false, null),
@@ -118,7 +118,7 @@ public static class LuaBinding
 
         // GameLogic/DataManager
         new BindType("DataManager", typeof(DataManager), false, null),
-        new BindType("KingsInfo", typeof(KingsInfo), false, null),
+        new BindType("KingInfo", typeof(KingInfo), false, null),
         new BindType("CityInfo", typeof(CityInfo), false, null),
         new BindType("GeneralInfo", typeof(GeneralInfo), false, null),
 
@@ -127,7 +127,7 @@ public static class LuaBinding
         new BindType("InternalAffairsState", typeof(InternalAffairsState), false, "IState"),
         new BindType("LoadingState", typeof(LoadingState), false, "IState"),
         new BindType("SelectKingState", typeof(SelectKingState), false, "IState"),
-        new BindType("SelectPeriodState", typeof(SelectPeriodState), false, "IState"),
+        new BindType("SelectTimesState", typeof(SelectTimesState), false, "IState"),
         new BindType("StartMenuState", typeof(StartMenuState), false, "IState"),
 
         // GameLogic/MapCamera

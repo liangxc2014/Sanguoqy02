@@ -13,6 +13,6 @@ public class XMLDataKings
 	/// <summary>
 	/// »Æ½íÖ®ÂÒ
 	/// </summary>
-	public int[] Period;
+	public int[] Times;
 }
 

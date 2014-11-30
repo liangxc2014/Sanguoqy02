@@ -1,206 +1,206 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <root>
   <RECORD ID="1" Name="曹操">
-    <Period>0</Period>
-    <Period>1</Period>
-    <Period>1</Period>
-    <Period>1</Period>
-    <Period>1</Period>
+    <Times>0</Times>
+    <Times>1</Times>
+    <Times>1</Times>
+    <Times>1</Times>
+    <Times>1</Times>
   </RECORD>
   <RECORD ID="2" Name="刘备">
-    <Period>0</Period>
-    <Period>1</Period>
-    <Period>1</Period>
-    <Period>1</Period>
-    <Period>1</Period>
+    <Times>0</Times>
+    <Times>1</Times>
+    <Times>1</Times>
+    <Times>1</Times>
+    <Times>1</Times>
   </RECORD>
   <RECORD ID="3" Name="孙权">
-    <Period>0</Period>
-    <Period>0</Period>
-    <Period>1</Period>
-    <Period>1</Period>
-    <Period>1</Period>
+    <Times>0</Times>
+    <Times>0</Times>
+    <Times>1</Times>
+    <Times>1</Times>
+    <Times>1</Times>
   </RECORD>
   <RECORD ID="4" Name="孙坚">
-    <Period>1</Period>
-    <Period>1</Period>
-    <Period>0</Period>
-    <Period>0</Period>
-    <Period>0</Period>
+    <Times>1</Times>
+    <Times>1</Times>
+    <Times>0</Times>
+    <Times>0</Times>
+    <Times>0</Times>
   </RECORD>
   <RECORD ID="5" Name="董卓">
-    <Period>1</Period>
-    <Period>1</Period>
-    <Period>0</Period>
-    <Period>0</Period>
-    <Period>0</Period>
+    <Times>1</Times>
+    <Times>1</Times>
+    <Times>0</Times>
+    <Times>0</Times>
+    <Times>0</Times>
   </RECORD>
   <RECORD ID="6" Name="袁绍">
-    <Period>0</Period>
-    <Period>1</Period>
-    <Period>1</Period>
-    <Period>0</Period>
-    <Period>0</Period>
+    <Times>0</Times>
+    <Times>1</Times>
+    <Times>1</Times>
+    <Times>0</Times>
+    <Times>0</Times>
   </RECORD>
   <RECORD ID="7" Name="袁术">
-    <Period>0</Period>
-    <Period>1</Period>
-    <Period>0</Period>
-    <Period>0</Period>
-    <Period>0</Period>
+    <Times>0</Times>
+    <Times>1</Times>
+    <Times>0</Times>
+    <Times>0</Times>
+    <Times>0</Times>
   </RECORD>
   <RECORD ID="8" Name="马腾">
-    <Period>0</Period>
-    <Period>1</Period>
-    <Period>1</Period>
-    <Period>1</Period>
-    <Period>0</Period>
+    <Times>0</Times>
+    <Times>1</Times>
+    <Times>1</Times>
+    <Times>1</Times>
+    <Times>0</Times>
   </RECORD>
   <RECORD ID="9" Name="孟获">
-    <Period>0</Period>
-    <Period>0</Period>
-    <Period>0</Period>
-    <Period>1</Period>
-    <Period>1</Period>
+    <Times>0</Times>
+    <Times>0</Times>
+    <Times>0</Times>
+    <Times>1</Times>
+    <Times>1</Times>
   </RECORD>
   <RECORD ID="10" Name="刘表">
-    <Period>0</Period>
-    <Period>1</Period>
-    <Period>1</Period>
-    <Period>0</Period>
-    <Period>0</Period>
+    <Times>0</Times>
+    <Times>1</Times>
+    <Times>1</Times>
+    <Times>0</Times>
+    <Times>0</Times>
   </RECORD>
   <RECORD ID="11" Name="王朗">
-    <Period>0</Period>
-    <Period>1</Period>
-    <Period>0</Period>
-    <Period>0</Period>
-    <Period>0</Period>
+    <Times>0</Times>
+    <Times>1</Times>
+    <Times>0</Times>
+    <Times>0</Times>
+    <Times>0</Times>
   </RECORD>
   <RECORD ID="12" Name="刘璋">
-    <Period>0</Period>
-    <Period>0</Period>
-    <Period>1</Period>
-    <Period>1</Period>
-    <Period>0</Period>
+    <Times>0</Times>
+    <Times>0</Times>
+    <Times>1</Times>
+    <Times>1</Times>
+    <Times>0</Times>
   </RECORD>
   <RECORD ID="13" Name="张鲁">
-    <Period>0</Period>
-    <Period>0</Period>
-    <Period>1</Period>
-    <Period>0</Period>
-    <Period>0</Period>
+    <Times>0</Times>
+    <Times>0</Times>
+    <Times>1</Times>
+    <Times>0</Times>
+    <Times>0</Times>
   </RECORD>
   <RECORD ID="14" Name="金旋">
-    <Period>0</Period>
-    <Period>0</Period>
-    <Period>0</Period>
-    <Period>1</Period>
-    <Period>0</Period>
+    <Times>0</Times>
+    <Times>0</Times>
+    <Times>0</Times>
+    <Times>1</Times>
+    <Times>0</Times>
   </RECORD>
   <RECORD ID="15" Name="彻里吉">
-    <Period>0</Period>
-    <Period>0</Period>
-    <Period>0</Period>
-    <Period>0</Period>
-    <Period>1</Period>
+    <Times>0</Times>
+    <Times>0</Times>
+    <Times>0</Times>
+    <Times>0</Times>
+    <Times>1</Times>
   </RECORD>
   <RECORD ID="16" Name="何进">
-    <Period>1</Period>
-    <Period>0</Period>
-    <Period>0</Period>
-    <Period>0</Period>
-    <Period>0</Period>
+    <Times>1</Times>
+    <Times>0</Times>
+    <Times>0</Times>
+    <Times>0</Times>
+    <Times>0</Times>
   </RECORD>
   <RECORD ID="17" Name="张角">
-    <Period>1</Period>
-    <Period>0</Period>
-    <Period>0</Period>
-    <Period>0</Period>
-    <Period>0</Period>
+    <Times>1</Times>
+    <Times>0</Times>
+    <Times>0</Times>
+    <Times>0</Times>
+    <Times>0</Times>
   </RECORD>
   <RECORD ID="18" Name="丁原">
-    <Period>1</Period>
-    <Period>0</Period>
-    <Period>0</Period>
-    <Period>0</Period>
-    <Period>0</Period>
+    <Times>1</Times>
+    <Times>0</Times>
+    <Times>0</Times>
+    <Times>0</Times>
+    <Times>0</Times>
   </RECORD>
   <RECORD ID="19" Name="公孙瓒">
-    <Period>1</Period>
-    <Period>1</Period>
-    <Period>0</Period>
-    <Period>0</Period>
-    <Period>0</Period>
+    <Times>1</Times>
+    <Times>1</Times>
+    <Times>0</Times>
+    <Times>0</Times>
+    <Times>0</Times>
   </RECORD>
   <RECORD ID="20" Name="刘焉">
-    <Period>1</Period>
-    <Period>0</Period>
-    <Period>0</Period>
-    <Period>0</Period>
-    <Period>0</Period>
+    <Times>1</Times>
+    <Times>0</Times>
+    <Times>0</Times>
+    <Times>0</Times>
+    <Times>0</Times>
   </RECORD>
   <RECORD ID="21" Name="韩馥">
-    <Period>1</Period>
-    <Period>1</Period>
-    <Period>0</Period>
-    <Period>0</Period>
-    <Period>0</Period>
+    <Times>1</Times>
+    <Times>1</Times>
+    <Times>0</Times>
+    <Times>0</Times>
+    <Times>0</Times>
   </RECORD>
   <RECORD ID="22" Name="龚景">
-    <Period>1</Period>
-    <Period>0</Period>
-    <Period>0</Period>
-    <Period>0</Period>
-    <Period>0</Period>
+    <Times>1</Times>
+    <Times>0</Times>
+    <Times>0</Times>
+    <Times>0</Times>
+    <Times>0</Times>
   </RECORD>
   <RECORD ID="23" Name="乔玄">
-    <Period>1</Period>
-    <Period>0</Period>
-    <Period>0</Period>
-    <Period>0</Period>
-    <Period>0</Period>
+    <Times>1</Times>
+    <Times>0</Times>
+    <Times>0</Times>
+    <Times>0</Times>
+    <Times>0</Times>
   </RECORD>
   <RECORD ID="24" Name="陶谦">
-    <Period>1</Period>
-    <Period>1</Period>
-    <Period>0</Period>
-    <Period>0</Period>
-    <Period>0</Period>
+    <Times>1</Times>
+    <Times>1</Times>
+    <Times>0</Times>
+    <Times>0</Times>
+    <Times>0</Times>
   </RECORD>
   <RECORD ID="25" Name="孔融">
-    <Period>0</Period>
-    <Period>1</Period>
-    <Period>0</Period>
-    <Period>0</Period>
-    <Period>0</Period>
+    <Times>0</Times>
+    <Times>1</Times>
+    <Times>0</Times>
+    <Times>0</Times>
+    <Times>0</Times>
   </RECORD>
   <RECORD ID="26" Name="孔岫">
-    <Period>1</Period>
-    <Period>1</Period>
-    <Period>0</Period>
-    <Period>0</Period>
-    <Period>0</Period>
+    <Times>1</Times>
+    <Times>1</Times>
+    <Times>0</Times>
+    <Times>0</Times>
+    <Times>0</Times>
   </RECORD>
   <RECORD ID="27" Name="乔瑁">
-    <Period>0</Period>
-    <Period>1</Period>
-    <Period>0</Period>
-    <Period>0</Period>
-    <Period>0</Period>
+    <Times>0</Times>
+    <Times>1</Times>
+    <Times>0</Times>
+    <Times>0</Times>
+    <Times>0</Times>
   </RECORD>
   <RECORD ID="28" Name="刘繇">
-    <Period>1</Period>
-    <Period>1</Period>
-    <Period>0</Period>
-    <Period>0</Period>
-    <Period>0</Period>
+    <Times>1</Times>
+    <Times>1</Times>
+    <Times>0</Times>
+    <Times>0</Times>
+    <Times>0</Times>
   </RECORD>
   <RECORD ID="29" Name="严白虎">
-    <Period>1</Period>
-    <Period>1</Period>
-    <Period>0</Period>
-    <Period>0</Period>
-    <Period>0</Period>
+    <Times>1</Times>
+    <Times>1</Times>
+    <Times>0</Times>
+    <Times>0</Times>
+    <Times>0</Times>
   </RECORD>
 </root>

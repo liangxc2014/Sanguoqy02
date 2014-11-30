@@ -13,7 +13,7 @@ public class WrapXMLDataKings
 	{
 		new LuaField("ID", get_ID, set_ID),
 		new LuaField("Name", get_Name, set_Name),
-		new LuaField("Period", get_Period, set_Period),
+		new LuaField("Times", get_Times, set_Times),
 	};
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
@@ -66,17 +66,17 @@ public class WrapXMLDataKings
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int get_Period(IntPtr L)
+	static int get_Times(IntPtr L)
 	{
 		object o = LuaScriptMgr.GetLuaObject(L, 1);
 
 		if (o == null)
 		{
-			LuaDLL.luaL_error(L, "unknown member name Period");
+			LuaDLL.luaL_error(L, "unknown member name Times");
 		}
 
 		XMLDataKings obj = (XMLDataKings)o;
-		LuaScriptMgr.PushArray(L, obj.Period);
+		LuaScriptMgr.PushArray(L, obj.Times);
 		return 1;
 	}
 
@@ -111,17 +111,17 @@ public class WrapXMLDataKings
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int set_Period(IntPtr L)
+	static int set_Times(IntPtr L)
 	{
 		object o = LuaScriptMgr.GetLuaObject(L, 1);
 
 		if (o == null)
 		{
-			LuaDLL.luaL_error(L, "unknown member name Period");
+			LuaDLL.luaL_error(L, "unknown member name Times");
 		}
 
 		XMLDataKings obj = (XMLDataKings)o;
-		obj.Period = LuaScriptMgr.GetNetObject<Int32[]>(L, 3);
+		obj.Times = LuaScriptMgr.GetNetObject<Int32[]>(L, 3);
 		return 0;
 	}
 }

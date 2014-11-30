@@ -23,7 +23,9 @@ public class WrapGamePublic
 		new LuaField("SceneCamera", get_SceneCamera, null),
 		new LuaField("LuaManager", get_LuaManager, null),
 		new LuaField("LuaFiles", get_LuaFiles, null),
-		new LuaField("PeriodsList", get_PeriodsList, null),
+		new LuaField("TimesList", get_TimesList, null),
+		new LuaField("CurrentTimes", get_CurrentTimes, set_CurrentTimes),
+		new LuaField("DataManager", get_DataManager, null),
 	};
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
@@ -125,18 +127,63 @@ public class WrapGamePublic
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int get_PeriodsList(IntPtr L)
+	static int get_TimesList(IntPtr L)
 	{
 		object o = LuaScriptMgr.GetLuaObject(L, 1);
 
 		if (o == null)
 		{
-			LuaDLL.luaL_error(L, "unknown member name PeriodsList");
+			LuaDLL.luaL_error(L, "unknown member name TimesList");
 		}
 
 		GamePublic obj = (GamePublic)o;
-		LuaScriptMgr.PushObject(L, obj.PeriodsList);
+		LuaScriptMgr.PushObject(L, obj.TimesList);
 		return 1;
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int get_CurrentTimes(IntPtr L)
+	{
+		object o = LuaScriptMgr.GetLuaObject(L, 1);
+
+		if (o == null)
+		{
+			LuaDLL.luaL_error(L, "unknown member name CurrentTimes");
+		}
+
+		GamePublic obj = (GamePublic)o;
+		LuaScriptMgr.Push(L, obj.CurrentTimes);
+		return 1;
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int get_DataManager(IntPtr L)
+	{
+		object o = LuaScriptMgr.GetLuaObject(L, 1);
+
+		if (o == null)
+		{
+			LuaDLL.luaL_error(L, "unknown member name DataManager");
+		}
+
+		GamePublic obj = (GamePublic)o;
+		LuaScriptMgr.PushObject(L, obj.DataManager);
+		return 1;
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int set_CurrentTimes(IntPtr L)
+	{
+		object o = LuaScriptMgr.GetLuaObject(L, 1);
+
+		if (o == null)
+		{
+			LuaDLL.luaL_error(L, "unknown member name CurrentTimes");
+		}
+
+		GamePublic obj = (GamePublic)o;
+		obj.CurrentTimes = (int)LuaScriptMgr.GetNumber(L, 3);
+		return 0;
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]

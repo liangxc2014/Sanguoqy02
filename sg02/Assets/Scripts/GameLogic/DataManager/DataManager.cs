@@ -5,8 +5,8 @@ using System.Collections.Generic;
 public class DataManager
 {
 
-    private Dictionary<int, KingsInfo> m_listKings;
-    public Dictionary<int, KingsInfo> Kings { get { return m_listKings; } }
+    private Dictionary<int, KingInfo> m_listKings;
+    public Dictionary<int, KingInfo> Kings { get { return m_listKings; } }
 
     private Dictionary<int, CityInfo> m_listCitys;
     public Dictionary<int, CityInfo> Citys { get { return m_listCitys; } }
@@ -14,14 +14,20 @@ public class DataManager
     private Dictionary<int, GeneralInfo> m_listGenerals;
     public Dictionary<int, GeneralInfo> Generals { get { return m_listGenerals; } }
 
-    public DataManager()
+    public void InitKingsInfo()
     {
-        m_listKings = new Dictionary<int, KingsInfo>();
-        m_listCitys = new Dictionary<int, CityInfo>();
-        m_listGenerals = new Dictionary<int, GeneralInfo>();
+        m_listKings = new Dictionary<int, KingInfo>();
+
+        IEnumerator enumerator = XMLManager.Kings.Data.Keys.GetEnumerator();
+        while (enumerator.MoveNext())
+        {
+            int ID = (int)enumerator.Current;
+            KingInfo info = new KingInfo(ID);
+            Kings.Add(ID, info);
+        }
     }
 
-    public KingsInfo GetKingInfo(int id)
+    public KingInfo GetKingInfo(int id)
     {
         if (Kings.ContainsKey(id))
         {
@@ -31,7 +37,7 @@ public class DataManager
         return null;
     }
 
-    public void SetKingInfo(int id, KingsInfo info)
+    public void SetKingInfo(int id, KingInfo info)
     {
         if (Kings.ContainsKey(id))
         {
@@ -40,6 +46,19 @@ public class DataManager
         else
         {
             Kings.Add(id, info);
+        }
+    }
+
+    public void InitCitysInfo()
+    {
+        m_listCitys = new Dictionary<int, CityInfo>();
+
+        IEnumerator enumerator = XMLManager.City.Data.Keys.GetEnumerator();
+        while (enumerator.MoveNext())
+        {
+            int id = (int)enumerator.Current;
+            CityInfo info = new CityInfo(id);
+            Citys.Add(id, info);
         }
     }
 
@@ -65,6 +84,19 @@ public class DataManager
         }
     }
 
+    public void InitGeneralsInfo()
+    {
+        m_listGenerals = new Dictionary<int, GeneralInfo>();
+
+        IEnumerator enumerator = XMLManager.Generals.Data.Keys.GetEnumerator();
+        while (enumerator.MoveNext())
+        {
+            int id = (int)enumerator.Current;
+            GeneralInfo info = new GeneralInfo(id);
+            Generals.Add(id, info);
+        }
+    }
+
     public GeneralInfo GetGeneralInfo(int id)
     {
         if (Generals.ContainsKey(id))
@@ -87,7 +119,7 @@ public class DataManager
         }
     }
 
-    public int FindKingID(string name)
+    public static int FindKingID(string name)
     {
         string generalName = Utility.GeneralName(name);
 
@@ -105,7 +137,7 @@ public class DataManager
         return -1;
     }
 
-    public int FindCityID(string name)
+    public static int FindCityID(string name)
     {
         string cityName = Utility.GeneralName(name);
 
@@ -123,7 +155,7 @@ public class DataManager
         return -1;
     }
 
-    public int FindGeneralID(string name)
+    public static int FindGeneralID(string name)
     {
         string generalName = Utility.GeneralName(name);
 

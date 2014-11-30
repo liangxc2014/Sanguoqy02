@@ -20,7 +20,7 @@ public class WrapXMLDataCity
 		new LuaField("Population", get_Population, set_Population),
 		new LuaField("Defense", get_Defense, set_Defense),
 		new LuaField("Money", get_Money, set_Money),
-		new LuaField("Period", get_Period, set_Period),
+		new LuaField("Times", get_Times, set_Times),
 	};
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
@@ -178,17 +178,17 @@ public class WrapXMLDataCity
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int get_Period(IntPtr L)
+	static int get_Times(IntPtr L)
 	{
 		object o = LuaScriptMgr.GetLuaObject(L, 1);
 
 		if (o == null)
 		{
-			LuaDLL.luaL_error(L, "unknown member name Period");
+			LuaDLL.luaL_error(L, "unknown member name Times");
 		}
 
 		XMLDataCity obj = (XMLDataCity)o;
-		LuaScriptMgr.PushArray(L, obj.Period);
+		LuaScriptMgr.PushArray(L, obj.Times);
 		return 1;
 	}
 
@@ -328,17 +328,17 @@ public class WrapXMLDataCity
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int set_Period(IntPtr L)
+	static int set_Times(IntPtr L)
 	{
 		object o = LuaScriptMgr.GetLuaObject(L, 1);
 
 		if (o == null)
 		{
-			LuaDLL.luaL_error(L, "unknown member name Period");
+			LuaDLL.luaL_error(L, "unknown member name Times");
 		}
 
 		XMLDataCity obj = (XMLDataCity)o;
-		obj.Period = LuaScriptMgr.GetNetObject<String[]>(L, 3);
+		obj.Times = LuaScriptMgr.GetNetObject<String[]>(L, 3);
 		return 0;
 	}
 }

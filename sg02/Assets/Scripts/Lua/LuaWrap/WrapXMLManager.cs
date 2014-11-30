@@ -12,15 +12,15 @@ public class WrapXMLManager
 
 	static LuaField[] fields = new LuaField[]
 	{
-		new LuaField("Arms", get_Arms, set_Arms),
-		new LuaField("Buff", get_Buff, set_Buff),
+		new LuaField("Battle", get_Battle, set_Battle),
 		new LuaField("City", get_City, set_City),
-		new LuaField("Formations", get_Formations, set_Formations),
+		new LuaField("Force", get_Force, set_Force),
 		new LuaField("Generals", get_Generals, set_Generals),
 		new LuaField("Kings", get_Kings, set_Kings),
 		new LuaField("Magic", get_Magic, set_Magic),
-		new LuaField("Objects", get_Objects, set_Objects),
-		new LuaField("Period", get_Period, set_Period),
+		new LuaField("Things", get_Things, set_Things),
+		new LuaField("Times", get_Times, set_Times),
+		new LuaField("WiseSkill", get_WiseSkill, set_WiseSkill),
 		new LuaField("PathInfo", get_PathInfo, set_PathInfo),
 		new LuaField("CityPoints", get_CityPoints, set_CityPoints),
 		new LuaField("LuaControlView", get_LuaControlView, set_LuaControlView),
@@ -47,16 +47,9 @@ public class WrapXMLManager
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int get_Arms(IntPtr L)
+	static int get_Battle(IntPtr L)
 	{
-		LuaScriptMgr.PushObject(L, XMLManager.Arms);
-		return 1;
-	}
-
-	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int get_Buff(IntPtr L)
-	{
-		LuaScriptMgr.PushObject(L, XMLManager.Buff);
+		LuaScriptMgr.PushObject(L, XMLManager.Battle);
 		return 1;
 	}
 
@@ -68,9 +61,9 @@ public class WrapXMLManager
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int get_Formations(IntPtr L)
+	static int get_Force(IntPtr L)
 	{
-		LuaScriptMgr.PushObject(L, XMLManager.Formations);
+		LuaScriptMgr.PushObject(L, XMLManager.Force);
 		return 1;
 	}
 
@@ -96,16 +89,23 @@ public class WrapXMLManager
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int get_Objects(IntPtr L)
+	static int get_Things(IntPtr L)
 	{
-		LuaScriptMgr.PushObject(L, XMLManager.Objects);
+		LuaScriptMgr.PushObject(L, XMLManager.Things);
 		return 1;
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int get_Period(IntPtr L)
+	static int get_Times(IntPtr L)
 	{
-		LuaScriptMgr.PushObject(L, XMLManager.Period);
+		LuaScriptMgr.PushObject(L, XMLManager.Times);
+		return 1;
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int get_WiseSkill(IntPtr L)
+	{
+		LuaScriptMgr.PushObject(L, XMLManager.WiseSkill);
 		return 1;
 	}
 
@@ -138,16 +138,9 @@ public class WrapXMLManager
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int set_Arms(IntPtr L)
+	static int set_Battle(IntPtr L)
 	{
-		XMLManager.Arms = LuaScriptMgr.GetNetObject<XMLLoader<XMLDataArms>>(L, 3);
-		return 0;
-	}
-
-	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int set_Buff(IntPtr L)
-	{
-		XMLManager.Buff = LuaScriptMgr.GetNetObject<XMLLoader<XMLDataBuff>>(L, 3);
+		XMLManager.Battle = LuaScriptMgr.GetNetObject<XMLLoader<XMLDataBattle>>(L, 3);
 		return 0;
 	}
 
@@ -159,9 +152,9 @@ public class WrapXMLManager
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int set_Formations(IntPtr L)
+	static int set_Force(IntPtr L)
 	{
-		XMLManager.Formations = LuaScriptMgr.GetNetObject<XMLLoader<XMLDataFormations>>(L, 3);
+		XMLManager.Force = LuaScriptMgr.GetNetObject<XMLLoader<XMLDataForce>>(L, 3);
 		return 0;
 	}
 
@@ -187,16 +180,23 @@ public class WrapXMLManager
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int set_Objects(IntPtr L)
+	static int set_Things(IntPtr L)
 	{
-		XMLManager.Objects = LuaScriptMgr.GetNetObject<XMLLoader<XMLDataObjects>>(L, 3);
+		XMLManager.Things = LuaScriptMgr.GetNetObject<XMLLoader<XMLDataThings>>(L, 3);
 		return 0;
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int set_Period(IntPtr L)
+	static int set_Times(IntPtr L)
 	{
-		XMLManager.Period = LuaScriptMgr.GetNetObject<XMLLoader<XMLDataPeriod>>(L, 3);
+		XMLManager.Times = LuaScriptMgr.GetNetObject<XMLLoader<XMLDataTimes>>(L, 3);
+		return 0;
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int set_WiseSkill(IntPtr L)
+	{
+		XMLManager.WiseSkill = LuaScriptMgr.GetNetObject<XMLLoader<XMLDataWiseSkill>>(L, 3);
 		return 0;
 	}
 

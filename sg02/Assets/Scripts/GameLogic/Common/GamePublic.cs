@@ -32,13 +32,13 @@ public class GamePublic : Singleton<GamePublic>
     /// <summary>
     /// 历史时期列表
     /// </summary>
-    private List<string> m_listPeriods;
-    public List<string> PeriodsList { get { return m_listPeriods; } }
+    private List<string> m_listTimes;
+    public List<string> TimesList { get { return m_listTimes; } }
 
     /// <summary>
     /// 当前选择的历史时期
     /// </summary>
-    public int CurrentPeriod { get; set; }
+    public int CurrentTimes { get; set; }
 
     /// <summary>
     /// 数据管理
@@ -87,13 +87,13 @@ public class GamePublic : Singleton<GamePublic>
     /// </summary>
     private void InitPeriodList()
     {
-        m_listPeriods = new List<string>();
+        m_listTimes = new List<string>();
 
-        IEnumerator enumerator = XMLManager.Period.Data.Values.GetEnumerator();
+        IEnumerator enumerator = XMLManager.Times.Data.Values.GetEnumerator();
         while (enumerator.MoveNext())
         {
             XMLDataPeriod info = (XMLDataPeriod)enumerator.Current;
-            m_listPeriods.Add(info.Name);
+            m_listTimes.Add(info.Name);
         }
     }
 

@@ -3,9 +3,6 @@ public static class LuaWapBinder
 {
 	public static void Bind(IntPtr L)
 	{
-		WrapList_int.Register(L);
-		WrapList_string.Register(L);
-		WrapDictionary.Register(L);
 		WrapCallBack.Register(L);
 		WrapIState.Register(L);
 		WrapObjectPool.Register(L);
@@ -17,13 +14,22 @@ public static class LuaWapBinder
 		WrapScreenControl.Register(L);
 		WrapTimerManager.Register(L);
 		WrapUIManager.Register(L);
+		WrapEntity.Register(L);
+		WrapFSMBase.Register(L);
+		WrapStateBase.Register(L);
+		WrapAnimationComponent.Register(L);
+		WrapMovmentComponent.Register(L);
 		WrapGamePublic.Register(L);
 		WrapGlobalConfig.Register(L);
+		WrapDataManager.Register(L);
+		WrapKingInfo.Register(L);
+		WrapCityInfo.Register(L);
+		WrapGeneralInfo.Register(L);
 		WrapGameStatesManager.Register(L);
 		WrapInternalAffairsState.Register(L);
 		WrapLoadingState.Register(L);
 		WrapSelectKingState.Register(L);
-		WrapSelectPeriodState.Register(L);
+		WrapSelectTimesState.Register(L);
 		WrapStartMenuState.Register(L);
 		WrapMapCameraControl.Register(L);
 		WrapPathFinding.Register(L);

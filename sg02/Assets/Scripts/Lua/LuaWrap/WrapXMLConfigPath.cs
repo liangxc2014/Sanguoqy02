@@ -12,15 +12,15 @@ public class WrapXMLConfigPath
 	static LuaField[] fields = new LuaField[]
 	{
 		new LuaField("GlobalConfig", get_GlobalConfig, null),
-		new LuaField("Kings", get_Kings, null),
-		new LuaField("Arms", get_Arms, null),
-		new LuaField("Buff", get_Buff, null),
+		new LuaField("Battle", get_Battle, null),
 		new LuaField("City", get_City, null),
-		new LuaField("Formations", get_Formations, null),
+		new LuaField("Force", get_Force, null),
 		new LuaField("Generals", get_Generals, null),
+		new LuaField("Kings", get_Kings, null),
 		new LuaField("Magic", get_Magic, null),
-		new LuaField("Objects", get_Objects, null),
-		new LuaField("Period", get_Period, null),
+		new LuaField("Things", get_Things, null),
+		new LuaField("Times", get_Times, null),
+		new LuaField("WiseSkill", get_WiseSkill, null),
 		new LuaField("PathInfo", get_PathInfo, null),
 		new LuaField("CityPoints", get_CityPoints, null),
 		new LuaField("LuaControlView", get_LuaControlView, null),
@@ -54,23 +54,9 @@ public class WrapXMLConfigPath
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int get_Kings(IntPtr L)
+	static int get_Battle(IntPtr L)
 	{
-		LuaScriptMgr.Push(L, XMLConfigPath.Kings);
-		return 1;
-	}
-
-	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int get_Arms(IntPtr L)
-	{
-		LuaScriptMgr.Push(L, XMLConfigPath.Arms);
-		return 1;
-	}
-
-	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int get_Buff(IntPtr L)
-	{
-		LuaScriptMgr.Push(L, XMLConfigPath.Buff);
+		LuaScriptMgr.Push(L, XMLConfigPath.Battle);
 		return 1;
 	}
 
@@ -82,9 +68,9 @@ public class WrapXMLConfigPath
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int get_Formations(IntPtr L)
+	static int get_Force(IntPtr L)
 	{
-		LuaScriptMgr.Push(L, XMLConfigPath.Formations);
+		LuaScriptMgr.Push(L, XMLConfigPath.Force);
 		return 1;
 	}
 
@@ -96,6 +82,13 @@ public class WrapXMLConfigPath
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int get_Kings(IntPtr L)
+	{
+		LuaScriptMgr.Push(L, XMLConfigPath.Kings);
+		return 1;
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Magic(IntPtr L)
 	{
 		LuaScriptMgr.Push(L, XMLConfigPath.Magic);
@@ -103,16 +96,23 @@ public class WrapXMLConfigPath
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int get_Objects(IntPtr L)
+	static int get_Things(IntPtr L)
 	{
-		LuaScriptMgr.Push(L, XMLConfigPath.Objects);
+		LuaScriptMgr.Push(L, XMLConfigPath.Things);
 		return 1;
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int get_Period(IntPtr L)
+	static int get_Times(IntPtr L)
 	{
-		LuaScriptMgr.Push(L, XMLConfigPath.Period);
+		LuaScriptMgr.Push(L, XMLConfigPath.Times);
+		return 1;
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int get_WiseSkill(IntPtr L)
+	{
+		LuaScriptMgr.Push(L, XMLConfigPath.WiseSkill);
 		return 1;
 	}
 

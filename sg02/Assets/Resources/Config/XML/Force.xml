@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <RECORD ID="1" Name="朴刀" Force1="0" Force2="-42" Force3="-58" Force4="44" Force5="-47" Force6="47" Force7="21" Force8="14" Force9="-51" Force10="-31" Force11="22" Force12="-8" Force13="10" />
+  <RECORD ID="2" Name="长枪" Force1="42" Force2="0" Force3="-12" Force4="-58" Force5="-23" Force6="-53" Force7="60" Force8="49" Force9="27" Force10="66" Force11="44" Force12="-52" Force13="39" />
+  <RECORD ID="4" Name="大刀" Force1="58" Force2="12" Force3="0" Force4="-66" Force5="22" Force6="-64" Force7="63" Force8="53" Force9="-14" Force10="68" Force11="68" Force12="-18" Force13="-43" />
+  <RECORD ID="8" Name="弓箭" Force1="-44" Force2="58" Force3="66" Force4="0" Force5="54" Force6="8" Force7="-56" Force8="-36" Force9="47" Force10="-54" Force11="28" Force12="32" Force13="-29" />
+  <RECORD ID="16" Name="链锤" Force1="47" Force2="23" Force3="-22" Force4="-54" Force5="0" Force6="-48" Force7="-26" Force8="36" Force9="13" Force10="65" Force11="37" Force12="-45" Force13="32" />
+  <RECORD ID="32" Name="飞刀" Force1="-47" Force2="53" Force3="64" Force4="-8" Force5="48" Force6="0" Force7="-55" Force8="-39" Force9="39" Force10="-67" Force11="-24" Force12="56" Force13="-32" />
+  <RECORD ID="64" Name="武斗" Force1="-21" Force2="-60" Force3="-63" Force4="56" Force5="26" Force6="55" Force7="0" Force8="8" Force9="42" Force10="16" Force11="33" Force12="-18" Force13="6" />
+  <RECORD ID="128" Name="蛮族" Force1="-14" Force2="-49" Force3="-53" Force4="36" Force5="-36" Force6="39" Force7="-8" Force8="0" Force9="-41" Force10="17" Force11="-62" Force12="-10" Force13="30" />
+  <RECORD ID="256" Name="铁缒" Force1="51" Force2="-27" Force3="14" Force4="-47" Force5="-13" Force6="-39" Force7="-42" Force8="41" Force9="0" Force10="64" Force11="41" Force12="-28" Force13="36" />
+  <RECORD ID="512" Name="藤甲" Force1="31" Force2="-66" Force3="-68" Force4="54" Force5="-65" Force6="67" Force7="-16" Force8="-17" Force9="-64" Force10="0" Force11="21" Force12="8" Force13="26" />
+  <RECORD ID="1024" Name="黄巾" Force1="-22" Force2="-44" Force3="-68" Force4="-28" Force5="-37" Force6="24" Force7="-33" Force8="62" Force9="-41" Force10="-21" Force11="0" Force12="-24" Force13="56" />
+  <RECORD ID="2048" Name="弩兵" Force1="8" Force2="52" Force3="18" Force4="-32" Force5="45" Force6="-56" Force7="18" Force8="10" Force9="28" Force10="-8" Force11="24" Force12="0" Force13="12" />
+  <RECORD ID="4096" Name="女兵" Force1="-10" Force2="-39" Force3="43" Force4="29" Force5="-32" Force6="32" Force7="-6" Force8="-30" Force9="-36" Force10="-26" Force11="-56" Force12="-12" Force13="0" />
+</root>

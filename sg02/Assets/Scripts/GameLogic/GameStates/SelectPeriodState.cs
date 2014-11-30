@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class SelectPeriodState : IState
+public class SelectTimesState : IState
 {
 
     public string Name

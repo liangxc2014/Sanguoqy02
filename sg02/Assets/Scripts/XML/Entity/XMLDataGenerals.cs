@@ -11,6 +11,18 @@ public class XMLDataGenerals
 	/// </summary>
 	public string Name;
 	/// <summary>
+	/// 大头照档名
+	/// </summary>
+	public string Face;
+	/// <summary>
+	/// 基础体力
+	/// </summary>
+	public int BaseHP;
+	/// <summary>
+	/// 基础技力
+	/// </summary>
+	public int BaseMP;
+	/// <summary>
 	/// 武力
 	/// </summary>
 	public int Strength;
@@ -25,70 +37,82 @@ public class XMLDataGenerals
 	/// <summary>
 	/// 必杀技
 	/// </summary>
-	public string[] Magic;
+	public string[] Skill;
 	/// <summary>
 	/// 必杀技
 	/// </summary>
-	public int[] Level;
+	public int[] SkillLevel;
 	/// <summary>
 	/// 必杀技
 	/// </summary>
-	public int[] MagicLevel;
+	public string[] SKILL;
 	/// <summary>
 	/// 军师技
 	/// </summary>
-	public string[] Buff;
+	public string[] WiseSkill;
 	/// <summary>
 	/// 军师技
 	/// </summary>
-	public int[] BuffLevel;
+	public int[] WiseSkillLevel;
 	/// <summary>
 	/// 黄巾之乱
 	/// </summary>
-	public string[] Period;
+	public string[] Times;
 	/// <summary>
 	/// 黄巾之乱
 	/// </summary>
-	public string[] PeriodState;
+	public string[] TimesState;
+	/// <summary>
+	/// 三国鼎立
+	/// </summary>
+	public string[] TimesdState;
 	/// <summary>
 	/// 武器
 	/// </summary>
 	public string Weapon;
 	/// <summary>
+	/// 马匹
+	/// </summary>
+	public string Horse;
+	/// <summary>
+	/// 携带物品
+	/// </summary>
+	public string Thing;
+	/// <summary>
 	/// 可用阵形
 	/// </summary>
-	public string Formations;
+	public string BattleArray;
 	/// <summary>
 	/// 使用阵形
 	/// </summary>
-	public string FormationUsed;
+	public string UseBattleArray;
 	/// <summary>
 	/// 可用兵种
 	/// </summary>
-	public string Arms;
+	public string Force;
 	/// <summary>
 	/// 使用兵种
 	/// </summary>
-	public string ArmUsed;
+	public string UseForce;
 	/// <summary>
 	/// 忠诚君主
 	/// </summary>
-	public string Lord;
+	public string LoyalKing;
 	/// <summary>
 	/// 血统
 	/// </summary>
-	public string Family;
+	public string Blood;
 	/// <summary>
 	/// 节操
 	/// </summary>
-	public int Character;
+	public int Constancy;
 	/// <summary>
-	/// 图形的类型
+	/// 图形的类型（战场造型）
 	/// </summary>
-	public int Graph;
+	public int Type;
 	/// <summary>
-	/// 旗帜
+	/// 标志(如果是1则需要通关一次才出现)
 	/// </summary>
-	public int Flag;
+	public int Flags;
 }
 

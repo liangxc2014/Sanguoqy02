@@ -25,5 +25,12 @@ public static class LuaBinder
 		LightTypeWrap.Register(L);
 		MotionWrap.Register(L);
 		AnimationClipWrap.Register(L);
+
+        WrapSpriteRenderer.Register(L);
+        WrapText.Register(L);
+        WrapList_int.Register(L);
+        WrapList_string.Register(L);
+        WrapDictionary.Register(L);
+        WrapDictEnumerator.Register(L);
 	}
 }

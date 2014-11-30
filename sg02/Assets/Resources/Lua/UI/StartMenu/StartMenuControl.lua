@@ -34,7 +34,7 @@ end
 --¿ªÊ¼°´Å¥
 function OnStartGameButton(go)
 
-    GamePublic.Instance.GameStatesManager:ChangeState(GamePublic.Instance.GameStatesManager.SelectPeriodState)
+    GamePublic.Instance.GameStatesManager:ChangeState(GamePublic.Instance.GameStatesManager.SelectTimesState)
 
 end
 

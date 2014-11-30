@@ -41,6 +41,6 @@ public class XMLDataCity
 	/// <summary>
 	/// »Æ½íÖ®ÂÒ
 	/// </summary>
-	public string[] Period;
+	public string[] Times;
 }
 

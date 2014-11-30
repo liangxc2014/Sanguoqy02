@@ -12,6 +12,7 @@ public class WrapUtility
 		new LuaMethod("GetPoint", GetPoint),
 		new LuaMethod("AddComponent", AddComponent),
 		new LuaMethod("AddChild", AddChild),
+		new LuaMethod("GeneralName", GeneralName),
 		new LuaMethod("New", Create),
 		new LuaMethod("GetClassType", GetClassType),
 	};
@@ -84,6 +85,16 @@ public class WrapUtility
 		GameObject arg0 = LuaScriptMgr.GetNetObject<GameObject>(L, 1);
 		GameObject arg1 = LuaScriptMgr.GetNetObject<GameObject>(L, 2);
 		GameObject o = Utility.AddChild(arg0,arg1);
+		LuaScriptMgr.Push(L, o);
+		return 1;
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int GeneralName(IntPtr L)
+	{
+		LuaScriptMgr.CheckArgsCount(L, 1);
+		string arg0 = LuaScriptMgr.GetLuaString(L, 1);
+		string o = Utility.GeneralName(arg0);
 		LuaScriptMgr.Push(L, o);
 		return 1;
 	}
