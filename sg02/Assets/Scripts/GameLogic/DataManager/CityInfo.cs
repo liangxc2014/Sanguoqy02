@@ -40,9 +40,10 @@ public class CityInfo
 
         Name = data.Name;
         Level = data.Level;
+        KingID = DataManager.FindKingID(data.Times[GamePublic.Instance.CurrentTimes]);
         Flag = data.Flag;
         GeneralMax = data.GeneralMax;
-        KingID = DataManager.FindKingID(data.Times[GamePublic.Instance.CurrentTimes]);
+        
         Population = data.Population;
         Money = data.Money;
         Reservist = 0;

@@ -3,7 +3,7 @@ using System.Reflection;
 using System.Collections.Generic;
 using LuaInterface;
 
-public class WrapXMLLoader_XMLDataArms
+public class WrapXMLLoader_XMLDataWiseSkill
 {
 	public static LuaMethod[] regs = new LuaMethod[]
 	{
@@ -22,20 +22,20 @@ public class WrapXMLLoader_XMLDataArms
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int Create(IntPtr L)
 	{
-		LuaDLL.luaL_error(L, "XMLLoader<XMLDataArms> class does not have a constructor function");
+		LuaDLL.luaL_error(L, "XMLLoader<XMLDataWiseSkill> class does not have a constructor function");
 		return 0;
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int GetClassType(IntPtr L)
 	{
-		LuaScriptMgr.Push(L, typeof(XMLLoader<XMLDataArms>));
+		LuaScriptMgr.Push(L, typeof(XMLLoader<XMLDataWiseSkill>));
 		return 1;
 	}
 
 	public static void Register(IntPtr L)
 	{
-		LuaScriptMgr.RegisterLib(L, "XMLLoader<XMLDataArms>", typeof(XMLLoader<XMLDataArms>), regs, fields, null);
+		LuaScriptMgr.RegisterLib(L, "XMLLoader<XMLDataWiseSkill>", typeof(XMLLoader<XMLDataWiseSkill>), regs, fields, null);
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
@@ -48,7 +48,7 @@ public class WrapXMLLoader_XMLDataArms
 			LuaDLL.luaL_error(L, "unknown member name Data");
 		}
 
-		XMLLoader<XMLDataArms> obj = (XMLLoader<XMLDataArms>)o;
+		XMLLoader<XMLDataWiseSkill> obj = (XMLLoader<XMLDataWiseSkill>)o;
 		LuaScriptMgr.PushObject(L, obj.Data);
 		return 1;
 	}
@@ -57,7 +57,7 @@ public class WrapXMLLoader_XMLDataArms
 	static int LoadXML(IntPtr L)
 	{
 		LuaScriptMgr.CheckArgsCount(L, 2);
-		XMLLoader<XMLDataArms> obj = LuaScriptMgr.GetNetObject<XMLLoader<XMLDataArms>>(L, 1);
+		XMLLoader<XMLDataWiseSkill> obj = LuaScriptMgr.GetNetObject<XMLLoader<XMLDataWiseSkill>>(L, 1);
 		string arg0 = LuaScriptMgr.GetLuaString(L, 2);
 		obj.LoadXML(arg0);
 		return 0;
@@ -67,9 +67,9 @@ public class WrapXMLLoader_XMLDataArms
 	static int GetInfoById(IntPtr L)
 	{
 		LuaScriptMgr.CheckArgsCount(L, 2);
-		XMLLoader<XMLDataArms> obj = LuaScriptMgr.GetNetObject<XMLLoader<XMLDataArms>>(L, 1);
+		XMLLoader<XMLDataWiseSkill> obj = LuaScriptMgr.GetNetObject<XMLLoader<XMLDataWiseSkill>>(L, 1);
 		object arg0 = LuaScriptMgr.GetVarObject(L, 2);
-		XMLDataArms o = obj.GetInfoById(arg0);
+		XMLDataWiseSkill o = obj.GetInfoById(arg0);
 		LuaScriptMgr.PushObject(L, o);
 		return 1;
 	}
@@ -78,7 +78,7 @@ public class WrapXMLLoader_XMLDataArms
 	static int ReflectionFields(IntPtr L)
 	{
 		LuaScriptMgr.CheckArgsCount(L, 2);
-		XMLLoader<XMLDataArms> obj = LuaScriptMgr.GetNetObject<XMLLoader<XMLDataArms>>(L, 1);
+		XMLLoader<XMLDataWiseSkill> obj = LuaScriptMgr.GetNetObject<XMLLoader<XMLDataWiseSkill>>(L, 1);
 		Type arg0 = LuaScriptMgr.GetTypeObject(L, 2);
 		IDictionary<string,FieldInfo> o = obj.ReflectionFields(arg0);
 		LuaScriptMgr.PushObject(L, o);

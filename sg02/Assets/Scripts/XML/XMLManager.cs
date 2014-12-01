@@ -21,15 +21,15 @@ public static class XMLManager
 
     public static void LoadConfigs()
 	{
-//         Kings = new XMLLoader<XMLDataKings>(XMLConfigPath.Kings);
-//         Arms = new XMLLoader<XMLDataArms>(XMLConfigPath.Arms);
-//         Buff = new XMLLoader<XMLDataBuff>(XMLConfigPath.Buff);
-//         City = new XMLLoader<XMLDataCity>(XMLConfigPath.City);
-//         Formations = new XMLLoader<XMLDataFormations>(XMLConfigPath.Formations);
-//         Generals = new XMLLoader<XMLDataGenerals>(XMLConfigPath.Generals);
-//         Magic = new XMLLoader<XMLDataMagic>(XMLConfigPath.Magic);
-//         Objects = new XMLLoader<XMLDataObjects>(XMLConfigPath.Objects);
-//         Period = new XMLLoader<XMLDataPeriod>(XMLConfigPath.Period);
+        Battle = new XMLLoader<XMLDataBattle>(XMLConfigPath.Battle);
+        City = new XMLLoader<XMLDataCity>(XMLConfigPath.City);
+        Force = new XMLLoader<XMLDataForce>(XMLConfigPath.Force);
+        Generals = new XMLLoader<XMLDataGenerals>(XMLConfigPath.Generals);
+        Kings = new XMLLoader<XMLDataKings>(XMLConfigPath.Kings);
+        Magic = new XMLLoader<XMLDataMagic>(XMLConfigPath.Magic);
+        Things = new XMLLoader<XMLDataThings>(XMLConfigPath.Things);
+        Times = new XMLLoader<XMLDataTimes>(XMLConfigPath.Times);
+        WiseSkill = new XMLLoader<XMLDataWiseSkill>(XMLConfigPath.WiseSkill);
 
         PathInfo = new XMLLoader<XMLDataPathInfo>(XMLConfigPath.PathInfo);
         CityPoints = new XMLLoader<XMLDataCityPoints>(XMLConfigPath.CityPoints);

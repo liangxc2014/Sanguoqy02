@@ -172,4 +172,84 @@ public class DataManager
         Debugging.LogError("Function:FindGeneralID; name = " + name);
         return -1;
     }
+
+    public static int FindBattleID(string name)
+    {
+        IEnumerator enumerator = XMLManager.Battle.Data.Values.GetEnumerator();
+        while (enumerator.MoveNext())
+        {
+            XMLDataBattle data = (XMLDataBattle)enumerator.Current;
+            if (data.Name.StartsWith(name))
+            {
+                return data.ID;
+            }
+        }
+
+        Debugging.LogError("Function:FindBattleID; name = " + name);
+        return -1;
+    }
+
+    public static int FindForceID(string name)
+    {
+        IEnumerator enumerator = XMLManager.Force.Data.Values.GetEnumerator();
+        while (enumerator.MoveNext())
+        {
+            XMLDataForce data = (XMLDataForce)enumerator.Current;
+            if (data.Name.StartsWith(name))
+            {
+                return data.ID;
+            }
+        }
+
+        Debugging.LogError("Function:FindForceID; name = " + name);
+        return -1;
+    }
+
+    public static int FindMagicID(string name)
+    {
+        IEnumerator enumerator = XMLManager.Magic.Data.Values.GetEnumerator();
+        while (enumerator.MoveNext())
+        {
+            XMLDataMagic data = (XMLDataMagic)enumerator.Current;
+            if (data.Name == name)
+            {
+                return data.ID;
+            }
+        }
+
+        Debugging.LogError("Function:FindMagicID; name = " + name);
+        return -1;
+    }
+
+    public static int FindWiseSkillID(string name)
+    {
+        IEnumerator enumerator = XMLManager.WiseSkill.Data.Values.GetEnumerator();
+        while (enumerator.MoveNext())
+        {
+            XMLDataWiseSkill data = (XMLDataWiseSkill)enumerator.Current;
+            if (data.Name == name)
+            {
+                return data.ID;
+            }
+        }
+
+        Debugging.LogError("Function:FindWiseSkillID; name = " + name);
+        return -1;
+    }
+
+    public static int FindThingsID(string name)
+    {
+        IEnumerator enumerator = XMLManager.Things.Data.Values.GetEnumerator();
+        while (enumerator.MoveNext())
+        {
+            XMLDataThings data = (XMLDataThings)enumerator.Current;
+            if (data.Name == name)
+            {
+                return data.ID;
+            }
+        }
+
+        Debugging.LogError("Function:FindThingsID; name = " + name);
+        return -1;
+    }
 }

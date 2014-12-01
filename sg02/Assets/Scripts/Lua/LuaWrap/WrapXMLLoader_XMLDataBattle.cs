@@ -3,7 +3,7 @@ using System.Reflection;
 using System.Collections.Generic;
 using LuaInterface;
 
-public class WrapXMLLoader_XMLDataPeriod
+public class WrapXMLLoader_XMLDataBattle
 {
 	public static LuaMethod[] regs = new LuaMethod[]
 	{
@@ -22,20 +22,20 @@ public class WrapXMLLoader_XMLDataPeriod
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int Create(IntPtr L)
 	{
-		LuaDLL.luaL_error(L, "XMLLoader<XMLDataPeriod> class does not have a constructor function");
+		LuaDLL.luaL_error(L, "XMLLoader<XMLDataBattle> class does not have a constructor function");
 		return 0;
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int GetClassType(IntPtr L)
 	{
-		LuaScriptMgr.Push(L, typeof(XMLLoader<XMLDataPeriod>));
+		LuaScriptMgr.Push(L, typeof(XMLLoader<XMLDataBattle>));
 		return 1;
 	}
 
 	public static void Register(IntPtr L)
 	{
-		LuaScriptMgr.RegisterLib(L, "XMLLoader<XMLDataPeriod>", typeof(XMLLoader<XMLDataPeriod>), regs, fields, null);
+		LuaScriptMgr.RegisterLib(L, "XMLLoader<XMLDataBattle>", typeof(XMLLoader<XMLDataBattle>), regs, fields, null);
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
@@ -48,7 +48,7 @@ public class WrapXMLLoader_XMLDataPeriod
 			LuaDLL.luaL_error(L, "unknown member name Data");
 		}
 
-		XMLLoader<XMLDataPeriod> obj = (XMLLoader<XMLDataPeriod>)o;
+		XMLLoader<XMLDataBattle> obj = (XMLLoader<XMLDataBattle>)o;
 		LuaScriptMgr.PushObject(L, obj.Data);
 		return 1;
 	}
@@ -57,7 +57,7 @@ public class WrapXMLLoader_XMLDataPeriod
 	static int LoadXML(IntPtr L)
 	{
 		LuaScriptMgr.CheckArgsCount(L, 2);
-		XMLLoader<XMLDataPeriod> obj = LuaScriptMgr.GetNetObject<XMLLoader<XMLDataPeriod>>(L, 1);
+		XMLLoader<XMLDataBattle> obj = LuaScriptMgr.GetNetObject<XMLLoader<XMLDataBattle>>(L, 1);
 		string arg0 = LuaScriptMgr.GetLuaString(L, 2);
 		obj.LoadXML(arg0);
 		return 0;
@@ -67,9 +67,9 @@ public class WrapXMLLoader_XMLDataPeriod
 	static int GetInfoById(IntPtr L)
 	{
 		LuaScriptMgr.CheckArgsCount(L, 2);
-		XMLLoader<XMLDataPeriod> obj = LuaScriptMgr.GetNetObject<XMLLoader<XMLDataPeriod>>(L, 1);
+		XMLLoader<XMLDataBattle> obj = LuaScriptMgr.GetNetObject<XMLLoader<XMLDataBattle>>(L, 1);
 		object arg0 = LuaScriptMgr.GetVarObject(L, 2);
-		XMLDataPeriod o = obj.GetInfoById(arg0);
+		XMLDataBattle o = obj.GetInfoById(arg0);
 		LuaScriptMgr.PushObject(L, o);
 		return 1;
 	}
@@ -78,7 +78,7 @@ public class WrapXMLLoader_XMLDataPeriod
 	static int ReflectionFields(IntPtr L)
 	{
 		LuaScriptMgr.CheckArgsCount(L, 2);
-		XMLLoader<XMLDataPeriod> obj = LuaScriptMgr.GetNetObject<XMLLoader<XMLDataPeriod>>(L, 1);
+		XMLLoader<XMLDataBattle> obj = LuaScriptMgr.GetNetObject<XMLLoader<XMLDataBattle>>(L, 1);
 		Type arg0 = LuaScriptMgr.GetTypeObject(L, 2);
 		IDictionary<string,FieldInfo> o = obj.ReflectionFields(arg0);
 		LuaScriptMgr.PushObject(L, o);

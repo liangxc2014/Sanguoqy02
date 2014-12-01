@@ -1,7 +1,7 @@
 ﻿using System;
 using LuaInterface;
 
-public class WrapXMLDataObjects
+public class WrapXMLDataThings
 {
 	public static LuaMethod[] regs = new LuaMethod[]
 	{
@@ -13,44 +13,45 @@ public class WrapXMLDataObjects
 	{
 		new LuaField("ID", get_ID, set_ID),
 		new LuaField("Name", get_Name, set_Name),
-		new LuaField("UsedType", get_UsedType, set_UsedType),
-		new LuaField("TypeName", get_TypeName, set_TypeName),
+		new LuaField("Attribute", get_Attribute, set_Attribute),
+		new LuaField("Type", get_Type, set_Type),
 		new LuaField("WeaponType", get_WeaponType, set_WeaponType),
 		new LuaField("WeaponObject", get_WeaponObject, set_WeaponObject),
 		new LuaField("SearchType", get_SearchType, set_SearchType),
-		new LuaField("Type", get_Type, set_Type),
-		new LuaField("LevelLimit", get_LevelLimit, set_LevelLimit),
-		new LuaField("Picture", get_Picture, set_Picture),
-		new LuaField("SearchProbability", get_SearchProbability, set_SearchProbability),
+		new LuaField("Sort", get_Sort, set_Sort),
+		new LuaField("Level", get_Level, set_Level),
+		new LuaField("Sprite", get_Sprite, set_Sprite),
+		new LuaField("Rate", get_Rate, set_Rate),
 		new LuaField("Strength", get_Strength, set_Strength),
 		new LuaField("Intellect", get_Intellect, set_Intellect),
-		new LuaField("HealthyMax", get_HealthyMax, set_HealthyMax),
-		new LuaField("ManaMax", get_ManaMax, set_ManaMax),
-		new LuaField("ArmsLearn", get_ArmsLearn, set_ArmsLearn),
-		new LuaField("FormationLearn", get_FormationLearn, set_FormationLearn),
-		new LuaField("SpecialSkill", get_SpecialSkill, set_SpecialSkill),
+		new LuaField("MaxHP", get_MaxHP, set_MaxHP),
+		new LuaField("MaxMP", get_MaxMP, set_MaxMP),
+		new LuaField("Force", get_Force, set_Force),
+		new LuaField("Battle", get_Battle, set_Battle),
+		new LuaField("Skill", get_Skill, set_Skill),
+		new LuaField("Spirit", get_Spirit, set_Spirit),
 		new LuaField("Speed", get_Speed, set_Speed),
-		new LuaField("Loyalty", get_Loyalty, set_Loyalty),
+		new LuaField("Loyal", get_Loyal, set_Loyal),
 		new LuaField("Descript", get_Descript, set_Descript),
 	};
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int Create(IntPtr L)
 	{
-		LuaDLL.luaL_error(L, "XMLDataObjects class does not have a constructor function");
+		LuaDLL.luaL_error(L, "XMLDataThings class does not have a constructor function");
 		return 0;
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int GetClassType(IntPtr L)
 	{
-		LuaScriptMgr.Push(L, typeof(XMLDataObjects));
+		LuaScriptMgr.Push(L, typeof(XMLDataThings));
 		return 1;
 	}
 
 	public static void Register(IntPtr L)
 	{
-		LuaScriptMgr.RegisterLib(L, "XMLDataObjects", typeof(XMLDataObjects), regs, fields, null);
+		LuaScriptMgr.RegisterLib(L, "XMLDataThings", typeof(XMLDataThings), regs, fields, null);
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
@@ -63,7 +64,7 @@ public class WrapXMLDataObjects
 			LuaDLL.luaL_error(L, "unknown member name ID");
 		}
 
-		XMLDataObjects obj = (XMLDataObjects)o;
+		XMLDataThings obj = (XMLDataThings)o;
 		LuaScriptMgr.Push(L, obj.ID);
 		return 1;
 	}
@@ -78,38 +79,38 @@ public class WrapXMLDataObjects
 			LuaDLL.luaL_error(L, "unknown member name Name");
 		}
 
-		XMLDataObjects obj = (XMLDataObjects)o;
+		XMLDataThings obj = (XMLDataThings)o;
 		LuaScriptMgr.Push(L, obj.Name);
 		return 1;
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int get_UsedType(IntPtr L)
+	static int get_Attribute(IntPtr L)
 	{
 		object o = LuaScriptMgr.GetLuaObject(L, 1);
 
 		if (o == null)
 		{
-			LuaDLL.luaL_error(L, "unknown member name UsedType");
+			LuaDLL.luaL_error(L, "unknown member name Attribute");
 		}
 
-		XMLDataObjects obj = (XMLDataObjects)o;
-		LuaScriptMgr.Push(L, obj.UsedType);
+		XMLDataThings obj = (XMLDataThings)o;
+		LuaScriptMgr.Push(L, obj.Attribute);
 		return 1;
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int get_TypeName(IntPtr L)
+	static int get_Type(IntPtr L)
 	{
 		object o = LuaScriptMgr.GetLuaObject(L, 1);
 
 		if (o == null)
 		{
-			LuaDLL.luaL_error(L, "unknown member name TypeName");
+			LuaDLL.luaL_error(L, "unknown member name Type");
 		}
 
-		XMLDataObjects obj = (XMLDataObjects)o;
-		LuaScriptMgr.Push(L, obj.TypeName);
+		XMLDataThings obj = (XMLDataThings)o;
+		LuaScriptMgr.Push(L, obj.Type);
 		return 1;
 	}
 
@@ -123,7 +124,7 @@ public class WrapXMLDataObjects
 			LuaDLL.luaL_error(L, "unknown member name WeaponType");
 		}
 
-		XMLDataObjects obj = (XMLDataObjects)o;
+		XMLDataThings obj = (XMLDataThings)o;
 		LuaScriptMgr.Push(L, obj.WeaponType);
 		return 1;
 	}
@@ -138,7 +139,7 @@ public class WrapXMLDataObjects
 			LuaDLL.luaL_error(L, "unknown member name WeaponObject");
 		}
 
-		XMLDataObjects obj = (XMLDataObjects)o;
+		XMLDataThings obj = (XMLDataThings)o;
 		LuaScriptMgr.Push(L, obj.WeaponObject);
 		return 1;
 	}
@@ -153,68 +154,68 @@ public class WrapXMLDataObjects
 			LuaDLL.luaL_error(L, "unknown member name SearchType");
 		}
 
-		XMLDataObjects obj = (XMLDataObjects)o;
+		XMLDataThings obj = (XMLDataThings)o;
 		LuaScriptMgr.Push(L, obj.SearchType);
 		return 1;
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int get_Type(IntPtr L)
+	static int get_Sort(IntPtr L)
 	{
 		object o = LuaScriptMgr.GetLuaObject(L, 1);
 
 		if (o == null)
 		{
-			LuaDLL.luaL_error(L, "unknown member name Type");
+			LuaDLL.luaL_error(L, "unknown member name Sort");
 		}
 
-		XMLDataObjects obj = (XMLDataObjects)o;
-		LuaScriptMgr.Push(L, obj.Type);
+		XMLDataThings obj = (XMLDataThings)o;
+		LuaScriptMgr.Push(L, obj.Sort);
 		return 1;
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int get_LevelLimit(IntPtr L)
+	static int get_Level(IntPtr L)
 	{
 		object o = LuaScriptMgr.GetLuaObject(L, 1);
 
 		if (o == null)
 		{
-			LuaDLL.luaL_error(L, "unknown member name LevelLimit");
+			LuaDLL.luaL_error(L, "unknown member name Level");
 		}
 
-		XMLDataObjects obj = (XMLDataObjects)o;
-		LuaScriptMgr.Push(L, obj.LevelLimit);
+		XMLDataThings obj = (XMLDataThings)o;
+		LuaScriptMgr.Push(L, obj.Level);
 		return 1;
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int get_Picture(IntPtr L)
+	static int get_Sprite(IntPtr L)
 	{
 		object o = LuaScriptMgr.GetLuaObject(L, 1);
 
 		if (o == null)
 		{
-			LuaDLL.luaL_error(L, "unknown member name Picture");
+			LuaDLL.luaL_error(L, "unknown member name Sprite");
 		}
 
-		XMLDataObjects obj = (XMLDataObjects)o;
-		LuaScriptMgr.Push(L, obj.Picture);
+		XMLDataThings obj = (XMLDataThings)o;
+		LuaScriptMgr.Push(L, obj.Sprite);
 		return 1;
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int get_SearchProbability(IntPtr L)
+	static int get_Rate(IntPtr L)
 	{
 		object o = LuaScriptMgr.GetLuaObject(L, 1);
 
 		if (o == null)
 		{
-			LuaDLL.luaL_error(L, "unknown member name SearchProbability");
+			LuaDLL.luaL_error(L, "unknown member name Rate");
 		}
 
-		XMLDataObjects obj = (XMLDataObjects)o;
-		LuaScriptMgr.Push(L, obj.SearchProbability);
+		XMLDataThings obj = (XMLDataThings)o;
+		LuaScriptMgr.Push(L, obj.Rate);
 		return 1;
 	}
 
@@ -228,7 +229,7 @@ public class WrapXMLDataObjects
 			LuaDLL.luaL_error(L, "unknown member name Strength");
 		}
 
-		XMLDataObjects obj = (XMLDataObjects)o;
+		XMLDataThings obj = (XMLDataThings)o;
 		LuaScriptMgr.Push(L, obj.Strength);
 		return 1;
 	}
@@ -243,83 +244,98 @@ public class WrapXMLDataObjects
 			LuaDLL.luaL_error(L, "unknown member name Intellect");
 		}
 
-		XMLDataObjects obj = (XMLDataObjects)o;
+		XMLDataThings obj = (XMLDataThings)o;
 		LuaScriptMgr.Push(L, obj.Intellect);
 		return 1;
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int get_HealthyMax(IntPtr L)
+	static int get_MaxHP(IntPtr L)
 	{
 		object o = LuaScriptMgr.GetLuaObject(L, 1);
 
 		if (o == null)
 		{
-			LuaDLL.luaL_error(L, "unknown member name HealthyMax");
+			LuaDLL.luaL_error(L, "unknown member name MaxHP");
 		}
 
-		XMLDataObjects obj = (XMLDataObjects)o;
-		LuaScriptMgr.Push(L, obj.HealthyMax);
+		XMLDataThings obj = (XMLDataThings)o;
+		LuaScriptMgr.Push(L, obj.MaxHP);
 		return 1;
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int get_ManaMax(IntPtr L)
+	static int get_MaxMP(IntPtr L)
 	{
 		object o = LuaScriptMgr.GetLuaObject(L, 1);
 
 		if (o == null)
 		{
-			LuaDLL.luaL_error(L, "unknown member name ManaMax");
+			LuaDLL.luaL_error(L, "unknown member name MaxMP");
 		}
 
-		XMLDataObjects obj = (XMLDataObjects)o;
-		LuaScriptMgr.Push(L, obj.ManaMax);
+		XMLDataThings obj = (XMLDataThings)o;
+		LuaScriptMgr.Push(L, obj.MaxMP);
 		return 1;
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int get_ArmsLearn(IntPtr L)
+	static int get_Force(IntPtr L)
 	{
 		object o = LuaScriptMgr.GetLuaObject(L, 1);
 
 		if (o == null)
 		{
-			LuaDLL.luaL_error(L, "unknown member name ArmsLearn");
+			LuaDLL.luaL_error(L, "unknown member name Force");
 		}
 
-		XMLDataObjects obj = (XMLDataObjects)o;
-		LuaScriptMgr.Push(L, obj.ArmsLearn);
+		XMLDataThings obj = (XMLDataThings)o;
+		LuaScriptMgr.Push(L, obj.Force);
 		return 1;
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int get_FormationLearn(IntPtr L)
+	static int get_Battle(IntPtr L)
 	{
 		object o = LuaScriptMgr.GetLuaObject(L, 1);
 
 		if (o == null)
 		{
-			LuaDLL.luaL_error(L, "unknown member name FormationLearn");
+			LuaDLL.luaL_error(L, "unknown member name Battle");
 		}
 
-		XMLDataObjects obj = (XMLDataObjects)o;
-		LuaScriptMgr.Push(L, obj.FormationLearn);
+		XMLDataThings obj = (XMLDataThings)o;
+		LuaScriptMgr.Push(L, obj.Battle);
 		return 1;
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int get_SpecialSkill(IntPtr L)
+	static int get_Skill(IntPtr L)
 	{
 		object o = LuaScriptMgr.GetLuaObject(L, 1);
 
 		if (o == null)
 		{
-			LuaDLL.luaL_error(L, "unknown member name SpecialSkill");
+			LuaDLL.luaL_error(L, "unknown member name Skill");
 		}
 
-		XMLDataObjects obj = (XMLDataObjects)o;
-		LuaScriptMgr.Push(L, obj.SpecialSkill);
+		XMLDataThings obj = (XMLDataThings)o;
+		LuaScriptMgr.Push(L, obj.Skill);
+		return 1;
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int get_Spirit(IntPtr L)
+	{
+		object o = LuaScriptMgr.GetLuaObject(L, 1);
+
+		if (o == null)
+		{
+			LuaDLL.luaL_error(L, "unknown member name Spirit");
+		}
+
+		XMLDataThings obj = (XMLDataThings)o;
+		LuaScriptMgr.Push(L, obj.Spirit);
 		return 1;
 	}
 
@@ -333,23 +349,23 @@ public class WrapXMLDataObjects
 			LuaDLL.luaL_error(L, "unknown member name Speed");
 		}
 
-		XMLDataObjects obj = (XMLDataObjects)o;
+		XMLDataThings obj = (XMLDataThings)o;
 		LuaScriptMgr.Push(L, obj.Speed);
 		return 1;
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int get_Loyalty(IntPtr L)
+	static int get_Loyal(IntPtr L)
 	{
 		object o = LuaScriptMgr.GetLuaObject(L, 1);
 
 		if (o == null)
 		{
-			LuaDLL.luaL_error(L, "unknown member name Loyalty");
+			LuaDLL.luaL_error(L, "unknown member name Loyal");
 		}
 
-		XMLDataObjects obj = (XMLDataObjects)o;
-		LuaScriptMgr.Push(L, obj.Loyalty);
+		XMLDataThings obj = (XMLDataThings)o;
+		LuaScriptMgr.Push(L, obj.Loyal);
 		return 1;
 	}
 
@@ -363,7 +379,7 @@ public class WrapXMLDataObjects
 			LuaDLL.luaL_error(L, "unknown member name Descript");
 		}
 
-		XMLDataObjects obj = (XMLDataObjects)o;
+		XMLDataThings obj = (XMLDataThings)o;
 		LuaScriptMgr.Push(L, obj.Descript);
 		return 1;
 	}
@@ -378,7 +394,7 @@ public class WrapXMLDataObjects
 			LuaDLL.luaL_error(L, "unknown member name ID");
 		}
 
-		XMLDataObjects obj = (XMLDataObjects)o;
+		XMLDataThings obj = (XMLDataThings)o;
 		obj.ID = (int)LuaScriptMgr.GetNumber(L, 3);
 		return 0;
 	}
@@ -393,38 +409,38 @@ public class WrapXMLDataObjects
 			LuaDLL.luaL_error(L, "unknown member name Name");
 		}
 
-		XMLDataObjects obj = (XMLDataObjects)o;
+		XMLDataThings obj = (XMLDataThings)o;
 		obj.Name = LuaScriptMgr.GetString(L, 3);
 		return 0;
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int set_UsedType(IntPtr L)
+	static int set_Attribute(IntPtr L)
 	{
 		object o = LuaScriptMgr.GetLuaObject(L, 1);
 
 		if (o == null)
 		{
-			LuaDLL.luaL_error(L, "unknown member name UsedType");
+			LuaDLL.luaL_error(L, "unknown member name Attribute");
 		}
 
-		XMLDataObjects obj = (XMLDataObjects)o;
-		obj.UsedType = LuaScriptMgr.GetString(L, 3);
+		XMLDataThings obj = (XMLDataThings)o;
+		obj.Attribute = LuaScriptMgr.GetString(L, 3);
 		return 0;
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int set_TypeName(IntPtr L)
+	static int set_Type(IntPtr L)
 	{
 		object o = LuaScriptMgr.GetLuaObject(L, 1);
 
 		if (o == null)
 		{
-			LuaDLL.luaL_error(L, "unknown member name TypeName");
+			LuaDLL.luaL_error(L, "unknown member name Type");
 		}
 
-		XMLDataObjects obj = (XMLDataObjects)o;
-		obj.TypeName = LuaScriptMgr.GetString(L, 3);
+		XMLDataThings obj = (XMLDataThings)o;
+		obj.Type = LuaScriptMgr.GetString(L, 3);
 		return 0;
 	}
 
@@ -438,7 +454,7 @@ public class WrapXMLDataObjects
 			LuaDLL.luaL_error(L, "unknown member name WeaponType");
 		}
 
-		XMLDataObjects obj = (XMLDataObjects)o;
+		XMLDataThings obj = (XMLDataThings)o;
 		obj.WeaponType = (int)LuaScriptMgr.GetNumber(L, 3);
 		return 0;
 	}
@@ -453,7 +469,7 @@ public class WrapXMLDataObjects
 			LuaDLL.luaL_error(L, "unknown member name WeaponObject");
 		}
 
-		XMLDataObjects obj = (XMLDataObjects)o;
+		XMLDataThings obj = (XMLDataThings)o;
 		obj.WeaponObject = (int)LuaScriptMgr.GetNumber(L, 3);
 		return 0;
 	}
@@ -468,68 +484,68 @@ public class WrapXMLDataObjects
 			LuaDLL.luaL_error(L, "unknown member name SearchType");
 		}
 
-		XMLDataObjects obj = (XMLDataObjects)o;
+		XMLDataThings obj = (XMLDataThings)o;
 		obj.SearchType = (int)LuaScriptMgr.GetNumber(L, 3);
 		return 0;
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int set_Type(IntPtr L)
+	static int set_Sort(IntPtr L)
 	{
 		object o = LuaScriptMgr.GetLuaObject(L, 1);
 
 		if (o == null)
 		{
-			LuaDLL.luaL_error(L, "unknown member name Type");
+			LuaDLL.luaL_error(L, "unknown member name Sort");
 		}
 
-		XMLDataObjects obj = (XMLDataObjects)o;
-		obj.Type = (int)LuaScriptMgr.GetNumber(L, 3);
+		XMLDataThings obj = (XMLDataThings)o;
+		obj.Sort = (int)LuaScriptMgr.GetNumber(L, 3);
 		return 0;
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int set_LevelLimit(IntPtr L)
+	static int set_Level(IntPtr L)
 	{
 		object o = LuaScriptMgr.GetLuaObject(L, 1);
 
 		if (o == null)
 		{
-			LuaDLL.luaL_error(L, "unknown member name LevelLimit");
+			LuaDLL.luaL_error(L, "unknown member name Level");
 		}
 
-		XMLDataObjects obj = (XMLDataObjects)o;
-		obj.LevelLimit = (int)LuaScriptMgr.GetNumber(L, 3);
+		XMLDataThings obj = (XMLDataThings)o;
+		obj.Level = (int)LuaScriptMgr.GetNumber(L, 3);
 		return 0;
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int set_Picture(IntPtr L)
+	static int set_Sprite(IntPtr L)
 	{
 		object o = LuaScriptMgr.GetLuaObject(L, 1);
 
 		if (o == null)
 		{
-			LuaDLL.luaL_error(L, "unknown member name Picture");
+			LuaDLL.luaL_error(L, "unknown member name Sprite");
 		}
 
-		XMLDataObjects obj = (XMLDataObjects)o;
-		obj.Picture = LuaScriptMgr.GetString(L, 3);
+		XMLDataThings obj = (XMLDataThings)o;
+		obj.Sprite = LuaScriptMgr.GetString(L, 3);
 		return 0;
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int set_SearchProbability(IntPtr L)
+	static int set_Rate(IntPtr L)
 	{
 		object o = LuaScriptMgr.GetLuaObject(L, 1);
 
 		if (o == null)
 		{
-			LuaDLL.luaL_error(L, "unknown member name SearchProbability");
+			LuaDLL.luaL_error(L, "unknown member name Rate");
 		}
 
-		XMLDataObjects obj = (XMLDataObjects)o;
-		obj.SearchProbability = (int)LuaScriptMgr.GetNumber(L, 3);
+		XMLDataThings obj = (XMLDataThings)o;
+		obj.Rate = (int)LuaScriptMgr.GetNumber(L, 3);
 		return 0;
 	}
 
@@ -543,7 +559,7 @@ public class WrapXMLDataObjects
 			LuaDLL.luaL_error(L, "unknown member name Strength");
 		}
 
-		XMLDataObjects obj = (XMLDataObjects)o;
+		XMLDataThings obj = (XMLDataThings)o;
 		obj.Strength = (int)LuaScriptMgr.GetNumber(L, 3);
 		return 0;
 	}
@@ -558,83 +574,98 @@ public class WrapXMLDataObjects
 			LuaDLL.luaL_error(L, "unknown member name Intellect");
 		}
 
-		XMLDataObjects obj = (XMLDataObjects)o;
+		XMLDataThings obj = (XMLDataThings)o;
 		obj.Intellect = (int)LuaScriptMgr.GetNumber(L, 3);
 		return 0;
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int set_HealthyMax(IntPtr L)
+	static int set_MaxHP(IntPtr L)
 	{
 		object o = LuaScriptMgr.GetLuaObject(L, 1);
 
 		if (o == null)
 		{
-			LuaDLL.luaL_error(L, "unknown member name HealthyMax");
+			LuaDLL.luaL_error(L, "unknown member name MaxHP");
 		}
 
-		XMLDataObjects obj = (XMLDataObjects)o;
-		obj.HealthyMax = (int)LuaScriptMgr.GetNumber(L, 3);
+		XMLDataThings obj = (XMLDataThings)o;
+		obj.MaxHP = (int)LuaScriptMgr.GetNumber(L, 3);
 		return 0;
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int set_ManaMax(IntPtr L)
+	static int set_MaxMP(IntPtr L)
 	{
 		object o = LuaScriptMgr.GetLuaObject(L, 1);
 
 		if (o == null)
 		{
-			LuaDLL.luaL_error(L, "unknown member name ManaMax");
+			LuaDLL.luaL_error(L, "unknown member name MaxMP");
 		}
 
-		XMLDataObjects obj = (XMLDataObjects)o;
-		obj.ManaMax = (int)LuaScriptMgr.GetNumber(L, 3);
+		XMLDataThings obj = (XMLDataThings)o;
+		obj.MaxMP = (int)LuaScriptMgr.GetNumber(L, 3);
 		return 0;
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int set_ArmsLearn(IntPtr L)
+	static int set_Force(IntPtr L)
 	{
 		object o = LuaScriptMgr.GetLuaObject(L, 1);
 
 		if (o == null)
 		{
-			LuaDLL.luaL_error(L, "unknown member name ArmsLearn");
+			LuaDLL.luaL_error(L, "unknown member name Force");
 		}
 
-		XMLDataObjects obj = (XMLDataObjects)o;
-		obj.ArmsLearn = (int)LuaScriptMgr.GetNumber(L, 3);
+		XMLDataThings obj = (XMLDataThings)o;
+		obj.Force = (int)LuaScriptMgr.GetNumber(L, 3);
 		return 0;
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int set_FormationLearn(IntPtr L)
+	static int set_Battle(IntPtr L)
 	{
 		object o = LuaScriptMgr.GetLuaObject(L, 1);
 
 		if (o == null)
 		{
-			LuaDLL.luaL_error(L, "unknown member name FormationLearn");
+			LuaDLL.luaL_error(L, "unknown member name Battle");
 		}
 
-		XMLDataObjects obj = (XMLDataObjects)o;
-		obj.FormationLearn = (int)LuaScriptMgr.GetNumber(L, 3);
+		XMLDataThings obj = (XMLDataThings)o;
+		obj.Battle = (int)LuaScriptMgr.GetNumber(L, 3);
 		return 0;
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int set_SpecialSkill(IntPtr L)
+	static int set_Skill(IntPtr L)
 	{
 		object o = LuaScriptMgr.GetLuaObject(L, 1);
 
 		if (o == null)
 		{
-			LuaDLL.luaL_error(L, "unknown member name SpecialSkill");
+			LuaDLL.luaL_error(L, "unknown member name Skill");
 		}
 
-		XMLDataObjects obj = (XMLDataObjects)o;
-		obj.SpecialSkill = (int)LuaScriptMgr.GetNumber(L, 3);
+		XMLDataThings obj = (XMLDataThings)o;
+		obj.Skill = (int)LuaScriptMgr.GetNumber(L, 3);
+		return 0;
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int set_Spirit(IntPtr L)
+	{
+		object o = LuaScriptMgr.GetLuaObject(L, 1);
+
+		if (o == null)
+		{
+			LuaDLL.luaL_error(L, "unknown member name Spirit");
+		}
+
+		XMLDataThings obj = (XMLDataThings)o;
+		obj.Spirit = (int)LuaScriptMgr.GetNumber(L, 3);
 		return 0;
 	}
 
@@ -648,23 +679,23 @@ public class WrapXMLDataObjects
 			LuaDLL.luaL_error(L, "unknown member name Speed");
 		}
 
-		XMLDataObjects obj = (XMLDataObjects)o;
+		XMLDataThings obj = (XMLDataThings)o;
 		obj.Speed = (int)LuaScriptMgr.GetNumber(L, 3);
 		return 0;
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int set_Loyalty(IntPtr L)
+	static int set_Loyal(IntPtr L)
 	{
 		object o = LuaScriptMgr.GetLuaObject(L, 1);
 
 		if (o == null)
 		{
-			LuaDLL.luaL_error(L, "unknown member name Loyalty");
+			LuaDLL.luaL_error(L, "unknown member name Loyal");
 		}
 
-		XMLDataObjects obj = (XMLDataObjects)o;
-		obj.Loyalty = (int)LuaScriptMgr.GetNumber(L, 3);
+		XMLDataThings obj = (XMLDataThings)o;
+		obj.Loyal = (int)LuaScriptMgr.GetNumber(L, 3);
 		return 0;
 	}
 
@@ -678,7 +709,7 @@ public class WrapXMLDataObjects
 			LuaDLL.luaL_error(L, "unknown member name Descript");
 		}
 
-		XMLDataObjects obj = (XMLDataObjects)o;
+		XMLDataThings obj = (XMLDataThings)o;
 		obj.Descript = LuaScriptMgr.GetString(L, 3);
 		return 0;
 	}

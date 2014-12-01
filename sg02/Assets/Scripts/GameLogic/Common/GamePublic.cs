@@ -61,7 +61,7 @@ public class GamePublic : Singleton<GamePublic>
         m_datamanager = new DataManager();
         
         InitLuaManager();
-        InitPeriodList();
+        InitTimesList();
 
         LoadLuaFiles();
     }
@@ -85,14 +85,14 @@ public class GamePublic : Singleton<GamePublic>
     /// <summary>
     /// 初始化历史时期列表
     /// </summary>
-    private void InitPeriodList()
+    private void InitTimesList()
     {
         m_listTimes = new List<string>();
 
         IEnumerator enumerator = XMLManager.Times.Data.Values.GetEnumerator();
         while (enumerator.MoveNext())
         {
-            XMLDataPeriod info = (XMLDataPeriod)enumerator.Current;
+            XMLDataTimes info = (XMLDataTimes)enumerator.Current;
             m_listTimes.Add(info.Name);
         }
     }
