@@ -24,7 +24,7 @@ public class StartMenuControl : Singleton<StartMenuControl>
 
     private void OnStartGameButton(GameObject go)
     {
-        GamePublic.Instance.GameStatesManager.ChangeState(GamePublic.Instance.GameStatesManager.SelectPeriodState);
+        GamePublic.Instance.GameStatesManager.ChangeState(GamePublic.Instance.GameStatesManager.SelectTimesState);
     }
 
     private void OnLoadGameButton(GameObject go)

@@ -21,6 +21,8 @@ public class WrapXMLDataCity
 		new LuaField("Defense", get_Defense, set_Defense),
 		new LuaField("Money", get_Money, set_Money),
 		new LuaField("Times", get_Times, set_Times),
+		new LuaField("Major", get_Major, set_Major),
+		new LuaField("Wise", get_Wise, set_Wise),
 	};
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
@@ -193,6 +195,36 @@ public class WrapXMLDataCity
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int get_Major(IntPtr L)
+	{
+		object o = LuaScriptMgr.GetLuaObject(L, 1);
+
+		if (o == null)
+		{
+			LuaDLL.luaL_error(L, "unknown member name Major");
+		}
+
+		XMLDataCity obj = (XMLDataCity)o;
+		LuaScriptMgr.PushArray(L, obj.Major);
+		return 1;
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int get_Wise(IntPtr L)
+	{
+		object o = LuaScriptMgr.GetLuaObject(L, 1);
+
+		if (o == null)
+		{
+			LuaDLL.luaL_error(L, "unknown member name Wise");
+		}
+
+		XMLDataCity obj = (XMLDataCity)o;
+		LuaScriptMgr.PushArray(L, obj.Wise);
+		return 1;
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_ID(IntPtr L)
 	{
 		object o = LuaScriptMgr.GetLuaObject(L, 1);
@@ -339,6 +371,36 @@ public class WrapXMLDataCity
 
 		XMLDataCity obj = (XMLDataCity)o;
 		obj.Times = LuaScriptMgr.GetNetObject<String[]>(L, 3);
+		return 0;
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int set_Major(IntPtr L)
+	{
+		object o = LuaScriptMgr.GetLuaObject(L, 1);
+
+		if (o == null)
+		{
+			LuaDLL.luaL_error(L, "unknown member name Major");
+		}
+
+		XMLDataCity obj = (XMLDataCity)o;
+		obj.Major = LuaScriptMgr.GetNetObject<String[]>(L, 3);
+		return 0;
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int set_Wise(IntPtr L)
+	{
+		object o = LuaScriptMgr.GetLuaObject(L, 1);
+
+		if (o == null)
+		{
+			LuaDLL.luaL_error(L, "unknown member name Wise");
+		}
+
+		XMLDataCity obj = (XMLDataCity)o;
+		obj.Wise = LuaScriptMgr.GetNetObject<String[]>(L, 3);
 		return 0;
 	}
 }

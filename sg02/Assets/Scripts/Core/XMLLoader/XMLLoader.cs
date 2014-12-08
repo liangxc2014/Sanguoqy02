@@ -127,9 +127,13 @@ public class XMLLoader<T> where T : class
                         if (childType.IsPrimitive || childType == typeof(string))
                         {
                             string text = childList[i].InnerText;
-                            if (text != "")
+                            if (string.IsNullOrEmpty(text) == false)
                             {
                                 childObj = Convert.ChangeType(text, childType);
+                            }
+                            else
+                            {
+                                childObj = "";
                             }
                         }
                         else
@@ -151,9 +155,13 @@ public class XMLLoader<T> where T : class
                     else
                     {
                         string text = element.InnerText;
-                        if (text != "")
+                        if (string.IsNullOrEmpty(text) == false)
                         {
                             value = Convert.ChangeType(text, field.FieldType);
+                        }
+                        else
+                        {
+                            value = "";
                         }
                     }
                 }

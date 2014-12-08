@@ -42,5 +42,13 @@ public class XMLDataCity
 	/// »Æ½íÖ®ÂÒ
 	/// </summary>
 	public string[] Times;
+	/// <summary>
+	/// Ì«ÊØ
+	/// </summary>
+	public string[] Major;
+	/// <summary>
+	/// ¾üÊ¦
+	/// </summary>
+	public string[] Wise;
 }
 

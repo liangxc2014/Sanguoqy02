@@ -15,6 +15,7 @@ public class WrapXMLDataWiseSkill
 		new LuaField("Script", get_Script, set_Script),
 		new LuaField("BuffLevel", get_BuffLevel, set_BuffLevel),
 		new LuaField("Name", get_Name, set_Name),
+		new LuaField("FullName", get_FullName, set_FullName),
 		new LuaField("Property", get_Property, set_Property),
 		new LuaField("Level", get_Level, set_Level),
 		new LuaField("Target", get_Target, set_Target),
@@ -96,6 +97,21 @@ public class WrapXMLDataWiseSkill
 
 		XMLDataWiseSkill obj = (XMLDataWiseSkill)o;
 		LuaScriptMgr.Push(L, obj.Name);
+		return 1;
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int get_FullName(IntPtr L)
+	{
+		object o = LuaScriptMgr.GetLuaObject(L, 1);
+
+		if (o == null)
+		{
+			LuaDLL.luaL_error(L, "unknown member name FullName");
+		}
+
+		XMLDataWiseSkill obj = (XMLDataWiseSkill)o;
+		LuaScriptMgr.Push(L, obj.FullName);
 		return 1;
 	}
 
@@ -201,6 +217,21 @@ public class WrapXMLDataWiseSkill
 
 		XMLDataWiseSkill obj = (XMLDataWiseSkill)o;
 		obj.Name = LuaScriptMgr.GetString(L, 3);
+		return 0;
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int set_FullName(IntPtr L)
+	{
+		object o = LuaScriptMgr.GetLuaObject(L, 1);
+
+		if (o == null)
+		{
+			LuaDLL.luaL_error(L, "unknown member name FullName");
+		}
+
+		XMLDataWiseSkill obj = (XMLDataWiseSkill)o;
+		obj.FullName = LuaScriptMgr.GetString(L, 3);
 		return 0;
 	}
 

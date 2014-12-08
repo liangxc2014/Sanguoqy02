@@ -13,7 +13,7 @@ public class WrapGameStatesManager
 	static LuaField[] fields = new LuaField[]
 	{
 		new LuaField("StartMenuState", get_StartMenuState, null),
-		new LuaField("SelectPeriodState", get_SelectPeriodState, null),
+		new LuaField("SelectTimesState", get_SelectTimesState, null),
 		new LuaField("SelectKingState", get_SelectKingState, null),
 		new LuaField("InternalAffairsState", get_InternalAffairsState, null),
 	};
@@ -65,17 +65,17 @@ public class WrapGameStatesManager
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int get_SelectPeriodState(IntPtr L)
+	static int get_SelectTimesState(IntPtr L)
 	{
 		object o = LuaScriptMgr.GetLuaObject(L, 1);
 
 		if (o == null)
 		{
-			LuaDLL.luaL_error(L, "unknown member name SelectPeriodState");
+			LuaDLL.luaL_error(L, "unknown member name SelectTimesState");
 		}
 
 		GameStatesManager obj = (GameStatesManager)o;
-		LuaScriptMgr.PushObject(L, obj.SelectPeriodState);
+		LuaScriptMgr.PushObject(L, obj.SelectTimesState);
 		return 1;
 	}
 

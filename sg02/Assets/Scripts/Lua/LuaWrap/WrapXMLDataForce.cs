@@ -13,6 +13,7 @@ public class WrapXMLDataForce
 	{
 		new LuaField("ID", get_ID, set_ID),
 		new LuaField("Name", get_Name, set_Name),
+		new LuaField("ShortName", get_ShortName, set_ShortName),
 		new LuaField("Force1", get_Force1, set_Force1),
 		new LuaField("Force2", get_Force2, set_Force2),
 		new LuaField("Force3", get_Force3, set_Force3),
@@ -74,6 +75,21 @@ public class WrapXMLDataForce
 
 		XMLDataForce obj = (XMLDataForce)o;
 		LuaScriptMgr.Push(L, obj.Name);
+		return 1;
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int get_ShortName(IntPtr L)
+	{
+		object o = LuaScriptMgr.GetLuaObject(L, 1);
+
+		if (o == null)
+		{
+			LuaDLL.luaL_error(L, "unknown member name ShortName");
+		}
+
+		XMLDataForce obj = (XMLDataForce)o;
+		LuaScriptMgr.Push(L, obj.ShortName);
 		return 1;
 	}
 
@@ -299,6 +315,21 @@ public class WrapXMLDataForce
 
 		XMLDataForce obj = (XMLDataForce)o;
 		obj.Name = LuaScriptMgr.GetString(L, 3);
+		return 0;
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int set_ShortName(IntPtr L)
+	{
+		object o = LuaScriptMgr.GetLuaObject(L, 1);
+
+		if (o == null)
+		{
+			LuaDLL.luaL_error(L, "unknown member name ShortName");
+		}
+
+		XMLDataForce obj = (XMLDataForce)o;
+		obj.ShortName = LuaScriptMgr.GetString(L, 3);
 		return 0;
 	}
 

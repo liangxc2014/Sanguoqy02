@@ -182,9 +182,9 @@ public static class LuaBinding
     {
         if (!Application.isPlaying)
         {
-            EditorApplication.isPlaying = true;            
+            //EditorApplication.isPlaying = true;            
         }
-
+        
         for (int i = 0; i < binds.Length; i++)
         {
             ToLua.Clear();
@@ -197,7 +197,7 @@ public static class LuaBinding
             ToLua.Generate(null);
         }
 
-        EditorApplication.isPlaying = false;
+        //EditorApplication.isPlaying = false;
         GenRegFile();
         UnityEngine.Debug.Log("Generate lua binding files over");
         AssetDatabase.Refresh();

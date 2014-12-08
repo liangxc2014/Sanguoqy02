@@ -18,25 +18,30 @@ public class WrapGeneralInfo
 		new LuaField("CityID", get_CityID, set_CityID),
 		new LuaField("PrisonerID", get_PrisonerID, set_PrisonerID),
 		new LuaField("Loyalty", get_Loyalty, set_Loyalty),
-		new LuaField("Magic", get_Magic, set_Magic),
+		new LuaField("Skill", get_Skill, set_Skill),
+		new LuaField("SkillLevel", get_SkillLevel, set_SkillLevel),
+		new LuaField("WiseSkill", get_WiseSkill, set_WiseSkill),
+		new LuaField("WiseSkillLevel", get_WiseSkillLevel, set_WiseSkillLevel),
 		new LuaField("Title", get_Title, set_Title),
-		new LuaField("Things", get_Things, set_Things),
 		new LuaField("Strength", get_Strength, set_Strength),
 		new LuaField("Intellect", get_Intellect, set_Intellect),
 		new LuaField("Experience", get_Experience, set_Experience),
 		new LuaField("Level", get_Level, set_Level),
-		new LuaField("HPMax", get_HPMax, set_HPMax),
-		new LuaField("HPCur", get_HPCur, set_HPCur),
-		new LuaField("MPMax", get_MPMax, set_MPMax),
-		new LuaField("MPCur", get_MPCur, set_MPCur),
+		new LuaField("BaseHP", get_BaseHP, set_BaseHP),
+		new LuaField("CurHP", get_CurHP, set_CurHP),
+		new LuaField("BaseMP", get_BaseMP, set_BaseMP),
+		new LuaField("CurMP", get_CurMP, set_CurMP),
 		new LuaField("SoldierMax", get_SoldierMax, set_SoldierMax),
 		new LuaField("SoldierCur", get_SoldierCur, set_SoldierCur),
 		new LuaField("KnightMax", get_KnightMax, set_KnightMax),
 		new LuaField("KnightCur", get_KnightCur, set_KnightCur),
-		new LuaField("Force", get_Force, set_Force),
-		new LuaField("ForceUse", get_ForceUse, set_ForceUse),
-		new LuaField("Battle", get_Battle, set_Battle),
-		new LuaField("BattleUse", get_BattleUse, set_BattleUse),
+		new LuaField("ForceArray", get_ForceArray, set_ForceArray),
+		new LuaField("UseForce", get_UseForce, set_UseForce),
+		new LuaField("BattleArray", get_BattleArray, set_BattleArray),
+		new LuaField("UseBattle", get_UseBattle, set_UseBattle),
+		new LuaField("Weapon", get_Weapon, set_Weapon),
+		new LuaField("Horse", get_Horse, set_Horse),
+		new LuaField("Thing", get_Thing, set_Thing),
 		new LuaField("Escape", get_Escape, set_Escape),
 	};
 
@@ -184,17 +189,62 @@ public class WrapGeneralInfo
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int get_Magic(IntPtr L)
+	static int get_Skill(IntPtr L)
 	{
 		object o = LuaScriptMgr.GetLuaObject(L, 1);
 
 		if (o == null)
 		{
-			LuaDLL.luaL_error(L, "unknown member name Magic");
+			LuaDLL.luaL_error(L, "unknown member name Skill");
 		}
 
 		GeneralInfo obj = (GeneralInfo)o;
-		LuaScriptMgr.PushArray(L, obj.Magic);
+		LuaScriptMgr.PushArray(L, obj.Skill);
+		return 1;
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int get_SkillLevel(IntPtr L)
+	{
+		object o = LuaScriptMgr.GetLuaObject(L, 1);
+
+		if (o == null)
+		{
+			LuaDLL.luaL_error(L, "unknown member name SkillLevel");
+		}
+
+		GeneralInfo obj = (GeneralInfo)o;
+		LuaScriptMgr.PushArray(L, obj.SkillLevel);
+		return 1;
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int get_WiseSkill(IntPtr L)
+	{
+		object o = LuaScriptMgr.GetLuaObject(L, 1);
+
+		if (o == null)
+		{
+			LuaDLL.luaL_error(L, "unknown member name WiseSkill");
+		}
+
+		GeneralInfo obj = (GeneralInfo)o;
+		LuaScriptMgr.PushArray(L, obj.WiseSkill);
+		return 1;
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int get_WiseSkillLevel(IntPtr L)
+	{
+		object o = LuaScriptMgr.GetLuaObject(L, 1);
+
+		if (o == null)
+		{
+			LuaDLL.luaL_error(L, "unknown member name WiseSkillLevel");
+		}
+
+		GeneralInfo obj = (GeneralInfo)o;
+		LuaScriptMgr.PushArray(L, obj.WiseSkillLevel);
 		return 1;
 	}
 
@@ -210,21 +260,6 @@ public class WrapGeneralInfo
 
 		GeneralInfo obj = (GeneralInfo)o;
 		LuaScriptMgr.Push(L, obj.Title);
-		return 1;
-	}
-
-	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int get_Things(IntPtr L)
-	{
-		object o = LuaScriptMgr.GetLuaObject(L, 1);
-
-		if (o == null)
-		{
-			LuaDLL.luaL_error(L, "unknown member name Things");
-		}
-
-		GeneralInfo obj = (GeneralInfo)o;
-		LuaScriptMgr.Push(L, obj.Things);
 		return 1;
 	}
 
@@ -289,62 +324,62 @@ public class WrapGeneralInfo
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int get_HPMax(IntPtr L)
+	static int get_BaseHP(IntPtr L)
 	{
 		object o = LuaScriptMgr.GetLuaObject(L, 1);
 
 		if (o == null)
 		{
-			LuaDLL.luaL_error(L, "unknown member name HPMax");
+			LuaDLL.luaL_error(L, "unknown member name BaseHP");
 		}
 
 		GeneralInfo obj = (GeneralInfo)o;
-		LuaScriptMgr.Push(L, obj.HPMax);
+		LuaScriptMgr.Push(L, obj.BaseHP);
 		return 1;
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int get_HPCur(IntPtr L)
+	static int get_CurHP(IntPtr L)
 	{
 		object o = LuaScriptMgr.GetLuaObject(L, 1);
 
 		if (o == null)
 		{
-			LuaDLL.luaL_error(L, "unknown member name HPCur");
+			LuaDLL.luaL_error(L, "unknown member name CurHP");
 		}
 
 		GeneralInfo obj = (GeneralInfo)o;
-		LuaScriptMgr.Push(L, obj.HPCur);
+		LuaScriptMgr.Push(L, obj.CurHP);
 		return 1;
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int get_MPMax(IntPtr L)
+	static int get_BaseMP(IntPtr L)
 	{
 		object o = LuaScriptMgr.GetLuaObject(L, 1);
 
 		if (o == null)
 		{
-			LuaDLL.luaL_error(L, "unknown member name MPMax");
+			LuaDLL.luaL_error(L, "unknown member name BaseMP");
 		}
 
 		GeneralInfo obj = (GeneralInfo)o;
-		LuaScriptMgr.Push(L, obj.MPMax);
+		LuaScriptMgr.Push(L, obj.BaseMP);
 		return 1;
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int get_MPCur(IntPtr L)
+	static int get_CurMP(IntPtr L)
 	{
 		object o = LuaScriptMgr.GetLuaObject(L, 1);
 
 		if (o == null)
 		{
-			LuaDLL.luaL_error(L, "unknown member name MPCur");
+			LuaDLL.luaL_error(L, "unknown member name CurMP");
 		}
 
 		GeneralInfo obj = (GeneralInfo)o;
-		LuaScriptMgr.Push(L, obj.MPCur);
+		LuaScriptMgr.Push(L, obj.CurMP);
 		return 1;
 	}
 
@@ -409,62 +444,107 @@ public class WrapGeneralInfo
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int get_Force(IntPtr L)
+	static int get_ForceArray(IntPtr L)
 	{
 		object o = LuaScriptMgr.GetLuaObject(L, 1);
 
 		if (o == null)
 		{
-			LuaDLL.luaL_error(L, "unknown member name Force");
+			LuaDLL.luaL_error(L, "unknown member name ForceArray");
 		}
 
 		GeneralInfo obj = (GeneralInfo)o;
-		LuaScriptMgr.Push(L, obj.Force);
+		LuaScriptMgr.Push(L, obj.ForceArray);
 		return 1;
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int get_ForceUse(IntPtr L)
+	static int get_UseForce(IntPtr L)
 	{
 		object o = LuaScriptMgr.GetLuaObject(L, 1);
 
 		if (o == null)
 		{
-			LuaDLL.luaL_error(L, "unknown member name ForceUse");
+			LuaDLL.luaL_error(L, "unknown member name UseForce");
 		}
 
 		GeneralInfo obj = (GeneralInfo)o;
-		LuaScriptMgr.Push(L, obj.ForceUse);
+		LuaScriptMgr.Push(L, obj.UseForce);
 		return 1;
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int get_Battle(IntPtr L)
+	static int get_BattleArray(IntPtr L)
 	{
 		object o = LuaScriptMgr.GetLuaObject(L, 1);
 
 		if (o == null)
 		{
-			LuaDLL.luaL_error(L, "unknown member name Battle");
+			LuaDLL.luaL_error(L, "unknown member name BattleArray");
 		}
 
 		GeneralInfo obj = (GeneralInfo)o;
-		LuaScriptMgr.Push(L, obj.Battle);
+		LuaScriptMgr.Push(L, obj.BattleArray);
 		return 1;
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int get_BattleUse(IntPtr L)
+	static int get_UseBattle(IntPtr L)
 	{
 		object o = LuaScriptMgr.GetLuaObject(L, 1);
 
 		if (o == null)
 		{
-			LuaDLL.luaL_error(L, "unknown member name BattleUse");
+			LuaDLL.luaL_error(L, "unknown member name UseBattle");
 		}
 
 		GeneralInfo obj = (GeneralInfo)o;
-		LuaScriptMgr.Push(L, obj.BattleUse);
+		LuaScriptMgr.Push(L, obj.UseBattle);
+		return 1;
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int get_Weapon(IntPtr L)
+	{
+		object o = LuaScriptMgr.GetLuaObject(L, 1);
+
+		if (o == null)
+		{
+			LuaDLL.luaL_error(L, "unknown member name Weapon");
+		}
+
+		GeneralInfo obj = (GeneralInfo)o;
+		LuaScriptMgr.Push(L, obj.Weapon);
+		return 1;
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int get_Horse(IntPtr L)
+	{
+		object o = LuaScriptMgr.GetLuaObject(L, 1);
+
+		if (o == null)
+		{
+			LuaDLL.luaL_error(L, "unknown member name Horse");
+		}
+
+		GeneralInfo obj = (GeneralInfo)o;
+		LuaScriptMgr.Push(L, obj.Horse);
+		return 1;
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int get_Thing(IntPtr L)
+	{
+		object o = LuaScriptMgr.GetLuaObject(L, 1);
+
+		if (o == null)
+		{
+			LuaDLL.luaL_error(L, "unknown member name Thing");
+		}
+
+		GeneralInfo obj = (GeneralInfo)o;
+		LuaScriptMgr.Push(L, obj.Thing);
 		return 1;
 	}
 
@@ -589,17 +669,62 @@ public class WrapGeneralInfo
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int set_Magic(IntPtr L)
+	static int set_Skill(IntPtr L)
 	{
 		object o = LuaScriptMgr.GetLuaObject(L, 1);
 
 		if (o == null)
 		{
-			LuaDLL.luaL_error(L, "unknown member name Magic");
+			LuaDLL.luaL_error(L, "unknown member name Skill");
 		}
 
 		GeneralInfo obj = (GeneralInfo)o;
-		obj.Magic = LuaScriptMgr.GetNetObject<Int32[]>(L, 3);
+		obj.Skill = LuaScriptMgr.GetNetObject<Int32[]>(L, 3);
+		return 0;
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int set_SkillLevel(IntPtr L)
+	{
+		object o = LuaScriptMgr.GetLuaObject(L, 1);
+
+		if (o == null)
+		{
+			LuaDLL.luaL_error(L, "unknown member name SkillLevel");
+		}
+
+		GeneralInfo obj = (GeneralInfo)o;
+		obj.SkillLevel = LuaScriptMgr.GetNetObject<Int32[]>(L, 3);
+		return 0;
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int set_WiseSkill(IntPtr L)
+	{
+		object o = LuaScriptMgr.GetLuaObject(L, 1);
+
+		if (o == null)
+		{
+			LuaDLL.luaL_error(L, "unknown member name WiseSkill");
+		}
+
+		GeneralInfo obj = (GeneralInfo)o;
+		obj.WiseSkill = LuaScriptMgr.GetNetObject<Int32[]>(L, 3);
+		return 0;
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int set_WiseSkillLevel(IntPtr L)
+	{
+		object o = LuaScriptMgr.GetLuaObject(L, 1);
+
+		if (o == null)
+		{
+			LuaDLL.luaL_error(L, "unknown member name WiseSkillLevel");
+		}
+
+		GeneralInfo obj = (GeneralInfo)o;
+		obj.WiseSkillLevel = LuaScriptMgr.GetNetObject<Int32[]>(L, 3);
 		return 0;
 	}
 
@@ -615,21 +740,6 @@ public class WrapGeneralInfo
 
 		GeneralInfo obj = (GeneralInfo)o;
 		obj.Title = (int)LuaScriptMgr.GetNumber(L, 3);
-		return 0;
-	}
-
-	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int set_Things(IntPtr L)
-	{
-		object o = LuaScriptMgr.GetLuaObject(L, 1);
-
-		if (o == null)
-		{
-			LuaDLL.luaL_error(L, "unknown member name Things");
-		}
-
-		GeneralInfo obj = (GeneralInfo)o;
-		obj.Things = (int)LuaScriptMgr.GetNumber(L, 3);
 		return 0;
 	}
 
@@ -694,62 +804,62 @@ public class WrapGeneralInfo
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int set_HPMax(IntPtr L)
+	static int set_BaseHP(IntPtr L)
 	{
 		object o = LuaScriptMgr.GetLuaObject(L, 1);
 
 		if (o == null)
 		{
-			LuaDLL.luaL_error(L, "unknown member name HPMax");
+			LuaDLL.luaL_error(L, "unknown member name BaseHP");
 		}
 
 		GeneralInfo obj = (GeneralInfo)o;
-		obj.HPMax = (int)LuaScriptMgr.GetNumber(L, 3);
+		obj.BaseHP = (int)LuaScriptMgr.GetNumber(L, 3);
 		return 0;
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int set_HPCur(IntPtr L)
+	static int set_CurHP(IntPtr L)
 	{
 		object o = LuaScriptMgr.GetLuaObject(L, 1);
 
 		if (o == null)
 		{
-			LuaDLL.luaL_error(L, "unknown member name HPCur");
+			LuaDLL.luaL_error(L, "unknown member name CurHP");
 		}
 
 		GeneralInfo obj = (GeneralInfo)o;
-		obj.HPCur = (int)LuaScriptMgr.GetNumber(L, 3);
+		obj.CurHP = (int)LuaScriptMgr.GetNumber(L, 3);
 		return 0;
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int set_MPMax(IntPtr L)
+	static int set_BaseMP(IntPtr L)
 	{
 		object o = LuaScriptMgr.GetLuaObject(L, 1);
 
 		if (o == null)
 		{
-			LuaDLL.luaL_error(L, "unknown member name MPMax");
+			LuaDLL.luaL_error(L, "unknown member name BaseMP");
 		}
 
 		GeneralInfo obj = (GeneralInfo)o;
-		obj.MPMax = (int)LuaScriptMgr.GetNumber(L, 3);
+		obj.BaseMP = (int)LuaScriptMgr.GetNumber(L, 3);
 		return 0;
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int set_MPCur(IntPtr L)
+	static int set_CurMP(IntPtr L)
 	{
 		object o = LuaScriptMgr.GetLuaObject(L, 1);
 
 		if (o == null)
 		{
-			LuaDLL.luaL_error(L, "unknown member name MPCur");
+			LuaDLL.luaL_error(L, "unknown member name CurMP");
 		}
 
 		GeneralInfo obj = (GeneralInfo)o;
-		obj.MPCur = (int)LuaScriptMgr.GetNumber(L, 3);
+		obj.CurMP = (int)LuaScriptMgr.GetNumber(L, 3);
 		return 0;
 	}
 
@@ -814,62 +924,107 @@ public class WrapGeneralInfo
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int set_Force(IntPtr L)
+	static int set_ForceArray(IntPtr L)
 	{
 		object o = LuaScriptMgr.GetLuaObject(L, 1);
 
 		if (o == null)
 		{
-			LuaDLL.luaL_error(L, "unknown member name Force");
+			LuaDLL.luaL_error(L, "unknown member name ForceArray");
 		}
 
 		GeneralInfo obj = (GeneralInfo)o;
-		obj.Force = (int)LuaScriptMgr.GetNumber(L, 3);
+		obj.ForceArray = (int)LuaScriptMgr.GetNumber(L, 3);
 		return 0;
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int set_ForceUse(IntPtr L)
+	static int set_UseForce(IntPtr L)
 	{
 		object o = LuaScriptMgr.GetLuaObject(L, 1);
 
 		if (o == null)
 		{
-			LuaDLL.luaL_error(L, "unknown member name ForceUse");
+			LuaDLL.luaL_error(L, "unknown member name UseForce");
 		}
 
 		GeneralInfo obj = (GeneralInfo)o;
-		obj.ForceUse = (int)LuaScriptMgr.GetNumber(L, 3);
+		obj.UseForce = (int)LuaScriptMgr.GetNumber(L, 3);
 		return 0;
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int set_Battle(IntPtr L)
+	static int set_BattleArray(IntPtr L)
 	{
 		object o = LuaScriptMgr.GetLuaObject(L, 1);
 
 		if (o == null)
 		{
-			LuaDLL.luaL_error(L, "unknown member name Battle");
+			LuaDLL.luaL_error(L, "unknown member name BattleArray");
 		}
 
 		GeneralInfo obj = (GeneralInfo)o;
-		obj.Battle = (int)LuaScriptMgr.GetNumber(L, 3);
+		obj.BattleArray = (int)LuaScriptMgr.GetNumber(L, 3);
 		return 0;
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int set_BattleUse(IntPtr L)
+	static int set_UseBattle(IntPtr L)
 	{
 		object o = LuaScriptMgr.GetLuaObject(L, 1);
 
 		if (o == null)
 		{
-			LuaDLL.luaL_error(L, "unknown member name BattleUse");
+			LuaDLL.luaL_error(L, "unknown member name UseBattle");
 		}
 
 		GeneralInfo obj = (GeneralInfo)o;
-		obj.BattleUse = (int)LuaScriptMgr.GetNumber(L, 3);
+		obj.UseBattle = (int)LuaScriptMgr.GetNumber(L, 3);
+		return 0;
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int set_Weapon(IntPtr L)
+	{
+		object o = LuaScriptMgr.GetLuaObject(L, 1);
+
+		if (o == null)
+		{
+			LuaDLL.luaL_error(L, "unknown member name Weapon");
+		}
+
+		GeneralInfo obj = (GeneralInfo)o;
+		obj.Weapon = (int)LuaScriptMgr.GetNumber(L, 3);
+		return 0;
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int set_Horse(IntPtr L)
+	{
+		object o = LuaScriptMgr.GetLuaObject(L, 1);
+
+		if (o == null)
+		{
+			LuaDLL.luaL_error(L, "unknown member name Horse");
+		}
+
+		GeneralInfo obj = (GeneralInfo)o;
+		obj.Horse = (int)LuaScriptMgr.GetNumber(L, 3);
+		return 0;
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int set_Thing(IntPtr L)
+	{
+		object o = LuaScriptMgr.GetLuaObject(L, 1);
+
+		if (o == null)
+		{
+			LuaDLL.luaL_error(L, "unknown member name Thing");
+		}
+
+		GeneralInfo obj = (GeneralInfo)o;
+		obj.Thing = (int)LuaScriptMgr.GetNumber(L, 3);
 		return 0;
 	}
 

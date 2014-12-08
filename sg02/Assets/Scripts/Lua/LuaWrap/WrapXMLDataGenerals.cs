@@ -21,12 +21,10 @@ public class WrapXMLDataGenerals
 		new LuaField("Total", get_Total, set_Total),
 		new LuaField("Skill", get_Skill, set_Skill),
 		new LuaField("SkillLevel", get_SkillLevel, set_SkillLevel),
-		new LuaField("SKILL", get_SKILL, set_SKILL),
 		new LuaField("WiseSkill", get_WiseSkill, set_WiseSkill),
 		new LuaField("WiseSkillLevel", get_WiseSkillLevel, set_WiseSkillLevel),
 		new LuaField("Times", get_Times, set_Times),
 		new LuaField("TimesState", get_TimesState, set_TimesState),
-		new LuaField("TimesdState", get_TimesdState, set_TimesdState),
 		new LuaField("Weapon", get_Weapon, set_Weapon),
 		new LuaField("Horse", get_Horse, set_Horse),
 		new LuaField("Thing", get_Thing, set_Thing),
@@ -34,6 +32,7 @@ public class WrapXMLDataGenerals
 		new LuaField("UseBattleArray", get_UseBattleArray, set_UseBattleArray),
 		new LuaField("Force", get_Force, set_Force),
 		new LuaField("UseForce", get_UseForce, set_UseForce),
+		new LuaField("Loyalty", get_Loyalty, set_Loyalty),
 		new LuaField("LoyalKing", get_LoyalKing, set_LoyalKing),
 		new LuaField("Blood", get_Blood, set_Blood),
 		new LuaField("Constancy", get_Constancy, set_Constancy),
@@ -211,21 +210,6 @@ public class WrapXMLDataGenerals
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int get_SKILL(IntPtr L)
-	{
-		object o = LuaScriptMgr.GetLuaObject(L, 1);
-
-		if (o == null)
-		{
-			LuaDLL.luaL_error(L, "unknown member name SKILL");
-		}
-
-		XMLDataGenerals obj = (XMLDataGenerals)o;
-		LuaScriptMgr.PushArray(L, obj.SKILL);
-		return 1;
-	}
-
-	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_WiseSkill(IntPtr L)
 	{
 		object o = LuaScriptMgr.GetLuaObject(L, 1);
@@ -282,21 +266,6 @@ public class WrapXMLDataGenerals
 
 		XMLDataGenerals obj = (XMLDataGenerals)o;
 		LuaScriptMgr.PushArray(L, obj.TimesState);
-		return 1;
-	}
-
-	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int get_TimesdState(IntPtr L)
-	{
-		object o = LuaScriptMgr.GetLuaObject(L, 1);
-
-		if (o == null)
-		{
-			LuaDLL.luaL_error(L, "unknown member name TimesdState");
-		}
-
-		XMLDataGenerals obj = (XMLDataGenerals)o;
-		LuaScriptMgr.PushArray(L, obj.TimesdState);
 		return 1;
 	}
 
@@ -402,6 +371,21 @@ public class WrapXMLDataGenerals
 
 		XMLDataGenerals obj = (XMLDataGenerals)o;
 		LuaScriptMgr.Push(L, obj.UseForce);
+		return 1;
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int get_Loyalty(IntPtr L)
+	{
+		object o = LuaScriptMgr.GetLuaObject(L, 1);
+
+		if (o == null)
+		{
+			LuaDLL.luaL_error(L, "unknown member name Loyalty");
+		}
+
+		XMLDataGenerals obj = (XMLDataGenerals)o;
+		LuaScriptMgr.Push(L, obj.Loyalty);
 		return 1;
 	}
 
@@ -631,21 +615,6 @@ public class WrapXMLDataGenerals
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int set_SKILL(IntPtr L)
-	{
-		object o = LuaScriptMgr.GetLuaObject(L, 1);
-
-		if (o == null)
-		{
-			LuaDLL.luaL_error(L, "unknown member name SKILL");
-		}
-
-		XMLDataGenerals obj = (XMLDataGenerals)o;
-		obj.SKILL = LuaScriptMgr.GetNetObject<String[]>(L, 3);
-		return 0;
-	}
-
-	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_WiseSkill(IntPtr L)
 	{
 		object o = LuaScriptMgr.GetLuaObject(L, 1);
@@ -702,21 +671,6 @@ public class WrapXMLDataGenerals
 
 		XMLDataGenerals obj = (XMLDataGenerals)o;
 		obj.TimesState = LuaScriptMgr.GetNetObject<String[]>(L, 3);
-		return 0;
-	}
-
-	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int set_TimesdState(IntPtr L)
-	{
-		object o = LuaScriptMgr.GetLuaObject(L, 1);
-
-		if (o == null)
-		{
-			LuaDLL.luaL_error(L, "unknown member name TimesdState");
-		}
-
-		XMLDataGenerals obj = (XMLDataGenerals)o;
-		obj.TimesdState = LuaScriptMgr.GetNetObject<String[]>(L, 3);
 		return 0;
 	}
 
@@ -822,6 +776,21 @@ public class WrapXMLDataGenerals
 
 		XMLDataGenerals obj = (XMLDataGenerals)o;
 		obj.UseForce = LuaScriptMgr.GetString(L, 3);
+		return 0;
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int set_Loyalty(IntPtr L)
+	{
+		object o = LuaScriptMgr.GetLuaObject(L, 1);
+
+		if (o == null)
+		{
+			LuaDLL.luaL_error(L, "unknown member name Loyalty");
+		}
+
+		XMLDataGenerals obj = (XMLDataGenerals)o;
+		obj.Loyalty = (int)LuaScriptMgr.GetNumber(L, 3);
 		return 0;
 	}
 

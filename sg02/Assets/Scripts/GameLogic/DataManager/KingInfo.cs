@@ -6,6 +6,8 @@ public class KingInfo
 {
     public bool Active { get; set; }
     public int ID { get; set; }
+
+    public string Name { get; set; }
     public int GeneralID { get; set; }
 
     private List<int> m_citys;
@@ -31,6 +33,7 @@ public class KingInfo
 
         XMLDataKings data = XMLManager.Kings.GetInfoById(ID);
 
+        Name = data.Name;
         GeneralID = DataManager.FindGeneralID(data.Name);
 
         int currentPeriod = GamePublic.Instance.CurrentTimes;

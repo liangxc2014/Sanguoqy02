@@ -2,10 +2,13 @@ module(..., package.seeall);
 
 m_view = nil
 
+--
+local m_tableTimes = {}
+
 --初始化函数
 function Initialize(viewPanel)
 
-    m_view = SelectPeriodView
+    m_view = SelectTimesView
     m_view.Initialize(viewPanel)
 
     InitButtons()
@@ -15,7 +18,7 @@ end
 --反初始化函数
 function UnInitialize()
 
-    
+    m_tableTimes = {}
 
 end
 
@@ -34,6 +37,7 @@ function InitButtons()
 
         go.transform.localPosition = Vector3.New(0, GlobalConfig.FontButtonsVSpace * i)
 
+        m_tableTimes[go] = i
         InputManager.Instance:AddOnClickEvent(go, OnButtonClick)
     end
 
@@ -42,6 +46,9 @@ end
 --按键响应
 function OnButtonClick(go)
 
-    print(go.name)
+    local currentTimes = m_tableTimes[go]
+    GamePublic.Instance.CurrentTimes = currentTimes
+
+    GamePublic.Instance.GameStatesManager:ChangeState(GamePublic.Instance.GameStatesManager.SelectKingState)
 
 end

@@ -19,6 +19,7 @@ public class WrapKingInfo
 	{
 		new LuaField("Active", get_Active, set_Active),
 		new LuaField("ID", get_ID, set_ID),
+		new LuaField("Name", get_Name, set_Name),
 		new LuaField("GeneralID", get_GeneralID, set_GeneralID),
 		new LuaField("Citys", get_Citys, null),
 		new LuaField("Generals", get_Generals, null),
@@ -90,6 +91,21 @@ public class WrapKingInfo
 
 		KingInfo obj = (KingInfo)o;
 		LuaScriptMgr.Push(L, obj.ID);
+		return 1;
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int get_Name(IntPtr L)
+	{
+		object o = LuaScriptMgr.GetLuaObject(L, 1);
+
+		if (o == null)
+		{
+			LuaDLL.luaL_error(L, "unknown member name Name");
+		}
+
+		KingInfo obj = (KingInfo)o;
+		LuaScriptMgr.Push(L, obj.Name);
 		return 1;
 	}
 
@@ -180,6 +196,21 @@ public class WrapKingInfo
 
 		KingInfo obj = (KingInfo)o;
 		obj.ID = (int)LuaScriptMgr.GetNumber(L, 3);
+		return 0;
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int set_Name(IntPtr L)
+	{
+		object o = LuaScriptMgr.GetLuaObject(L, 1);
+
+		if (o == null)
+		{
+			LuaDLL.luaL_error(L, "unknown member name Name");
+		}
+
+		KingInfo obj = (KingInfo)o;
+		obj.Name = LuaScriptMgr.GetString(L, 3);
 		return 0;
 	}
 

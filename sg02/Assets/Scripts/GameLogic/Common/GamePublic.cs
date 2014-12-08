@@ -30,6 +30,12 @@ public class GamePublic : Singleton<GamePublic>
     public Dictionary<string, string> LuaFiles { get { return m_dicLuaFiles; } }
 
     /// <summary>
+    /// 数据管理
+    /// </summary>
+    private DataManager m_datamanager;
+    public DataManager DataManager { get { return m_datamanager; } }
+
+    /// <summary>
     /// 历史时期列表
     /// </summary>
     private List<string> m_listTimes;
@@ -40,11 +46,7 @@ public class GamePublic : Singleton<GamePublic>
     /// </summary>
     public int CurrentTimes { get; set; }
 
-    /// <summary>
-    /// 数据管理
-    /// </summary>
-    private DataManager m_datamanager;
-    public DataManager DataManager { get { return m_datamanager; } }
+    public int CurrentKing { get; set; }
 
     // ------------------------------------------------------- 华丽的分割线 --------------------------------------------------
 

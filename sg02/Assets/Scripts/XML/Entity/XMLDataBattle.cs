@@ -11,6 +11,10 @@ public class XMLDataBattle
 	/// </summary>
 	public string Name;
 	/// <summary>
+	/// Ãû×ÖËõĞ´
+	/// </summary>
+	public string ShortName;
+	/// <summary>
 	/// ·½ĞÎ
 	/// </summary>
 	public int Battle1;

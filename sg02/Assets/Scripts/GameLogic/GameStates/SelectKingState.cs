@@ -13,14 +13,14 @@ public class SelectKingState : IState
     }
     public void OnEnter()
     {
-        GamePublic.Instance.DataManager.InitKingsInfo();
+        GamePublic.Instance.DataManager.InitDataManager();
 
         UIManager.Instance.ShowView(UINamesConfig.SelectKing);
     }
 
     public void OnExit()
     {
-        
+        UIManager.Instance.DestroyView(UINamesConfig.SelectKing);
     }
 
     public void Update()

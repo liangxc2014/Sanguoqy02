@@ -14,6 +14,14 @@ public class DataManager
     private Dictionary<int, GeneralInfo> m_listGenerals;
     public Dictionary<int, GeneralInfo> Generals { get { return m_listGenerals; } }
 
+
+    public void InitDataManager()
+    {
+        InitKingsInfo();
+        InitCitysInfo();
+        InitGeneralsInfo();
+    }
+
     public void InitKingsInfo()
     {
         m_listKings = new Dictionary<int, KingInfo>();
@@ -121,6 +129,9 @@ public class DataManager
 
     public static int FindKingID(string name)
     {
+        if (string.IsNullOrEmpty(name))
+            return 0;
+
         string generalName = Utility.GeneralName(name);
 
         IEnumerator enumerator = XMLManager.Kings.Data.Values.GetEnumerator();
@@ -139,6 +150,9 @@ public class DataManager
 
     public static int FindCityID(string name)
     {
+        if (string.IsNullOrEmpty(name))
+            return 0;
+
         string cityName = Utility.GeneralName(name);
 
         IEnumerator enumerator = XMLManager.City.Data.Values.GetEnumerator();
@@ -157,6 +171,9 @@ public class DataManager
 
     public static int FindGeneralID(string name)
     {
+        if (string.IsNullOrEmpty(name))
+            return 0;
+
         string generalName = Utility.GeneralName(name);
 
         IEnumerator enumerator = XMLManager.Generals.Data.Values.GetEnumerator();
@@ -175,38 +192,65 @@ public class DataManager
 
     public static int FindBattleID(string name)
     {
-        IEnumerator enumerator = XMLManager.Battle.Data.Values.GetEnumerator();
-        while (enumerator.MoveNext())
+        if (string.IsNullOrEmpty(name))
+            return 0;
+
+        int battle = 0;
+        string[] battleArr = name.Split(' ');
+        for (int i=0; i < battleArr.Length; i++)
         {
-            XMLDataBattle data = (XMLDataBattle)enumerator.Current;
-            if (data.Name.StartsWith(name))
+            IEnumerator enumerator = XMLManager.Battle.Data.Values.GetEnumerator();
+            while (enumerator.MoveNext())
             {
-                return data.ID;
+                XMLDataBattle data = (XMLDataBattle)enumerator.Current;
+                if (data.ShortName == battleArr[i])
+                {
+                    battle |= data.ID;
+                }
             }
         }
+        
 
-        Debugging.LogError("Function:FindBattleID; name = " + name);
-        return -1;
+        if (battle == 0)
+            Debugging.LogError("Function:FindBattleID; name = " + name);
+
+        return battle;
     }
 
     public static int FindForceID(string name)
     {
-        IEnumerator enumerator = XMLManager.Force.Data.Values.GetEnumerator();
-        while (enumerator.MoveNext())
+        if (string.IsNullOrEmpty(name))
+            return 0;
+
+        int force = 0;
+        string[] forceArr = name.Split(' ');
+
+        for (int i = 0; i < forceArr.Length; i++)
         {
-            XMLDataForce data = (XMLDataForce)enumerator.Current;
-            if (data.Name.StartsWith(name))
+            IEnumerator enumerator = XMLManager.Force.Data.Values.GetEnumerator();
+            while (enumerator.MoveNext())
             {
-                return data.ID;
+                XMLDataForce data = (XMLDataForce)enumerator.Current;
+                if (data.ShortName == forceArr[i])
+                {
+                    force |= data.ID;
+                }
             }
         }
-
-        Debugging.LogError("Function:FindForceID; name = " + name);
-        return -1;
+        
+        if (force == 0)
+        {
+            Debugging.LogError("Function:FindForceID; name = " + name);
+        }
+        
+        return force;
     }
 
-    public static int FindMagicID(string name)
+    public static int FindSkillID(string name)
     {
+        if (string.IsNullOrEmpty(name))
+            return 0;
+
         IEnumerator enumerator = XMLManager.Magic.Data.Values.GetEnumerator();
         while (enumerator.MoveNext())
         {
@@ -223,11 +267,14 @@ public class DataManager
 
     public static int FindWiseSkillID(string name)
     {
+        if (string.IsNullOrEmpty(name))
+            return 0;
+
         IEnumerator enumerator = XMLManager.WiseSkill.Data.Values.GetEnumerator();
         while (enumerator.MoveNext())
         {
             XMLDataWiseSkill data = (XMLDataWiseSkill)enumerator.Current;
-            if (data.Name == name)
+            if (data.FullName == name)
             {
                 return data.ID;
             }
@@ -239,6 +286,9 @@ public class DataManager
 
     public static int FindThingsID(string name)
     {
+        if (string.IsNullOrEmpty(name))
+            return 0;
+
         IEnumerator enumerator = XMLManager.Things.Data.Values.GetEnumerator();
         while (enumerator.MoveNext())
         {

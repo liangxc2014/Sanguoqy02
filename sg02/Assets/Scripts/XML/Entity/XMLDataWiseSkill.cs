@@ -19,6 +19,10 @@ public class XMLDataWiseSkill
 	/// </summary>
 	public string Name;
 	/// <summary>
+	/// 全名,包括等级
+	/// </summary>
+	public string FullName;
+	/// <summary>
 	/// 属性
 	/// </summary>
 	public int Property;

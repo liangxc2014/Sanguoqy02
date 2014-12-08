@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <root>
-  <RECORD ID="1" Name="方形" Battle1="0" Battle2="7" Battle3="-18" Battle4="19" Battle5="13" Battle6="-6" Battle7="23" Battle8="-23" Battle9="-15" />
-  <RECORD ID="2" Name="圆形" Battle1="-7" Battle2="0" Battle3="-12" Battle4="22" Battle5="21" Battle6="6" Battle7="12" Battle8="-24" Battle9="-18" />
-  <RECORD ID="4" Name="锥形" Battle1="18" Battle2="12" Battle3="0" Battle4="-19" Battle5="-11" Battle6="25" Battle7="-25" Battle8="-7" Battle9="6" />
-  <RECORD ID="8" Name="雁形" Battle1="-19" Battle2="-22" Battle3="19" Battle4="0" Battle5="-5" Battle6="-11" Battle7="3" Battle8="15" Battle9="20" />
-  <RECORD ID="16" Name="玄襄" Battle1="-13" Battle2="-21" Battle3="11" Battle4="5" Battle5="0" Battle6="-18" Battle7="-6" Battle8="24" Battle9="19" />
-  <RECORD ID="32" Name="鱼丽" Battle1="6" Battle2="-6" Battle3="-25" Battle4="11" Battle5="18" Battle6="0" Battle7="23" Battle8="-10" Battle9="-17" />
-  <RECORD ID="64" Name="钩形" Battle1="-23" Battle2="-12" Battle3="25" Battle4="-3" Battle5="6" Battle6="-23" Battle7="0" Battle8="14" Battle9="15" />
-  <RECORD ID="128" Name="冲锋" Battle1="23" Battle2="24" Battle3="7" Battle4="-15" Battle5="-24" Battle6="10" Battle7="-14" Battle8="0" Battle9="-12" />
-  <RECORD ID="256" Name="箭矢" Battle1="15" Battle2="18" Battle3="-6" Battle4="-20" Battle5="-19" Battle6="17" Battle7="-15" Battle8="12" Battle9="0" />
+  <RECORD ID="1" Name="方形" ShortName="方" Battle1="0" Battle2="7" Battle3="-18" Battle4="19" Battle5="13" Battle6="-6" Battle7="23" Battle8="-23" Battle9="-15" />
+  <RECORD ID="2" Name="圆形" ShortName="圆" Battle1="-7" Battle2="0" Battle3="-12" Battle4="22" Battle5="21" Battle6="6" Battle7="12" Battle8="-24" Battle9="-18" />
+  <RECORD ID="4" Name="锥形" ShortName="锥" Battle1="18" Battle2="12" Battle3="0" Battle4="-19" Battle5="-11" Battle6="25" Battle7="-25" Battle8="-7" Battle9="6" />
+  <RECORD ID="8" Name="雁形" ShortName="雁" Battle1="-19" Battle2="-22" Battle3="19" Battle4="0" Battle5="-5" Battle6="-11" Battle7="3" Battle8="15" Battle9="20" />
+  <RECORD ID="16" Name="玄襄" ShortName="玄" Battle1="-13" Battle2="-21" Battle3="11" Battle4="5" Battle5="0" Battle6="-18" Battle7="-6" Battle8="24" Battle9="19" />
+  <RECORD ID="32" Name="鱼丽" ShortName="鱼" Battle1="6" Battle2="-6" Battle3="-25" Battle4="11" Battle5="18" Battle6="0" Battle7="23" Battle8="-10" Battle9="-17" />
+  <RECORD ID="64" Name="钩形" ShortName="钩" Battle1="-23" Battle2="-12" Battle3="25" Battle4="-3" Battle5="6" Battle6="-23" Battle7="0" Battle8="14" Battle9="15" />
+  <RECORD ID="128" Name="冲锋" ShortName="冲" Battle1="23" Battle2="24" Battle3="7" Battle4="-15" Battle5="-24" Battle6="10" Battle7="-14" Battle8="0" Battle9="-12" />
+  <RECORD ID="256" Name="箭矢" ShortName="箭" Battle1="15" Battle2="18" Battle3="-6" Battle4="-20" Battle5="-19" Battle6="17" Battle7="-15" Battle8="12" Battle9="0" />
 </root>

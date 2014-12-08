@@ -5,6 +5,7 @@ public class WrapDataManager
 {
 	public static LuaMethod[] regs = new LuaMethod[]
 	{
+		new LuaMethod("InitDataManager", InitDataManager),
 		new LuaMethod("InitKingsInfo", InitKingsInfo),
 		new LuaMethod("GetKingInfo", GetKingInfo),
 		new LuaMethod("SetKingInfo", SetKingInfo),
@@ -17,6 +18,11 @@ public class WrapDataManager
 		new LuaMethod("FindKingID", FindKingID),
 		new LuaMethod("FindCityID", FindCityID),
 		new LuaMethod("FindGeneralID", FindGeneralID),
+		new LuaMethod("FindBattleID", FindBattleID),
+		new LuaMethod("FindForceID", FindForceID),
+		new LuaMethod("FindSkillID", FindSkillID),
+		new LuaMethod("FindWiseSkillID", FindWiseSkillID),
+		new LuaMethod("FindThingsID", FindThingsID),
 		new LuaMethod("New", Create),
 		new LuaMethod("GetClassType", GetClassType),
 	};
@@ -102,6 +108,15 @@ public class WrapDataManager
 		DataManager obj = (DataManager)o;
 		LuaScriptMgr.PushObject(L, obj.Generals);
 		return 1;
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int InitDataManager(IntPtr L)
+	{
+		LuaScriptMgr.CheckArgsCount(L, 1);
+		DataManager obj = LuaScriptMgr.GetNetObject<DataManager>(L, 1);
+		obj.InitDataManager();
+		return 0;
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
@@ -223,6 +238,56 @@ public class WrapDataManager
 		LuaScriptMgr.CheckArgsCount(L, 1);
 		string arg0 = LuaScriptMgr.GetLuaString(L, 1);
 		int o = DataManager.FindGeneralID(arg0);
+		LuaScriptMgr.Push(L, o);
+		return 1;
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int FindBattleID(IntPtr L)
+	{
+		LuaScriptMgr.CheckArgsCount(L, 1);
+		string arg0 = LuaScriptMgr.GetLuaString(L, 1);
+		int o = DataManager.FindBattleID(arg0);
+		LuaScriptMgr.Push(L, o);
+		return 1;
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int FindForceID(IntPtr L)
+	{
+		LuaScriptMgr.CheckArgsCount(L, 1);
+		string arg0 = LuaScriptMgr.GetLuaString(L, 1);
+		int o = DataManager.FindForceID(arg0);
+		LuaScriptMgr.Push(L, o);
+		return 1;
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int FindSkillID(IntPtr L)
+	{
+		LuaScriptMgr.CheckArgsCount(L, 1);
+		string arg0 = LuaScriptMgr.GetLuaString(L, 1);
+		int o = DataManager.FindSkillID(arg0);
+		LuaScriptMgr.Push(L, o);
+		return 1;
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int FindWiseSkillID(IntPtr L)
+	{
+		LuaScriptMgr.CheckArgsCount(L, 1);
+		string arg0 = LuaScriptMgr.GetLuaString(L, 1);
+		int o = DataManager.FindWiseSkillID(arg0);
+		LuaScriptMgr.Push(L, o);
+		return 1;
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int FindThingsID(IntPtr L)
+	{
+		LuaScriptMgr.CheckArgsCount(L, 1);
+		string arg0 = LuaScriptMgr.GetLuaString(L, 1);
+		int o = DataManager.FindThingsID(arg0);
 		LuaScriptMgr.Push(L, o);
 		return 1;
 	}

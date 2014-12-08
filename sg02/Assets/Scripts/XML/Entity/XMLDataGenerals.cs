@@ -43,10 +43,6 @@ public class XMLDataGenerals
 	/// </summary>
 	public int[] SkillLevel;
 	/// <summary>
-	/// 必杀技
-	/// </summary>
-	public string[] SKILL;
-	/// <summary>
 	/// 军师技
 	/// </summary>
 	public string[] WiseSkill;
@@ -62,10 +58,6 @@ public class XMLDataGenerals
 	/// 黄巾之乱
 	/// </summary>
 	public string[] TimesState;
-	/// <summary>
-	/// 三国鼎立
-	/// </summary>
-	public string[] TimesdState;
 	/// <summary>
 	/// 武器
 	/// </summary>
@@ -94,6 +86,10 @@ public class XMLDataGenerals
 	/// 使用兵种
 	/// </summary>
 	public string UseForce;
+	/// <summary>
+	/// 忠诚度
+	/// </summary>
+	public int Loyalty;
 	/// <summary>
 	/// 忠诚君主
 	/// </summary>

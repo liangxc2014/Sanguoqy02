@@ -23,9 +23,10 @@ public class WrapGamePublic
 		new LuaField("SceneCamera", get_SceneCamera, null),
 		new LuaField("LuaManager", get_LuaManager, null),
 		new LuaField("LuaFiles", get_LuaFiles, null),
+		new LuaField("DataManager", get_DataManager, null),
 		new LuaField("TimesList", get_TimesList, null),
 		new LuaField("CurrentTimes", get_CurrentTimes, set_CurrentTimes),
-		new LuaField("DataManager", get_DataManager, null),
+		new LuaField("CurrentKing", get_CurrentKing, set_CurrentKing),
 	};
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
@@ -127,6 +128,21 @@ public class WrapGamePublic
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int get_DataManager(IntPtr L)
+	{
+		object o = LuaScriptMgr.GetLuaObject(L, 1);
+
+		if (o == null)
+		{
+			LuaDLL.luaL_error(L, "unknown member name DataManager");
+		}
+
+		GamePublic obj = (GamePublic)o;
+		LuaScriptMgr.PushObject(L, obj.DataManager);
+		return 1;
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_TimesList(IntPtr L)
 	{
 		object o = LuaScriptMgr.GetLuaObject(L, 1);
@@ -157,17 +173,17 @@ public class WrapGamePublic
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int get_DataManager(IntPtr L)
+	static int get_CurrentKing(IntPtr L)
 	{
 		object o = LuaScriptMgr.GetLuaObject(L, 1);
 
 		if (o == null)
 		{
-			LuaDLL.luaL_error(L, "unknown member name DataManager");
+			LuaDLL.luaL_error(L, "unknown member name CurrentKing");
 		}
 
 		GamePublic obj = (GamePublic)o;
-		LuaScriptMgr.PushObject(L, obj.DataManager);
+		LuaScriptMgr.Push(L, obj.CurrentKing);
 		return 1;
 	}
 
@@ -183,6 +199,21 @@ public class WrapGamePublic
 
 		GamePublic obj = (GamePublic)o;
 		obj.CurrentTimes = (int)LuaScriptMgr.GetNumber(L, 3);
+		return 0;
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int set_CurrentKing(IntPtr L)
+	{
+		object o = LuaScriptMgr.GetLuaObject(L, 1);
+
+		if (o == null)
+		{
+			LuaDLL.luaL_error(L, "unknown member name CurrentKing");
+		}
+
+		GamePublic obj = (GamePublic)o;
+		obj.CurrentKing = (int)LuaScriptMgr.GetNumber(L, 3);
 		return 0;
 	}
 

@@ -13,12 +13,12 @@ public class SelectTimesState : IState
     }
     public void OnEnter()
     {
-        UIManager.Instance.ShowView(UINamesConfig.SelectPeriod);
+        UIManager.Instance.ShowView(UINamesConfig.SelectTimes);
     }
 
     public void OnExit()
     {
-        UIManager.Instance.DestroyView(UINamesConfig.SelectPeriod);
+        UIManager.Instance.DestroyView(UINamesConfig.SelectTimes);
     }
 
     public void Update()

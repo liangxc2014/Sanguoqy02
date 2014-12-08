@@ -11,6 +11,10 @@ public class XMLDataForce
 	/// </summary>
 	public string Name;
 	/// <summary>
+	/// Ãû×ÖËõĞ´
+	/// </summary>
+	public string ShortName;
+	/// <summary>
 	/// ÆÓµ¶
 	/// </summary>
 	public int Force1;

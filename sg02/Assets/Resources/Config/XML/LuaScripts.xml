@@ -9,8 +9,8 @@
   <RECORD Path="Lua/UI/InternalAffairs/InternalAffairsView.lua" />
   <RECORD Path="Lua/UI/SelectKing/SelectKingControl.lua" />
   <RECORD Path="Lua/UI/SelectKing/SelectKingView.lua" />
-  <RECORD Path="Lua/UI/SelectPeriod/SelectPeriodControl.lua" />
-  <RECORD Path="Lua/UI/SelectPeriod/SelectPeriodView.lua" />
+  <RECORD Path="Lua/UI/SelectTimes/SelectTimesControl.lua" />
+  <RECORD Path="Lua/UI/SelectTimes/SelectTimesView.lua" />
   <RECORD Path="Lua/UI/LoadgameMenu/LoadgameMenuControl.lua" />
   <RECORD Path="Lua/UI/LoadgameMenu/LoadgameMenuView.lua" />
 </root>

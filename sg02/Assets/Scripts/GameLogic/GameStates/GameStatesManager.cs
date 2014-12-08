@@ -8,8 +8,8 @@ public class GameStatesManager : StateManager
     public StartMenuState StartMenuState { get { return m_startMenuState; } }
 
     // 选择时期
-    private SelectTimesState m_selectPeriodState = new SelectTimesState();
-    public SelectTimesState SelectPeriodState { get { return m_selectPeriodState; } }
+    private SelectTimesState m_selectTimesState = new SelectTimesState();
+    public SelectTimesState SelectTimesState { get { return m_selectTimesState; } }
 
     //选择君主
     private SelectKingState m_selectKingState = new SelectKingState();
@@ -22,7 +22,7 @@ public class GameStatesManager : StateManager
     public override void Initialize() 
     {
         AddState(m_startMenuState);
-        AddState(m_selectPeriodState);
+        AddState(m_selectTimesState);
         AddState(m_selectKingState);
         AddState(m_internalAffairsState);
     }

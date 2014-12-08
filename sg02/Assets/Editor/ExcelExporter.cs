@@ -29,9 +29,9 @@ public class ExcelExporter
                 continue;
 
             flag = true;
-            new Export(path, @"Assets\Resources\Config\XML", @"Assets\Scripts\XML\Entity");
-
             Debug.Log(path);
+            new Export(path, @"Assets\Resources\Config\XML", @"Assets\Scripts\XML\Entity");
+            
             EditorUtility.DisplayProgressBar("Processing", path, 1.0f * index / fileInfos.Length);
         }
         

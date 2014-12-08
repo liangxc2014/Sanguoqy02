@@ -75,7 +75,7 @@
   <RECORD ID="73" Name="地茅乱刺" MP="33" Spirit="100" Damage="8" Script="582" Type="全体,主将" Title="" Info="地刺茅,L2" Target="敌方全军" />
   <RECORD ID="74" Name="龙炮激射" MP="34" Spirit="100" Damage="8" Script="578" Type="全体,主将" Title="" Info="尾纹爆炸,L2" Target="敌方全军" />
   <RECORD ID="75" Name="旋龙合璧" MP="34" Spirit="100" Damage="0" Script="580" Type="全体" Title="扬武将军" Info="龙卷风,L2" Target="敌我士兵" />
-  <RECORD ID="76" Name="冰柱群锋" MP="34" Spirit="100" Damage="8" Script="579" Type="全体,主将" Title="" Info="冰柱刺,L2" Target="敌方全军" />
+  <RECORD ID="76" Name="冰柱群峰" MP="34" Spirit="100" Damage="8" Script="579" Type="全体,主将" Title="" Info="冰柱刺,L2" Target="敌方全军" />
   <RECORD ID="77" Name="烈火旋灯" MP="35" Spirit="100" Damage="8" Script="569" Type="四周" Title="" Info="火圈,L2" Target="敌方全军" />
   <RECORD ID="78" Name="太极华阵" MP="36" Spirit="100" Damage="8" Script="573" Type="全体,主将" Title="" Info="爆炸（太极）,L2" Target="敌方全军" />
   <RECORD ID="79" Name="滚石遽压" MP="36" Spirit="100" Damage="10" Script="576" Type="全体,主将" Title="" Info="侧滚石,L2" Target="敌方全军" />
