@@ -17,7 +17,9 @@ public class WrapXMLManager
 		new LuaField("Force", get_Force, set_Force),
 		new LuaField("Generals", get_Generals, set_Generals),
 		new LuaField("Kings", get_Kings, set_Kings),
+		new LuaField("Language", get_Language, set_Language),
 		new LuaField("Magic", get_Magic, set_Magic),
+		new LuaField("MenuItem", get_MenuItem, set_MenuItem),
 		new LuaField("Things", get_Things, set_Things),
 		new LuaField("Times", get_Times, set_Times),
 		new LuaField("WiseSkill", get_WiseSkill, set_WiseSkill),
@@ -82,9 +84,23 @@ public class WrapXMLManager
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int get_Language(IntPtr L)
+	{
+		LuaScriptMgr.PushObject(L, XMLManager.Language);
+		return 1;
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Magic(IntPtr L)
 	{
 		LuaScriptMgr.PushObject(L, XMLManager.Magic);
+		return 1;
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int get_MenuItem(IntPtr L)
+	{
+		LuaScriptMgr.PushObject(L, XMLManager.MenuItem);
 		return 1;
 	}
 
@@ -173,9 +189,23 @@ public class WrapXMLManager
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int set_Language(IntPtr L)
+	{
+		XMLManager.Language = LuaScriptMgr.GetNetObject<XMLLoader<XMLDataLanguage>>(L, 3);
+		return 0;
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_Magic(IntPtr L)
 	{
 		XMLManager.Magic = LuaScriptMgr.GetNetObject<XMLLoader<XMLDataMagic>>(L, 3);
+		return 0;
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int set_MenuItem(IntPtr L)
+	{
+		XMLManager.MenuItem = LuaScriptMgr.GetNetObject<XMLLoader<XMLDataMenuItem>>(L, 3);
 		return 0;
 	}
 

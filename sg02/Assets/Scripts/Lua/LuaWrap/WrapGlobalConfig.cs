@@ -18,6 +18,7 @@ public class WrapGlobalConfig
 		new LuaField("IsMapEditorMode", get_IsMapEditorMode, null),
 		new LuaField("MapSize", get_MapSize, null),
 		new LuaField("FontButtonsVSpace", get_FontButtonsVSpace, null),
+		new LuaField("PathShapeFace", get_PathShapeFace, null),
 	};
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
@@ -78,6 +79,13 @@ public class WrapGlobalConfig
 	static int get_FontButtonsVSpace(IntPtr L)
 	{
 		LuaScriptMgr.Push(L, GlobalConfig.FontButtonsVSpace);
+		return 1;
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int get_PathShapeFace(IntPtr L)
+	{
+		LuaScriptMgr.Push(L, GlobalConfig.PathShapeFace);
 		return 1;
 	}
 

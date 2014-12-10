@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <RECORD ID="1" Type="1" Name="自治施行" />
+  <RECORD ID="2" Type="1" Name="搜  索" />
+  <RECORD ID="3" Type="1" Name="开  发" />
+  <RECORD ID="4" Type="1" Name="使用物品" />
+  <RECORD ID="5" Type="1" Name="物品合成" />
+  <RECORD ID="6" Type="1" Name="武将资料" />
+  <RECORD ID="7" Type="1" Name="势力地图" />
+  <RECORD ID="8" Type="1" Name="进度存档" />
+  <RECORD ID="9" Type="1" Name="进度读取" />
+  <RECORD ID="10" Type="1" Name="内政终了" />
+</root>

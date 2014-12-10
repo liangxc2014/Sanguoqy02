@@ -8,7 +8,9 @@ public static class XMLManager
     public static XMLLoader<XMLDataForce> Force;
     public static XMLLoader<XMLDataGenerals> Generals;
     public static XMLLoader<XMLDataKings> Kings;
+    public static XMLLoader<XMLDataLanguage> Language;
     public static XMLLoader<XMLDataMagic> Magic;
+    public static XMLLoader<XMLDataMenuItem> MenuItem;
     public static XMLLoader<XMLDataThings> Things;
     public static XMLLoader<XMLDataTimes> Times;
     public static XMLLoader<XMLDataWiseSkill> WiseSkill;
@@ -26,7 +28,9 @@ public static class XMLManager
         Force = new XMLLoader<XMLDataForce>(XMLConfigPath.Force);
         Generals = new XMLLoader<XMLDataGenerals>(XMLConfigPath.Generals);
         Kings = new XMLLoader<XMLDataKings>(XMLConfigPath.Kings);
+        Language = new XMLLoader<XMLDataLanguage>(XMLConfigPath.Language, "Name");
         Magic = new XMLLoader<XMLDataMagic>(XMLConfigPath.Magic);
+        MenuItem = new XMLLoader<XMLDataMenuItem>(XMLConfigPath.MenuItem);
         Things = new XMLLoader<XMLDataThings>(XMLConfigPath.Things);
         Times = new XMLLoader<XMLDataTimes>(XMLConfigPath.Times);
         WiseSkill = new XMLLoader<XMLDataWiseSkill>(XMLConfigPath.WiseSkill);

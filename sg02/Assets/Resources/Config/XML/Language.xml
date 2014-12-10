@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <RECORD Name="City" Content="城" />
+  <RECORD Name="CityNum" Content="城数" />
+  <RECORD Name="CheckpointsNum" Content="关卡数" />
+  <RECORD Name="General" Content="武将" />
+  <RECORD Name="GeneralNum" Content="武将数" />
+  <RECORD Name="SoldierTotalNum" Content="总兵数" />
+  <RECORD Name="Population" Content="人口" />
+  <RECORD Name="Money" Content="金钱" />
+  <RECORD Name="Time" Content="时间" />
+  <RECORD Name="King" Content="君主" />
+</root>

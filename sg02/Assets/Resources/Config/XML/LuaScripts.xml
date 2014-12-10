@@ -3,6 +3,7 @@
   <RECORD Path="Lua/TestLua.lua" />
   <RECORD Path="Lua/UI/LuaFunctionHelper.lua" />
   <RECORD Path="Lua/UI/UINamesConfig.lua" />
+  <RECORD Path="Lua/UI/MenuItemType.lua" />
   <RECORD Path="Lua/UI/StartMenu/StartMenuView.lua" />
   <RECORD Path="Lua/UI/StartMenu/StartMenuControl.lua" />
   <RECORD Path="Lua/UI/InternalAffairs/InternalAffairsControl.lua" />

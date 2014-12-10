@@ -29,13 +29,11 @@ end
 
 --初始化按钮列表
 function InitButtons()
-
-    local kingData = XMLManager.Kings.Data
     
     local btnPrefab = ResourcesManager.Instance:Load(UINamesConfig.FontButtonExample)
 
     local i = 0
-    local enumerator = kingData.Keys:GetEnumerator()
+    local enumerator = XMLManager.Kings.Data.Keys:GetEnumerator()
     while enumerator:MoveNext() do
         local key = enumerator.Current
         local kingData = GamePublic.Instance.DataManager:GetKingInfo(key)
@@ -45,10 +43,17 @@ function InitButtons()
             go:GetComponent("UIButton"):SetText(go.name)
 
             go.transform.localPosition = Vector3.New(0, GlobalConfig.FontButtonsVSpace * i)
-            i = i + 1
 
             m_tableKings[go] = key
             InputManager.Instance:AddOnClickEvent(go, OnButtonClick)
+
+            if i == 0 then
+                OnButtonClick(go)
+                m_isShowButtons = false
+                m_view.m_buttonsRoot:SetActive(false)
+            end
+
+            i = i + 1
         end 
     end
 
@@ -65,15 +70,22 @@ end
 --按键响应
 function OnButtonClick(go)
 
+    --[[
     if m_isShowButtons then 
         return
     end
+    ]]--
 
     local currentKing = m_tableKings[go]
     GamePublic.Instance.CurrentKing = currentKing
 
     m_view.m_buttonsRoot:SetActive(true)
     m_isShowButtons = true
+
+    local king = GamePublic.Instance.DataManager:GetKingInfo(currentKing)
+    local generalID = king.GeneralID
+    local general = GamePublic.Instance.DataManager:GetGeneralInfo(generalID)
+    general:SetFace(m_view.m_spriteFace)
 
 end
 

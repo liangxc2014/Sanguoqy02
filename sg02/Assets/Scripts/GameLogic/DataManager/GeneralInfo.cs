@@ -7,6 +7,7 @@ public class GeneralInfo
     public int State { get; set; } //-1:不登场 0 :在野 1:登庸
     public int ID { get; set; }
     public string Name { get; set; }
+    public string Face { get; set; }
     public int KingID { get; set; }
     public int CityID { get; set; }
     public int PrisonerID { get; set; }
@@ -67,6 +68,7 @@ public class GeneralInfo
         }
 
         Name = data.Name;
+        Face = data.Face;
         CityID = DataManager.FindCityID(data.Times[GamePublic.Instance.CurrentTimes]);
         if (CityID > 0 && State == 1)
         {
@@ -169,5 +171,18 @@ public class GeneralInfo
 
         WiseSkill = listWise.ToArray();
         WiseSkillLevel = listWiseLevel.ToArray();
+    }
+
+    public void SetFace(GameObject sprite)
+    {
+        UnityEngine.UI.Image image = sprite.GetComponent<UnityEngine.UI.Image>();
+        if (image == null)
+        {
+            Debugging.LogError("Function:SetFace; sr == null");
+            return;
+        }
+
+        string facePath = GlobalConfig.PathShapeFace + Face;
+        image.sprite = ResourcesManager.Instance.Load<Sprite>(facePath);
     }
 }

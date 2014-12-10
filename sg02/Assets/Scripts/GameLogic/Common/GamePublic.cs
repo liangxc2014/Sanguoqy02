@@ -46,7 +46,12 @@ public class GamePublic : Singleton<GamePublic>
     /// </summary>
     public int CurrentTimes { get; set; }
 
+    /// <summary>
+    /// 玩家选择的君主
+    /// </summary>
     public int CurrentKing { get; set; }
+
+
 
     // ------------------------------------------------------- 华丽的分割线 --------------------------------------------------
 

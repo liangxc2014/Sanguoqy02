@@ -4,6 +4,9 @@ using System.Collections.Generic;
 
 public static class GlobalConfig 
 {
+    /// <summary>
+    /// 加载全局配置
+    /// </summary>
     public static void LoadConfig()
     {
         XMLLoader<XMLDataGlobalConfig> config = new XMLLoader<XMLDataGlobalConfig>(XMLConfigPath.GlobalConfig);
@@ -56,4 +59,9 @@ public static class GlobalConfig
     /// 字体按钮的间距
     /// </summary>
     public static int FontButtonsVSpace { get { return -30; } }
+
+    /// <summary>
+    /// 人物脸的图片的路径
+    /// </summary>
+    public static string PathShapeFace { get { return "Shape/FACE/"; } }
 }

@@ -7,6 +7,8 @@ m_buttonsRoot = nil
 m_buttonConfirm = nil
 m_buttonCancel = nil
 
+m_spriteFace = nil
+
 function Initialize(viewPanel)
 
     m_kingListRoot = viewPanel.transform:FindChild("Left Anchor/KingsList").gameObject
@@ -14,5 +16,7 @@ function Initialize(viewPanel)
 
     m_buttonConfirm = viewPanel.transform:FindChild("Left Anchor/Buttons/ButtonsConfirm").gameObject
     m_buttonCancel = viewPanel.transform:FindChild("Left Anchor/Buttons/ButtonsCancel").gameObject
+
+    m_spriteFace = viewPanel.transform:FindChild("Down Anchor/Face").gameObject
 
 end

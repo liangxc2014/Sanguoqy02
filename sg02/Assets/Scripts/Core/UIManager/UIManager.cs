@@ -53,6 +53,15 @@ public class UIManager : Singleton<UIManager>
         if (split.Length > 0)
             go.name = split[split.Length - 1];
 
+        //LUA
+        if (XMLManager.LuaControlView.Data.ContainsKey(go.name))
+        {
+            if (go.GetComponent<LuaControlView>() == null)
+            {
+                go.AddComponent<LuaControlView>();
+            }
+        }
+
         m_dicUIView.Add(name, go);
 
         return go;

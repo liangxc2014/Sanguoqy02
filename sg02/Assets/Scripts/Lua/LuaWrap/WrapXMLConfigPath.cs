@@ -17,7 +17,9 @@ public class WrapXMLConfigPath
 		new LuaField("Force", get_Force, null),
 		new LuaField("Generals", get_Generals, null),
 		new LuaField("Kings", get_Kings, null),
+		new LuaField("Language", get_Language, null),
 		new LuaField("Magic", get_Magic, null),
+		new LuaField("MenuItem", get_MenuItem, null),
 		new LuaField("Things", get_Things, null),
 		new LuaField("Times", get_Times, null),
 		new LuaField("WiseSkill", get_WiseSkill, null),
@@ -89,9 +91,23 @@ public class WrapXMLConfigPath
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int get_Language(IntPtr L)
+	{
+		LuaScriptMgr.Push(L, XMLConfigPath.Language);
+		return 1;
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Magic(IntPtr L)
 	{
 		LuaScriptMgr.Push(L, XMLConfigPath.Magic);
+		return 1;
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int get_MenuItem(IntPtr L)
+	{
+		LuaScriptMgr.Push(L, XMLConfigPath.MenuItem);
 		return 1;
 	}
 

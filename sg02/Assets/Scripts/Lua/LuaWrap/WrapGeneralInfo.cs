@@ -1,10 +1,12 @@
 ﻿using System;
+using UnityEngine;
 using LuaInterface;
 
 public class WrapGeneralInfo
 {
 	public static LuaMethod[] regs = new LuaMethod[]
 	{
+		new LuaMethod("SetFace", SetFace),
 		new LuaMethod("New", Create),
 		new LuaMethod("GetClassType", GetClassType),
 	};
@@ -14,6 +16,7 @@ public class WrapGeneralInfo
 		new LuaField("State", get_State, set_State),
 		new LuaField("ID", get_ID, set_ID),
 		new LuaField("Name", get_Name, set_Name),
+		new LuaField("Face", get_Face, set_Face),
 		new LuaField("KingID", get_KingID, set_KingID),
 		new LuaField("CityID", get_CityID, set_CityID),
 		new LuaField("PrisonerID", get_PrisonerID, set_PrisonerID),
@@ -125,6 +128,21 @@ public class WrapGeneralInfo
 
 		GeneralInfo obj = (GeneralInfo)o;
 		LuaScriptMgr.Push(L, obj.Name);
+		return 1;
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int get_Face(IntPtr L)
+	{
+		object o = LuaScriptMgr.GetLuaObject(L, 1);
+
+		if (o == null)
+		{
+			LuaDLL.luaL_error(L, "unknown member name Face");
+		}
+
+		GeneralInfo obj = (GeneralInfo)o;
+		LuaScriptMgr.Push(L, obj.Face);
 		return 1;
 	}
 
@@ -609,6 +627,21 @@ public class WrapGeneralInfo
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int set_Face(IntPtr L)
+	{
+		object o = LuaScriptMgr.GetLuaObject(L, 1);
+
+		if (o == null)
+		{
+			LuaDLL.luaL_error(L, "unknown member name Face");
+		}
+
+		GeneralInfo obj = (GeneralInfo)o;
+		obj.Face = LuaScriptMgr.GetString(L, 3);
+		return 0;
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_KingID(IntPtr L)
 	{
 		object o = LuaScriptMgr.GetLuaObject(L, 1);
@@ -1040,6 +1073,16 @@ public class WrapGeneralInfo
 
 		GeneralInfo obj = (GeneralInfo)o;
 		obj.Escape = (int)LuaScriptMgr.GetNumber(L, 3);
+		return 0;
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int SetFace(IntPtr L)
+	{
+		LuaScriptMgr.CheckArgsCount(L, 2);
+		GeneralInfo obj = LuaScriptMgr.GetNetObject<GeneralInfo>(L, 1);
+		GameObject arg0 = LuaScriptMgr.GetNetObject<GameObject>(L, 2);
+		obj.SetFace(arg0);
 		return 0;
 	}
 }

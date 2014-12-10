@@ -42,7 +42,9 @@ public static class LuaWapBinder
 		WrapXMLDataForce.Register(L);
 		WrapXMLDataGenerals.Register(L);
 		WrapXMLDataKings.Register(L);
+		WrapXMLDataLanguage.Register(L);
 		WrapXMLDataMagic.Register(L);
+		WrapXMLDataMenuItem.Register(L);
 		WrapXMLDataThings.Register(L);
 		WrapXMLDataTimes.Register(L);
 		WrapXMLDataWiseSkill.Register(L);
@@ -53,7 +55,9 @@ public static class LuaWapBinder
 		WrapXMLLoader_XMLDataForce.Register(L);
 		WrapXMLLoader_XMLDataGenerals.Register(L);
 		WrapXMLLoader_XMLDataKings.Register(L);
+		WrapXMLLoader_XMLDataLanguage.Register(L);
 		WrapXMLLoader_XMLDataMagic.Register(L);
+		WrapXMLLoader_XMLDataMenuItem.Register(L);
 		WrapXMLLoader_XMLDataThings.Register(L);
 		WrapXMLLoader_XMLDataTimes.Register(L);
 		WrapXMLLoader_XMLDataWiseSkill.Register(L);

@@ -11,7 +11,6 @@ public class WrapResourcesManager
 		new LuaMethod("UnInitialize", UnInitialize),
 		new LuaMethod("Load", Load),
 		new LuaMethod("LoadUIView", LoadUIView),
-		new LuaMethod("AddChild", AddChild),
 		new LuaMethod("Equals", Equals),
 		new LuaMethod("GetHashCode", GetHashCode),
 		new LuaMethod("GetType", GetType),
@@ -126,17 +125,6 @@ public class WrapResourcesManager
 		string arg0 = LuaScriptMgr.GetLuaString(L, 2);
 		GameObject arg1 = LuaScriptMgr.GetNetObject<GameObject>(L, 3);
 		GameObject o = obj.LoadUIView(arg0,arg1);
-		LuaScriptMgr.Push(L, o);
-		return 1;
-	}
-
-	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int AddChild(IntPtr L)
-	{
-		LuaScriptMgr.CheckArgsCount(L, 2);
-		GameObject arg0 = LuaScriptMgr.GetNetObject<GameObject>(L, 1);
-		string arg1 = LuaScriptMgr.GetLuaString(L, 2);
-		GameObject o = ResourcesManager.AddChild(arg0,arg1);
 		LuaScriptMgr.Push(L, o);
 		return 1;
 	}
