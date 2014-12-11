@@ -12,6 +12,9 @@ public class WrapUtility
 		new LuaMethod("GetPoint", GetPoint),
 		new LuaMethod("AddComponent", AddComponent),
 		new LuaMethod("AddChild", AddChild),
+		new LuaMethod("SetObjectChild", SetObjectChild),
+		new LuaMethod("AddChildButton", AddChildButton),
+		new LuaMethod("AddChildToggle", AddChildToggle),
 		new LuaMethod("GeneralName", GeneralName),
 		new LuaMethod("New", Create),
 		new LuaMethod("GetClassType", GetClassType),
@@ -85,6 +88,39 @@ public class WrapUtility
 		GameObject arg0 = LuaScriptMgr.GetNetObject<GameObject>(L, 1);
 		GameObject arg1 = LuaScriptMgr.GetNetObject<GameObject>(L, 2);
 		GameObject o = Utility.AddChild(arg0,arg1);
+		LuaScriptMgr.Push(L, o);
+		return 1;
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int SetObjectChild(IntPtr L)
+	{
+		LuaScriptMgr.CheckArgsCount(L, 2);
+		GameObject arg0 = LuaScriptMgr.GetNetObject<GameObject>(L, 1);
+		GameObject arg1 = LuaScriptMgr.GetNetObject<GameObject>(L, 2);
+		Utility.SetObjectChild(arg0,arg1);
+		return 0;
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int AddChildButton(IntPtr L)
+	{
+		LuaScriptMgr.CheckArgsCount(L, 2);
+		GameObject arg0 = LuaScriptMgr.GetNetObject<GameObject>(L, 1);
+		string arg1 = LuaScriptMgr.GetLuaString(L, 2);
+		GameObject o = Utility.AddChildButton(arg0,arg1);
+		LuaScriptMgr.Push(L, o);
+		return 1;
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int AddChildToggle(IntPtr L)
+	{
+		LuaScriptMgr.CheckArgsCount(L, 3);
+		GameObject arg0 = LuaScriptMgr.GetNetObject<GameObject>(L, 1);
+		bool arg1 = LuaScriptMgr.GetBoolean(L, 2);
+		string arg2 = LuaScriptMgr.GetLuaString(L, 3);
+		GameObject o = Utility.AddChildToggle(arg0,arg1,arg2);
 		LuaScriptMgr.Push(L, o);
 		return 1;
 	}

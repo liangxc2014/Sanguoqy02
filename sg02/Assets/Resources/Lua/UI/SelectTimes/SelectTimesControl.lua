@@ -28,12 +28,8 @@ function InitButtons()
     local timesList = GamePublic.Instance.TimesList
     local count = timesList.Count
 
-    local btnPrefab = ResourcesManager.Instance:Load(UINamesConfig.FontButtonExample)
-
     for i=0, count - 1 do
-        local go = Utility.AddChild(m_view.m_ButtonsRoot, btnPrefab)
-        go.name = timesList:get_Item(i)
-        go:GetComponent("UIButton"):SetText(go.name)
+        local go = Utility.AddChildButton(m_view.m_ButtonsRoot, timesList:get_Item(i))
 
         go.transform.localPosition = Vector3.New(0, GlobalConfig.FontButtonsVSpace * i)
 

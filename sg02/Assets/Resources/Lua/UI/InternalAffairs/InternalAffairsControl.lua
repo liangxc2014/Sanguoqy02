@@ -9,10 +9,10 @@ function Initialize(viewPanel)
     while enumerator:MoveNext() do
         local menuItemInfo = enumerator.Current
         if menuItemInfo.Type == MenuItemType.InternalAffairs then
-            print("It is the same")
+            
             
         end
-        print(MenuItemType.InternalAffairs)
+        
     end
 
 end

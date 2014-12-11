@@ -32,6 +32,7 @@ public class InputManager : Singleton<InputManager>
     /// </summary>
     public delegate void OnClickDelegate(GameObject go);
     public delegate void OnPressDelegate(GameObject go, bool state);
+    public delegate void OnToggleDelegate(GameObject go, bool value);
     public delegate void OnDragBeginDelegate(GameObject go);
     public delegate void OnDraggingDelegate(GameObject go, Vector3 delta);
     public delegate void OnDragEndDelegate(GameObject go);
@@ -41,6 +42,7 @@ public class InputManager : Singleton<InputManager>
 
     private Dictionary<GameObject, OnClickDelegate> m_dicOnClickDelegate;
     private Dictionary<GameObject, OnPressDelegate> m_dicOnPressDelegate;
+    private Dictionary<GameObject, OnToggleDelegate> m_dicOnToggleDelegate;
     private Dictionary<GameObject, OnDragBeginDelegate> m_dicOnDragBeginDelegate;
     private Dictionary<GameObject, OnDraggingDelegate> m_dicOnDraggingDelegate;
     private Dictionary<GameObject, OnDragEndDelegate> m_dicOnDragEndDelegate;
@@ -50,6 +52,7 @@ public class InputManager : Singleton<InputManager>
 
     private Dictionary<GameObject, LuaFunction> m_dicOnClickDelegateLua;
     private Dictionary<GameObject, LuaFunction> m_dicOnPressDelegateLua;
+    private Dictionary<GameObject, LuaFunction> m_dicOnToggleDelegateLua;
     private Dictionary<GameObject, LuaFunction> m_dicOnDragBeginDelegateLua;
     private Dictionary<GameObject, LuaFunction> m_dicOnDraggingDelegateLua;
     private Dictionary<GameObject, LuaFunction> m_dicOnDragEndDelegateLua;
@@ -67,6 +70,8 @@ public class InputManager : Singleton<InputManager>
 
         m_dicOnClickDelegate = new Dictionary<GameObject, OnClickDelegate>();
         m_dicOnPressDelegate = new Dictionary<GameObject, OnPressDelegate>();
+        m_dicOnToggleDelegate = new Dictionary<GameObject, OnToggleDelegate>();
+
         m_dicOnDragBeginDelegate = new Dictionary<GameObject, OnDragBeginDelegate>();
         m_dicOnDragEndDelegate = new Dictionary<GameObject, OnDragEndDelegate>();
         m_dicOnDraggingDelegate = new Dictionary<GameObject, OnDraggingDelegate>();
@@ -76,6 +81,7 @@ public class InputManager : Singleton<InputManager>
 
         m_dicOnClickDelegateLua = new Dictionary<GameObject, LuaFunction>();
         m_dicOnPressDelegateLua = new Dictionary<GameObject, LuaFunction>();
+        m_dicOnToggleDelegateLua = new Dictionary<GameObject, LuaFunction>();
         m_dicOnDragBeginDelegateLua = new Dictionary<GameObject, LuaFunction>();
         m_dicOnDragEndDelegateLua = new Dictionary<GameObject, LuaFunction>();
         m_dicOnDraggingDelegateLua = new Dictionary<GameObject, LuaFunction>();
@@ -94,6 +100,7 @@ public class InputManager : Singleton<InputManager>
 
         m_dicOnClickDelegate.Clear();
         m_dicOnPressDelegate.Clear();
+        m_dicOnToggleDelegate.Clear();
         m_dicOnDragBeginDelegate.Clear();
         m_dicOnDragEndDelegate.Clear();
         m_dicOnDraggingDelegate.Clear();
@@ -102,6 +109,7 @@ public class InputManager : Singleton<InputManager>
 
         m_dicOnClickDelegateLua.Clear();
         m_dicOnPressDelegateLua.Clear();
+        m_dicOnToggleDelegateLua.Clear();
         m_dicOnDragBeginDelegateLua.Clear();
         m_dicOnDragEndDelegateLua.Clear();
         m_dicOnDraggingDelegateLua.Clear();
@@ -237,7 +245,7 @@ public class InputManager : Singleton<InputManager>
     }
 
     /// <summary>
-    /// 移除点击事件
+    /// 移除按下事件
     /// </summary>
     public void RemoveOnPressEvent(GameObject go)
     {
@@ -300,6 +308,73 @@ public class InputManager : Singleton<InputManager>
 
             m_isMouseDown = false;
             m_objPress = null;
+        }
+    }
+
+    /// <summary>
+    /// 添加开关按钮事件
+    /// </summary>
+    public void AddOnToggleEvent(GameObject go, OnToggleDelegate ontToggleFunc)
+    {
+        if (go == null)
+            return;
+
+        if (m_dicOnToggleDelegate.ContainsKey(go))
+        {
+            m_dicOnToggleDelegate[go] = ontToggleFunc;
+        }
+        else
+        {
+            m_dicOnToggleDelegate.Add(go, ontToggleFunc);
+        }
+    }
+
+    public void AddOnToggleEvent(GameObject go, LuaFunction onPressFunc)
+    {
+        if (go == null)
+            return;
+
+        if (m_dicOnToggleDelegateLua.ContainsKey(go))
+        {
+            m_dicOnToggleDelegateLua[go] = onPressFunc;
+        }
+        else
+        {
+            m_dicOnToggleDelegateLua.Add(go, onPressFunc);
+        }
+    }
+
+    /// <summary>
+    /// 移除按下事件
+    /// </summary>
+    public void RemoveOnToggleEvent(GameObject go)
+    {
+        if (go == null)
+            return;
+
+        if (m_dicOnToggleDelegate.ContainsKey(go))
+        {
+            m_dicOnToggleDelegate.Remove(go);
+        }
+
+        if (m_dicOnToggleDelegateLua.ContainsKey(go))
+        {
+            m_dicOnToggleDelegateLua.Remove(go);
+        }
+    }
+
+    /// <summary>
+    /// 触发按下事件
+    /// </summary>
+    public void OnToggle(GameObject go, bool state)
+    {
+        if (m_dicOnToggleDelegate.ContainsKey(go))
+        {
+            m_dicOnToggleDelegate[go](go, state);
+        }
+        if (m_dicOnToggleDelegateLua.ContainsKey(go))
+        {
+            m_dicOnToggleDelegateLua[go].Call(go, state);
         }
     }
 

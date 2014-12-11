@@ -4,17 +4,7 @@ using UnityEngine.UI;
 
 public class UIButton : MonoBehaviour 
 {
-
-	// Use this for initialization
-	void Start () 
-    {
-	    
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    public bool IsPush { get; set; }
 
     public void OnClick()
     {
@@ -28,6 +18,7 @@ public class UIButton : MonoBehaviour
 
     public void SetText(string value)
     {
+        name = value;
         GetComponent<Text>().text = value;
     }
 }

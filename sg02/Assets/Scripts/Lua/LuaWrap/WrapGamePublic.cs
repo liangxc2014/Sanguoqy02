@@ -7,13 +7,8 @@ public class WrapGamePublic
 	{
 		new LuaMethod("Initialize", Initialize),
 		new LuaMethod("UnInitialize", UnInitialize),
-		new LuaMethod("Equals", Equals),
-		new LuaMethod("GetHashCode", GetHashCode),
-		new LuaMethod("GetType", GetType),
-		new LuaMethod("ToString", ToString),
 		new LuaMethod("New", Create),
 		new LuaMethod("GetClassType", GetClassType),
-		new LuaMethod("__tostring", Lua_ToString),
 	};
 
 	static LuaField[] fields = new LuaField[]
@@ -21,9 +16,13 @@ public class WrapGamePublic
 		new LuaField("Instance", get_Instance, null),
 		new LuaField("GameStatesManager", get_GameStatesManager, null),
 		new LuaField("SceneCamera", get_SceneCamera, null),
+		new LuaField("SceneRoot", get_SceneRoot, null),
+		new LuaField("UIRoot", get_UIRoot, null),
 		new LuaField("LuaManager", get_LuaManager, null),
 		new LuaField("LuaFiles", get_LuaFiles, null),
 		new LuaField("DataManager", get_DataManager, null),
+		new LuaField("ButtonPool", get_ButtonPool, null),
+		new LuaField("TogglePool", get_TogglePool, null),
 		new LuaField("TimesList", get_TimesList, null),
 		new LuaField("CurrentTimes", get_CurrentTimes, set_CurrentTimes),
 		new LuaField("CurrentKing", get_CurrentKing, set_CurrentKing),
@@ -98,6 +97,36 @@ public class WrapGamePublic
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int get_SceneRoot(IntPtr L)
+	{
+		object o = LuaScriptMgr.GetLuaObject(L, 1);
+
+		if (o == null)
+		{
+			LuaDLL.luaL_error(L, "unknown member name SceneRoot");
+		}
+
+		GamePublic obj = (GamePublic)o;
+		LuaScriptMgr.Push(L, obj.SceneRoot);
+		return 1;
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int get_UIRoot(IntPtr L)
+	{
+		object o = LuaScriptMgr.GetLuaObject(L, 1);
+
+		if (o == null)
+		{
+			LuaDLL.luaL_error(L, "unknown member name UIRoot");
+		}
+
+		GamePublic obj = (GamePublic)o;
+		LuaScriptMgr.Push(L, obj.UIRoot);
+		return 1;
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_LuaManager(IntPtr L)
 	{
 		object o = LuaScriptMgr.GetLuaObject(L, 1);
@@ -139,6 +168,36 @@ public class WrapGamePublic
 
 		GamePublic obj = (GamePublic)o;
 		LuaScriptMgr.PushObject(L, obj.DataManager);
+		return 1;
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int get_ButtonPool(IntPtr L)
+	{
+		object o = LuaScriptMgr.GetLuaObject(L, 1);
+
+		if (o == null)
+		{
+			LuaDLL.luaL_error(L, "unknown member name ButtonPool");
+		}
+
+		GamePublic obj = (GamePublic)o;
+		LuaScriptMgr.PushObject(L, obj.ButtonPool);
+		return 1;
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int get_TogglePool(IntPtr L)
+	{
+		object o = LuaScriptMgr.GetLuaObject(L, 1);
+
+		if (o == null)
+		{
+			LuaDLL.luaL_error(L, "unknown member name TogglePool");
+		}
+
+		GamePublic obj = (GamePublic)o;
+		LuaScriptMgr.PushObject(L, obj.TogglePool);
 		return 1;
 	}
 
@@ -218,36 +277,11 @@ public class WrapGamePublic
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int Lua_ToString(IntPtr L)
-	{
-		GamePublic obj = LuaScriptMgr.GetNetObject<GamePublic>(L, 1);
-		LuaScriptMgr.Push(L, obj.ToString());
-		return 1;
-	}
-
-	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int Initialize(IntPtr L)
 	{
-		int count = LuaDLL.lua_gettop(L);
-
-		if (count == 1)
-		{
-			GamePublic obj = LuaScriptMgr.GetNetObject<GamePublic>(L, 1);
-			obj.Initialize();
-			return 0;
-		}
-		else if (count == 2)
-		{
-			GamePublic obj = LuaScriptMgr.GetNetObject<GamePublic>(L, 1);
-			object arg0 = LuaScriptMgr.GetVarObject(L, 2);
-			obj.Initialize(arg0);
-			return 0;
-		}
-		else
-		{
-			LuaDLL.luaL_error(L, "invalid arguments to method: GamePublic.Initialize");
-		}
-
+		LuaScriptMgr.CheckArgsCount(L, 1);
+		GamePublic obj = LuaScriptMgr.GetNetObject<GamePublic>(L, 1);
+		obj.Initialize();
 		return 0;
 	}
 
@@ -258,47 +292,6 @@ public class WrapGamePublic
 		GamePublic obj = LuaScriptMgr.GetNetObject<GamePublic>(L, 1);
 		obj.UnInitialize();
 		return 0;
-	}
-
-	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int Equals(IntPtr L)
-	{
-		LuaScriptMgr.CheckArgsCount(L, 2);
-		GamePublic obj = LuaScriptMgr.GetNetObject<GamePublic>(L, 1);
-		object arg0 = LuaScriptMgr.GetVarObject(L, 2);
-		bool o = obj.Equals(arg0);
-		LuaScriptMgr.Push(L, o);
-		return 1;
-	}
-
-	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int GetHashCode(IntPtr L)
-	{
-		LuaScriptMgr.CheckArgsCount(L, 1);
-		GamePublic obj = LuaScriptMgr.GetNetObject<GamePublic>(L, 1);
-		int o = obj.GetHashCode();
-		LuaScriptMgr.Push(L, o);
-		return 1;
-	}
-
-	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int GetType(IntPtr L)
-	{
-		LuaScriptMgr.CheckArgsCount(L, 1);
-		GamePublic obj = LuaScriptMgr.GetNetObject<GamePublic>(L, 1);
-		Type o = obj.GetType();
-		LuaScriptMgr.Push(L, o);
-		return 1;
-	}
-
-	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int ToString(IntPtr L)
-	{
-		LuaScriptMgr.CheckArgsCount(L, 1);
-		GamePublic obj = LuaScriptMgr.GetNetObject<GamePublic>(L, 1);
-		string o = obj.ToString();
-		LuaScriptMgr.Push(L, o);
-		return 1;
 	}
 }
 

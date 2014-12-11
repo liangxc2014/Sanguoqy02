@@ -32,23 +32,22 @@ function InitButtons()
     
     local btnPrefab = ResourcesManager.Instance:Load(UINamesConfig.FontButtonExample)
 
+    local first = nil
     local i = 0
     local enumerator = XMLManager.Kings.Data.Keys:GetEnumerator()
     while enumerator:MoveNext() do
         local key = enumerator.Current
         local kingData = GamePublic.Instance.DataManager:GetKingInfo(key)
         if kingData.Active then
-            local go = Utility.AddChild(m_view.m_kingListRoot, btnPrefab)
-            go.name = kingData.Name
-            go:GetComponent("UIButton"):SetText(go.name)
+            local go = Utility.AddChildToggle(m_view.m_kingListRoot, true, kingData.Name)
 
             go.transform.localPosition = Vector3.New(0, GlobalConfig.FontButtonsVSpace * i)
 
             m_tableKings[go] = key
-            InputManager.Instance:AddOnClickEvent(go, OnButtonClick)
+            InputManager.Instance:AddOnToggleEvent(go, OnToggle)
 
             if i == 0 then
-                OnButtonClick(go)
+                first = go
                 m_isShowButtons = false
                 m_view.m_buttonsRoot:SetActive(false)
             end
@@ -56,6 +55,8 @@ function InitButtons()
             i = i + 1
         end 
     end
+
+    first:GetComponent("UIToggle"):Toggle(true)
 
 end
 
@@ -68,24 +69,20 @@ function InitButtonEvent()
 end
 
 --°´¼üÏìÓ¦
-function OnButtonClick(go)
+function OnToggle(go, state)
 
-    --[[
-    if m_isShowButtons then 
-        return
+    if state then
+        m_view.m_buttonsRoot:SetActive(true)
+        m_isShowButtons = true
+
+        local currentKing = m_tableKings[go]
+        GamePublic.Instance.CurrentKing = currentKing
+
+        local king = GamePublic.Instance.DataManager:GetKingInfo(currentKing)
+        local generalID = king.GeneralID
+        local general = GamePublic.Instance.DataManager:GetGeneralInfo(generalID)
+        general:SetFace(m_view.m_spriteFace)
     end
-    ]]--
-
-    local currentKing = m_tableKings[go]
-    GamePublic.Instance.CurrentKing = currentKing
-
-    m_view.m_buttonsRoot:SetActive(true)
-    m_isShowButtons = true
-
-    local king = GamePublic.Instance.DataManager:GetKingInfo(currentKing)
-    local generalID = king.GeneralID
-    local general = GamePublic.Instance.DataManager:GetGeneralInfo(generalID)
-    general:SetFace(m_view.m_spriteFace)
 
 end
 

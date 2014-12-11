@@ -103,9 +103,17 @@ public static class Utility
     /// <summary>
     /// 添加一个子物体,仿NGUI
     /// </summary>
+
     public static GameObject AddChild(GameObject parent, GameObject prefab)
     {
         GameObject go = GameObject.Instantiate(prefab) as GameObject;
+        SetObjectChild(parent, go);
+
+        return go;
+    }
+
+    public static void SetObjectChild(GameObject parent, GameObject go)
+    {
         go.transform.parent = parent.transform;
 
         go.transform.localPosition = Vector3.zero;
@@ -118,6 +126,40 @@ public static class Utility
         {
             child[i].gameObject.layer = parent.layer;
         }
+    }
+
+    /// <summary>
+    /// 添加一个按钮, 
+    /// </summary>
+    public static GameObject AddChildButton(GameObject parent, string name)
+    {
+        GameObject go = GamePublic.Instance.ButtonPool.GetObject();
+        go.GetComponent<UIButton>().SetText(name);
+
+        SetObjectChild(parent, go);
+
+        InputManager.Instance.RemoveClickEvent(go);
+
+        return go;
+    }
+
+    public static GameObject AddChildToggle(GameObject parent, bool isGroup, string name)
+    {
+        GameObject go = GamePublic.Instance.TogglePool.GetObject();
+        go.GetComponent<UIToggle>().SetText(name);
+
+        SetObjectChild(parent, go);
+
+        if (isGroup)
+        {
+            go.GetComponent<UIToggle>().SetGroup(parent);
+        }
+        else
+        {
+            go.GetComponent<UIToggle>().SetGroup(null);
+        }
+
+        InputManager.Instance.RemoveOnToggleEvent(go);
 
         return go;
     }

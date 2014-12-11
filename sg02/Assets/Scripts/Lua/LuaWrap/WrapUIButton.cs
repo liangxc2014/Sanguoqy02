@@ -14,6 +14,7 @@ public class WrapUIButton
 
 	static LuaField[] fields = new LuaField[]
 	{
+		new LuaField("IsPush", get_IsPush, set_IsPush),
 	};
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
@@ -33,6 +34,36 @@ public class WrapUIButton
 	public static void Register(IntPtr L)
 	{
 		LuaScriptMgr.RegisterLib(L, "UIButton", typeof(UIButton), regs, fields, "MonoBehaviour");
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int get_IsPush(IntPtr L)
+	{
+		object o = LuaScriptMgr.GetLuaObject(L, 1);
+
+		if (o == null)
+		{
+			LuaDLL.luaL_error(L, "unknown member name IsPush");
+		}
+
+		UIButton obj = (UIButton)o;
+		LuaScriptMgr.Push(L, obj.IsPush);
+		return 1;
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int set_IsPush(IntPtr L)
+	{
+		object o = LuaScriptMgr.GetLuaObject(L, 1);
+
+		if (o == null)
+		{
+			LuaDLL.luaL_error(L, "unknown member name IsPush");
+		}
+
+		UIButton obj = (UIButton)o;
+		obj.IsPush = LuaScriptMgr.GetBoolean(L, 3);
+		return 0;
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]

@@ -28,6 +28,7 @@ public static class LuaBinder
 
         WrapSpriteRenderer.Register(L);
         WrapText.Register(L);
+        WrapToggle.Register(L);
         WrapList_int.Register(L);
         WrapList_string.Register(L);
         WrapDictionary.Register(L);

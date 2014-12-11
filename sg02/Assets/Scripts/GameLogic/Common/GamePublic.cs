@@ -18,6 +18,20 @@ public class GamePublic : Singleton<GamePublic>
     public Camera SceneCamera { get { return m_sceneCamera; } }
 
     /// <summary>
+    /// 场景头节点
+    /// </summary>
+    private string m_sceneRootName = "Scene Root";
+    private GameObject m_sceneRoot;
+    public GameObject SceneRoot { get { return m_sceneRoot; } }
+
+    /// <summary>
+    /// UI 头节点
+    /// </summary>
+    private string m_uiRootName = "UI Root";
+    private GameObject m_uiRoot;
+    public GameObject UIRoot { get { return m_uiRoot; } }
+
+    /// <summary>
     /// LUA管理器
     /// </summary>
     private LuaScriptMgr m_luaMgr;
@@ -34,6 +48,19 @@ public class GamePublic : Singleton<GamePublic>
     /// </summary>
     private DataManager m_datamanager;
     public DataManager DataManager { get { return m_datamanager; } }
+
+    /// <summary>
+    /// 按钮的对象池
+    /// </summary>
+    private string m_poolRootName = "UI Root/Pool";
+    private GameObject m_poolRoot;
+    private ObjectPool m_poolButton;
+    private int m_poolButtonSize = 30;
+    public ObjectPool ButtonPool { get { return m_poolButton; } }
+
+    private ObjectPool m_poolToggle;
+    private int m_poolToggleSize = 30;
+    public ObjectPool TogglePool { get { return m_poolToggle; } }
 
     /// <summary>
     /// 历史时期列表
@@ -64,9 +91,12 @@ public class GamePublic : Singleton<GamePublic>
         m_gameStatesManager.Initialize();
 
         m_sceneCamera = GameObject.FindGameObjectWithTag("SceneCamera").GetComponent<Camera>();
+        m_uiRoot = GameObject.Find(m_uiRootName);
+        m_sceneRoot = GameObject.Find(m_sceneRootName);
 
         m_datamanager = new DataManager();
-        
+
+        InitPool();
         InitLuaManager();
         InitTimesList();
 
@@ -87,6 +117,36 @@ public class GamePublic : Singleton<GamePublic>
         m_luaMgr.Start();
 
         LuaWapBinder.Bind(m_luaMgr.lua.L);
+    }
+
+    /// <summary>
+    /// 初始化对象池
+    /// </summary>
+    private void InitPool()
+    {
+        m_poolRoot = GameObject.Find(m_poolRootName);
+
+        m_poolButton = new ObjectPool();
+        m_poolButton.Initialize(m_poolButtonSize, 1000, CreateOneButton);
+
+        m_poolToggle = new ObjectPool();
+        m_poolToggle.Initialize(m_poolToggleSize, 1000, CreateOnToggle);
+    }
+
+    private GameObject CreateOneButton()
+    {
+        GameObject temp = ResourcesManager.Instance.Load<GameObject>(UINamesConfig.FontButtonExample);
+        GameObject go = Object.Instantiate(temp) as GameObject;
+        Utility.SetObjectChild(m_poolRoot, go);
+        return go;
+    }
+
+    private GameObject CreateOnToggle()
+    {
+        GameObject temp = ResourcesManager.Instance.Load<GameObject>(UINamesConfig.FontToggleExample);
+        GameObject go = Object.Instantiate(temp) as GameObject;
+        Utility.SetObjectChild(m_poolRoot, go);
+        return go;
     }
 
     /// <summary>

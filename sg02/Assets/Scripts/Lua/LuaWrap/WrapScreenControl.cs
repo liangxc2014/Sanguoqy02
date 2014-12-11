@@ -6,14 +6,8 @@ public class WrapScreenControl
 	public static LuaMethod[] regs = new LuaMethod[]
 	{
 		new LuaMethod("Initialize", Initialize),
-		new LuaMethod("UnInitialize", UnInitialize),
-		new LuaMethod("Equals", Equals),
-		new LuaMethod("GetHashCode", GetHashCode),
-		new LuaMethod("GetType", GetType),
-		new LuaMethod("ToString", ToString),
 		new LuaMethod("New", Create),
 		new LuaMethod("GetClassType", GetClassType),
-		new LuaMethod("__tostring", Lua_ToString),
 	};
 
 	static LuaField[] fields = new LuaField[]
@@ -124,95 +118,14 @@ public class WrapScreenControl
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int Lua_ToString(IntPtr L)
-	{
-		ScreenControl obj = LuaScriptMgr.GetNetObject<ScreenControl>(L, 1);
-		LuaScriptMgr.Push(L, obj.ToString());
-		return 1;
-	}
-
-	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int Initialize(IntPtr L)
 	{
-		int count = LuaDLL.lua_gettop(L);
-
-		if (count == 1)
-		{
-			ScreenControl obj = LuaScriptMgr.GetNetObject<ScreenControl>(L, 1);
-			obj.Initialize();
-			return 0;
-		}
-		else if (count == 2)
-		{
-			ScreenControl obj = LuaScriptMgr.GetNetObject<ScreenControl>(L, 1);
-			object arg0 = LuaScriptMgr.GetVarObject(L, 2);
-			obj.Initialize(arg0);
-			return 0;
-		}
-		else if (count == 3)
-		{
-			ScreenControl obj = LuaScriptMgr.GetNetObject<ScreenControl>(L, 1);
-			float arg0 = (float)LuaScriptMgr.GetNumber(L, 2);
-			float arg1 = (float)LuaScriptMgr.GetNumber(L, 3);
-			obj.Initialize(arg0,arg1);
-			return 0;
-		}
-		else
-		{
-			LuaDLL.luaL_error(L, "invalid arguments to method: ScreenControl.Initialize");
-		}
-
+		LuaScriptMgr.CheckArgsCount(L, 3);
+		ScreenControl obj = LuaScriptMgr.GetNetObject<ScreenControl>(L, 1);
+		float arg0 = (float)LuaScriptMgr.GetNumber(L, 2);
+		float arg1 = (float)LuaScriptMgr.GetNumber(L, 3);
+		obj.Initialize(arg0,arg1);
 		return 0;
-	}
-
-	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int UnInitialize(IntPtr L)
-	{
-		LuaScriptMgr.CheckArgsCount(L, 1);
-		ScreenControl obj = LuaScriptMgr.GetNetObject<ScreenControl>(L, 1);
-		obj.UnInitialize();
-		return 0;
-	}
-
-	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int Equals(IntPtr L)
-	{
-		LuaScriptMgr.CheckArgsCount(L, 2);
-		ScreenControl obj = LuaScriptMgr.GetNetObject<ScreenControl>(L, 1);
-		object arg0 = LuaScriptMgr.GetVarObject(L, 2);
-		bool o = obj.Equals(arg0);
-		LuaScriptMgr.Push(L, o);
-		return 1;
-	}
-
-	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int GetHashCode(IntPtr L)
-	{
-		LuaScriptMgr.CheckArgsCount(L, 1);
-		ScreenControl obj = LuaScriptMgr.GetNetObject<ScreenControl>(L, 1);
-		int o = obj.GetHashCode();
-		LuaScriptMgr.Push(L, o);
-		return 1;
-	}
-
-	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int GetType(IntPtr L)
-	{
-		LuaScriptMgr.CheckArgsCount(L, 1);
-		ScreenControl obj = LuaScriptMgr.GetNetObject<ScreenControl>(L, 1);
-		Type o = obj.GetType();
-		LuaScriptMgr.Push(L, o);
-		return 1;
-	}
-
-	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int ToString(IntPtr L)
-	{
-		LuaScriptMgr.CheckArgsCount(L, 1);
-		ScreenControl obj = LuaScriptMgr.GetNetObject<ScreenControl>(L, 1);
-		string o = obj.ToString();
-		LuaScriptMgr.Push(L, o);
-		return 1;
 	}
 }
 

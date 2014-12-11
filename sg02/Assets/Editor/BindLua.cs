@@ -85,6 +85,7 @@ public static class LuaBinding
         /*
         new BindType("SpriteRenderer", typeof(UnityEngine.SpriteRenderer), false, null),
         new BindType("Text", typeof(UnityEngine.UI.Text), false, null),
+        new BindType("Toggle", typeof(UnityEngine.UI.Toggle), false, null),
 
         new BindType("List_int", "List<int>", typeof(List<int>), false, null),
         new BindType("List_string", "List<string>", typeof(List<string>), false, null),
