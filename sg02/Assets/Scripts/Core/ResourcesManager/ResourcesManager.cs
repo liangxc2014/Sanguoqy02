@@ -37,7 +37,7 @@ public class ResourcesManager : Singleton<ResourcesManager>
         }
 
         GameObject go = GameObject.Instantiate(prefab);
-		go.transform.parent = parent.transform;
+		go.transform.SetParent(parent.transform);
 		go.transform.localPosition = Vector3.zero;
 		go.transform.localScale = Vector3.one;
 

@@ -114,7 +114,7 @@ public static class Utility
 
     public static void SetObjectChild(GameObject parent, GameObject go)
     {
-        go.transform.parent = parent.transform;
+        go.transform.SetParent(parent.transform);
 
         go.transform.localPosition = Vector3.zero;
         go.transform.localEulerAngles = Vector3.zero;
