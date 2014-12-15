@@ -9,6 +9,7 @@ public class WrapSpriteRenderer
 	{
 		new LuaMethod("SetPropertyBlock", SetPropertyBlock),
 		new LuaMethod("GetPropertyBlock", GetPropertyBlock),
+		new LuaMethod("GetClosestReflectionProbes", GetClosestReflectionProbes),
 		new LuaMethod("GetComponent", GetComponent),
 		new LuaMethod("GetComponentInChildren", GetComponentInChildren),
 		new LuaMethod("GetComponentsInChildren", GetComponentsInChildren),
@@ -50,11 +51,10 @@ public class WrapSpriteRenderer
 		new LuaField("isVisible", get_isVisible, null),
 		new LuaField("useLightProbes", get_useLightProbes, set_useLightProbes),
 		new LuaField("probeAnchor", get_probeAnchor, set_probeAnchor),
-		new LuaField("useReflectionProbes", get_useReflectionProbes, set_useReflectionProbes),
+		new LuaField("reflectionProbeUsage", get_reflectionProbeUsage, set_reflectionProbeUsage),
 		new LuaField("sortingLayerName", get_sortingLayerName, set_sortingLayerName),
 		new LuaField("sortingLayerID", get_sortingLayerID, set_sortingLayerID),
 		new LuaField("sortingOrder", get_sortingOrder, set_sortingOrder),
-		new LuaField("closestReflectionProbe", get_closestReflectionProbe, null),
 		new LuaField("transform", get_transform, null),
 		new LuaField("gameObject", get_gameObject, null),
 		new LuaField("tag", get_tag, set_tag),
@@ -379,17 +379,17 @@ public class WrapSpriteRenderer
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int get_useReflectionProbes(IntPtr L)
+	static int get_reflectionProbeUsage(IntPtr L)
 	{
 		object o = LuaScriptMgr.GetLuaObject(L, 1);
 
 		if (o == null)
 		{
-			LuaDLL.luaL_error(L, "unknown member name useReflectionProbes");
+			LuaDLL.luaL_error(L, "unknown member name reflectionProbeUsage");
 		}
 
 		SpriteRenderer obj = (SpriteRenderer)o;
-		LuaScriptMgr.Push(L, obj.useReflectionProbes);
+		LuaScriptMgr.PushEnum(L, obj.reflectionProbeUsage);
 		return 1;
 	}
 
@@ -435,21 +435,6 @@ public class WrapSpriteRenderer
 
 		SpriteRenderer obj = (SpriteRenderer)o;
 		LuaScriptMgr.Push(L, obj.sortingOrder);
-		return 1;
-	}
-
-	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int get_closestReflectionProbe(IntPtr L)
-	{
-		object o = LuaScriptMgr.GetLuaObject(L, 1);
-
-		if (o == null)
-		{
-			LuaDLL.luaL_error(L, "unknown member name closestReflectionProbe");
-		}
-
-		SpriteRenderer obj = (SpriteRenderer)o;
-		LuaScriptMgr.Push(L, obj.closestReflectionProbe);
 		return 1;
 	}
 
@@ -739,17 +724,17 @@ public class WrapSpriteRenderer
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int set_useReflectionProbes(IntPtr L)
+	static int set_reflectionProbeUsage(IntPtr L)
 	{
 		object o = LuaScriptMgr.GetLuaObject(L, 1);
 
 		if (o == null)
 		{
-			LuaDLL.luaL_error(L, "unknown member name useReflectionProbes");
+			LuaDLL.luaL_error(L, "unknown member name reflectionProbeUsage");
 		}
 
 		SpriteRenderer obj = (SpriteRenderer)o;
-		obj.useReflectionProbes = LuaScriptMgr.GetBoolean(L, 3);
+		obj.reflectionProbeUsage = LuaScriptMgr.GetNetObject<ReflectionProbeUsage>(L, 3);
 		return 0;
 	}
 
@@ -868,6 +853,16 @@ public class WrapSpriteRenderer
 		SpriteRenderer obj = LuaScriptMgr.GetNetObject<SpriteRenderer>(L, 1);
 		MaterialPropertyBlock arg0 = LuaScriptMgr.GetNetObject<MaterialPropertyBlock>(L, 2);
 		obj.GetPropertyBlock(arg0);
+		return 0;
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int GetClosestReflectionProbes(IntPtr L)
+	{
+		LuaScriptMgr.CheckArgsCount(L, 2);
+		SpriteRenderer obj = LuaScriptMgr.GetNetObject<SpriteRenderer>(L, 1);
+		List<ReflectionProbeBlendInfo> arg0 = LuaScriptMgr.GetNetObject<List<ReflectionProbeBlendInfo>>(L, 2);
+		obj.GetClosestReflectionProbes(arg0);
 		return 0;
 	}
 

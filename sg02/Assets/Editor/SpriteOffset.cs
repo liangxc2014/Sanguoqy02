@@ -53,7 +53,7 @@ public class SpriteOffset
             textureImporter.ReadTextureSettings(settings);
             settings.spriteAlignment = (int)SpriteAlignment.Custom;
             settings.spritePivot = spritePivot;
-            settings.spritePixelsToUnits = 1;
+            settings.spritePixelsPerUnit = 1;
             textureImporter.SetTextureSettings(settings);
             AssetDatabase.ImportAsset(path, ImportAssetOptions.ForceUpdate);
 

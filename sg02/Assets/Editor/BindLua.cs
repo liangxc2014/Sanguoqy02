@@ -92,7 +92,7 @@ public static class LuaBinding
         new BindType("Dictionary", "Dictionary<object, object>", typeof(Dictionary<object,object>), false, null),
         new BindType("DictEnumerator", "Dictionary<object,object>.Enumerator", typeof(Dictionary<object,object>.Enumerator), false, null),
         */
-
+        
         // Core
         new BindType("CallBack", typeof(CallBack), false, null),
         new BindType("IState", typeof(IState), false, null),

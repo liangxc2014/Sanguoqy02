@@ -15,8 +15,13 @@ public class WrapObjectPool
 		new LuaMethod("GetObject", GetObject),
 		new LuaMethod("GiveBackObject", GiveBackObject),
 		new LuaMethod("GiveBackAllObjects", GiveBackAllObjects),
+		new LuaMethod("Equals", Equals),
+		new LuaMethod("GetHashCode", GetHashCode),
+		new LuaMethod("GetType", GetType),
+		new LuaMethod("ToString", ToString),
 		new LuaMethod("New", Create),
 		new LuaMethod("GetClassType", GetClassType),
+		new LuaMethod("__tostring", Lua_ToString),
 	};
 
 	static LuaField[] fields = new LuaField[]
@@ -149,6 +154,14 @@ public class WrapObjectPool
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int Lua_ToString(IntPtr L)
+	{
+		ObjectPool obj = LuaScriptMgr.GetNetObject<ObjectPool>(L, 1);
+		LuaScriptMgr.Push(L, obj.ToString());
+		return 1;
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int Initialize(IntPtr L)
 	{
 		LuaScriptMgr.CheckArgsCount(L, 4);
@@ -225,6 +238,47 @@ public class WrapObjectPool
 		ObjectPool obj = LuaScriptMgr.GetNetObject<ObjectPool>(L, 1);
 		obj.GiveBackAllObjects();
 		return 0;
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int Equals(IntPtr L)
+	{
+		LuaScriptMgr.CheckArgsCount(L, 2);
+		ObjectPool obj = LuaScriptMgr.GetNetObject<ObjectPool>(L, 1);
+		object arg0 = LuaScriptMgr.GetVarObject(L, 2);
+		bool o = obj.Equals(arg0);
+		LuaScriptMgr.Push(L, o);
+		return 1;
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int GetHashCode(IntPtr L)
+	{
+		LuaScriptMgr.CheckArgsCount(L, 1);
+		ObjectPool obj = LuaScriptMgr.GetNetObject<ObjectPool>(L, 1);
+		int o = obj.GetHashCode();
+		LuaScriptMgr.Push(L, o);
+		return 1;
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int GetType(IntPtr L)
+	{
+		LuaScriptMgr.CheckArgsCount(L, 1);
+		ObjectPool obj = LuaScriptMgr.GetNetObject<ObjectPool>(L, 1);
+		Type o = obj.GetType();
+		LuaScriptMgr.Push(L, o);
+		return 1;
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int ToString(IntPtr L)
+	{
+		LuaScriptMgr.CheckArgsCount(L, 1);
+		ObjectPool obj = LuaScriptMgr.GetNetObject<ObjectPool>(L, 1);
+		string o = obj.ToString();
+		LuaScriptMgr.Push(L, o);
+		return 1;
 	}
 }
 

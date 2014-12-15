@@ -26,7 +26,7 @@ public static class LuaBinder
 		MotionWrap.Register(L);
 		AnimationClipWrap.Register(L);
 
-        WrapSpriteRenderer.Register(L);
+        //WrapSpriteRenderer.Register(L);
         WrapText.Register(L);
         WrapToggle.Register(L);
         WrapList_int.Register(L);
