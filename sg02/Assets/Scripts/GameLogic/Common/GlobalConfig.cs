@@ -58,7 +58,7 @@ public static class GlobalConfig
     /// <summary>
     /// 字体按钮的间距
     /// </summary>
-    public static int FontButtonsVSpace { get { return -30; } }
+    public static int FontButtonsVSpace { get { return -28; } }
 
     /// <summary>
     /// 人物脸的图片的路径

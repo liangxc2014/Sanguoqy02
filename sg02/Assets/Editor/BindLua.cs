@@ -142,7 +142,7 @@ public static class LuaBinding
 
         // UI
         new BindType("UIButton", typeof(UIButton), true, "MonoBehaviour"),
-        new BindType("UIToggle", typeof(UIButton), true, "MonoBehaviour"),
+        new BindType("UIToggle", typeof(UIToggle), true, "MonoBehaviour"),
 
         // XML
         new BindType("XMLConfigPath", typeof(XMLConfigPath), true, null),

@@ -133,6 +133,8 @@ public static class Utility
     /// </summary>
     public static GameObject AddChildButton(GameObject parent, string name)
     {
+        name = AlignText(name);
+
         GameObject go = GamePublic.Instance.ButtonPool.GetObject();
         go.GetComponent<UIButton>().SetText(name);
 
@@ -143,8 +145,10 @@ public static class Utility
         return go;
     }
 
-    public static GameObject AddChildToggle(GameObject parent, bool isGroup, string name)
+    public static GameObject AddChildToggle(GameObject parent, string name, bool isGroup)
     {
+        name = AlignText(name);
+
         GameObject go = GamePublic.Instance.TogglePool.GetObject();
         go.GetComponent<UIToggle>().SetText(name);
 
@@ -185,5 +189,19 @@ public static class Utility
         {
             return generalName.Substring(0, index);
         }
+    }
+
+    /// <summary>
+    /// 对齐文字,如果是两个字则中间加空格
+    /// </summary>
+    public static string AlignText(string text)
+    {
+        string ret = text;
+        if (ret.Length == 2)
+        {
+            ret = text[0] + "    " + text[1];
+        }
+
+        return ret;
     }
 }

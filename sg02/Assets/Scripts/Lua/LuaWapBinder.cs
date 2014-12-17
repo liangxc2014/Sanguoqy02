@@ -35,6 +35,7 @@ public static class LuaWapBinder
 		WrapPathFinding.Register(L);
 		WrapUtility.Register(L);
 		WrapUIButton.Register(L);
+		WrapUIToggle.Register(L);
 		WrapXMLConfigPath.Register(L);
 		WrapXMLManager.Register(L);
 		WrapXMLDataBattle.Register(L);

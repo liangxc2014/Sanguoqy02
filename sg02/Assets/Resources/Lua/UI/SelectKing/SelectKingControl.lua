@@ -29,8 +29,6 @@ end
 
 --初始化按钮列表
 function InitButtons()
-    
-    local btnPrefab = ResourcesManager.Instance:Load(UINamesConfig.FontButtonExample)
 
     local first = nil
     local i = 0
@@ -39,7 +37,7 @@ function InitButtons()
         local key = enumerator.Current
         local kingData = GamePublic.Instance.DataManager:GetKingInfo(key)
         if kingData.Active then
-            local go = Utility.AddChildToggle(m_view.m_kingListRoot, true, kingData.Name)
+            local go = Utility.AddChildToggle(m_view.m_kingListRoot, kingData.Name, true)
 
             go.transform.localPosition = Vector3.New(0, GlobalConfig.FontButtonsVSpace * i)
 
@@ -81,7 +79,7 @@ function OnToggle(go, state)
         local king = GamePublic.Instance.DataManager:GetKingInfo(currentKing)
         local generalID = king.GeneralID
         local general = GamePublic.Instance.DataManager:GetGeneralInfo(generalID)
-        general:SetFace(m_view.m_spriteFace)
+        general:SetFace(m_view.m_imageFace)
     end
 
 end

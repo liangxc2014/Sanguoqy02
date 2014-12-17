@@ -5,8 +5,16 @@ using UnityEngine.UI;
 
 public class UIToggle : MonoBehaviour 
 {
-    public Text m_labelNormal;
-    public Text m_labelCheck;
+    private Text m_labelNormal;
+    private Text m_labelCheck;
+
+    void Awake ()
+    {
+        if (m_labelNormal == null)
+            m_labelNormal = transform.FindChild("LabelNormal").GetComponent<Text>();
+        if (m_labelCheck == null)
+            m_labelCheck = transform.FindChild("LabelCheck").GetComponent<Text>();
+    }
 
     /// <summary>
     /// 开关按钮触发
@@ -40,6 +48,8 @@ public class UIToggle : MonoBehaviour
 
     public void SetText(string value)
     {
+        Awake();
+        
         name = value;
         m_labelNormal.text = value;
         m_labelCheck.text = value;
