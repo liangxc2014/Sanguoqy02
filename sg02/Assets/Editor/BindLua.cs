@@ -125,12 +125,14 @@ public static class LuaBinding
 
         // GameLogic/GameStates
         new BindType("GameStatesManager", typeof(GameStatesManager), false, "StateManager"),
+        /*
         new BindType("InternalAffairsState", typeof(InternalAffairsState), false, "IState"),
         new BindType("LoadingState", typeof(LoadingState), false, "IState"),
         new BindType("SelectKingState", typeof(SelectKingState), false, "IState"),
         new BindType("SelectTimesState", typeof(SelectTimesState), false, "IState"),
         new BindType("StartMenuState", typeof(StartMenuState), false, "IState"),
-
+        new BindType("WorldMapState", typeof(WorldMapState), false, "IState"),
+        */
         // GameLogic/MapCamera
         new BindType("MapCameraControl", typeof(MapCameraControl), false, null),
 

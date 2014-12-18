@@ -4,7 +4,7 @@ FontButtonExample = "Prefabs/UI/ButtonExample/FontButtonExample"
 ImageButtonExample = "Prefabs/UI/ButtonExample/ImageButtonExample"
 
 StartMenu         = "Prefabs/UI/StartMenu"
-SelectPeriod      = "Prefabs/UI/SelectPeriod"
+SelectTimes       = "Prefabs/UI/SelectTimes"
 SelectKing        = "Prefabs/UI/SelectKing"
 InternalAffairs   = "Prefabs/UI/InternalAffairs"
 

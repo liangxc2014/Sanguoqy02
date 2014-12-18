@@ -13,12 +13,12 @@ public class StartMenuState : IState
     }
     public void OnEnter()
     {
-        UIManager.Instance.ShowView(UINamesConfig.StartMenu);
+        GamePublic.Instance.LuaManager.CallLuaFunction("LuaFunctionHelper.CallFunction", "StartMenuState", "OnEnter");
     }
 
     public void OnExit()
     {
-        UIManager.Instance.DestroyView(UINamesConfig.StartMenu);
+        GamePublic.Instance.LuaManager.CallLuaFunction("LuaFunctionHelper.CallFunction", "StartMenuState", "OnExit");
     }
 
     public void Update()

@@ -13,14 +13,12 @@ public class SelectKingState : IState
     }
     public void OnEnter()
     {
-        GamePublic.Instance.DataManager.InitDataManager();
-
-        UIManager.Instance.ShowView(UINamesConfig.SelectKing);
+        GamePublic.Instance.LuaManager.CallLuaFunction("LuaFunctionHelper.CallFunction", "SelectKingState", "OnEnter");
     }
 
     public void OnExit()
     {
-        UIManager.Instance.DestroyView(UINamesConfig.SelectKing);
+        GamePublic.Instance.LuaManager.CallLuaFunction("LuaFunctionHelper.CallFunction", "SelectKingState", "OnExit");
     }
 
     public void Update()

@@ -13,12 +13,12 @@ public class InternalAffairsState : IState
     }
     public void OnEnter()
     {
-        UIManager.Instance.ShowView(UINamesConfig.InternalAffairs);
+        GamePublic.Instance.LuaManager.CallLuaFunction("LuaFunctionHelper.CallFunction", "InternalAffairsState", "OnEnter");
     }
 
     public void OnExit()
     {
-        
+        GamePublic.Instance.LuaManager.CallLuaFunction("LuaFunctionHelper.CallFunction", "InternalAffairsState", "OnExit");
     }
 
     public void Update()

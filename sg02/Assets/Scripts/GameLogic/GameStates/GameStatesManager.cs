@@ -19,11 +19,16 @@ public class GameStatesManager : StateManager
     private InternalAffairsState m_internalAffairsState = new InternalAffairsState();
     public InternalAffairsState InternalAffairsState { get { return m_internalAffairsState; } }
 
+    //大地图
+    private WorldMapState m_worldMapState = new WorldMapState();
+    public WorldMapState WorldMapState { get { return m_worldMapState; } }
+
     public override void Initialize() 
     {
         AddState(m_startMenuState);
         AddState(m_selectTimesState);
         AddState(m_selectKingState);
         AddState(m_internalAffairsState);
+        AddState(m_worldMapState);
     }
 }

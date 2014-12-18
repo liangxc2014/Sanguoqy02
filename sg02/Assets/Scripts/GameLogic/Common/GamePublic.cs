@@ -175,6 +175,9 @@ public class GamePublic : Singleton<GamePublic>
         while (enumerator.MoveNext())
         {
             string path = (string)enumerator.Current;
+            if (path.EndsWith(".lua") == false)
+                path += ".lua";
+            
             m_luaMgr.DoFile(path);
 
             string moduleName = Path.GetFileNameWithoutExtension(path);

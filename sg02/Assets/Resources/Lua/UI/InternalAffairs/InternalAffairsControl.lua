@@ -3,6 +3,8 @@ module(..., package.seeall);
 m_view = nil
 m_menuItem = {}
 
+m_isMenuEnable = true
+
 --初始化函数
 function Initialize(viewPanel)
 
@@ -36,7 +38,7 @@ function InitMenuList()
             go.transform.localPosition = Vector3.New(0, GlobalConfig.FontButtonsVSpace * i)
 
             m_menuItem[go] = menuItemInfo.ID
-            InputManager.Instance:AddOnClickEvent(go, OnButtonClick)
+            InputManager.Instance:AddOnClickEvent(go, OnMenuItemClick)
 
             i = i + 1
         end
@@ -48,7 +50,23 @@ end
 --初始化按钮事件
 function InitButtonEvent()
 
-    
+    InputManager.Instance:AddOnClickEvent(m_view.m_buttonConfirmOK, OnButtonOK)
+    InputManager.Instance:AddOnClickEvent(m_view.m_buttonConfirmCancel, OnButtonCancel)
+
+end
+
+--确认内政终了
+function OnButtonOK()
+
+    GamePublic.Instance.GameStatesManager:ChangeState(GamePublic.Instance.GameStatesManager.WorldMapState)
+
+end
+
+--取消
+function OnButtonCancel()
+
+    m_isMenuEnable = true
+    m_view.m_confirmBox:SetActive(false)
 
 end
 
@@ -62,8 +80,16 @@ function SetKingFace()
 end
 
 --菜单项选择响应
-function OnButtonClick(go)
+function OnMenuItemClick(go)
 
-    print(go.name)
-
+    if not m_isMenuEnable then
+        return
+    end
+    
+    local ID = m_menuItem[go]
+    if ID == 10 then 
+        m_isMenuEnable = false
+        m_view.m_confirmBox:SetActive(true)
+    end
+    
 end
