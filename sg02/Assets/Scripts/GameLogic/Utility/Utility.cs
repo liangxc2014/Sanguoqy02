@@ -204,4 +204,18 @@ public static class Utility
 
         return ret;
     }
+
+    /// <summary>
+    /// 根据图片名字创建物体
+    /// </summary>
+    public static GameObject CreateSceneObject(string name, string spritePath)
+    {
+        GameObject go = new GameObject(name);
+        SpriteRenderer sr = go.AddComponent<SpriteRenderer>();
+        sr.sprite = ResourcesManager.Instance.Load<Sprite>(spritePath);
+
+        Utility.SetObjectChild(GamePublic.Instance.SceneRoot, go);
+
+        return go;
+    }
 }

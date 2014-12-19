@@ -22,4 +22,6 @@ public static class XMLConfigPath
 
     public static readonly string LuaControlView = "Config/XML/LuaControlView";
     public static readonly string LuaScripts     = "Config/XML/LuaScripts";
+
+    public static readonly string ResourcePath = "Config/XML/ResourcePath";
 }

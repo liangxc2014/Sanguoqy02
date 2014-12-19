@@ -1,6 +1,7 @@
 module(..., package.seeall);
 
 FontButtonExample = "Prefabs/UI/ButtonExample/FontButtonExample"
+FontToggleExample = "Prefabs/UI/ButtonExample/FontToggleExample"
 ImageButtonExample = "Prefabs/UI/ButtonExample/ImageButtonExample"
 
 StartMenu         = "Prefabs/UI/StartMenu"

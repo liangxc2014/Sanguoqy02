@@ -32,6 +32,13 @@ public class GamePublic : Singleton<GamePublic>
     public GameObject UIRoot { get { return m_uiRoot; } }
 
     /// <summary>
+    /// 字体预设
+    /// </summary>
+    private const string m_fontButtonExample = "Prefabs/UI/ButtonExample/FontButtonExample";
+    private const string m_fontToggleExample = "Prefabs/UI/ButtonExample/FontToggleExample";
+    //private const string m_imageButtonExample = "Prefabs/UI/ButtonExample/ImageButtonExample";
+
+    /// <summary>
     /// LUA管理器
     /// </summary>
     private LuaScriptMgr m_luaMgr;
@@ -78,7 +85,11 @@ public class GamePublic : Singleton<GamePublic>
     /// </summary>
     public int CurrentKing { get; set; }
 
-
+    /// <summary>
+    /// 城市点的位置
+    /// </summary>
+    private Dictionary<int, Vector3> m_cityPoint;
+    public Dictionary<int, Vector3> CityPoint {get {return m_cityPoint;}}
 
     // ------------------------------------------------------- 华丽的分割线 --------------------------------------------------
 
@@ -99,6 +110,7 @@ public class GamePublic : Singleton<GamePublic>
         InitPool();
         InitLuaManager();
         InitTimesList();
+        InitCityPoints();
 
         LoadLuaFiles();
     }
@@ -135,7 +147,7 @@ public class GamePublic : Singleton<GamePublic>
 
     private GameObject CreateOneButton()
     {
-        GameObject temp = ResourcesManager.Instance.Load<GameObject>(UINamesConfig.FontButtonExample);
+        GameObject temp = ResourcesManager.Instance.Load<GameObject>(m_fontButtonExample);
         GameObject go = Object.Instantiate(temp) as GameObject;
         Utility.SetObjectChild(m_poolRoot, go);
         return go;
@@ -143,7 +155,7 @@ public class GamePublic : Singleton<GamePublic>
 
     private GameObject CreateOnToggle()
     {
-        GameObject temp = ResourcesManager.Instance.Load<GameObject>(UINamesConfig.FontToggleExample);
+        GameObject temp = ResourcesManager.Instance.Load<GameObject>(m_fontToggleExample);
         GameObject go = Object.Instantiate(temp) as GameObject;
         Utility.SetObjectChild(m_poolRoot, go);
         return go;
@@ -161,6 +173,32 @@ public class GamePublic : Singleton<GamePublic>
         {
             XMLDataTimes info = (XMLDataTimes)enumerator.Current;
             m_listTimes.Add(info.Name);
+        }
+    }
+
+    /// <summary>
+    /// 初始化城市的位置
+    /// </summary>
+    private void InitCityPoints()
+    {
+        m_cityPoint = new Dictionary<int, Vector3>();
+
+        IEnumerator enumerator = XMLManager.CityPoints.Data.Values.GetEnumerator();
+        while (enumerator.MoveNext())
+        {
+            XMLDataCityPoints data = (XMLDataCityPoints)enumerator.Current;
+            
+            if (m_cityPoint.ContainsKey(data.FromCity) == false)
+            {
+                string point = XMLManager.PathInfo.GetInfoById(data.FromPoint).Position;
+                m_cityPoint.Add(data.FromCity, Utility.GetPoint(point));
+            }
+
+            if (m_cityPoint.ContainsKey(data.ToCity) == false)
+            {
+                string point = XMLManager.PathInfo.GetInfoById(data.ToPoint).Position;
+                m_cityPoint.Add(data.ToCity, Utility.GetPoint(point));
+            }
         }
     }
 

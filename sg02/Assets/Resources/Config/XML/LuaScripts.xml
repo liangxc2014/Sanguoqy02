@@ -2,12 +2,12 @@
 <root>
   <RECORD Path="Lua/Define.lua" />
   <RECORD Path="Lua/Test/TestLua.lua" />
-  <RECORD Path="Lua/GameStates/InternalAffairsState" />
-  <RECORD Path="Lua/GameStates/LoadingState" />
-  <RECORD Path="Lua/GameStates/SelectKingState" />
-  <RECORD Path="Lua/GameStates/SelectTimesState" />
-  <RECORD Path="Lua/GameStates/StartMenuState" />
-  <RECORD Path="Lua/GameStates/WorldMapState" />
+  <RECORD Path="Lua/GameStates/InternalAffairsState.lua" />
+  <RECORD Path="Lua/GameStates/LoadingState.lua" />
+  <RECORD Path="Lua/GameStates/SelectKingState.lua" />
+  <RECORD Path="Lua/GameStates/SelectTimesState.lua" />
+  <RECORD Path="Lua/GameStates/StartMenuState.lua" />
+  <RECORD Path="Lua/GameStates/WorldMapState.lua" />
   <RECORD Path="Lua/UI/LuaFunctionHelper.lua" />
   <RECORD Path="Lua/UI/UINamesConfig.lua" />
   <RECORD Path="Lua/UI/StartMenu/StartMenuView.lua" />

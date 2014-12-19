@@ -21,6 +21,8 @@ public static class XMLManager
     public static XMLLoader<XMLDataLuaControlView> LuaControlView;
     public static XMLLoader<XMLDataLuaScripts> LuaScripts;
 
+    public static XMLLoader<XMLDataResourcePath> ResourcePath;
+
     public static void LoadConfigs()
 	{
         Battle = new XMLLoader<XMLDataBattle>(XMLConfigPath.Battle);
@@ -40,5 +42,7 @@ public static class XMLManager
 
         LuaControlView = new XMLLoader<XMLDataLuaControlView>(XMLConfigPath.LuaControlView, "Name");
         LuaScripts = new XMLLoader<XMLDataLuaScripts>(XMLConfigPath.LuaScripts, "Path");
+
+        ResourcePath = new XMLLoader<XMLDataResourcePath>(XMLConfigPath.ResourcePath, "Name");
 	}
 }
