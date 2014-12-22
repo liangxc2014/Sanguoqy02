@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <root>
   <RECORD Name="Map" Path="Shape/MAP/CHINAMAP" />
-  <RECORD Name="City01" Path="Shape/MAP/City01" />
-  <RECORD Name="City02" Path="Shape/MAP/City02" />
-  <RECORD Name="City03" Path="Shape/MAP/City03" />
-  <RECORD Name="City04" Path="Shape/MAP/City04" />
+  <RECORD Name="City01" Path="Shape/MAP/CITY01" />
+  <RECORD Name="City02" Path="Shape/MAP/CITY02" />
+  <RECORD Name="City03" Path="Shape/MAP/CITY03" />
+  <RECORD Name="City04" Path="Shape/MAP/CITY04" />
 </root>
