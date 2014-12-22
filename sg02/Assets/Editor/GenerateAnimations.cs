@@ -71,8 +71,17 @@ public class GenerateAnimations
             }
         }
 
+        if (sw != null)
+        {
+            sw.Flush();
+            sw.Close();
+        }
+
         if (animSW != null)
         {
+            //最后一个
+            animSW.WriteLine(OutPath + prefix);
+
             animSW.Flush();
             animSW.Close();
         }
