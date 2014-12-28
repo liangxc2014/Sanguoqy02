@@ -7,7 +7,7 @@ public class LuaControlView : MonoBehaviour
 	// Use this for initialization
 	void Start () 
     {
-        XMLDataLuaControlView info = XMLManager.LuaControlView.GetInfoById(name);
+        XMLDataLuaControlView info = XMLManager.LuaControlView.GetInfoByName(name);
 
         if (info != null)
         {

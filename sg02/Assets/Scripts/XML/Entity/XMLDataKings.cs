@@ -11,6 +11,10 @@ public class XMLDataKings
 	/// </summary>
 	public string Name;
 	/// <summary>
+	/// ÆìÖÄ¶¯»­
+	/// </summary>
+	public string FlagAnim;
+	/// <summary>
 	/// »Æ½íÖ®ÂÒ
 	/// </summary>
 	public int[] Times;

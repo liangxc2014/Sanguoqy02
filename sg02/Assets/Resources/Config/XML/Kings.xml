@@ -1,202 +1,202 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <root>
-  <RECORD ID="1" Name="曹操">
+  <RECORD ID="1" Name="曹操" FlagAnim="FLAG05">
     <Times>0</Times>
     <Times>1</Times>
     <Times>1</Times>
     <Times>1</Times>
     <Times>1</Times>
   </RECORD>
-  <RECORD ID="2" Name="刘备">
+  <RECORD ID="2" Name="刘备" FlagAnim="FLAG01">
     <Times>0</Times>
     <Times>1</Times>
     <Times>1</Times>
     <Times>1</Times>
     <Times>1</Times>
   </RECORD>
-  <RECORD ID="3" Name="孙权">
+  <RECORD ID="3" Name="孙权" FlagAnim="FLAG17">
     <Times>0</Times>
     <Times>0</Times>
     <Times>1</Times>
     <Times>1</Times>
     <Times>1</Times>
   </RECORD>
-  <RECORD ID="4" Name="孙坚">
+  <RECORD ID="4" Name="孙坚" FlagAnim="FLAG17">
     <Times>1</Times>
     <Times>1</Times>
     <Times>0</Times>
     <Times>0</Times>
     <Times>0</Times>
   </RECORD>
-  <RECORD ID="5" Name="董卓">
+  <RECORD ID="5" Name="董卓" FlagAnim="FLAG04">
     <Times>1</Times>
     <Times>1</Times>
     <Times>0</Times>
     <Times>0</Times>
     <Times>0</Times>
   </RECORD>
-  <RECORD ID="6" Name="袁绍">
+  <RECORD ID="6" Name="袁绍" FlagAnim="FLAG11">
     <Times>0</Times>
     <Times>1</Times>
     <Times>1</Times>
     <Times>0</Times>
     <Times>0</Times>
   </RECORD>
-  <RECORD ID="7" Name="袁术">
+  <RECORD ID="7" Name="袁术" FlagAnim="FLAG12">
     <Times>0</Times>
     <Times>1</Times>
     <Times>0</Times>
     <Times>0</Times>
     <Times>0</Times>
   </RECORD>
-  <RECORD ID="8" Name="马腾">
+  <RECORD ID="8" Name="马腾" FlagAnim="FLAG14">
     <Times>0</Times>
     <Times>1</Times>
     <Times>1</Times>
     <Times>1</Times>
     <Times>0</Times>
   </RECORD>
-  <RECORD ID="9" Name="孟获">
+  <RECORD ID="9" Name="孟获" FlagAnim="FLAG21">
     <Times>0</Times>
     <Times>0</Times>
     <Times>0</Times>
     <Times>1</Times>
     <Times>1</Times>
   </RECORD>
-  <RECORD ID="10" Name="刘表">
+  <RECORD ID="10" Name="刘表" FlagAnim="FLAG02">
     <Times>0</Times>
     <Times>1</Times>
     <Times>1</Times>
     <Times>0</Times>
     <Times>0</Times>
   </RECORD>
-  <RECORD ID="11" Name="王朗">
+  <RECORD ID="11" Name="王朗" FlagAnim="FLAG24">
     <Times>0</Times>
     <Times>1</Times>
     <Times>0</Times>
     <Times>0</Times>
     <Times>0</Times>
   </RECORD>
-  <RECORD ID="12" Name="刘璋">
+  <RECORD ID="12" Name="刘璋" FlagAnim="FLAG03">
     <Times>0</Times>
     <Times>0</Times>
     <Times>1</Times>
     <Times>1</Times>
     <Times>0</Times>
   </RECORD>
-  <RECORD ID="13" Name="张鲁">
+  <RECORD ID="13" Name="张鲁" FlagAnim="FLAG09">
     <Times>0</Times>
     <Times>0</Times>
     <Times>1</Times>
     <Times>0</Times>
     <Times>0</Times>
   </RECORD>
-  <RECORD ID="14" Name="金旋">
+  <RECORD ID="14" Name="金旋" FlagAnim="FLAG22">
     <Times>0</Times>
     <Times>0</Times>
     <Times>0</Times>
     <Times>1</Times>
     <Times>0</Times>
   </RECORD>
-  <RECORD ID="15" Name="彻里吉">
+  <RECORD ID="15" Name="彻里吉" FlagAnim="FLAG18">
     <Times>0</Times>
     <Times>0</Times>
     <Times>0</Times>
     <Times>0</Times>
     <Times>1</Times>
   </RECORD>
-  <RECORD ID="16" Name="何进">
+  <RECORD ID="16" Name="何进" FlagAnim="FLAG26">
     <Times>1</Times>
     <Times>0</Times>
     <Times>0</Times>
     <Times>0</Times>
     <Times>0</Times>
   </RECORD>
-  <RECORD ID="17" Name="张角">
+  <RECORD ID="17" Name="张角" FlagAnim="FLAG09">
     <Times>1</Times>
     <Times>0</Times>
     <Times>0</Times>
     <Times>0</Times>
     <Times>0</Times>
   </RECORD>
-  <RECORD ID="18" Name="丁原">
+  <RECORD ID="18" Name="丁原" FlagAnim="FLAG16">
     <Times>1</Times>
     <Times>0</Times>
     <Times>0</Times>
     <Times>0</Times>
     <Times>0</Times>
   </RECORD>
-  <RECORD ID="19" Name="公孙瓒">
+  <RECORD ID="19" Name="公孙瓒" FlagAnim="FLAG06">
     <Times>1</Times>
     <Times>1</Times>
     <Times>0</Times>
     <Times>0</Times>
     <Times>0</Times>
   </RECORD>
-  <RECORD ID="20" Name="刘焉">
+  <RECORD ID="20" Name="刘焉" FlagAnim="FLAG03">
     <Times>1</Times>
     <Times>0</Times>
     <Times>0</Times>
     <Times>0</Times>
     <Times>0</Times>
   </RECORD>
-  <RECORD ID="21" Name="韩馥">
+  <RECORD ID="21" Name="韩馥" FlagAnim="FLAG13">
     <Times>1</Times>
     <Times>1</Times>
     <Times>0</Times>
     <Times>0</Times>
     <Times>0</Times>
   </RECORD>
-  <RECORD ID="22" Name="龚景">
+  <RECORD ID="22" Name="龚景" FlagAnim="FLAG23">
     <Times>1</Times>
     <Times>0</Times>
     <Times>0</Times>
     <Times>0</Times>
     <Times>0</Times>
   </RECORD>
-  <RECORD ID="23" Name="乔玄">
+  <RECORD ID="23" Name="乔玄" FlagAnim="FLAG15">
     <Times>1</Times>
     <Times>0</Times>
     <Times>0</Times>
     <Times>0</Times>
     <Times>0</Times>
   </RECORD>
-  <RECORD ID="24" Name="陶谦">
+  <RECORD ID="24" Name="陶谦" FlagAnim="FLAG19">
     <Times>1</Times>
     <Times>1</Times>
     <Times>0</Times>
     <Times>0</Times>
     <Times>0</Times>
   </RECORD>
-  <RECORD ID="25" Name="孔融">
+  <RECORD ID="25" Name="孔融" FlagAnim="FLAG07">
     <Times>0</Times>
     <Times>1</Times>
     <Times>0</Times>
     <Times>0</Times>
     <Times>0</Times>
   </RECORD>
-  <RECORD ID="26" Name="孔岫">
+  <RECORD ID="26" Name="孔岫" FlagAnim="FLAG08">
     <Times>1</Times>
     <Times>1</Times>
     <Times>0</Times>
     <Times>0</Times>
     <Times>0</Times>
   </RECORD>
-  <RECORD ID="27" Name="乔瑁">
+  <RECORD ID="27" Name="乔瑁" FlagAnim="FLAG15">
     <Times>0</Times>
     <Times>1</Times>
     <Times>0</Times>
     <Times>0</Times>
     <Times>0</Times>
   </RECORD>
-  <RECORD ID="28" Name="刘繇">
+  <RECORD ID="28" Name="刘繇" FlagAnim="FLAG10">
     <Times>1</Times>
     <Times>1</Times>
     <Times>0</Times>
     <Times>0</Times>
     <Times>0</Times>
   </RECORD>
-  <RECORD ID="29" Name="严白虎">
+  <RECORD ID="29" Name="严白虎" FlagAnim="FLAG25">
     <Times>1</Times>
     <Times>1</Times>
     <Times>0</Times>

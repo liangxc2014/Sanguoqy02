@@ -82,7 +82,7 @@ public class XMLLoader<T> where T : class
         }
     }
 
-	public T GetInfoById(object id)
+	public T GetInfoById(int id)
 	{
 		if (m_data.ContainsKey(id))
 		{
@@ -95,6 +95,20 @@ public class XMLLoader<T> where T : class
 			return null;
 		}
 	}
+
+    public T GetInfoByName(string name)
+    {
+        if (m_data.ContainsKey(name))
+        {
+            return (T)m_data[name];
+        }
+        else
+        {
+            string error = string.Format("The key is not found,name={0}, key={1}", m_xmlName, name);
+            Debugging.LogError(error);
+            return null;
+        }
+    }
 
 	private object ParseXmlParamsValue(Type type, XmlElement element, out object id)
 	{

@@ -10,7 +10,7 @@ public class CityPoints
 {
     private static readonly string m_configPath = "Assets/Resources/Config/XML/CityPoints.xml"; 
 
-    [MenuItem("Tools/生成城市的位置信息")]
+    [MenuItem("Tools/生成城市的位置信息", false, 0)]
     static void Execute()
     {
         if (Selection.activeTransform == null) return;
@@ -66,7 +66,7 @@ public class CityPoints
                 IEnumerator enumerator = pathInfo.Data.Keys.GetEnumerator();
                 while (enumerator.MoveNext())
                 {
-                    XMLDataPathInfo current = pathInfo.GetInfoById(enumerator.Current);
+                    XMLDataPathInfo current = pathInfo.GetInfoById((int)enumerator.Current);
                     if (current.Position == p)
                     {
                         isFind = true;

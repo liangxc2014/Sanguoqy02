@@ -15,6 +15,8 @@ public static class XMLManager
     public static XMLLoader<XMLDataTimes> Times;
     public static XMLLoader<XMLDataWiseSkill> WiseSkill;
 
+    public static XMLLoader<XMLDataAnimations> Animations;
+
     public static XMLLoader<XMLDataPathInfo> PathInfo;
     public static XMLLoader<XMLDataCityPoints> CityPoints;
 
@@ -36,6 +38,8 @@ public static class XMLManager
         Things = new XMLLoader<XMLDataThings>(XMLConfigPath.Things);
         Times = new XMLLoader<XMLDataTimes>(XMLConfigPath.Times);
         WiseSkill = new XMLLoader<XMLDataWiseSkill>(XMLConfigPath.WiseSkill);
+
+        Animations = new XMLLoader<XMLDataAnimations>(XMLConfigPath.Animations);
 
         PathInfo = new XMLLoader<XMLDataPathInfo>(XMLConfigPath.PathInfo);
         CityPoints = new XMLLoader<XMLDataCityPoints>(XMLConfigPath.CityPoints);

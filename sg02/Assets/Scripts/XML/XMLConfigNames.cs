@@ -17,6 +17,8 @@ public static class XMLConfigPath
     public static readonly string Times = "Config/XML/Times";
     public static readonly string WiseSkill = "Config/XML/WiseSkill";
 
+    public static readonly string Animations = "Config/XML/Animations";
+
     public static readonly string PathInfo      = "Config/XML/PathInfo";
     public static readonly string CityPoints    = "Config/XML/CityPoints";
 

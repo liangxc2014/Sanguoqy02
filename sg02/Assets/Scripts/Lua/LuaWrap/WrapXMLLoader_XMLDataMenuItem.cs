@@ -9,6 +9,7 @@ public class WrapXMLLoader_XMLDataMenuItem
 	{
 		new LuaMethod("LoadXML", LoadXML),
 		new LuaMethod("GetInfoById", GetInfoById),
+		new LuaMethod("GetInfoByName", GetInfoByName),
 		new LuaMethod("ReflectionFields", ReflectionFields),
 		new LuaMethod("New", Create),
 		new LuaMethod("GetClassType", GetClassType),
@@ -68,8 +69,19 @@ public class WrapXMLLoader_XMLDataMenuItem
 	{
 		LuaScriptMgr.CheckArgsCount(L, 2);
 		XMLLoader<XMLDataMenuItem> obj = LuaScriptMgr.GetNetObject<XMLLoader<XMLDataMenuItem>>(L, 1);
-		object arg0 = LuaScriptMgr.GetVarObject(L, 2);
+		int arg0 = (int)LuaScriptMgr.GetNumber(L, 2);
 		XMLDataMenuItem o = obj.GetInfoById(arg0);
+		LuaScriptMgr.PushObject(L, o);
+		return 1;
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int GetInfoByName(IntPtr L)
+	{
+		LuaScriptMgr.CheckArgsCount(L, 2);
+		XMLLoader<XMLDataMenuItem> obj = LuaScriptMgr.GetNetObject<XMLLoader<XMLDataMenuItem>>(L, 1);
+		string arg0 = LuaScriptMgr.GetLuaString(L, 2);
+		XMLDataMenuItem o = obj.GetInfoByName(arg0);
 		LuaScriptMgr.PushObject(L, o);
 		return 1;
 	}

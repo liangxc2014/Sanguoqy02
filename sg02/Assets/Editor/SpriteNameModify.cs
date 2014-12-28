@@ -6,7 +6,7 @@ using UnityEngine;
 public class SpriteNameModify
 {
 
-    [MenuItem("Tools/图片名字修改(去掉 '_1-1')")]
+    [MenuItem("Tools/图片名字修改(去掉 '_1-1')", false, 0)]
     static void Execute()
     {
         Object[] selectObject = Selection.GetFiltered(typeof(Object), SelectionMode.DeepAssets);

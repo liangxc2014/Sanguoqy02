@@ -23,10 +23,12 @@ public class WrapXMLManager
 		new LuaField("Things", get_Things, set_Things),
 		new LuaField("Times", get_Times, set_Times),
 		new LuaField("WiseSkill", get_WiseSkill, set_WiseSkill),
+		new LuaField("Animations", get_Animations, set_Animations),
 		new LuaField("PathInfo", get_PathInfo, set_PathInfo),
 		new LuaField("CityPoints", get_CityPoints, set_CityPoints),
 		new LuaField("LuaControlView", get_LuaControlView, set_LuaControlView),
 		new LuaField("LuaScripts", get_LuaScripts, set_LuaScripts),
+		new LuaField("ResourcePath", get_ResourcePath, set_ResourcePath),
 	};
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
@@ -126,6 +128,13 @@ public class WrapXMLManager
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int get_Animations(IntPtr L)
+	{
+		LuaScriptMgr.PushObject(L, XMLManager.Animations);
+		return 1;
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_PathInfo(IntPtr L)
 	{
 		LuaScriptMgr.PushObject(L, XMLManager.PathInfo);
@@ -150,6 +159,13 @@ public class WrapXMLManager
 	static int get_LuaScripts(IntPtr L)
 	{
 		LuaScriptMgr.PushObject(L, XMLManager.LuaScripts);
+		return 1;
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int get_ResourcePath(IntPtr L)
+	{
+		LuaScriptMgr.PushObject(L, XMLManager.ResourcePath);
 		return 1;
 	}
 
@@ -231,6 +247,13 @@ public class WrapXMLManager
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int set_Animations(IntPtr L)
+	{
+		XMLManager.Animations = LuaScriptMgr.GetNetObject<XMLLoader<XMLDataAnimations>>(L, 3);
+		return 0;
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_PathInfo(IntPtr L)
 	{
 		XMLManager.PathInfo = LuaScriptMgr.GetNetObject<XMLLoader<XMLDataPathInfo>>(L, 3);
@@ -255,6 +278,13 @@ public class WrapXMLManager
 	static int set_LuaScripts(IntPtr L)
 	{
 		XMLManager.LuaScripts = LuaScriptMgr.GetNetObject<XMLLoader<XMLDataLuaScripts>>(L, 3);
+		return 0;
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int set_ResourcePath(IntPtr L)
+	{
+		XMLManager.ResourcePath = LuaScriptMgr.GetNetObject<XMLLoader<XMLDataResourcePath>>(L, 3);
 		return 0;
 	}
 

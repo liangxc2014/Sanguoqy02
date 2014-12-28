@@ -9,7 +9,7 @@ public class GeneratePathInfo
     public static readonly int m_step = 4;
     private static readonly string m_configPath = "Assets/Resources/Config/XML/PathInfo.xml";
 
-    [MenuItem("Tools/生成路径信息")]
+    [MenuItem("Tools/生成路径信息", false, 0)]
     static void Execute()
     {
         if (Selection.objects.Length == 0) return;

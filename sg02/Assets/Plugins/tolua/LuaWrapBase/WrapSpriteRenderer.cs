@@ -193,8 +193,8 @@ public class WrapSpriteRenderer
 			LuaDLL.luaL_error(L, "unknown member name castShadows");
 		}
 
-		SpriteRenderer obj = (SpriteRenderer)o;
-		LuaScriptMgr.Push(L, obj.castShadows);
+		//SpriteRenderer obj = (SpriteRenderer)o;
+		//LuaScriptMgr.Push(L, obj.castShadows);
 		return 1;
 	}
 
@@ -568,8 +568,8 @@ public class WrapSpriteRenderer
 			LuaDLL.luaL_error(L, "unknown member name castShadows");
 		}
 
-		SpriteRenderer obj = (SpriteRenderer)o;
-		obj.castShadows = LuaScriptMgr.GetBoolean(L, 3);
+		//SpriteRenderer obj = (SpriteRenderer)o;
+		//obj.castShadows = LuaScriptMgr.GetBoolean(L, 3);
 		return 0;
 	}
 
@@ -733,8 +733,8 @@ public class WrapSpriteRenderer
 			LuaDLL.luaL_error(L, "unknown member name reflectionProbeUsage");
 		}
 
-		SpriteRenderer obj = (SpriteRenderer)o;
-		obj.reflectionProbeUsage = LuaScriptMgr.GetNetObject<ReflectionProbeUsage>(L, 3);
+		//SpriteRenderer obj = (SpriteRenderer)o;
+		//obj.reflectionProbeUsage = LuaScriptMgr.GetNetObject<ReflectionProbeUsage>(L, 3);
 		return 0;
 	}
 

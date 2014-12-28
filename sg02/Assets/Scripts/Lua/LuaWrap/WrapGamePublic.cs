@@ -31,6 +31,7 @@ public class WrapGamePublic
 		new LuaField("TimesList", get_TimesList, null),
 		new LuaField("CurrentTimes", get_CurrentTimes, set_CurrentTimes),
 		new LuaField("CurrentKing", get_CurrentKing, set_CurrentKing),
+		new LuaField("CityPoint", get_CityPoint, null),
 	};
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
@@ -248,6 +249,21 @@ public class WrapGamePublic
 
 		GamePublic obj = (GamePublic)o;
 		LuaScriptMgr.Push(L, obj.CurrentKing);
+		return 1;
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int get_CityPoint(IntPtr L)
+	{
+		object o = LuaScriptMgr.GetLuaObject(L, 1);
+
+		if (o == null)
+		{
+			LuaDLL.luaL_error(L, "unknown member name CityPoint");
+		}
+
+		GamePublic obj = (GamePublic)o;
+		LuaScriptMgr.PushObject(L, obj.CityPoint);
 		return 1;
 	}
 

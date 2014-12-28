@@ -26,10 +26,10 @@ public class WrapStateBase
 		new LuaMethod("SendMessageUpwards", SendMessageUpwards),
 		new LuaMethod("SendMessage", SendMessage),
 		new LuaMethod("BroadcastMessage", BroadcastMessage),
+		new LuaMethod("ToString", ToString),
 		new LuaMethod("Equals", Equals),
 		new LuaMethod("GetHashCode", GetHashCode),
 		new LuaMethod("GetInstanceID", GetInstanceID),
-		new LuaMethod("ToString", ToString),
 		new LuaMethod("GetType", GetType),
 		new LuaMethod("New", Create),
 		new LuaMethod("GetClassType", GetClassType),
@@ -741,6 +741,16 @@ public class WrapStateBase
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int ToString(IntPtr L)
+	{
+		LuaScriptMgr.CheckArgsCount(L, 1);
+		StateBase obj = LuaScriptMgr.GetNetObject<StateBase>(L, 1);
+		string o = obj.ToString();
+		LuaScriptMgr.Push(L, o);
+		return 1;
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int Equals(IntPtr L)
 	{
 		LuaScriptMgr.CheckArgsCount(L, 2);
@@ -767,16 +777,6 @@ public class WrapStateBase
 		LuaScriptMgr.CheckArgsCount(L, 1);
 		StateBase obj = LuaScriptMgr.GetNetObject<StateBase>(L, 1);
 		int o = obj.GetInstanceID();
-		LuaScriptMgr.Push(L, o);
-		return 1;
-	}
-
-	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int ToString(IntPtr L)
-	{
-		LuaScriptMgr.CheckArgsCount(L, 1);
-		StateBase obj = LuaScriptMgr.GetNetObject<StateBase>(L, 1);
-		string o = obj.ToString();
 		LuaScriptMgr.Push(L, o);
 		return 1;
 	}

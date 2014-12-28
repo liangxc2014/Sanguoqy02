@@ -5,7 +5,7 @@ public class XMLDataAnimations
 	/// <summary>
 	/// 序号
 	/// </summary>
-	public int ID;
+	public string Name;
 	/// <summary>
 	/// 文件路径
 	/// </summary>
@@ -14,5 +14,9 @@ public class XMLDataAnimations
 	/// 播放总时间
 	/// </summary>
 	public float AnimTime;
+	/// <summary>
+	/// 是否循环 0:不循环 1:循环
+	/// </summary>
+	public int Loop;
 }
 

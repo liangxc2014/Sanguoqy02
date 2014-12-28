@@ -13,6 +13,7 @@ public class WrapXMLDataKings
 	{
 		new LuaField("ID", get_ID, set_ID),
 		new LuaField("Name", get_Name, set_Name),
+		new LuaField("FlagAnim", get_FlagAnim, set_FlagAnim),
 		new LuaField("Times", get_Times, set_Times),
 	};
 
@@ -66,6 +67,21 @@ public class WrapXMLDataKings
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int get_FlagAnim(IntPtr L)
+	{
+		object o = LuaScriptMgr.GetLuaObject(L, 1);
+
+		if (o == null)
+		{
+			LuaDLL.luaL_error(L, "unknown member name FlagAnim");
+		}
+
+		XMLDataKings obj = (XMLDataKings)o;
+		LuaScriptMgr.Push(L, obj.FlagAnim);
+		return 1;
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Times(IntPtr L)
 	{
 		object o = LuaScriptMgr.GetLuaObject(L, 1);
@@ -107,6 +123,21 @@ public class WrapXMLDataKings
 
 		XMLDataKings obj = (XMLDataKings)o;
 		obj.Name = LuaScriptMgr.GetString(L, 3);
+		return 0;
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int set_FlagAnim(IntPtr L)
+	{
+		object o = LuaScriptMgr.GetLuaObject(L, 1);
+
+		if (o == null)
+		{
+			LuaDLL.luaL_error(L, "unknown member name FlagAnim");
+		}
+
+		XMLDataKings obj = (XMLDataKings)o;
+		obj.FlagAnim = LuaScriptMgr.GetString(L, 3);
 		return 0;
 	}
 

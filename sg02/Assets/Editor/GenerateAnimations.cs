@@ -9,17 +9,31 @@ public class GenerateAnimations
     //private static readonly string SourcePath = @"Assets\Resources\Shape\MAJOR\BODY\";
     //private static readonly string SourcePath = @"Assets\Resources\Shape\MAJOR\HORSE\";
     //private static readonly string SourcePath = @"Assets\Resources\Shape\MAJOR\WEAPON\";
-    private static readonly string SourcePath = @"Assets\Resources\Shape\TROOP\";
+    //private static readonly string SourcePath = @"Assets\Resources\Shape\TROOP\";
     //private static readonly string SourcePath = @"Assets\Resources\Shape\FONTS\";
+    private static readonly string SourcePath = @"Assets\Resources\Test\";
 
 	private static readonly string OutPath = @"Assets\Resources\Animations\";
 
     //private static readonly int pattenLenght = 4;
     private static readonly int pattenLenght = 2;
 
-    [MenuItem("Tools/生成动画文件")]
+    [MenuItem("Tools/生成动画文件", false, 2)]
     static void Execute()
     {
+//         StreamWriter strWri = File.CreateText("animations.txt");
+//         XMLLoader<XMLDataAnimations> Animations = new XMLLoader<XMLDataAnimations>(XMLConfigPath.Animations);
+//         IEnumerator<object> enumerator = Animations.Data.Values.GetEnumerator();
+//         while (enumerator.MoveNext())
+//         {
+//             XMLDataAnimations data = (XMLDataAnimations)enumerator.Current;
+//             string[] split = data.Path.Split('\\');
+//             strWri.WriteLine(split[split.Length - 1]);
+//         }
+//         strWri.Flush();
+//         strWri.Close();
+//         return;
+
         DirectoryInfo di = new DirectoryInfo(SourcePath);
         
         if (di.Exists == false)

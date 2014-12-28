@@ -23,10 +23,12 @@ public class WrapXMLConfigPath
 		new LuaField("Things", get_Things, null),
 		new LuaField("Times", get_Times, null),
 		new LuaField("WiseSkill", get_WiseSkill, null),
+		new LuaField("Animations", get_Animations, null),
 		new LuaField("PathInfo", get_PathInfo, null),
 		new LuaField("CityPoints", get_CityPoints, null),
 		new LuaField("LuaControlView", get_LuaControlView, null),
 		new LuaField("LuaScripts", get_LuaScripts, null),
+		new LuaField("ResourcePath", get_ResourcePath, null),
 	};
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
@@ -133,6 +135,13 @@ public class WrapXMLConfigPath
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int get_Animations(IntPtr L)
+	{
+		LuaScriptMgr.Push(L, XMLConfigPath.Animations);
+		return 1;
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_PathInfo(IntPtr L)
 	{
 		LuaScriptMgr.Push(L, XMLConfigPath.PathInfo);
@@ -157,6 +166,13 @@ public class WrapXMLConfigPath
 	static int get_LuaScripts(IntPtr L)
 	{
 		LuaScriptMgr.Push(L, XMLConfigPath.LuaScripts);
+		return 1;
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int get_ResourcePath(IntPtr L)
+	{
+		LuaScriptMgr.Push(L, XMLConfigPath.ResourcePath);
 		return 1;
 	}
 }

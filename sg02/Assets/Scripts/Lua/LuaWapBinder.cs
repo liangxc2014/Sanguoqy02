@@ -26,8 +26,9 @@ public static class LuaWapBinder
 		WrapCityInfo.Register(L);
 		WrapGeneralInfo.Register(L);
 		WrapGameStatesManager.Register(L);
-		WrapMapCameraControl.Register(L);
 		WrapPathFinding.Register(L);
+		WrapMapCameraControl.Register(L);
+		WrapWorldMapControl.Register(L);
 		WrapUtility.Register(L);
 		WrapUIButton.Register(L);
 		WrapUIToggle.Register(L);

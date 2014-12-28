@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class SpriteOffset
 {
-    [MenuItem("Tools/图片偏移量信息处理")]
+    [MenuItem("Tools/图片偏移量信息处理", false, 0)]
     static void Execute()
     {
         Object[] selectObject = Selection.GetFiltered(typeof(Object), SelectionMode.DeepAssets);

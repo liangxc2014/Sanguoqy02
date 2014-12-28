@@ -29,7 +29,7 @@ public class WorldMapControl : Singleton<WorldMapControl>
 
     private void CreateMap()
     {
-        GameObject go = Utility.CreateSceneObject("Map", XMLManager.ResourcePath.GetInfoById("Map").Path);
+        GameObject go = Utility.CreateSceneObject("Map", XMLManager.ResourcePath.GetInfoByName("Map").Path);
         go.transform.localPosition = new Vector3(0, 0, 10);
     }
 
@@ -44,11 +44,11 @@ public class WorldMapControl : Singleton<WorldMapControl>
             string cityPath = "";
             if (data.Level == 0)
             {
-                cityPath = XMLManager.ResourcePath.GetInfoById("City01").Path;
+                cityPath = XMLManager.ResourcePath.GetInfoByName("City01").Path;
             }
             else
             {
-                cityPath = XMLManager.ResourcePath.GetInfoById("City03").Path;
+                cityPath = XMLManager.ResourcePath.GetInfoByName("City03").Path;
             }
 
             GameObject go = Utility.CreateSceneObject("City" + data.ID, cityPath);
