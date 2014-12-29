@@ -7,16 +7,16 @@ public class XMLDataAnimations
 	/// </summary>
 	public string Name;
 	/// <summary>
-	/// 文件路径
+	/// 播放速度
 	/// </summary>
-	public string Path;
-	/// <summary>
-	/// 播放总时间
-	/// </summary>
-	public float AnimTime;
+	public float Speed;
 	/// <summary>
 	/// 是否循环 0:不循环 1:循环
 	/// </summary>
 	public int Loop;
+	/// <summary>
+	/// 下一个动画
+	/// </summary>
+	public string NextAnim;
 }
 

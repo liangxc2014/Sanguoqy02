@@ -165,6 +165,8 @@ public static class LuaBinding
         new BindType("XMLDataTimes", typeof(XMLDataTimes), true, null),
         new BindType("XMLDataWiseSkill", typeof(XMLDataWiseSkill), true, null),
 
+        new BindType("XMLDataAnimations", typeof(XMLDataAnimations), true, null),
+
         new BindType("XMLDataPathInfo", typeof(XMLDataPathInfo), true, null),
         new BindType("XMLDataCityPoints", typeof(XMLDataCityPoints), true, null),
 
@@ -179,6 +181,8 @@ public static class LuaBinding
         new BindType("XMLLoader_XMLDataThings", "XMLLoader<XMLDataThings>", typeof(XMLLoader<XMLDataThings>), true, null),
         new BindType("XMLLoader_XMLDataTimes", "XMLLoader<XMLDataTimes>", typeof(XMLLoader<XMLDataTimes>), true, null),
         new BindType("XMLLoader_XMLDataWiseSkill", "XMLLoader<XMLDataWiseSkill>", typeof(XMLLoader<XMLDataWiseSkill>), true, null),
+
+        new BindType("XMLLoader_XMLDataAnimations", "XMLLoader<XMLDataAnimations>", typeof(XMLLoader<XMLDataAnimations>), true, null),
 
         new BindType("XMLLoader_XMLDataPathInfo", "XMLLoader<XMLDataPathInfo>", typeof(XMLLoader<XMLDataPathInfo>), true, null),
         new BindType("XMLLoader_XMLDataCityPoints", "XMLLoader<XMLDataCityPoints>", typeof(XMLLoader<XMLDataCityPoints>), true, null),

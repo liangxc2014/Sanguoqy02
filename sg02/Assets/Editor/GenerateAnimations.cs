@@ -5,18 +5,20 @@ using UnityEngine;
 
 public class GenerateAnimations
 {
-    //private static readonly string SourcePath = @"Assets\Resources\Shape\FORCE\";
-    //private static readonly string SourcePath = @"Assets\Resources\Shape\MAJOR\BODY\";
-    //private static readonly string SourcePath = @"Assets\Resources\Shape\MAJOR\HORSE\";
-    //private static readonly string SourcePath = @"Assets\Resources\Shape\MAJOR\WEAPON\";
-    //private static readonly string SourcePath = @"Assets\Resources\Shape\TROOP\";
-    //private static readonly string SourcePath = @"Assets\Resources\Shape\FONTS\";
-    private static readonly string SourcePath = @"Assets\Resources\Test\";
+    //private static readonly string SourcePath = "Assets/Resources/Shape/FORCE/";
+    //private static readonly string SourcePath = "Assets/Resources/Shape/MAJOR/BODY/";
+    //private static readonly string SourcePath = "Assets/Resources/Shape/MAJOR/HORSE/";
+    private static readonly string SourcePath = "Assets/Resources/Shape/MAJOR/WEAPON/";
+    //private static readonly string SourcePath = "Assets/Resources/Shape/TROOP/";
 
-	private static readonly string OutPath = @"Assets\Resources\Animations\";
+    //private static readonly string OutPath = "Assets/Resources/Animations/FORCE/";
+    //private static readonly string OutPath = "Assets/Resources/Animations/BODY/";
+    //private static readonly string OutPath = "Assets/Resources/Animations/HORSE/";
+    private static readonly string OutPath = "Assets/Resources/Animations/WEAPON/";
+    //private static readonly string OutPath = "Assets/Resources/Animations/TROOP/";
 
-    //private static readonly int pattenLenght = 4;
-    private static readonly int pattenLenght = 2;
+    private static readonly int pattenLenght = 3;
+    //private static readonly int pattenLenght = 2;
 
     [MenuItem("Tools/生成动画文件", false, 2)]
     static void Execute()
@@ -54,7 +56,7 @@ public class GenerateAnimations
             if (!(path.EndsWith(".png")) || fileName.Length < pattenLenght + 1)
                 continue;
 
-            if (fileName.Length != 8)
+            if (path.Contains("TROOP") && fileName.Length != 8)
                 continue;
 
             flag = true;
@@ -66,7 +68,10 @@ public class GenerateAnimations
                     sw.Flush();
                     sw.Close();
 
-                    animSW.WriteLine(OutPath + prefix);
+                    int idx = OutPath.IndexOf("Resources");
+                    string resPath = OutPath.Substring(idx + "Resources".Length + 1, OutPath.Length - idx - "Resources".Length - 1);
+
+                    animSW.WriteLine(prefix + "\t\t" + resPath + prefix);
                 }
 
                 prefix = fileName.Substring(0, fileName.Length - pattenLenght);    
@@ -77,7 +82,7 @@ public class GenerateAnimations
             if (sw != null)
             {
                 int idx = path.IndexOf("Resources");
-                string resPath = path.Substring(idx + 10, path.Length - idx - 14);
+                string resPath = path.Substring(idx + "Resources".Length + 1, path.Length - idx - "Resources".Length - ".png".Length - 1);
                 
                 sw.WriteLine(resPath);
 
@@ -94,7 +99,9 @@ public class GenerateAnimations
         if (animSW != null)
         {
             //最后一个
-            animSW.WriteLine(OutPath + prefix);
+            int idx = OutPath.IndexOf("Resources");
+            string resPath = OutPath.Substring(idx + "Resources".Length + 1, OutPath.Length - idx - "Resources".Length - 1);
+            animSW.WriteLine(prefix + "\t\t" + resPath + prefix);
 
             animSW.Flush();
             animSW.Close();

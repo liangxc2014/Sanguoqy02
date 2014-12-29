@@ -45,6 +45,7 @@ public static class LuaWapBinder
 		WrapXMLDataThings.Register(L);
 		WrapXMLDataTimes.Register(L);
 		WrapXMLDataWiseSkill.Register(L);
+		WrapXMLDataAnimations.Register(L);
 		WrapXMLDataPathInfo.Register(L);
 		WrapXMLDataCityPoints.Register(L);
 		WrapXMLLoader_XMLDataBattle.Register(L);
@@ -58,6 +59,7 @@ public static class LuaWapBinder
 		WrapXMLLoader_XMLDataThings.Register(L);
 		WrapXMLLoader_XMLDataTimes.Register(L);
 		WrapXMLLoader_XMLDataWiseSkill.Register(L);
+		WrapXMLLoader_XMLDataAnimations.Register(L);
 		WrapXMLLoader_XMLDataPathInfo.Register(L);
 		WrapXMLLoader_XMLDataCityPoints.Register(L);
 		WrapTestLuaFunctionType.Register(L);
