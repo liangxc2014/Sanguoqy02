@@ -8,17 +8,17 @@ public class GenerateAnimations
     //private static readonly string SourcePath = "Assets/Resources/Shape/FORCE/";
     //private static readonly string SourcePath = "Assets/Resources/Shape/MAJOR/BODY/";
     //private static readonly string SourcePath = "Assets/Resources/Shape/MAJOR/HORSE/";
-    private static readonly string SourcePath = "Assets/Resources/Shape/MAJOR/WEAPON/";
-    //private static readonly string SourcePath = "Assets/Resources/Shape/TROOP/";
+    //private static readonly string SourcePath = "Assets/Resources/Shape/MAJOR/WEAPON/";
+    private static readonly string SourcePath = "Assets/Resources/Shape/TROOP/";
 
     //private static readonly string OutPath = "Assets/Resources/Animations/FORCE/";
     //private static readonly string OutPath = "Assets/Resources/Animations/BODY/";
     //private static readonly string OutPath = "Assets/Resources/Animations/HORSE/";
-    private static readonly string OutPath = "Assets/Resources/Animations/WEAPON/";
-    //private static readonly string OutPath = "Assets/Resources/Animations/TROOP/";
+    //private static readonly string OutPath = "Assets/Resources/Animations/WEAPON/";
+    private static readonly string OutPath = "Assets/Resources/Animations/TROOP/";
 
-    private static readonly int pattenLenght = 3;
-    //private static readonly int pattenLenght = 2;
+    //private static readonly int pattenLenght = 3;
+    private static readonly int pattenLenght = 2;
 
     [MenuItem("Tools/生成动画文件", false, 2)]
     static void Execute()
@@ -83,8 +83,10 @@ public class GenerateAnimations
             {
                 int idx = path.IndexOf("Resources");
                 string resPath = path.Substring(idx + "Resources".Length + 1, path.Length - idx - "Resources".Length - ".png".Length - 1);
-                
-                sw.WriteLine(resPath);
+
+                string[] split = resPath.Split('\\');
+                string text = string.Join("/", split);
+                sw.WriteLine(text);
 
                 EditorUtility.DisplayProgressBar("Processing", resPath, 1.0f * index / fileInfos.Length);
             }

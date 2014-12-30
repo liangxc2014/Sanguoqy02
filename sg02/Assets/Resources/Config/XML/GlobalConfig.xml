@@ -1,5 +1,15 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <root>
-  <RECORD ID="1" Name="DesignScreenResolution" Value="640,480" Description="设计时的分辨率" />
-  <RECORD ID="2" Name="MapSize" Value="1280,960" Description="大地图大小" />
+  <RECORD Name="DesignScreenResolution" Value="640,480" Description="设计时的分辨率" />
+  <RECORD Name="MapSize" Value="1280,960" Description="大地图大小" />
+  <RECORD Name="IsDebuggingOpen" Value="true" Description="是否打开 Debug log" />
+  <RECORD Name="IsMapEditorMode" Value="false" Description="是否是编辑器模式" />
+  <RECORD Name="FontButtonsVSpace" Value="-28" Description="字体按钮的间距" />
+  <RECORD Name="PathShapeFace" Value="Shape/FACE/" Description="人物脸的图片的路径" />
+  <RECORD Name="AnimationSpeed" Value="0.15" Description="动画播放的速度" />
+  <RECORD Name="TroopFlag" Value="Animations/TROOP/FLAG27" Description="盗贼势力的旗帜" />
+  <RECORD Name="FlagOffset1" Value="0,6,0" Description="旗帜的偏移" />
+  <RECORD Name="FlagOffset2" Value="0,12,0" Description="旗帜的偏移" />
+  <RECORD Name="FlagOffset3" Value="0,12,0" Description="旗帜的偏移" />
+  <RECORD Name="FlagOffset4" Value="0,12,0" Description="旗帜的偏移" />
 </root>

@@ -19,6 +19,7 @@ public class WrapGlobalConfig
 		new LuaField("MapSize", get_MapSize, null),
 		new LuaField("FontButtonsVSpace", get_FontButtonsVSpace, null),
 		new LuaField("PathShapeFace", get_PathShapeFace, null),
+		new LuaField("AnimationSpeed", get_AnimationSpeed, null),
 	};
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
@@ -86,6 +87,13 @@ public class WrapGlobalConfig
 	static int get_PathShapeFace(IntPtr L)
 	{
 		LuaScriptMgr.Push(L, GlobalConfig.PathShapeFace);
+		return 1;
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int get_AnimationSpeed(IntPtr L)
+	{
+		LuaScriptMgr.Push(L, GlobalConfig.AnimationSpeed);
 		return 1;
 	}
 

@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ArmyInfo : MonoBehaviour {
+public class TroopInfo : MonoBehaviour
+{
 
 	// Use this for initialization
 	void Start () {

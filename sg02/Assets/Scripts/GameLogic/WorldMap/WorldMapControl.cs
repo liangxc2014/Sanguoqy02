@@ -35,14 +35,13 @@ public class WorldMapControl : Singleton<WorldMapControl>
 
     private void CreateCity()
     {
-        IEnumerator enumerator = XMLManager.City.Data.Values.GetEnumerator();
-
+        IEnumerator enumerator = GamePublic.Instance.DataManager.Citys.Values.GetEnumerator();
         while (enumerator.MoveNext())
         {
-            XMLDataCity data = (XMLDataCity)enumerator.Current;
+            CityInfo cityInfo = (CityInfo)enumerator.Current;
 
             string cityPath = "";
-            if (data.Level == 0)
+            if (cityInfo.Level == 0)
             {
                 cityPath = XMLManager.ResourcePath.GetInfoByName("City01").Path;
             }
@@ -51,14 +50,39 @@ public class WorldMapControl : Singleton<WorldMapControl>
                 cityPath = XMLManager.ResourcePath.GetInfoByName("City03").Path;
             }
 
-            GameObject go = Utility.CreateSceneObject("City" + data.ID, cityPath);
-            if (GamePublic.Instance.CityPoint.ContainsKey(data.ID))
+            GameObject go = Utility.CreateSceneObject("City" + cityInfo.ID, cityPath);
+            if (GamePublic.Instance.CityPoint.ContainsKey(cityInfo.ID))
             {
-                go.transform.localPosition = GamePublic.Instance.CityPoint[data.ID];
+                go.transform.localPosition = GamePublic.Instance.CityPoint[cityInfo.ID];
             }
             else
             {
-                Debugging.LogError("Function:CreateCity; cityID : " + data.ID);
+                Debugging.LogError("Function:CreateCity; cityID : " + cityInfo.ID);
+            }
+
+            if (cityInfo.KingID == 0)
+                continue;
+
+            GameObject flag = new GameObject("Flag");
+            Utility.SetObjectChild(go, flag);
+            if (cityInfo.Level == 0)
+            {
+                flag.transform.localPosition = GlobalConfig.FlagOffset1;
+            }
+            else
+            {
+                flag.transform.localPosition = GlobalConfig.FlagOffset3;
+            }
+            AnimationComponent ac = flag.AddComponent<AnimationComponent>();
+
+            if (cityInfo.KingID == -1)
+            {
+                ac.PlayAnimation(GlobalConfig.TroopFlag);
+            }
+            else
+            {
+                XMLDataKings kingData = XMLManager.Kings.GetInfoById(cityInfo.KingID);
+                ac.PlayAnimation(kingData.FlagAnim);
             }
         }
     }

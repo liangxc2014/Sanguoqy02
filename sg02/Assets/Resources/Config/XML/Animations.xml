@@ -1431,33 +1431,33 @@
   <RECORD Name="Animations/WEAPON/D8L10" Speed="1" Loop="0" NextAnim="" />
   <RECORD Name="Animations/WEAPON/D8R10" Speed="1" Loop="0" NextAnim="" />
   <RECORD Name="Animations/WEAPON/D8W40" Speed="1" Loop="0" NextAnim="" />
-  <RECORD Name="Animations/TROOP/FLAG01" Speed="1" Loop="0" NextAnim="" />
-  <RECORD Name="Animations/TROOP/FLAG02" Speed="1" Loop="0" NextAnim="" />
-  <RECORD Name="Animations/TROOP/FLAG03" Speed="1" Loop="0" NextAnim="" />
-  <RECORD Name="Animations/TROOP/FLAG04" Speed="1" Loop="0" NextAnim="" />
-  <RECORD Name="Animations/TROOP/FLAG05" Speed="1" Loop="0" NextAnim="" />
-  <RECORD Name="Animations/TROOP/FLAG06" Speed="1" Loop="0" NextAnim="" />
-  <RECORD Name="Animations/TROOP/FLAG07" Speed="1" Loop="0" NextAnim="" />
-  <RECORD Name="Animations/TROOP/FLAG08" Speed="1" Loop="0" NextAnim="" />
-  <RECORD Name="Animations/TROOP/FLAG09" Speed="1" Loop="0" NextAnim="" />
-  <RECORD Name="Animations/TROOP/FLAG10" Speed="1" Loop="0" NextAnim="" />
-  <RECORD Name="Animations/TROOP/FLAG11" Speed="1" Loop="0" NextAnim="" />
-  <RECORD Name="Animations/TROOP/FLAG12" Speed="1" Loop="0" NextAnim="" />
-  <RECORD Name="Animations/TROOP/FLAG13" Speed="1" Loop="0" NextAnim="" />
-  <RECORD Name="Animations/TROOP/FLAG14" Speed="1" Loop="0" NextAnim="" />
-  <RECORD Name="Animations/TROOP/FLAG15" Speed="1" Loop="0" NextAnim="" />
-  <RECORD Name="Animations/TROOP/FLAG16" Speed="1" Loop="0" NextAnim="" />
-  <RECORD Name="Animations/TROOP/FLAG17" Speed="1" Loop="0" NextAnim="" />
-  <RECORD Name="Animations/TROOP/FLAG18" Speed="1" Loop="0" NextAnim="" />
-  <RECORD Name="Animations/TROOP/FLAG19" Speed="1" Loop="0" NextAnim="" />
-  <RECORD Name="Animations/TROOP/FLAG20" Speed="1" Loop="0" NextAnim="" />
-  <RECORD Name="Animations/TROOP/FLAG21" Speed="1" Loop="0" NextAnim="" />
-  <RECORD Name="Animations/TROOP/FLAG22" Speed="1" Loop="0" NextAnim="" />
-  <RECORD Name="Animations/TROOP/FLAG23" Speed="1" Loop="0" NextAnim="" />
-  <RECORD Name="Animations/TROOP/FLAG24" Speed="1" Loop="0" NextAnim="" />
-  <RECORD Name="Animations/TROOP/FLAG25" Speed="1" Loop="0" NextAnim="" />
-  <RECORD Name="Animations/TROOP/FLAG26" Speed="1" Loop="0" NextAnim="" />
-  <RECORD Name="Animations/TROOP/FLAG27" Speed="1" Loop="0" NextAnim="" />
+  <RECORD Name="Animations/TROOP/FLAG01" Speed="1" Loop="1" NextAnim="" />
+  <RECORD Name="Animations/TROOP/FLAG02" Speed="1" Loop="1" NextAnim="" />
+  <RECORD Name="Animations/TROOP/FLAG03" Speed="1" Loop="1" NextAnim="" />
+  <RECORD Name="Animations/TROOP/FLAG04" Speed="1" Loop="1" NextAnim="" />
+  <RECORD Name="Animations/TROOP/FLAG05" Speed="1" Loop="1" NextAnim="" />
+  <RECORD Name="Animations/TROOP/FLAG06" Speed="1" Loop="1" NextAnim="" />
+  <RECORD Name="Animations/TROOP/FLAG07" Speed="1" Loop="1" NextAnim="" />
+  <RECORD Name="Animations/TROOP/FLAG08" Speed="1" Loop="1" NextAnim="" />
+  <RECORD Name="Animations/TROOP/FLAG09" Speed="1" Loop="1" NextAnim="" />
+  <RECORD Name="Animations/TROOP/FLAG10" Speed="1" Loop="1" NextAnim="" />
+  <RECORD Name="Animations/TROOP/FLAG11" Speed="1" Loop="1" NextAnim="" />
+  <RECORD Name="Animations/TROOP/FLAG12" Speed="1" Loop="1" NextAnim="" />
+  <RECORD Name="Animations/TROOP/FLAG13" Speed="1" Loop="1" NextAnim="" />
+  <RECORD Name="Animations/TROOP/FLAG14" Speed="1" Loop="1" NextAnim="" />
+  <RECORD Name="Animations/TROOP/FLAG15" Speed="1" Loop="1" NextAnim="" />
+  <RECORD Name="Animations/TROOP/FLAG16" Speed="1" Loop="1" NextAnim="" />
+  <RECORD Name="Animations/TROOP/FLAG17" Speed="1" Loop="1" NextAnim="" />
+  <RECORD Name="Animations/TROOP/FLAG18" Speed="1" Loop="1" NextAnim="" />
+  <RECORD Name="Animations/TROOP/FLAG19" Speed="1" Loop="1" NextAnim="" />
+  <RECORD Name="Animations/TROOP/FLAG20" Speed="1" Loop="1" NextAnim="" />
+  <RECORD Name="Animations/TROOP/FLAG21" Speed="1" Loop="1" NextAnim="" />
+  <RECORD Name="Animations/TROOP/FLAG22" Speed="1" Loop="1" NextAnim="" />
+  <RECORD Name="Animations/TROOP/FLAG23" Speed="1" Loop="1" NextAnim="" />
+  <RECORD Name="Animations/TROOP/FLAG24" Speed="1" Loop="1" NextAnim="" />
+  <RECORD Name="Animations/TROOP/FLAG25" Speed="1" Loop="1" NextAnim="" />
+  <RECORD Name="Animations/TROOP/FLAG26" Speed="1" Loop="1" NextAnim="" />
+  <RECORD Name="Animations/TROOP/FLAG27" Speed="1" Loop="1" NextAnim="" />
   <RECORD Name="Animations/TROOP/SOL000" Speed="1" Loop="0" NextAnim="" />
   <RECORD Name="Animations/TROOP/SOL0LO" Speed="1" Loop="0" NextAnim="" />
   <RECORD Name="Animations/TROOP/SOL0WI" Speed="1" Loop="0" NextAnim="" />

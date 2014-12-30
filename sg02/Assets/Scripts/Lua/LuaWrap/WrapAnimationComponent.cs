@@ -9,6 +9,8 @@ public class WrapAnimationComponent
 	public static LuaMethod[] regs = new LuaMethod[]
 	{
 		new LuaMethod("PlayAnimation", PlayAnimation),
+		new LuaMethod("Pause", Pause),
+		new LuaMethod("Resume", Resume),
 		new LuaMethod("Invoke", Invoke),
 		new LuaMethod("InvokeRepeating", InvokeRepeating),
 		new LuaMethod("CancelInvoke", CancelInvoke),
@@ -39,8 +41,10 @@ public class WrapAnimationComponent
 
 	static LuaField[] fields = new LuaField[]
 	{
-		new LuaField("animName", get_animName, set_animName),
-		new LuaField("isPlaying", get_isPlaying, set_isPlaying),
+		new LuaField("animName", get_animName, null),
+		new LuaField("isPlaying", get_isPlaying, null),
+		new LuaField("isPause", get_isPause, null),
+		new LuaField("animIndex", get_animIndex, null),
 		new LuaField("useGUILayout", get_useGUILayout, set_useGUILayout),
 		new LuaField("enabled", get_enabled, set_enabled),
 		new LuaField("transform", get_transform, null),
@@ -108,6 +112,36 @@ public class WrapAnimationComponent
 
 		AnimationComponent obj = (AnimationComponent)o;
 		LuaScriptMgr.Push(L, obj.isPlaying);
+		return 1;
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int get_isPause(IntPtr L)
+	{
+		object o = LuaScriptMgr.GetLuaObject(L, 1);
+
+		if (o == null)
+		{
+			LuaDLL.luaL_error(L, "unknown member name isPause");
+		}
+
+		AnimationComponent obj = (AnimationComponent)o;
+		LuaScriptMgr.Push(L, obj.isPause);
+		return 1;
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int get_animIndex(IntPtr L)
+	{
+		object o = LuaScriptMgr.GetLuaObject(L, 1);
+
+		if (o == null)
+		{
+			LuaDLL.luaL_error(L, "unknown member name animIndex");
+		}
+
+		AnimationComponent obj = (AnimationComponent)o;
+		LuaScriptMgr.Push(L, obj.animIndex);
 		return 1;
 	}
 
@@ -217,36 +251,6 @@ public class WrapAnimationComponent
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int set_animName(IntPtr L)
-	{
-		object o = LuaScriptMgr.GetLuaObject(L, 1);
-
-		if (o == null)
-		{
-			LuaDLL.luaL_error(L, "unknown member name animName");
-		}
-
-		AnimationComponent obj = (AnimationComponent)o;
-		obj.animName = LuaScriptMgr.GetString(L, 3);
-		return 0;
-	}
-
-	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int set_isPlaying(IntPtr L)
-	{
-		object o = LuaScriptMgr.GetLuaObject(L, 1);
-
-		if (o == null)
-		{
-			LuaDLL.luaL_error(L, "unknown member name isPlaying");
-		}
-
-		AnimationComponent obj = (AnimationComponent)o;
-		obj.isPlaying = LuaScriptMgr.GetBoolean(L, 3);
-		return 0;
-	}
-
-	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_useGUILayout(IntPtr L)
 	{
 		object o = LuaScriptMgr.GetLuaObject(L, 1);
@@ -332,10 +336,57 @@ public class WrapAnimationComponent
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int PlayAnimation(IntPtr L)
 	{
-		LuaScriptMgr.CheckArgsCount(L, 2);
+		int count = LuaDLL.lua_gettop(L);
+
+		Type[] types1 = {typeof(AnimationComponent), typeof(string), typeof(LuaInterface.LuaFunction)};
+		Type[] types2 = {typeof(AnimationComponent), typeof(string), typeof(CallBack.CallBackDelegate)};
+
+		if (count == 2)
+		{
+			AnimationComponent obj = LuaScriptMgr.GetNetObject<AnimationComponent>(L, 1);
+			string arg0 = LuaScriptMgr.GetLuaString(L, 2);
+			obj.PlayAnimation(arg0);
+			return 0;
+		}
+		else if (count == 3 && LuaScriptMgr.CheckTypes(L, types1, 1))
+		{
+			AnimationComponent obj = LuaScriptMgr.GetNetObject<AnimationComponent>(L, 1);
+			string arg0 = LuaScriptMgr.GetString(L, 2);
+			LuaFunction arg1 = LuaScriptMgr.GetLuaFunction(L, 3);
+			obj.PlayAnimation(arg0,arg1);
+			return 0;
+		}
+		else if (count == 3 && LuaScriptMgr.CheckTypes(L, types2, 1))
+		{
+			AnimationComponent obj = LuaScriptMgr.GetNetObject<AnimationComponent>(L, 1);
+			string arg0 = LuaScriptMgr.GetString(L, 2);
+			CallBack.CallBackDelegate arg1 = LuaScriptMgr.GetNetObject<CallBack.CallBackDelegate>(L, 3);
+			obj.PlayAnimation(arg0,arg1);
+			return 0;
+		}
+		else
+		{
+			LuaDLL.luaL_error(L, "invalid arguments to method: AnimationComponent.PlayAnimation");
+		}
+
+		return 0;
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int Pause(IntPtr L)
+	{
+		LuaScriptMgr.CheckArgsCount(L, 1);
 		AnimationComponent obj = LuaScriptMgr.GetNetObject<AnimationComponent>(L, 1);
-		string arg0 = LuaScriptMgr.GetLuaString(L, 2);
-		obj.PlayAnimation(arg0);
+		obj.Pause();
+		return 0;
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int Resume(IntPtr L)
+	{
+		LuaScriptMgr.CheckArgsCount(L, 1);
+		AnimationComponent obj = LuaScriptMgr.GetNetObject<AnimationComponent>(L, 1);
+		obj.Resume();
 		return 0;
 	}
 

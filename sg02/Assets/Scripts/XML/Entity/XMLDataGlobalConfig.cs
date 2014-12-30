@@ -3,10 +3,6 @@
 public class XMLDataGlobalConfig
 {
 	/// <summary>
-	/// ÐòºÅ
-	/// </summary>
-	public int ID;
-	/// <summary>
 	/// Ãû³Æ
 	/// </summary>
 	public string Name;
