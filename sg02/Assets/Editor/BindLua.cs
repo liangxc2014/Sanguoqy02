@@ -13,7 +13,8 @@ public static class LuaBinding
 {
     private static string PathRegFile = "/Scripts/Lua/LuaWapBinder.cs";
     private static string PathProcessFile = "/Resources/Lua/Build.bat";
-    private static string PathLuaOutDir = "/Assets/Resources/Lua/Out";
+    private static string PathLuaDir = "Assets/Resources/Lua/";
+    private static string PathLuaOutDir = "Assets/Resources/Lua/Out/";
     private static string PathLuaBundle = "/Bundle/Lua.unity3d";
 
     public class BindType
@@ -293,44 +294,44 @@ public static class LuaBinding
     [MenuItem("Lua/Build Lua without jit", false, 2)]
     public static void BuildLuaNoJit()
     {
-        BuildAssetBundleOptions options = BuildAssetBundleOptions.CollectDependencies | BuildAssetBundleOptions.CompleteAssets | BuildAssetBundleOptions.DeterministicAssetBundle;
+        //BuildAssetBundleOptions options = BuildAssetBundleOptions.CollectDependencies | BuildAssetBundleOptions.CompleteAssets | BuildAssetBundleOptions.DeterministicAssetBundle;
 
-        string[] files = Directory.GetFiles("Assets/Lua/Out", "*.lua.bytes");
+        string[] files = Directory.GetFiles(PathLuaOutDir, "*.lua.bytes");
 
         for (int i = 0; i < files.Length; i++)
         {            
             FileUtil.DeleteFileOrDirectory(files[i]);
         }
 
-        files = Directory.GetFiles(Application.dataPath + "/Lua/", "*.lua", SearchOption.TopDirectoryOnly);
+        files = Directory.GetFiles(PathLuaDir, "*.lua", SearchOption.AllDirectories);
 
         for (int i = 0; i < files.Length; i++)
         {
             string fname = Path.GetFileName(files[i]);
-            FileUtil.CopyFileOrDirectory(files[i], Application.dataPath + "/Lua/Out/" + fname + ".bytes");
+            FileUtil.CopyFileOrDirectory(files[i], PathLuaOutDir + fname + ".bytes");
         }
 
         AssetDatabase.Refresh();
 
-        files = Directory.GetFiles("Assets/Lua/Out", "*.lua.bytes");
-        List<Object> list = new List<Object>();
-
-        for (int i = 0; i < files.Length; i++)
-        {
-            Object obj = AssetDatabase.LoadMainAssetAtPath(files[i]);
-            list.Add(obj);
-        }
-
-        if (files.Length > 0)
-        {
-            string output = string.Format("{0}/Bundle/Lua.unity3d", Application.dataPath);
-            BuildPipeline.BuildAssetBundle(null, list.ToArray(), output, options, EditorUserBuildSettings.activeBuildTarget);
-            string output1 = string.Format("{0}/{1}/Lua.unity3d", Application.persistentDataPath, GetOS());
-            FileUtil.DeleteFileOrDirectory(output1);
-            Directory.CreateDirectory(Path.GetDirectoryName(output1));
-            FileUtil.CopyFileOrDirectory(output, output1);
-            AssetDatabase.Refresh();
-        }
+//         files = Directory.GetFiles(PathLuaOutDir, "*.lua.bytes");
+//         List<Object> list = new List<Object>();
+// 
+//         for (int i = 0; i < files.Length; i++)
+//         {
+//             Object obj = AssetDatabase.LoadMainAssetAtPath(files[i]);
+//             list.Add(obj);
+//         }
+// 
+//         if (files.Length > 0)
+//         {
+//             string output = string.Format("{0}/Bundle/Lua.unity3d", Application.dataPath);
+//             BuildPipeline.BuildAssetBundle(null, list.ToArray(), output, options, EditorUserBuildSettings.activeBuildTarget);
+//             string output1 = string.Format("{0}/{1}/Lua.unity3d", Application.persistentDataPath, GetOS());
+//             FileUtil.DeleteFileOrDirectory(output1);
+//             Directory.CreateDirectory(Path.GetDirectoryName(output1));
+//             FileUtil.CopyFileOrDirectory(output, output1);
+//             AssetDatabase.Refresh();
+//         }
 
         UnityEngine.Debug.Log("编译lua文件结束");
     }

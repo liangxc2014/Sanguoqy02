@@ -8,6 +8,8 @@ public class MapCameraControl : Singleton<MapCameraControl>
 
     public override void Initialize()
     {
+        ScreenControl.Instance.Initialize();
+
         float screenWidth = GlobalConfig.DesignScreenWidth * ScreenControl.Instance.ScaleRatio;
         xOffMax = (GlobalConfig.MapSize.x - screenWidth) / 2;
         yOffMax = (GlobalConfig.MapSize.y - GlobalConfig.DesignScreenHeight) / 2;

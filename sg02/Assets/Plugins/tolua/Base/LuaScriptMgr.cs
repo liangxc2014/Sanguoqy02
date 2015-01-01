@@ -256,13 +256,23 @@ public class LuaScriptMgr
         byte[] str = null;
 #if !LUA_ZIP
         
-        string path = Application.dataPath + "/Resources/" + name;        
-
-        using (FileStream file = new FileStream(path, FileMode.Open))
+        if (Application.isEditor)
         {
-            str = new byte[(int)file.Length];
-            file.Read(str, 0, str.Length);    
-            file.Close();        
+            string path = Application.dataPath + "/Resources/" + name;
+
+            using (FileStream file = new FileStream(path, FileMode.Open))
+            {
+                str = new byte[(int)file.Length];
+                file.Read(str, 0, str.Length);
+                file.Close();
+            }
+        }
+        else
+        {
+            string outDir = "Lua/Out/";
+            string fileName = Path.GetFileName(name);
+            TextAsset ta = Resources.Load<TextAsset>(outDir + fileName);
+            str = ta.bytes;
         }
 #else
         TextAsset luaCode = file.Read<TextAsset>(name);

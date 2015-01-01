@@ -296,7 +296,7 @@ namespace LuaInterface
                     LuaDLL.lua_setfenv(L, -2);
                 }
 
-                //Test添加文件名参数作为模块名字
+                // lxc Test添加文件名参数作为模块名字
                 string moduleName = Path.GetFileNameWithoutExtension(fileName);
                 translator.push(L, moduleName);
 
